@@ -186,6 +186,26 @@ for m in MAG:
         "hours":hours_of(m.get("duration")),"rating":rating,
         "region":scan_region(wps),"vip":False,"url":m["url"],"waypoints":wps})
 
+# ---------- canonicalize coords: snap recognizable waypoints to the gazetteer ----------
+# Fixes mis-geocoded stops (e.g. bustravel "Katla Ice Cave" landing on Vík) so the same
+# named place has ONE correct coordinate everywhere and the stop-filter can't false-match.
+def asciilow(s): return unicodedata.normalize('NFD', s or '').encode('ascii','ignore').decode().lower()
+GAZ_BY_LEN=sorted(GAZ.items(), key=lambda kv:-len(kv[0]))
+def snap(wp):
+    if "Pickup" in wp["name"] or "Reykjav" in wp["name"]: return
+    low=asciilow(wp["name"])
+    for name,coord in GAZ_BY_LEN:
+        gl=asciilow(name)
+        if len(gl)<3: continue
+        if re.search(r'\b'+re.escape(gl)+r'\b', low):
+            wp["lat"],wp["lng"]=coord[0],coord[1]; return
+snapped=0
+for t in tours:
+    for w in t["waypoints"]:
+        before=(w["lat"],w["lng"]); snap(w)
+        if (w["lat"],w["lng"])!=before: snapped+=1
+print(f"snapped {snapped} waypoints to gazetteer coords")
+
 # ---------- write + inject ----------
 json.dump(tours, open(S("all_tours.json"),"w",encoding="utf-8"), ensure_ascii=False, indent=1)
 from collections import Counter
