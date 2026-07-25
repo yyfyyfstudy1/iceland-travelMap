@@ -2,158 +2,302 @@
 <html lang="zh">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0e7c86">
 <title>冰岛一日游 · 多平台路线与价格地图</title>
 <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <style>
   :root{
-    --bg:#e9eff2; --panel:#ffffff; --ink:#0f1720; --ink2:#47535e; --muted:#8a97a1;
-    --line:#d7e0e4; --accent:#0e7c86; --pill:rgba(255,255,255,.94);
-    --shadow:0 1px 3px rgba(12,26,36,.10),0 8px 30px rgba(12,26,36,.08);
+    --bg:#e7edf0; --panel:#ffffff; --ink:#0e1620; --ink2:#48555f; --muted:#8593a0;
+    --line:#dce4e9; --line2:#e8eef1; --accent:#0e7c86; --accent-ink:#0b5f67;
     --chip:#eef3f5; --chip-on:#0e7c86;
+    --glass:rgba(255,255,255,.80); --glass-line:rgba(255,255,255,.5);
+    --shadow-s:0 1px 2px rgba(12,26,36,.08), 0 2px 8px rgba(12,26,36,.06);
+    --shadow-l:0 2px 8px rgba(12,26,36,.10), 0 20px 48px rgba(12,26,36,.14);
+    --sheet-r:20px; --topbar-h:52px;
+    --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+    --safe-l:env(safe-area-inset-left,0px); --safe-r:env(safe-area-inset-right,0px);
   }
-  :root[data-theme="dark"], :root:not([data-theme="light"]){}
   @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
-    --bg:#0b0f13; --panel:#12181d; --ink:#eaf1f3; --ink2:#a9b6bf; --muted:#6d7a84;
-    --line:#212a31; --accent:#43c6d0; --pill:rgba(16,22,27,.92);
-    --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 34px rgba(0,0,0,.45); --chip:#1a232b; }}
+    --bg:#080b0e; --panel:#111820; --ink:#e9f1f4; --ink2:#a4b2bc; --muted:#6f7d88;
+    --line:#1f2932; --line2:#18212a; --accent:#43c6d0; --accent-ink:#7fe0e7;
+    --chip:#18212a; --chip-on:#0e7c86;
+    --glass:rgba(12,17,22,.72); --glass-line:rgba(255,255,255,.06);
+    --shadow-s:0 1px 2px rgba(0,0,0,.5), 0 2px 8px rgba(0,0,0,.35);
+    --shadow-l:0 2px 10px rgba(0,0,0,.5), 0 22px 50px rgba(0,0,0,.55); }}
   :root[data-theme="dark"]{
-    --bg:#0b0f13; --panel:#12181d; --ink:#eaf1f3; --ink2:#a9b6bf; --muted:#6d7a84;
-    --line:#212a31; --accent:#43c6d0; --pill:rgba(16,22,27,.92);
-    --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 34px rgba(0,0,0,.45); --chip:#1a232b; }
+    --bg:#080b0e; --panel:#111820; --ink:#e9f1f4; --ink2:#a4b2bc; --muted:#6f7d88;
+    --line:#1f2932; --line2:#18212a; --accent:#43c6d0; --accent-ink:#7fe0e7;
+    --chip:#18212a; --chip-on:#0e7c86;
+    --glass:rgba(12,17,22,.72); --glass-line:rgba(255,255,255,.06);
+    --shadow-s:0 1px 2px rgba(0,0,0,.5), 0 2px 8px rgba(0,0,0,.35);
+    --shadow-l:0 2px 10px rgba(0,0,0,.5), 0 22px 50px rgba(0,0,0,.55); }
+
   *{box-sizing:border-box}
-  html,body{margin:0}
+  html,body{margin:0;height:100%;overflow:hidden}
   body{font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif;
-    color:var(--ink);background:var(--bg);line-height:1.5;padding:22px clamp(12px,4vw,34px)}
-  .inner{max-width:1220px;margin:0 auto}
-  .head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px}
-  .head h1{font-size:clamp(20px,3.4vw,29px);font-weight:800;letter-spacing:-.01em;margin:0;text-wrap:balance}
-  .head .sub{color:var(--ink2);font-size:13.5px;margin-top:6px;max-width:74ch}
-  .theme-btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;box-shadow:var(--shadow);white-space:nowrap}
-  .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 6px}
-  .toolbar .lbl{font-size:12px;color:var(--muted);font-weight:700;margin-right:2px}
-  .chip{border:1px solid var(--line);background:var(--chip);color:var(--ink2);border-radius:999px;padding:6px 13px;font-size:12.5px;cursor:pointer;transition:.15s;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    color:var(--ink);background:var(--bg);line-height:1.5;-webkit-text-size-adjust:100%;
+    -webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+  button{font-family:inherit}
+  .tnum{font-variant-numeric:tabular-nums}
+
+  /* ---------- app shell ---------- */
+  #app{height:100dvh;display:grid;grid-template-rows:var(--topbar-h) 1fr}
+  .topbar{display:flex;align-items:center;gap:10px;padding:0 clamp(12px,3vw,20px);
+    border-bottom:1px solid var(--line);background:var(--panel);z-index:40}
+  .brand{display:flex;align-items:baseline;gap:8px;min-width:0}
+  .brand .flag{font-size:17px;line-height:1}
+  .brand h1{font-size:15.5px;font-weight:800;letter-spacing:-.01em;margin:0;white-space:nowrap}
+  .brand .meta{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brand .meta b{color:var(--ink2);font-weight:700}
+  .spacer{flex:1}
+  .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
+    border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:11px;
+    cursor:pointer;box-shadow:var(--shadow-s);flex:none;transition:.15s}
+  .iconbtn:hover{border-color:var(--accent);color:var(--accent)}
+  .iconbtn svg{width:19px;height:19px}
+  .iconbtn .moon{display:none}
+  :root[data-theme="dark"] .iconbtn .moon,
+  html:not([data-theme="light"]) .iconbtn .sun{display:inline}
+  @media (prefers-color-scheme:dark){ html:not([data-theme="light"]) .iconbtn .moon{display:inline} html:not([data-theme="light"]) .iconbtn .sun{display:none} }
+  :root[data-theme="light"] .iconbtn .sun{display:inline}
+  :root[data-theme="light"] .iconbtn .moon{display:none}
+
+  .stage{position:relative;display:grid;grid-template-columns:minmax(0,1fr) min(400px,40vw);min-height:0}
+
+  /* ---------- map ---------- */
+  .map-wrap{position:relative;min-height:0}
+  #map{position:absolute;inset:0}
+  .maplibregl-ctrl-attrib{font-size:10px}
+  .map-fx{position:absolute;left:0;right:0;top:0;height:74px;pointer-events:none;z-index:1;
+    background:linear-gradient(180deg,rgba(0,0,0,.16),transparent);opacity:0;transition:.2s}
+  .basemap{position:absolute;left:12px;top:12px;z-index:3;display:flex;border-radius:11px;overflow:hidden;
+    background:var(--glass);border:1px solid var(--glass-line);box-shadow:var(--shadow-l);
+    -webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3)}
+  .basemap button{border:0;background:none;color:var(--ink2);font-size:12.5px;font-weight:700;
+    padding:8px 13px;cursor:pointer;transition:.12s}
+  .basemap button+button{border-left:1px solid var(--glass-line)}
+  .basemap button.on{background:var(--accent);color:#fff}
+  .basemap button:hover:not(.on){color:var(--ink)}
+  .mapbtns{position:absolute;right:12px;bottom:26px;z-index:3;display:flex;flex-direction:column;gap:8px}
+  .mapbtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--glass-line);
+    background:var(--glass);color:var(--ink);cursor:pointer;box-shadow:var(--shadow-l);
+    display:flex;align-items:center;justify-content:center;
+    -webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3)}
+  .mapbtn:hover{color:var(--accent)}
+  .mapbtn svg{width:20px;height:20px}
+  .legend{position:absolute;left:12px;bottom:26px;z-index:3;background:var(--glass);
+    border:1px solid var(--glass-line);border-radius:12px;padding:9px 12px;font-size:11.5px;color:var(--ink2);
+    display:flex;flex-wrap:wrap;gap:5px 13px;max-width:min(64%,340px);box-shadow:var(--shadow-l);
+    -webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3)}
+  .legend b{width:100%;color:var(--ink);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:800;margin-bottom:1px}
+  .legend .lg{display:flex;align-items:center;gap:6px;white-space:nowrap}
+  .legend .sw{width:15px;height:3px;border-radius:2px;flex:none}
+
+  /* ---------- sheet / rail ---------- */
+  .sheet{background:var(--panel);display:flex;flex-direction:column;min-height:0;
+    border-left:1px solid var(--line);overflow:hidden}
+  .sheet-fixed{flex:none;position:relative;z-index:2;background:var(--panel);
+    border-bottom:1px solid var(--line2)}
+  .grip{display:none}
+  .sheet-head{display:flex;align-items:center;gap:12px;padding:12px 16px 8px}
+  .head-num{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1;color:var(--ink)}
+  .head-txt{min-width:0;flex:1}
+  .head-unit{font-size:13px;font-weight:700;color:var(--ink2);margin-left:5px}
+  .head-sub{font-size:12px;color:var(--muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sheet-toggle{display:none}
+
+  .flt{padding:2px 12px 10px}
+  .flabel{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:800;margin:6px 4px 5px}
+  .chip-row{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{flex:none;border:1px solid var(--line);background:var(--chip);color:var(--ink2);border-radius:999px;
+    padding:0 13px;height:34px;font-size:12.5px;cursor:pointer;transition:.14s;font-weight:650;
+    display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
   .chip:hover{border-color:var(--accent);color:var(--ink)}
   .chip[aria-pressed="true"]{background:var(--chip-on);color:#fff;border-color:var(--chip-on)}
   .chip .cdot{width:9px;height:9px;border-radius:50%;flex:none}
-  .toolbar .sep{flex:1}
-  .vip-toggle{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink2);cursor:pointer;user-select:none}
-  .vip-toggle input{accent-color:var(--accent);width:15px;height:15px}
-  .stopchip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0 0;padding:8px 13px;border:1px solid var(--accent);background:var(--chip);border-radius:10px;font-size:13px;color:var(--ink)}
-  .stopchip .sctext{flex:1;min-width:210px}
-  .stopchip .x,.stopchip .modebtn{cursor:pointer;border:1px solid var(--line);border-radius:7px;padding:3px 11px;font-weight:700;background:var(--panel);font-size:12px}
-  .stopchip .x:hover,.stopchip .modebtn:hover{border-color:var(--accent);color:var(--accent)}
+  .vip-toggle{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink2);cursor:pointer;user-select:none;
+    height:34px;padding:0 4px}
+  .vip-toggle input{accent-color:var(--accent);width:16px;height:16px}
+
+  .stopchip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 12px 10px;padding:9px 12px;
+    border:1px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--panel));border-radius:12px;font-size:12.5px;color:var(--ink)}
+  .stopchip .sctext{flex:1;min-width:180px;line-height:1.45}
+  .stopchip .x,.stopchip .modebtn{cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:5px 11px;font-weight:700;background:var(--panel);font-size:12px}
+  .stopchip .x:hover{border-color:var(--accent);color:var(--accent)}
   .stopchip .modebtn{border-color:var(--accent);background:var(--accent);color:#fff}
-  .main{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(310px,1fr);gap:16px;align-items:start;margin-top:10px}
-  @media (max-width:900px){.main{grid-template-columns:1fr}}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
-  .map-card{position:relative;height:min(70vh,560px);overflow:hidden}
-  @media (max-width:900px){.map-card{height:58vh;min-height:340px}}
-  #map{position:absolute;inset:0;border-radius:16px}
-  .legend{position:absolute;left:12px;bottom:22px;z-index:2;background:var(--pill);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:11px;padding:9px 11px;font-size:11.5px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:5px 12px;max-width:70%;box-shadow:var(--shadow)}
-  .legend b{width:100%;color:var(--ink);font-size:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:700;margin-bottom:1px}
-  .legend .lg{display:flex;align-items:center;gap:6px;white-space:nowrap}
-  .legend .sw{width:15px;height:3px;border-radius:2px;flex:none}
-  .basemap-ctl{position:absolute;left:12px;top:12px;z-index:2;display:flex;background:var(--pill);border:1px solid var(--line);border-radius:9px;overflow:hidden;box-shadow:var(--shadow);backdrop-filter:blur(6px)}
-  .basemap-ctl button{border:0;background:none;color:var(--ink2);font-size:12px;font-weight:700;padding:6px 12px;cursor:pointer}
-  .basemap-ctl button+button{border-left:1px solid var(--line)}
-  .basemap-ctl button.on{background:var(--accent);color:#fff}
-  .basemap-ctl button:hover:not(.on){color:var(--ink)}
-  .side{padding:8px}
-  .picker{padding:9px 8px 4px;border-bottom:1px solid var(--line)}
-  .picker-head{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700;margin:2px 4px 7px}
-  .picker-head .muted{text-transform:none;letter-spacing:0;font-weight:600}
-  .picker-body{display:flex;flex-wrap:wrap;gap:5px;max-height:128px;overflow-y:auto;padding:1px 4px 4px}
-  @media (max-width:560px){.picker-body{max-height:104px}}
-  .spchip{border:1px solid var(--line);background:var(--chip);color:var(--ink2);border-radius:999px;padding:3px 9px;font-size:11.5px;cursor:pointer;white-space:nowrap;font-weight:600;transition:.12s}
+
+  .sheet-scroll{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+  .picker{padding:11px 12px 6px;border-top:1px solid var(--line2)}
+  .picker-head{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800;margin:0 4px 8px}
+  .picker-head .muted{text-transform:none;letter-spacing:0;font-weight:600;color:var(--muted)}
+  .picker-body{display:flex;flex-wrap:wrap;gap:6px;max-height:118px;overflow-y:auto;padding:1px 4px 4px}
+  .spchip{border:1px solid var(--line);background:var(--chip);color:var(--ink2);border-radius:999px;
+    padding:5px 11px;font-size:11.5px;cursor:pointer;white-space:nowrap;font-weight:650;transition:.12s}
   .spchip:hover{border-color:var(--accent);color:var(--ink)}
   .spchip.sel{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .spchip .n{opacity:.7;font-weight:700;margin-left:3px}
-  .side h2{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:8px 8px;font-weight:700}
-  .list{max-height:520px;overflow-y:auto;padding-right:2px}
-  @media (max-width:900px){.list{max-height:none}}
-  .tour{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:8px;border-radius:10px;cursor:pointer;transition:.12s}
+  .spchip .n{opacity:.7;font-weight:800;margin-left:4px}
+
+  .list-head{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+    font-weight:800;margin:12px 16px 4px;position:sticky;top:0;background:var(--panel);padding-top:4px;z-index:1}
+  .list{padding:0 8px 8px}
+  .tour{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;border:0;background:none;color:var(--ink);
+    padding:11px 9px;border-radius:13px;cursor:pointer;transition:background .12s;min-height:52px}
   .tour:hover,.tour.active{background:var(--chip)}
   .tour.pinned{background:var(--chip);box-shadow:inset 3px 0 0 var(--accent)}
-  .tour .dot{width:11px;height:11px;border-radius:50%;flex:none;align-self:flex-start;margin-top:3px}
+  .tour .dot{width:12px;height:12px;border-radius:50%;flex:none;margin-top:3px}
   .tbody{flex:1;min-width:0}
-  .tname{font-size:13.5px;font-weight:650;display:flex;align-items:center;gap:6px;line-height:1.25}
-  .tname .badge{font-size:9.5px;font-weight:800;letter-spacing:.04em;color:#8a5a00;background:#ffe4a8;border-radius:4px;padding:1px 5px}
+  .tname{font-size:14px;font-weight:650;display:flex;align-items:center;gap:6px;line-height:1.3}
+  .tname .badge{font-size:9.5px;font-weight:800;letter-spacing:.04em;color:#8a5a00;background:#ffe4a8;border-radius:5px;padding:1px 5px}
   :root[data-theme="dark"] .tname .badge{color:#ffd985;background:#4a3a10}
-  .tzh{display:block;font-size:11px;color:var(--ink2);margin-top:1px}
-  .tmeta{font-size:11px;color:var(--muted);margin-top:2px}
-  .turl{display:inline-block;margin-top:3px;font-size:10px;color:var(--accent);text-decoration:none;word-break:break-all}
-  .tprice{font-size:14px;font-weight:800;color:var(--ink);white-space:nowrap;text-align:right}
+  @media (prefers-color-scheme:dark){ html:not([data-theme="light"]) .tname .badge{color:#ffd985;background:#4a3a10} }
+  .tzh{display:block;font-size:11.5px;color:var(--ink2);margin-top:1px}
+  .tmeta{font-size:11.5px;color:var(--muted);margin-top:3px}
+  .turl{display:inline-block;margin-top:4px;font-size:10.5px;color:var(--accent);text-decoration:none;word-break:break-all}
+  .tprice{font-size:14.5px;font-weight:800;color:var(--ink);white-space:nowrap;text-align:right}
   .tprice small{font-size:9.5px;font-weight:600;color:var(--muted)}
-  .stops{margin:0 8px 8px 30px;padding:0;font-size:12px;color:var(--ink2)}
-  .stops li{margin:3px 0;list-style:none;position:relative;padding-left:14px}
+  .stops{margin:0 8px 10px 32px;padding:0;font-size:12px;color:var(--ink2)}
+  .stops li{margin:4px 0;list-style:none;position:relative;padding-left:15px}
   .stops li:before{content:"";position:absolute;left:3px;top:6px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .foot{color:var(--muted);font-size:11px;line-height:1.6;padding:12px 16px calc(18px + var(--safe-b))}
   .hidden{display:none!important}
-  .foot{color:var(--muted);font-size:11.5px;margin-top:16px;line-height:1.6}
-  .maplibregl-popup{max-width:260px!important}
-  .maplibregl-popup-content{background:var(--pill);color:var(--ink);border:1px solid var(--line);border-radius:10px;font-size:12.5px;box-shadow:var(--shadow);padding:9px 11px}
+
+  /* ---------- popup ---------- */
+  .maplibregl-popup{max-width:270px!important}
+  .maplibregl-popup-content{background:var(--glass);color:var(--ink);border:1px solid var(--glass-line);border-radius:12px;
+    font-size:12.5px;box-shadow:var(--shadow-l);padding:10px 12px;
+    -webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3)}
   .maplibregl-popup-tip{display:none}
-  .pop .h{font-weight:750;font-size:13px}
-  .pop .r{color:var(--ink2);font-size:11.5px;margin-top:2px}
-  .pop .p{color:var(--accent);font-weight:800;margin-top:3px}
-  @media (max-width:560px){body{padding:16px 12px}.head h1{font-size:22px}}
+  .pop .h{font-weight:800;font-size:13.5px}
+  .pop .r{color:var(--ink2);font-size:11.5px;margin-top:3px}
+  .pop .p{color:var(--accent-ink);font-weight:800;margin-top:4px;font-size:13px}
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width:760px){
+    #app{display:block;height:100dvh}
+    .topbar{position:fixed;top:0;left:0;right:0;height:calc(var(--topbar-h) + var(--safe-t));
+      padding:var(--safe-t) calc(12px + var(--safe-r)) 0 calc(12px + var(--safe-l));
+      background:var(--glass);border-bottom:1px solid var(--glass-line);
+      -webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4)}
+    .brand h1{font-size:14.5px}
+    .brand .meta{display:none}
+    .stage{display:block;position:static}
+    .map-wrap{position:fixed;inset:0;z-index:0}
+    .map-fx{opacity:1}
+    .basemap{top:calc(var(--topbar-h) + var(--safe-t) + 10px);left:calc(10px + var(--safe-l))}
+    .mapbtns{right:calc(10px + var(--safe-r));bottom:auto;top:calc(var(--topbar-h) + var(--safe-t) + 10px)}
+    .legend{display:none}
+    .maplibregl-ctrl-top-right,.maplibregl-ctrl-bottom-right{display:none}
+
+    .sheet{position:fixed;left:0;right:0;bottom:0;z-index:30;
+      height:calc(100dvh - var(--topbar-h) - var(--safe-t) - 6px);
+      border-left:0;border-top:1px solid var(--line);border-radius:var(--sheet-r) var(--sheet-r) 0 0;
+      box-shadow:var(--shadow-l);transform:translateY(80%);
+      transition:transform .3s cubic-bezier(.22,.61,.36,1);touch-action:none}
+    .sheet-fixed{border-radius:var(--sheet-r) var(--sheet-r) 0 0;padding-top:2px;touch-action:none;cursor:grab}
+    .grip{display:block;width:38px;height:5px;border-radius:999px;background:var(--line);
+      margin:8px auto 2px;transition:background .15s}
+    .sheet-fixed:active .grip{background:var(--muted)}
+    .sheet-head{padding:6px 16px 8px}
+    .sheet-toggle{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;
+      border:0;background:var(--chip);color:var(--ink2);border-radius:10px;cursor:pointer;flex:none}
+    .sheet-toggle svg{width:18px;height:18px;transition:transform .3s}
+    .sheet.up .sheet-toggle svg{transform:rotate(180deg)}
+    .flt{padding:2px 14px 12px}
+    .flt .chip-row{flex-wrap:nowrap;overflow-x:auto;padding-bottom:3px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .flt .chip-row::-webkit-scrollbar{display:none}
+    .chip{height:36px}
+    .sheet-scroll{padding-bottom:calc(6px + var(--safe-b))}
+    .list-head{margin-top:8px}
+  }
+  @media (max-width:380px){ .brand h1{font-size:13.5px} .head-num{font-size:24px} }
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
 </head>
 <body>
-<div class="inner">
-  <div class="head">
-    <div>
-      <h1>冰岛一日游 · 多平台路线与价格地图</h1>
-      <div class="sub"><b id="count">44</b> 条线路,来自 <b>4 家运营商</b>(Troll.is / Magic Iceland / BusTravel / Arctic Adventures),按运营商着色,真实底图。悬停高亮 · 点击线路锁定 · 点圆点或右侧「途径点」筛线路(可多选)· 价格为各站<b>原始币种</b>(留空=未标价)。</div>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="flag">🇮🇸</span>
+      <h1>冰岛一日游</h1>
+      <span class="meta">· <b id="count">44</b> 条线路 · <b>4</b> 家运营商</span>
     </div>
-    <button class="theme-btn" id="themeBtn">◑ 深/浅色</button>
-  </div>
+    <span class="spacer"></span>
+    <button class="iconbtn" id="themeBtn" aria-label="深色/浅色" title="深色 / 浅色">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.3 6.3 0 0 0 10.5 10.5z"/></svg>
+    </button>
+  </header>
 
-  <div class="toolbar" id="opBar">
-    <span class="lbl">运营商</span>
-    <button class="chip" data-op="All" aria-pressed="true">全部</button>
-    <button class="chip" data-op="trollis" aria-pressed="false"><span class="cdot"></span>Troll.is</button>
-    <button class="chip" data-op="magicicelandtravel" aria-pressed="false"><span class="cdot"></span>Magic Iceland</button>
-    <button class="chip" data-op="bustravel" aria-pressed="false"><span class="cdot"></span>BusTravel</button>
-    <button class="chip" data-op="adventures" aria-pressed="false"><span class="cdot"></span>Arctic Adventures</button>
-    <span class="sep"></span>
-    <label class="vip-toggle"><input type="checkbox" id="vipChk" checked> 显示私人 VIP 团</label>
-  </div>
-  <div class="toolbar" id="regionBar">
-    <span class="lbl">区域</span>
-    <button class="chip" data-region="All" aria-pressed="true">全部</button>
-    <button class="chip" data-region="South Coast" aria-pressed="false">南岸</button>
-    <button class="chip" data-region="Golden Circle" aria-pressed="false">黄金圈</button>
-    <button class="chip" data-region="Snæfellsnes" aria-pressed="false">斯奈山</button>
-    <button class="chip" data-region="Highland" aria-pressed="false">高地</button>
-    <button class="chip" data-region="East Iceland" aria-pressed="false">东部</button>
-    <button class="chip" data-region="North Iceland" aria-pressed="false">北部</button>
-    <button class="chip" data-region="Reykjanes" aria-pressed="false">雷克雅内斯</button>
-    <button class="chip" data-region="Activity" aria-pressed="false">单点活动</button>
-  </div>
-  <div id="stopChip" class="stopchip hidden"></div>
-
-  <div class="main">
-    <div class="card map-card">
+  <div class="stage">
+    <div class="map-wrap">
       <div id="map"></div>
-      <div class="basemap-ctl" id="basemapCtl">
+      <div class="map-fx"></div>
+      <div class="basemap" id="basemapCtl">
         <button data-bm="street" class="on">街道</button>
         <button data-bm="satellite">卫星</button>
         <button data-bm="terrain">地形</button>
       </div>
+      <div class="mapbtns">
+        <button class="mapbtn" id="fitBtn" aria-label="复位视图" title="复位到全部线路">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V5a1 1 0 0 1 1-1h4M20 9V5a1 1 0 0 0-1-1h-4M4 15v4a1 1 0 0 0 1 1h4M20 15v4a1 1 0 0 1-1 1h-4"/></svg>
+        </button>
+      </div>
       <div class="legend" id="legend"></div>
     </div>
-    <div class="card side">
-      <div class="picker">
-        <div class="picker-head">途径点筛选 <span class="muted">· 点选可多选,与地图圆点同步</span></div>
-        <div class="picker-body" id="stopPicker"></div>
+
+    <section class="sheet" id="sheet">
+      <div class="sheet-fixed" id="sheetFixed">
+        <div class="grip"></div>
+        <div class="sheet-head">
+          <div class="head-txt">
+            <span class="head-num tnum" id="headNum">44</span><span class="head-unit">条线路</span>
+            <div class="head-sub" id="headSub">4 家运营商 · 点线路或圆点筛选</div>
+          </div>
+          <button class="sheet-toggle" id="sheetToggle" aria-label="展开/收起结果">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
+          </button>
+        </div>
+        <div class="flt">
+          <div class="flabel">运营商</div>
+          <div class="chip-row" id="opBar">
+            <button class="chip" data-op="All" aria-pressed="true">全部</button>
+            <button class="chip" data-op="trollis" aria-pressed="false"><span class="cdot"></span>Troll.is</button>
+            <button class="chip" data-op="magicicelandtravel" aria-pressed="false"><span class="cdot"></span>Magic Iceland</button>
+            <button class="chip" data-op="bustravel" aria-pressed="false"><span class="cdot"></span>BusTravel</button>
+            <button class="chip" data-op="adventures" aria-pressed="false"><span class="cdot"></span>Arctic Adventures</button>
+          </div>
+        </div>
+        <div id="stopChip" class="stopchip hidden"></div>
       </div>
-      <h2 id="listTitle">全部线路</h2>
-      <div class="list" id="list"></div>
-    </div>
+
+      <div class="sheet-scroll">
+        <div class="flt">
+          <div class="flabel">区域</div>
+          <div class="chip-row" id="regionBar">
+            <button class="chip" data-region="All" aria-pressed="true">全部</button>
+            <button class="chip" data-region="South Coast" aria-pressed="false">南岸</button>
+            <button class="chip" data-region="Golden Circle" aria-pressed="false">黄金圈</button>
+            <button class="chip" data-region="Snæfellsnes" aria-pressed="false">斯奈山</button>
+            <button class="chip" data-region="Highland" aria-pressed="false">高地</button>
+            <button class="chip" data-region="East Iceland" aria-pressed="false">东部</button>
+            <button class="chip" data-region="North Iceland" aria-pressed="false">北部</button>
+            <button class="chip" data-region="Reykjanes" aria-pressed="false">雷克雅内斯</button>
+            <button class="chip" data-region="Activity" aria-pressed="false">单点活动</button>
+            <label class="vip-toggle"><input type="checkbox" id="vipChk" checked> 私人 VIP 团</label>
+          </div>
+        </div>
+        <div class="picker">
+          <div class="picker-head">途径点筛选 <span class="muted">· 可多选,与地图圆点同步</span></div>
+          <div class="picker-body" id="stopPicker"></div>
+        </div>
+        <div class="list-head" id="listTitle">全部 44 条线路</div>
+        <div class="list" id="list"></div>
+        <div class="foot" id="foot"></div>
+      </div>
+    </section>
   </div>
-  <div class="foot" id="foot"></div>
 </div>
 
 <script>
@@ -172,12 +316,15 @@ const isDark=()=> document.documentElement.dataset.theme==="dark" || (!document.
 const oc=op=>{const o=OPERATORS[op]||OPERATORS.trollis; return isDark()?o.d:o.l;};
 function fmt(p,cur){ if(p==null)return ""; if(cur==="USD")return "$"+(p%1?p.toFixed(2):p); if(cur==="EUR")return "€"+(p%1?p.toFixed(2):p); if(cur==="CNY")return "¥"+Math.round(p).toLocaleString(); if(cur==="ISK")return Math.round(p).toLocaleString()+" kr"; return (p%1?p.toFixed(2):p)+" "+(cur||""); }
 const shortStop=n=>{let s=(n||"").replace(/^Included (Activity|Tour):\s*/i,"").replace(/^(Pickup in|Back to)\s*/i,""); return s.length>28?s.slice(0,27).trim()+"…":s;};
+const mq=matchMedia("(max-width:760px)");
+const isMobile=()=>mq.matches;
+const $=id=>document.getElementById(id);
 
 let stopFilters=[], stopMode="and", region="All", operator="All", showVip=true;
 let pinnedNo=null, hoverNo=null;
 const STOPS=[];
 
-// ---- stop matching (identical logic to the vanilla version) ----
+// ---- stop matching ----
 function normStop(s){ return (s||"").toLowerCase().split(",")[0].normalize("NFD").replace(/[^a-z0-9]/g,""); }
 function wpNear(w,s){ const n=normStop(w.name); if(n&&n===s.norm)return true; return Math.abs(w.lat-s.lat)<0.025 && Math.abs(w.lng-s.lng)<0.04; }
 function near(w,s){ return Math.abs(w.lat-s.lat)<0.02 && Math.abs(w.lng-s.lng)<0.02; }
@@ -215,9 +362,9 @@ function styleFor(){
   if(basemap==="terrain")   return rasterStyle("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}","© Esri World Topo");
   return isDark()?STYLE_DARK:STYLE_LIGHT;
 }
-const map=new maplibregl.Map({container:"map",style:styleFor(),center:[-19,64.9],zoom:5.1,attributionControl:{compact:true}});
+const map=new maplibregl.Map({container:"map",style:styleFor(),center:[-19,64.9],zoom:isMobile()?4.7:5.1,attributionControl:{compact:true}});
 map.addControl(new maplibregl.NavigationControl({showCompass:false}),"top-right");
-const popup=new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:12});
+const popup=new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:14});
 let inited=false, fitted=false;
 
 function addLayers(){
@@ -229,10 +376,10 @@ function addLayers(){
   map.addLayer({id:"routes-line",type:"line",source:"routes",layout:{"line-cap":"round","line-join":"round"},
     paint:{"line-color":opColorExpr(),"line-width":3,"line-opacity":0.85}});
   map.addLayer({id:"sel-ring",type:"circle",source:"selstops",
-    paint:{"circle-radius":9,"circle-color":"rgba(14,124,134,0.12)","circle-stroke-color":"#0e7c86","circle-stroke-width":3}});
+    paint:{"circle-radius":10,"circle-color":"rgba(14,124,134,0.14)","circle-stroke-color":"#0e7c86","circle-stroke-width":3}});
   map.addLayer({id:"stops-dot",type:"circle",source:"stops",
-    paint:{"circle-radius":["interpolate",["linear"],["get","count"],1,3.5,4,4.6,12,7.5],
-      "circle-color":"#0e7c86","circle-stroke-color":onImagery()?"#0b0f13":"#ffffff","circle-stroke-width":1.5,"circle-opacity":0.95}});
+    paint:{"circle-radius":["interpolate",["linear"],["get","count"],1,3.6,4,4.8,12,8],
+      "circle-color":"#0e7c86","circle-stroke-color":onImagery()?"#0b0f13":"#ffffff","circle-stroke-width":1.6,"circle-opacity":0.96}});
   map.addLayer({id:"stops-label",type:"symbol",source:"stops",minzoom:6,
     layout:{"text-field":["get","label"],"text-size":11,"text-offset":[0,1.05],"text-anchor":"top","text-optional":true,"text-font":["Open Sans Regular","Noto Sans Regular"]},
     paint:{"text-color":onImagery()?"#ffffff":(isDark()?"#eaf1f3":"#0f1720"),
@@ -257,12 +404,16 @@ function applyFilter(){
   map.setFilter("routes-line",["in",["get","no"],["literal",nos]]);
   updateRoutePaint();
   if(map.getSource("selstops")) map.getSource("selstops").setData(selStopsGeoJSON());
-  updateStopChip(); updateStopPicker(); renderList(nos);
+  updateStopChip(); updateStopPicker(); renderList(nos); measureSheet();
 }
 
 function boundsOf(pts){ const b=new maplibregl.LngLatBounds(); pts.forEach(p=>b.extend(p)); return b; }
-function fitAll(){ const pts=[]; TOURS.forEach(t=>t.waypoints.forEach(w=>pts.push([w.lng,w.lat]))); if(pts.length)map.fitBounds(boundsOf(pts),{padding:40,duration:0}); }
-function fitTour(no){ const t=TOURS.find(x=>x.no===no); if(!t)return; map.fitBounds(boundsOf(t.waypoints.map(w=>[w.lng,w.lat])),{padding:60,duration:600}); }
+function fitPad(){
+  if(isMobile()){ const peek=($("sheetFixed")?$("sheetFixed").offsetHeight:150); return {top:70,bottom:peek+22,left:26,right:26}; }
+  return {top:64,bottom:48,left:48,right:48};
+}
+function fitAll(){ const pts=[]; TOURS.forEach(t=>t.waypoints.forEach(w=>pts.push([w.lng,w.lat]))); if(pts.length)map.fitBounds(boundsOf(pts),{padding:fitPad(),duration:0}); }
+function fitTour(no){ const t=TOURS.find(x=>x.no===no); if(!t)return; map.fitBounds(boundsOf(t.waypoints.map(w=>[w.lng,w.lat])),{padding:fitPad(),duration:600,maxZoom:11}); }
 
 // ---- selection ----
 function selectStop(w){
@@ -272,7 +423,7 @@ function selectStop(w){
   pinnedNo=null; hoverNo=null; applyFilter();
 }
 function clearStops(){ stopFilters.length=0; applyFilter(); }
-function togglePin(no){ pinnedNo=pinnedNo===no?null:no; hoverNo=null; updateRoutePaint(); updatePinCue(); if(pinnedNo!=null){fitTour(pinnedNo); popupFor(pinnedNo);} else popup.remove(); }
+function togglePin(no){ pinnedNo=pinnedNo===no?null:no; hoverNo=null; updateRoutePaint(); updatePinCue(); if(pinnedNo!=null){fitTour(pinnedNo); popupFor(pinnedNo); if(isMobile())collapseSheet();} else popup.remove(); }
 function updatePinCue(){ document.querySelectorAll(".tour").forEach(b=>b.classList.toggle("pinned", pinnedNo!=null && +b.dataset.no===pinnedNo)); }
 
 function popupFor(no,lngLat){
@@ -294,9 +445,7 @@ map.on("style.load",()=>{
   applyFilter();
   if(!fitted){ fitted=true; fitAll(); }
 });
-// safety net: whenever a basemap/theme swap drops our custom layers, re-add them
 map.on("styledata",()=>{ if(inited && !map.getLayer("routes-line")){ try{ addLayers(); applyFilter(); }catch(e){} } });
-// switching basemap/theme replaces the style and drops our layers; re-add with a poll-retry
 function switchStyle(){ map.setStyle(styleFor()); reAddAfterSwitch(0); }
 function reAddAfterSwitch(tries){
   if(map.getLayer("routes-line")) return;
@@ -306,6 +455,7 @@ function reAddAfterSwitch(tries){
 
 function wireMap(){
   map.on("mousemove",e=>{
+    if(isMobile())return;
     const f=map.queryRenderedFeatures([[e.point.x-4,e.point.y-4],[e.point.x+4,e.point.y+4]],{layers:["routes-line"]});
     const no=f.length?f[0].properties.no:null;
     if(no!==hoverNo){ hoverNo=no; updateRoutePaint(); }
@@ -316,7 +466,7 @@ function wireMap(){
   });
   map.on("mouseleave",()=>{ hoverNo=null; updateRoutePaint(); if(pinnedNo==null)popup.remove(); });
   map.on("click",e=>{
-    const box=[[e.point.x-6,e.point.y-6],[e.point.x+6,e.point.y+6]];
+    const pad=isMobile()?9:6, box=[[e.point.x-pad,e.point.y-pad],[e.point.x+pad,e.point.y+pad]];
     const st=map.queryRenderedFeatures(box,{layers:["stops-dot"]});
     if(st.length){ selectStop(STOPS[st[0].properties.i]); return; }
     const rt=map.queryRenderedFeatures(box,{layers:["routes-line"]});
@@ -327,35 +477,38 @@ function wireMap(){
 
 // ---- right panel: stop picker ----
 function renderStopPicker(){
-  const box=document.getElementById("stopPicker");
+  const box=$("stopPicker");
   box.innerHTML=STOPS.map((s,i)=>`<span class="spchip" data-i="${i}">${shortStop(s.name)}<span class="n">${s.count}</span></span>`).join("");
   box.querySelectorAll(".spchip").forEach(ch=>ch.addEventListener("click",()=>selectStop(STOPS[+ch.dataset.i])));
 }
 function updateStopPicker(){ document.querySelectorAll("#stopPicker .spchip").forEach(ch=>{const s=STOPS[+ch.dataset.i]; if(s)ch.classList.toggle("sel", stopFilters.some(f=>wpNear(f,s)));}); }
 function updateStopChip(){
-  const boxEl=document.getElementById("stopChip");
+  const boxEl=$("stopChip");
   if(!stopFilters.length){ boxEl.classList.add("hidden"); boxEl.innerHTML=""; return; }
   const n=matchingTours().length, names=stopFilters.map(s=>shortStop(s.name)).join(" + ");
   boxEl.classList.remove("hidden");
-  boxEl.innerHTML=`<span class="sctext">途径点(${stopFilters.length}):<b>${names}</b> · 经过<b>${stopMode==="and"?"全部":"任一"}</b> · <b>${n}</b> 条线路 <span style="color:var(--muted)">(点圆点/右侧增减 · 悬停单独描线)</span></span>`+
-    `<span class="modebtn" id="modeBtn">${stopMode==="and"?"全部":"任一"} ⇄</span><span class="x" id="stopZoom">缩放到结果</span><span class="x" id="stopClear">清除 ✕</span>`;
+  boxEl.innerHTML=`<span class="sctext">途径点(${stopFilters.length}):<b>${names}</b> · 经过<b>${stopMode==="and"?"全部":"任一"}</b> · <b>${n}</b> 条线路</span>`+
+    `<span class="modebtn" id="modeBtn">${stopMode==="and"?"全部":"任一"} ⇄</span><span class="x" id="stopZoom">缩放</span><span class="x" id="stopClear">清除 ✕</span>`;
   boxEl.querySelector("#modeBtn").addEventListener("click",()=>{ stopMode=stopMode==="and"?"or":"and"; applyFilter(); });
-  boxEl.querySelector("#stopZoom").addEventListener("click",()=>{ const ms=matchingTours(); const pts=[]; (ms.length?ms.flatMap(t=>t.waypoints):stopFilters).forEach(w=>pts.push([w.lng,w.lat])); if(pts.length)map.fitBounds(boundsOf(pts),{padding:60,duration:600}); });
+  boxEl.querySelector("#stopZoom").addEventListener("click",()=>{ const ms=matchingTours(); const pts=[]; (ms.length?ms.flatMap(t=>t.waypoints):stopFilters).forEach(w=>pts.push([w.lng,w.lat])); if(pts.length){map.fitBounds(boundsOf(pts),{padding:fitPad(),duration:600}); if(isMobile())collapseSheet();} });
   boxEl.querySelector("#stopClear").addEventListener("click",clearStops);
 }
 
 // ---- right panel: route list ----
-const listEl=document.getElementById("list");
+const listEl=$("list");
 function renderList(visibleNos){
   const vis=new Set(visibleNos);
-  document.getElementById("count").textContent=TOURS.length;
-  document.getElementById("listTitle").textContent = stopFilters.length||operator!=="All"||region!=="All" ? `匹配 ${visibleNos.length} 条线路` : `全部 ${TOURS.length} 条线路`;
+  const filtered = stopFilters.length||operator!=="All"||region!=="All"||!showVip;
+  $("count").textContent=TOURS.length;
+  $("headNum").textContent=visibleNos.length;
+  $("headSub").textContent = filtered ? "匹配当前筛选 · 共 "+TOURS.length+" 条" : "4 家运营商 · 点线路或圆点筛选";
+  $("listTitle").textContent = filtered ? `匹配 ${visibleNos.length} 条` : `全部 ${TOURS.length} 条线路`;
   listEl.innerHTML="";
   [...TOURS].sort((a,b)=>(OPORD[a.operator]-OPORD[b.operator])||((a.price==null)-(b.price==null))||((a.price||0)-(b.price||0))).forEach(t=>{
     if(!vis.has(t.no)) return;
     const col=oc(t.operator), unit=t.unit==="每团"?"/团":"/人", addr=t.url.replace(/^https?:\/\//,"");
     const btn=document.createElement("div"); btn.className="tour"; btn.dataset.no=t.no; btn.tabIndex=0;
-    const priceHtml=t.price!=null?`${fmt(t.price,t.currency)}<small>${unit}</small>`:`<span style="color:var(--muted);font-weight:600">未标价</span>`;
+    const priceHtml=t.price!=null?`<span class="tnum">${fmt(t.price,t.currency)}</span><small>${unit}</small>`:`<span style="color:var(--muted);font-weight:600">未标价</span>`;
     btn.innerHTML=`<span class="dot" style="background:${col}"></span>
       <span class="tbody"><span class="tname">${t.short}${t.vip?'<span class="badge">VIP</span>':''}</span>
       ${t.name_zh?`<span class="tzh">${t.name_zh}</span>`:''}
@@ -365,8 +518,8 @@ function renderList(visibleNos){
     const stops=document.createElement("ul"); stops.className="stops hidden";
     stops.innerHTML=t.waypoints.map(w=>`<li${/Reykjav|Pickup|Back to/.test(w.name)?' style="color:var(--muted)"':''}>${w.name}${w.zh?` · ${w.zh}`:''}</li>`).join("");
     btn.querySelector(".turl").addEventListener("click",e=>e.stopPropagation());
-    btn.addEventListener("mouseenter",()=>{ hoverNo=t.no; updateRoutePaint(); document.querySelectorAll(".tour").forEach(b=>b.classList.toggle("active",+b.dataset.no===t.no)); });
-    btn.addEventListener("mouseleave",()=>{ hoverNo=null; updateRoutePaint(); document.querySelectorAll(".tour").forEach(b=>b.classList.remove("active")); });
+    btn.addEventListener("mouseenter",()=>{ if(isMobile())return; hoverNo=t.no; updateRoutePaint(); document.querySelectorAll(".tour").forEach(b=>b.classList.toggle("active",+b.dataset.no===t.no)); });
+    btn.addEventListener("mouseleave",()=>{ if(isMobile())return; hoverNo=null; updateRoutePaint(); document.querySelectorAll(".tour").forEach(b=>b.classList.remove("active")); });
     btn.addEventListener("click",()=>{ document.querySelectorAll(".stops").forEach(s=>{if(s!==stops)s.classList.add("hidden");}); stops.classList.toggle("hidden"); togglePin(t.no); });
     listEl.appendChild(btn); listEl.appendChild(stops);
   });
@@ -374,16 +527,17 @@ function renderList(visibleNos){
 }
 
 // ---- filters ----
-document.getElementById("opBar").addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(!b)return; operator=b.dataset.op; document.querySelectorAll("#opBar .chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false")); applyFilter(); });
-document.getElementById("regionBar").addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(!b)return; region=b.dataset.region; document.querySelectorAll("#regionBar .chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false")); applyFilter(); });
-document.getElementById("vipChk").addEventListener("change",e=>{ showVip=e.target.checked; applyFilter(); });
+$("opBar").addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(!b)return; operator=b.dataset.op; document.querySelectorAll("#opBar .chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false")); applyFilter(); });
+$("regionBar").addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(!b)return; region=b.dataset.region; document.querySelectorAll("#regionBar .chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false")); applyFilter(); });
+$("vipChk").addEventListener("change",e=>{ showVip=e.target.checked; applyFilter(); });
 document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ pinnedNo=null; hoverNo=null; updateRoutePaint(); updatePinCue(); popup.remove(); if(stopFilters.length)clearStops(); } });
+$("fitBtn").addEventListener("click",()=>{ pinnedNo=null; hoverNo=null; updateRoutePaint(); updatePinCue(); popup.remove(); fitAll(); });
 
 // ---- legend ----
 function renderLegend(){
   let h='<b>运营商 / Operator</b>';
   for(const k in OPERATORS) h+=`<span class="lg"><span class="sw" style="background:${oc(k)}"></span>${OPERATORS[k].zh}</span>`;
-  document.getElementById("legend").innerHTML=h;
+  $("legend").innerHTML=h;
 }
 renderLegend();
 
@@ -394,23 +548,57 @@ function recolorPanels(){
   document.querySelectorAll(".tour").forEach(b=>{const t=TOURS.find(x=>x.no==b.dataset.no); if(t)b.querySelector(".dot").style.background=oc(t.operator);});
 }
 document.querySelectorAll("#opBar .chip .cdot").forEach((d,i)=>{d.style.background=oc(Object.keys(OPERATORS)[i]);});
-document.getElementById("themeBtn").addEventListener("click",()=>{
+$("themeBtn").addEventListener("click",()=>{
   const cur=document.documentElement.dataset.theme;
   document.documentElement.dataset.theme = cur==="dark"?"light":(cur==="light"?"dark":(isDark()?"light":"dark"));
   switchStyle();
   recolorPanels();
 });
 matchMedia("(prefers-color-scheme:dark)").addEventListener("change",()=>{ if(!document.documentElement.dataset.theme){ switchStyle(); recolorPanels(); } });
-document.getElementById("basemapCtl").addEventListener("click",e=>{
+$("basemapCtl").addEventListener("click",e=>{
   const b=e.target.closest("button"); if(!b)return;
   basemap=b.dataset.bm;
   document.querySelectorAll("#basemapCtl button").forEach(x=>x.classList.toggle("on",x===b));
   switchStyle();
 });
 
-document.getElementById("foot").innerHTML =
+// ---- bottom sheet (mobile) ----
+const sheet=$("sheet"), sheetFixed=$("sheetFixed"), sheetToggle=$("sheetToggle");
+let curY=0, peekY=0, midY=0, snaps=[0];
+function measureSheet(){
+  if(!isMobile()){ sheet.style.transition="none"; sheet.style.transform=""; sheet.classList.remove("up"); return; }
+  const sh=sheet.offsetHeight, vh=window.innerHeight;
+  peekY=Math.max(sh - sheetFixed.offsetHeight, 0);
+  midY=Math.min(Math.round(vh*0.46), Math.max(peekY-60,0));
+  snaps=[0,midY,peekY];
+}
+function setY(y){ curY=y; sheet.style.transform=`translateY(${y}px)`; sheet.classList.toggle("up", y < peekY-20); }
+function snapTo(y){ sheet.style.transition="transform .3s cubic-bezier(.22,.61,.36,1)"; setY(y); }
+const collapseSheet=()=>{ if(isMobile())snapTo(peekY); };
+const nearestSnap=y=>{ let best=snaps[0]; for(const s of snaps) if(Math.abs(s-y)<Math.abs(best-y)) best=s; return best; };
+let dragging=false, sY=0, sT=0, moved=0;
+sheetFixed.addEventListener("pointerdown",e=>{ if(!isMobile()||e.target.closest("#opBar,.chip,button,a,input,#stopChip"))return;
+  dragging=true; moved=0; sY=e.clientY; sT=curY; sheet.style.transition="none"; try{sheetFixed.setPointerCapture(e.pointerId);}catch(_){} });
+sheetFixed.addEventListener("pointermove",e=>{ if(!dragging)return; const dy=e.clientY-sY; moved=Math.max(moved,Math.abs(dy)); setY(Math.min(Math.max(sT+dy,0),peekY)); });
+function endDrag(){ if(!dragging)return; dragging=false; snapTo(moved<6?curY:nearestSnap(curY)); }
+sheetFixed.addEventListener("pointerup",endDrag);
+sheetFixed.addEventListener("pointercancel",endDrag);
+sheetToggle.addEventListener("click",()=>{ snapTo(curY>=peekY-20?midY:peekY); });
+
+// ---- responsive / resize ----
+function onViewport(){ measureSheet(); if(isMobile()){ sheet.style.transition="none"; setY(curY?Math.min(curY,peekY):peekY); } map.resize(); }
+window.addEventListener("resize",onViewport);
+window.addEventListener("orientationchange",()=>setTimeout(onViewport,250));
+mq.addEventListener("change",onViewport);
+// robust first measurement: layout can settle after fonts/flex; re-measure a few times
+function initSheet(){ measureSheet(); if(isMobile()) setY(peekY); }
+requestAnimationFrame(()=>requestAnimationFrame(initSheet));
+window.addEventListener("load",initSheet);
+[120,320,700].forEach(d=>setTimeout(initSheet,d));
+
+$("foot").innerHTML =
   "数据抓取:2026-07-25 · 来源:troll.is / magicicelandtravel.com / bustravel.is / cn.adventures.is,共 44 条线路 · "+
-  "价格为各页面原始币种(Troll.is=USD,BusTravel=ISK 等;部分页面未标价则显示「未标价」)· 底图 © CARTO © OpenStreetMap。";
+  "价格为各页面原始币种(Troll.is=USD,BusTravel=ISK 等;部分页面未标价则显示「未标价」)· 底图 © CARTO © OpenStreetMap © Esri。";
 </script>
 </body>
 </html>
