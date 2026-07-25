@@ -77,6 +77,9 @@
   .f.full{grid-column:1/-1}
   .f label{font-size:11px;color:var(--muted);font-weight:700}
   .f input,.f select{padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink)}
+  .aiimport{display:flex;gap:8px;margin-bottom:12px}
+  .aiimport input{flex:1;min-width:0;padding:9px 11px;border:1px solid var(--accent);border-radius:10px;background:var(--bg);color:var(--ink);font-size:13px}
+  .aiimport .btn{white-space:nowrap}
   .emap{height:300px;border-radius:12px;overflow:hidden;margin-bottom:14px;border:1px solid var(--line)}
   .emap .maplibregl-ctrl-attrib{font-size:9px}
   .wpmk{width:23px;height:23px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:800;
@@ -131,6 +134,7 @@
 
     <div class="grid2">
       <div class="card listwrap">
+        <button class="btn sm" id="newBtn" style="width:100%;margin-bottom:8px">➕ 新建路线(AI 从网址导入)</button>
         <input class="search" id="search" placeholder="搜索路线 / 运营商…">
         <div class="count" id="count"></div>
         <div class="list" id="list"></div>
@@ -183,6 +187,7 @@ $("loginBtn").addEventListener("click", async () => {
 });
 $("password").addEventListener("keydown", e => { if(e.key==="Enter") $("loginBtn").click(); });
 $("logoutBtn").addEventListener("click", () => signOut(auth));
+$("newBtn").addEventListener("click", () => newTour());
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
@@ -320,15 +325,24 @@ function newRow(w){
 }
 function addWpRow(w){ $("wpList").appendChild(newRow(w)); }
 
-function openEditor(id){
-  sel = TOURS.find(t=>t._id===id); if(!sel) return; renderList();
+function openEditor(id){ sel = TOURS.find(t=>t._id===id); if(!sel) return; renderList(); renderEditor(); }
+function newTour(){
+  sel = {_id:"custom_"+Date.now(), operator:"trollis", short:"新路线", name:"", name_zh:"", price:null,
+    currency:"ISK", unit:"每人", hours:null, rating:0, region:"Golden Circle", vip:false, url:"", waypoints:[], _isNew:true};
+  renderList(); renderEditor();
+}
+function renderEditor(){
   const t=sel;
   $("editorMap").classList.remove("hidden");
   $("editorContent").innerHTML = `
     <div class="eh">
       <span class="dot" style="width:12px;height:12px;border-radius:50%;background:${OPS[t.operator]?.c}"></span>
-      <b style="font-size:15px">${esc(t.short||t.name)}</b>
-      <span class="id">${t._id}</span>
+      <b style="font-size:15px">${esc(t.short||t.name||"新路线")}</b>
+      <span class="id">${t._isNew?"(新建)":t._id}</span>
+    </div>
+    <div class="aiimport">
+      <input id="aiUrl" placeholder="粘贴运营商路线网址,AI 自动填表…" value="${esc(t.url||"")}">
+      <button class="btn sm" id="aiBtn">🤖 AI 导入</button>
     </div>
     <div class="fgrid">
       <div class="f full"><label>短名 short</label><input data-k="short" value="${esc(t.short||"")}"></div>
@@ -357,10 +371,31 @@ function openEditor(id){
     ${t.src?`<div class="src">来源 src: ${esc(JSON.stringify(t.src))}</div>`:""}`;
   (t.waypoints||[]).forEach(w=> addWpRow(w));
   $("addWp").addEventListener("click", ()=>{ addWpRow({name:"",lat:"",lng:""}); });
+  $("aiBtn").addEventListener("click", aiImport);
   $("saveBtn").addEventListener("click", save);
   $("delBtn").addEventListener("click", del);
   ensureMap();
   emap.resize(); drawRoute(true);
+}
+async function aiImport(){
+  const url=$("aiUrl").value.trim(); if(!url){ toast("请先粘贴网址"); return; }
+  const b=$("aiBtn"); b.disabled=true; b.textContent="AI 拉取中…";
+  try{
+    const res=await httpsCallable(functions,"aiImport")({url});
+    const d=res.data||{};
+    ["short","name","name_zh","price","currency","hours","rating","region","operator","url"].forEach(k=>{
+      if(d[k]!=null && d[k]!=="") sel[k]=d[k];
+    });
+    if(!sel.url) sel.url=url;
+    if(Array.isArray(d.waypoints) && d.waypoints.length)
+      sel.waypoints=d.waypoints.map(w=>({name:w.name,lat:+w.lat,lng:+w.lng})).filter(w=>w.name&&isFinite(w.lat)&&isFinite(w.lng));
+    if(sel._isNew && sel.operator && sel.url){
+      const slug=sel.url.replace(/\/+$/,"").split("/").pop().replace(/[^a-z0-9\-]/gi,"").toLowerCase().slice(0,60);
+      if(slug) sel._id=sel.operator+"_"+slug;
+    }
+    renderEditor(); toast("AI 已填充,请核对 / 拖动地图标记校正后保存");
+  }catch(e){ toast("AI 导入失败(需先部署 Function 并设置 OPENAI 密钥):"+(e.code||e.message)); }
+  b.disabled=false; b.textContent="🤖 AI 导入";
 }
 
 function collect(){
@@ -373,16 +408,18 @@ function collect(){
   });
   t.waypoints = readWps().filter(w=> w.name || (isFinite(w.lat)&&isFinite(w.lng)))
     .map(w=>({name:w.name, lat:w.lat, lng:w.lng}));
-  delete t._id;
+  delete t._id; delete t._isNew;
   return t;
 }
 async function save(){
   const b=$("saveBtn"); b.disabled=true; b.textContent="保存中…";
   try{
-    const data=collect();
-    await setDoc(doc(db,"tours",sel._id), data);
-    Object.assign(sel, data);
-    const idx=TOURS.findIndex(x=>x._id===sel._id); if(idx>=0) TOURS[idx]={_id:sel._id,...data};
+    const id=sel._id, data=collect();
+    await setDoc(doc(db,"tours",id), data);
+    sel={_id:id, ...data};
+    const idx=TOURS.findIndex(x=>x._id===id);
+    if(idx>=0) TOURS[idx]=sel; else TOURS.push(sel);
+    TOURS.sort((a,b)=> (a.operator||"").localeCompare(b.operator) || (a.short||"").localeCompare(b.short||""));
     renderList(); toast("已保存 ✓,刷新地图即生效");
   }catch(e){ toast("保存失败:"+(e.code||e.message)); }
   b.disabled=false; b.textContent="💾 保存";
