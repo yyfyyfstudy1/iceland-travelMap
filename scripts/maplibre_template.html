@@ -304,6 +304,7 @@
             <button class="chip" data-region="Highland" aria-pressed="false">高地</button>
             <button class="chip" data-region="East Iceland" aria-pressed="false">东部</button>
             <button class="chip" data-region="North Iceland" aria-pressed="false">北部</button>
+            <button class="chip" data-region="Westfjords" aria-pressed="false">西峡湾</button>
             <button class="chip" data-region="Reykjanes" aria-pressed="false">雷克雅内斯</button>
             <button class="chip" data-region="Activity" aria-pressed="false">单点活动</button>
             <label class="vip-toggle"><input type="checkbox" id="vipChk" checked> 私人 VIP 团</label>
@@ -330,7 +331,7 @@ const OPERATORS = {
   adventures:{l:"#6a4bd6",d:"#9085e9",zh:"Arctic Adventures"},
 };
 const OPORD={trollis:0,magicicelandtravel:1,bustravel:2,adventures:3};
-const REGIONS={"South Coast":"南岸 South Coast","Golden Circle":"黄金圈 Golden Circle","Snæfellsnes":"斯奈山 Snæfellsnes","Highland":"高地 Highland","East Iceland":"东部 East Iceland","North Iceland":"北部 North Iceland","Reykjanes":"雷克雅内斯 Reykjanes","Activity":"单点活动 Activity"};
+const REGIONS={"South Coast":"南岸 South Coast","Golden Circle":"黄金圈 Golden Circle","Snæfellsnes":"斯奈山 Snæfellsnes","Highland":"高地 Highland","East Iceland":"东部 East Iceland","North Iceland":"北部 North Iceland","Westfjords":"西峡湾 Westfjords","Reykjanes":"雷克雅内斯 Reykjanes","Activity":"单点活动 Activity"};
 const regZh=r=>REGIONS[r]||r;
 const REYK={lat:64.14202864719405,lng:-21.926494177316346};
 const isDark=()=> document.documentElement.dataset.theme==="dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme:dark)").matches);
@@ -644,8 +645,9 @@ window.addEventListener("load",initSheet);
 [120,320,700].forEach(d=>setTimeout(initSheet,d));
 
 $("foot").innerHTML =
-  "数据抓取:2026-07-25 · 来源:troll.is / magicicelandtravel.com / bustravel.is / cn.adventures.is,共 44 条线路 · "+
-  "价格为各页面原始币种(Troll.is=USD,BusTravel=ISK 等;部分页面未标价则显示「未标价」)· 底图 © CARTO © OpenStreetMap © Esri。";
+  "数据抓取:2026-07 · 来源:troll.is / bustravel.is / cn.adventures.is / magicicelandtravel.com · "+
+  "价格<b>统一为冰岛克朗 ISK</b>(Troll.is / BusTravel / Arctic Adventures 均取自各站 Bókun 实时「起价」;Magic Iceland 本轮未更新价格,显示未标价)· "+
+  "底图 © CARTO © OpenStreetMap © Esri。";
 </script>
 </body>
 </html>

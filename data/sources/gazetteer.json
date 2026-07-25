@@ -1,0 +1,714 @@
+{
+ "Thingvellir": [
+  64.2559,
+  -21.1295
+ ],
+ "Thingvellir National Park": [
+  64.2559,
+  -21.1295
+ ],
+ "Geysir": [
+  64.3104,
+  -20.3024
+ ],
+ "Strokkur": [
+  64.3104,
+  -20.3024
+ ],
+ "Gullfoss": [
+  64.3271,
+  -20.1199
+ ],
+ "Kerid": [
+  64.0411,
+  -20.8856
+ ],
+ "Bruarfoss": [
+  64.264,
+  -20.515
+ ],
+ "Fridheimar": [
+  64.104,
+  -20.549
+ ],
+ "Secret Lagoon": [
+  64.1373,
+  -20.3094
+ ],
+ "Gamla Laugin": [
+  64.1373,
+  -20.3094
+ ],
+ "Laugarvatn Fontana": [
+  64.2166,
+  -20.7306
+ ],
+ "Laugarvatn": [
+  64.2166,
+  -20.7306
+ ],
+ "Skalholt": [
+  64.1262,
+  -20.5353
+ ],
+ "Efstidalur": [
+  64.23,
+  -20.42
+ ],
+ "Laugaras": [
+  64.1,
+  -20.687
+ ],
+ "Laugaras Lagoon": [
+  64.1,
+  -20.687
+ ],
+ "Seljalandsfoss": [
+  63.6156,
+  -19.9886
+ ],
+ "Gljufrabui": [
+  63.622,
+  -19.989
+ ],
+ "Skogafoss": [
+  63.532,
+  -19.511
+ ],
+ "Solheimajokull": [
+  63.53,
+  -19.37
+ ],
+ "Reynisfjara": [
+  63.404,
+  -19.044
+ ],
+ "Dyrholaey": [
+  63.401,
+  -19.126
+ ],
+ "Vik": [
+  63.418,
+  -19.006
+ ],
+ "Kvernufoss": [
+  63.53,
+  -19.49
+ ],
+ "Solheimasandur Plane Wreck": [
+  63.459,
+  -19.364
+ ],
+ "Solheimasandur": [
+  63.459,
+  -19.364
+ ],
+ "Katla Ice Cave": [
+  63.66,
+  -19.0
+ ],
+ "Eyjafjallajokull": [
+  63.63,
+  -19.62
+ ],
+ "Skogar": [
+  63.526,
+  -19.512
+ ],
+ "Fjadrargljufur": [
+  63.771,
+  -18.171
+ ],
+ "Skaftafell": [
+  64.016,
+  -16.966
+ ],
+ "Svartifoss": [
+  64.028,
+  -16.975
+ ],
+ "Jokulsarlon": [
+  64.048,
+  -16.179
+ ],
+ "Diamond Beach": [
+  64.044,
+  -16.175
+ ],
+ "Fjallsarlon": [
+  64.013,
+  -16.385
+ ],
+ "Vatnajokull": [
+  64.4,
+  -16.8
+ ],
+ "Hofn": [
+  64.252,
+  -15.209
+ ],
+ "Stokksnes": [
+  64.25,
+  -14.98
+ ],
+ "Vestrahorn": [
+  64.25,
+  -14.98
+ ],
+ "Falljokull": [
+  64.007,
+  -16.86
+ ],
+ "Crystal Ice Cave": [
+  64.048,
+  -16.38
+ ],
+ "Hvalnes": [
+  64.401,
+  -14.535
+ ],
+ "Djupivogur": [
+  64.6558,
+  -14.2793
+ ],
+ "Eystrahorn": [
+  64.2497,
+  -14.567
+ ],
+ "Kirkjufell": [
+  64.9271,
+  -23.306
+ ],
+ "Kirkjufellsfoss": [
+  64.9268,
+  -23.3096
+ ],
+ "Arnarstapi": [
+  64.7699,
+  -23.6236
+ ],
+ "Hellnar": [
+  64.771,
+  -23.646
+ ],
+ "Djupalonssandur": [
+  64.7538,
+  -23.9007
+ ],
+ "Snaefellsjokull": [
+  64.808,
+  -23.777
+ ],
+ "Budir": [
+  64.8213,
+  -23.3855
+ ],
+ "Ytri Tunga": [
+  64.79,
+  -23.08
+ ],
+ "Londrangar": [
+  64.736,
+  -23.789
+ ],
+ "Stykkisholmur": [
+  65.075,
+  -22.727
+ ],
+ "Gerduberg": [
+  64.77,
+  -22.3
+ ],
+ "Grundarfjordur": [
+  64.9223,
+  -23.2544
+ ],
+ "Blue Lagoon": [
+  63.8804,
+  -22.4495
+ ],
+ "Gunnuhver": [
+  63.819,
+  -22.684
+ ],
+ "Bridge Between Continents": [
+  63.868,
+  -22.675
+ ],
+ "Grindavik": [
+  63.84,
+  -22.43
+ ],
+ "Krysuvik": [
+  63.89,
+  -22.06
+ ],
+ "Seltun": [
+  63.897,
+  -22.055
+ ],
+ "Kleifarvatn": [
+  63.93,
+  -21.98
+ ],
+ "Fagradalsfjall": [
+  63.9,
+  -22.27
+ ],
+ "Reykjanes": [
+  63.82,
+  -22.71
+ ],
+ "Sky Lagoon": [
+  64.1145,
+  -21.9407
+ ],
+ "Landmannalaugar": [
+  63.99,
+  -19.06
+ ],
+ "Thorsmork": [
+  63.68,
+  -19.5
+ ],
+ "Haifoss": [
+  64.211,
+  -19.686
+ ],
+ "Hjalparfoss": [
+  64.113,
+  -19.826
+ ],
+ "Kerlingarfjoll": [
+  64.63,
+  -19.3
+ ],
+ "Hekla": [
+  63.98,
+  -19.7
+ ],
+ "Gjain": [
+  64.19,
+  -19.72
+ ],
+ "Sigoldugljufur": [
+  64.16,
+  -19.12
+ ],
+ "Askja": [
+  65.03,
+  -16.75
+ ],
+ "Viti": [
+  65.045,
+  -16.72
+ ],
+ "Herdubreid": [
+  65.18,
+  -16.34
+ ],
+ "Godafoss": [
+  65.683,
+  -17.55
+ ],
+ "Myvatn": [
+  65.6039,
+  -16.9959
+ ],
+ "Dettifoss": [
+  65.814,
+  -16.385
+ ],
+ "Asbyrgi": [
+  66.01,
+  -16.51
+ ],
+ "Akureyri": [
+  65.688,
+  -18.09
+ ],
+ "Grjotagja": [
+  65.626,
+  -16.882
+ ],
+ "Husavik": [
+  66.045,
+  -17.338
+ ],
+ "Namafjall": [
+  65.64,
+  -16.81
+ ],
+ "Hverir": [
+  65.64,
+  -16.81
+ ],
+ "Dimmuborgir": [
+  65.59,
+  -16.91
+ ],
+ "Forest Lagoon": [
+  65.69,
+  -18.05
+ ],
+ "Krafla": [
+  65.716,
+  -16.78
+ ],
+ "Aldeyjarfoss": [
+  65.36,
+  -17.34
+ ],
+ "Dynjandi": [
+  65.733,
+  -23.203
+ ],
+ "Isafjordur": [
+  66.075,
+  -23.135
+ ],
+ "Hesteyri": [
+  66.34,
+  -22.9
+ ],
+ "Hornstrandir": [
+  66.43,
+  -22.5
+ ],
+ "Sudavik": [
+  66.04,
+  -22.99
+ ],
+ "Perlan": [
+  64.129,
+  -21.919
+ ],
+ "FlyOver Iceland": [
+  64.1552,
+  -21.938
+ ],
+ "Whales of Iceland": [
+  64.157,
+  -21.949
+ ],
+ "Hvammsvik": [
+  64.35,
+  -21.35
+ ],
+ "Reykjadalur": [
+  64.024,
+  -21.212
+ ],
+ "Hveragerdi": [
+  64.0,
+  -21.19
+ ],
+ "Hvalfjordur": [
+  64.36,
+  -21.5
+ ],
+ "Borgarnes": [
+  64.54,
+  -21.92
+ ],
+ "Hraunfossar": [
+  64.702,
+  -20.978
+ ],
+ "Barnafoss": [
+  64.703,
+  -20.972
+ ],
+ "Deildartunguhver": [
+  64.663,
+  -21.41
+ ],
+ "Krauma": [
+  64.663,
+  -21.41
+ ],
+ "Husafell": [
+  64.7,
+  -20.87
+ ],
+ "Langjokull": [
+  64.75,
+  -20.0
+ ],
+ "Into the Glacier": [
+  64.73,
+  -20.29
+ ],
+ "Reykjavik": [
+  64.1466,
+  -21.9426
+ ],
+ "Vestmannaeyjar": [
+  63.44,
+  -20.27
+ ],
+ "Silfra": [
+  64.2558,
+  -21.1188
+ ],
+ "Faxafloi Bay": [
+  64.43,
+  -22.78
+ ],
+ "Akranes": [
+  64.32,
+  -22.08
+ ],
+ "Geysir Geothermal Area": [
+  64.3104,
+  -20.3024
+ ],
+ "Gullfoss Waterfall": [
+  64.3271,
+  -20.1199
+ ],
+ "Hvalnes Lighthouse": [
+  64.401,
+  -14.535
+ ],
+ "Kerid Crater": [
+  64.0411,
+  -20.8856
+ ],
+ "Kerid Volcanic Crater": [
+  64.0411,
+  -20.8856
+ ],
+ "Lofthellir Cave": [
+  65.55,
+  -16.72
+ ],
+ "Raufarholshellir": [
+  63.933,
+  -21.475
+ ],
+ "Reynisdrangar": [
+  63.397,
+  -19.038
+ ],
+ "Silfra, Thingvellir National Park": [
+  64.2558,
+  -21.1188
+ ],
+ "Stjornarfoss": [
+  63.784,
+  -18.06
+ ],
+ "Vatnajokull National Park": [
+  64.0159,
+  -16.9666
+ ],
+ "Adalvik": [
+  66.3856,
+  -23.0959
+ ],
+ "Akurey": [
+  64.1718,
+  -21.9609
+ ],
+ "Berserkjahraun": [
+  64.9783,
+  -22.9073
+ ],
+ "Blahnukur": [
+  63.9768,
+  -19.0692
+ ],
+ "Brennisteinsalda": [
+  63.9809,
+  -19.0955
+ ],
+ "Bruarhlod": [
+  64.2602,
+  -20.2236
+ ],
+ "Drekagil": [
+  65.0423,
+  -16.6022
+ ],
+ "Eldfell": [
+  63.4323,
+  -20.2473
+ ],
+ "Eldheimar": [
+  63.435,
+  -20.2601
+ ],
+ "Elephant Rock": [
+  63.4394,
+  -20.311
+ ],
+ "Ellidaardalur": [
+  64.1106,
+  -21.8008
+ ],
+ "Eyjafjordur": [
+  65.9215,
+  -18.2532
+ ],
+ "Faxi": [
+  64.2251,
+  -20.3365
+ ],
+ "Flaajokull": [
+  64.3664,
+  -15.6522
+ ],
+ "Fossvogsdalur": [
+  64.1163,
+  -21.8658
+ ],
+ "Geitafoss": [
+  65.6849,
+  -17.542
+ ],
+ "Gigjokull": [
+  63.6573,
+  -19.6184
+ ],
+ "Graenavatn": [
+  63.8843,
+  -22.0545
+ ],
+ "Hafrafell": [
+  64.9762,
+  -14.2122
+ ],
+ "Heimaey": [
+  63.4267,
+  -20.2699
+ ],
+ "Heinabergsjokull": [
+  64.3241,
+  -15.8531
+ ],
+ "Helgafell": [
+  63.4293,
+  -20.2596
+ ],
+ "Hellisheidi": [
+  64.0184,
+  -21.3488
+ ],
+ "Herdubreidarlindir": [
+  65.1888,
+  -16.2054
+ ],
+ "Holuhraun": [
+  64.8709,
+  -16.8348
+ ],
+ "Hvita": [
+  64.2161,
+  -20.2851
+ ],
+ "Hvitanes": [
+  65.9935,
+  -22.8203
+ ],
+ "Ingjaldsholl": [
+  64.1476,
+  -21.9853
+ ],
+ "Isafjardardjup": [
+  66.1444,
+  -22.9792
+ ],
+ "Kviadalur": [
+  66.2988,
+  -22.6092
+ ],
+ "Kviar": [
+  64.7842,
+  -21.3181
+ ],
+ "Laxnes": [
+  64.1803,
+  -21.5906
+ ],
+ "Ljotipollur": [
+  64.0355,
+  -18.9985
+ ],
+ "Lonafjordur": [
+  66.3001,
+  -22.5129
+ ],
+ "Mosfellsdalur": [
+  64.1803,
+  -21.6189
+ ],
+ "Myrdalsjokull": [
+  63.6618,
+  -19.1225
+ ],
+ "Namaskard": [
+  65.6473,
+  -16.8251
+ ],
+ "Nautholsvik": [
+  64.121,
+  -21.9273
+ ],
+ "Olafsvik": [
+  64.8959,
+  -23.7084
+ ],
+ "Reykholt": [
+  64.1783,
+  -20.4461
+ ],
+ "Reykjanesviti": [
+  63.8156,
+  -22.7044
+ ],
+ "Reykjavik Old Harbour": [
+  64.1517,
+  -21.9421
+ ],
+ "Sigoldufoss": [
+  64.1697,
+  -19.1292
+ ],
+ "Skansinn": [
+  63.4438,
+  -20.2615
+ ],
+ "Skutustadagigar": [
+  65.5714,
+  -17.0337
+ ],
+ "Storhofdi": [
+  64.0254,
+  -21.9321
+ ],
+ "Sundhnukagigar": [
+  63.8822,
+  -22.3845
+ ],
+ "Valahnukur": [
+  63.6833,
+  -19.5311
+ ],
+ "Veidileysufjordur": [
+  66.3329,
+  -22.696
+ ],
+ "Vigur": [
+  66.0548,
+  -22.8287
+ ],
+ "Virkisjokull": [
+  63.9906,
+  -16.755
+ ],
+ "Whale Watching": [
+  64.926,
+  -23.2568
+ ]
+}

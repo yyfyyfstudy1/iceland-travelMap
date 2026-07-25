@@ -1,0 +1,1806 @@
+[
+ {
+  "url": "https://bustravel.is/iceland-tours/afternoon-and-evening-volcano-hike",
+  "op": "bustravel",
+  "title": "Afternoon Volcano Hiking Tour",
+  "is_multi_stop": true,
+  "region": "Reykjanes",
+  "stops": [
+   "Seltun",
+   "Fagradalsfjall"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/blue-ice-cave-tour-by-super-jeep-from-jokulsarlon",
+  "op": "bustravel",
+  "title": "Ice Cave Tour in Vatnajokull",
+  "is_multi_stop": false,
+  "region": "South Coast",
+  "stops": [
+   "Vatnajokull"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/diving-in-silfra-from-reykjavik",
+  "op": "bustravel",
+  "title": "Diving Silfra Tour with Pick Up",
+  "is_multi_stop": false,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/diving-in-silfra-meet-on-location-in-thingvellir-national-park",
+  "op": "bustravel",
+  "title": "Diving Silfra Tour - Meet on location",
+  "is_multi_stop": false,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/dynjandi-waterfall-farm-tour-german-guidance-from-isafjordur",
+  "op": "bustravel",
+  "title": "Dynjandi Waterfall & Farm Tour from Isafjordur Port - German ",
+  "is_multi_stop": true,
+  "region": "Westfjords",
+  "stops": [
+   "Dynjandi",
+   "Gemlufell"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/dynjandi-waterfall-westfjords-tour-from-isafjordur",
+  "op": "bustravel",
+  "title": "Dynjandi Waterfall & Farm Tour from Isafjordur Port",
+  "is_multi_stop": true,
+  "region": "Westfjords",
+  "stops": [
+   "Dynjandi",
+   "Gemlufell"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/evening-atv-tour-from-reykjavik",
+  "op": "bustravel",
+  "title": "Northern Lights the Viking way - ATV Reykjavik Adventure",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Hafravatn"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/geothermal-bread-baking-at-laugarvatn",
+  "op": "bustravel",
+  "title": "Rye Bread Tour (Geothermal bakery)",
+  "is_multi_stop": false,
+  "region": "Golden Circle",
+  "stops": [
+   "Laugarvatn"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/glacier-hike-from-skaftafell",
+  "op": "bustravel",
+  "title": "Skaftafell Glacier Adventure",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Skaftafell"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/glacier-hiking-on-falljokull-glacier-in-vatnajokull-national-park",
+  "op": "bustravel",
+  "title": "Glacier Encounter ",
+  "is_multi_stop": false,
+  "region": "South Coast",
+  "stops": [
+   "Skaftafell"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/glacier-hiking-tour-on-solheimajokull-meet-on-location",
+  "op": "bustravel",
+  "title": "Solheimajokull 3h Easy Level Glacier Hike",
+  "is_multi_stop": false,
+  "region": "South Coast",
+  "stops": [
+   "Solheimajokull"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/glacier-lagoon-south-iceland",
+  "op": "bustravel",
+  "title": "Glacier Lagoon (Jökulsárlón) & South Iceland Tour",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Stjornarfoss",
+   "Jokulsarlon",
+   "Diamond Beach",
+   "Fjallsarlon",
+   "Vik",
+   "Seljalandsfoss"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/godafoss-waterfall-tour-from-akureyri",
+  "op": "bustravel",
+  "title": "Goðafoss Waterfall & Fjord Viewpoint from Akureyri",
+  "is_multi_stop": true,
+  "region": "North Iceland",
+  "stops": [
+   "Godafoss",
+   "Geitafoss",
+   "Eyjafjordur"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-afternoon-tour",
+  "op": "bustravel",
+  "title": "Golden Circle Afternoon Tour ",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Kerid"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-blue-lagoon",
+  "op": "bustravel",
+  "title": "Golden Circle Small Group Tour and Blue Lagoon Transfers",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Kerid",
+   "Blue Lagoon"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-blue-lagoon-admission-northern-lights-tour",
+  "op": "bustravel",
+  "title": " Golden Circle, Blue Lagoon & Northern Lights Small Group Tour with Admission",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Kerid",
+   "Blue Lagoon"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-blue-lagoon-admission-small-group-tour",
+  "op": "bustravel",
+  "title": "Golden Circle & Blue Lagoon Small Group Tour with Admission Ticket",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Kerid",
+   "Blue Lagoon"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-day-tour",
+  "op": "bustravel",
+  "title": "Grand Golden Circle Tour",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Kerid",
+   "Gullfoss",
+   "Geysir",
+   "Thingvellir"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-fridheimar-small-group-tour",
+  "op": "bustravel",
+  "title": "Golden Circle Small Group Tour with Friðheimar Farm Visit",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Kerid",
+   "Fridheimar",
+   "Gullfoss",
+   "Geysir",
+   "Thingvellir"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-northern-lights-tour",
+  "op": "bustravel",
+  "title": "Golden Circle & Northern Lights Tour",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Kerid"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-sky-lagoon-pure-pass-small-group-tour",
+  "op": "bustravel",
+  "title": "Golden Circle, Fridheimar & Sky Lagoon Small-Group Saman Pass Tour",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Kerid",
+   "Fridheimar",
+   "Gullfoss",
+   "Geysir",
+   "Thingvellir",
+   "Sky Lagoon"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/grand-golden-circle-tour-with-german-speaking-guide",
+  "op": "bustravel",
+  "title": "Grand Golden Circle Tour in German",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Kerid",
+   "Gullfoss",
+   "Geysir",
+   "Thingvellir"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/horse-riding-puffin-watching-from-reykjavik",
+  "op": "bustravel",
+  "title": "04F - Horses and Puffins ",
+  "is_multi_stop": true,
+  "region": "Reykjavik",
+  "stops": [
+   "Hveragerdi",
+   "Reykjavik Old Harbour",
+   "Akurey"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/horse-riding-tour-in-heidmork-red-lava-from-reykjavik",
+  "op": "bustravel",
+  "title": "Red Lava Horse Riding Tour - Reykjavik",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Heidmork"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/horseriding-and-hot-springs-tour-from-hveragerdi",
+  "op": "bustravel",
+  "title": "03C - Horses and Hot Springs",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Hveragerdi"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/horseriding-tour-from-hveragerdi",
+  "op": "bustravel",
+  "title": "02A - The Heritage Tour",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Hveragerdi"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/horseriding-tour-on-black-sand-beach-from-vik",
+  "op": "bustravel",
+  "title": "Black Beach Riding Tour",
+  "is_multi_stop": false,
+  "region": "South Coast",
+  "stops": [
+   "Vik"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/ice-cave-glacier-hiking-tour-from-skaftafell",
+  "op": "bustravel",
+  "title": "Skaftafell Blue Ice Cave & Glacier Hike",
+  "is_multi_stop": false,
+  "region": "South Coast",
+  "stops": [
+   "Skaftafell"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/ice-cave-super-jeep-tour-on-vatnajokull-glacier",
+  "op": "bustravel",
+  "title": "Ice Cave Tour",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Jokulsarlon",
+   "Vatnajokull"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/iceland-total-solar-eclipse-tour-from-isafjordur-with-dynjandi",
+  "op": "bustravel",
+  "title": "Total Solar Eclipse & Dynjandi Waterfall from Isafjordur Port",
+  "is_multi_stop": false,
+  "region": "Westfjords",
+  "stops": [
+   "Dynjandi"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/katla-ice-cave-tour-from-vik",
+  "op": "bustravel",
+  "title": "Vik to Katla Ice Cave Adventure: Explore Iceland's Frozen Wonders",
+  "is_multi_stop": false,
+  "region": "South Coast",
+  "stops": [
+   "Myrdalsjokull"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/northern-lights-tour",
+  "op": "bustravel",
+  "title": "Northern Lights Bus Tour From Reykjavík - Paid Pickup Service - Bustravel.is",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Northern Lights"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/perlan-ice-cave-wonders-of-iceland-museum-ticket",
+  "op": "bustravel",
+  "title": "Perlan - Wonders of Iceland",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Perlan"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/seal-watching-sudavik-village-scenic-fjord-tour-from-isafjordur",
+  "op": "bustravel",
+  "title": "Westjords Seal Watching & Avalanche Memorial Tour from Isafjordur",
+  "is_multi_stop": true,
+  "region": "Westfjords",
+  "stops": [
+   "Hvitanes",
+   "Vigur",
+   "Sudavik",
+   "Lonafjordur",
+   "Hornstrandir"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snaefellsnes-peninsula-kirkjufell-small-group-tour",
+  "op": "bustravel",
+  "title": "Snæfellsnes Peninsula Small Group Tour",
+  "is_multi_stop": true,
+  "region": "Snaefellsnes",
+  "stops": [
+   "Berserkjahraun",
+   "Kirkjufell",
+   "Kirkjufellsfoss",
+   "Snaefellsjokull",
+   "Djupalonssandur",
+   "Londrangar",
+   "Arnarstapi",
+   "Budir",
+   "Ytri Tunga"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snaefellsnes-peninsula-kirkjufell-tour",
+  "op": "bustravel",
+  "title": "Snæfellsnes Peninsula Tour",
+  "is_multi_stop": true,
+  "region": "Snaefellsnes",
+  "stops": [
+   "Berserkjahraun",
+   "Kirkjufell",
+   "Snaefellsjokull",
+   "Djupalonssandur",
+   "Londrangar",
+   "Arnarstapi",
+   "Budir",
+   "Ytri Tunga"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snorkeling-in-silfra-from-reykjavik",
+  "op": "bustravel",
+  "title": "Snorkeling Silfra day tour with pick up",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Silfra"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snorkeling-in-silfra-meet-on-location-in-thingvellir-national-park",
+  "op": "bustravel",
+  "title": "Snorkeling Silfra tour - meet on location",
+  "is_multi_stop": false,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snowmobiling-ice-cave-at-langjokull-glacier-from-reykjavik",
+  "op": "bustravel",
+  "title": "Glacier Snowmobiling & Ice Cave from Reykjavík",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Langjokull"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snowmobiling-ice-cave-at-langjokull-glacier-from-skjol",
+  "op": "bustravel",
+  "title": "Glacier Snowmobiling & Ice Cave from Geysir Area",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Langjokull"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/south-iceland-small-group-tour",
+  "op": "bustravel",
+  "title": "South Coast Small Group Tour: Waterfalls, Glacier & Black Sand Beach ",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Skogafoss",
+   "Vik",
+   "Reynisfjara",
+   "Solheimajokull",
+   "Seljalandsfoss"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/volcano-hike-and-blue-lagoon-admission-tour",
+  "op": "bustravel",
+  "title": "Volcano Eruption Site & Blue Lagoon Admission Tour",
+  "is_multi_stop": true,
+  "region": "Reykjanes",
+  "stops": [
+   "Kleifarvatn",
+   "Fagradalsfjall",
+   "Grindavik",
+   "Blue Lagoon"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/volcano-hike-and-reykjanes-tour",
+  "op": "bustravel",
+  "title": "Hike to Volcanic Eruption Sites & Reykjanes Tour",
+  "is_multi_stop": true,
+  "region": "Reykjanes",
+  "stops": [
+   "Kleifarvatn",
+   "Seltun",
+   "Fagradalsfjall",
+   "Gunnuhver",
+   "Reykjanesviti",
+   "Bridge Between Continents"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-puffin-watching-boat-tour-from-reykjavik",
+  "op": "bustravel",
+  "title": "Whales & Puffins",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Reykjavik Old Harbour"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-puffin-watching-rib-safari-tour-from-husavik",
+  "op": "bustravel",
+  "title": "Big Whales & Puffins RIB boat tour",
+  "is_multi_stop": false,
+  "region": "North Iceland",
+  "stops": [
+   "Husavik"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-atv-from-reykjavik",
+  "op": "bustravel",
+  "title": "Reykjavík Whales & ATV",
+  "is_multi_stop": true,
+  "region": "Activity",
+  "stops": [
+   "Hafrafell",
+   "Faxafloi Bay"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-buggy-from-reykjavik",
+  "op": "bustravel",
+  "title": "Reykjavík Whales & Buggy",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Ulfarsfell"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-northern-lights-tour-from-reykjavik",
+  "op": "bustravel",
+  "title": "Reykjavík Whales & Northern Lights",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Faxafloi Bay"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-rib-boat-tour-from-reykjavik",
+  "op": "bustravel",
+  "title": "RIB Express",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Faxafloi Bay"
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-tour-whales-of-iceland-museum-from-reykjavik",
+  "op": "bustravel",
+  "title": "Whale Watching & Whales of Iceland Museum",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Faxafloi Bay"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/blue-lagoon-tours/golden-circle-and-blue-lagoon-tour",
+  "op": "adventures",
+  "title": "Golden Circle & Blue Lagoon",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Kerid",
+   "Blue Lagoon"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/fjallsarlon-kayaking-skaftafell-glacier-hike",
+  "op": "adventures",
+  "title": "Fjallsarlon Lagoon Kayaking & Glacier Hike",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Fjallsarlon",
+   "Skaftafell"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/golden-circle-horse-riding",
+  "op": "adventures",
+  "title": "Golden Circle & Horse Riding",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Mosfellsdalur",
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/golden-circle-snowmobiling-northern-lights",
+  "op": "adventures",
+  "title": "Glacier Snowmobiling, Golden Circle & Northern Lights",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Langjokull",
+   "Gullfoss",
+   "Kerid"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/golden-circle-super-jeep-buggy-riding-combo-tour",
+  "op": "adventures",
+  "title": "Buggy & Golden Circle",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/horse-riding-and-atvs",
+  "op": "adventures",
+  "title": "Fast Lava - ATV and horseback riding",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/horse-riding-and-caving",
+  "op": "adventures",
+  "title": "Horse Riding & Caving From Reykjavík",
+  "is_multi_stop": true,
+  "region": "Reykjanes",
+  "stops": [
+   "Raufarholshellir",
+   "Helgafell"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/horse-riding-and-snorkeling",
+  "op": "adventures",
+  "title": "Horse Riding & Snorkeling from Reykjavik",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Silfra",
+   "Laxnes"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/into-the-glacier-and-krauma-hot-springs-tour",
+  "op": "adventures",
+  "title": "Into the Glacier & Krauma Geothermal Spa",
+  "is_multi_stop": true,
+  "region": "Highland",
+  "stops": [
+   "Langjokull",
+   "Krauma"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/lava-caving-whale-watching-tour",
+  "op": "adventures",
+  "title": "Whale Watching & Caving",
+  "is_multi_stop": true,
+  "region": "Reykjavik",
+  "stops": [
+   "Raufarholshellir",
+   "Faxafloi Bay"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/sensational-iceland-waterfalls-glacier-hike-and-northern-lights",
+  "op": "adventures",
+  "title": "Sensational Iceland - Waterfalls, Glacier Hike and Northern Lights",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Seljalandsfoss",
+   "Skogafoss",
+   "Solheimajokull",
+   "Reynisfjara"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/silfra-snorkeling-laugarvatn-fontana-spa",
+  "op": "adventures",
+  "title": "Ice to Bliss: Silfra Snorkeling and Fontana Spa",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Laugarvatn Fontana"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/south-coast-wonders-and-northern-lights-tour",
+  "op": "adventures",
+  "title": "South Coast & Northern Lights Small Group Tour from Reykjavík",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Seljalandsfoss",
+   "Skogafoss",
+   "Solheimajokull",
+   "Reynisfjara",
+   "Vik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/combo-tours/volcanic-caves-craters-reykjanes-lava-tunnel-tour",
+  "op": "adventures",
+  "title": "Volcanic Caves and Craters: The Lava Tunnel, Grindavík & Reykjanes Lava Fields Combo Tour",
+  "is_multi_stop": true,
+  "region": "Reykjanes",
+  "stops": [
+   "Raufarholshellir",
+   "Kleifarvatn",
+   "Seltun",
+   "Graenavatn",
+   "Fagradalsfjall",
+   "Grindavik",
+   "Sundhnukagigar"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-hike-jokulsarlon-kayaking",
+  "op": "adventures",
+  "title": "Glacier Hike & Jokulsarlon Kayaking",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Skaftafell",
+   "Jokulsarlon"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-monster-truck-tour-to-langjokull",
+  "op": "adventures",
+  "title": "Red Glacier Monster Truck Tour - Unique Langjökull Glacier Tour from Gullfoss",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Langjokull"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-from-reykjavik/glaciers-and-waterfalls",
+  "op": "adventures",
+  "title": "Glaciers & Waterfalls / South Coast and Glacier Hiking",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Seljalandsfoss",
+   "Skogafoss",
+   "Solheimajokull",
+   "Reynisfjara"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-from-solheimajokull/blue-ice",
+  "op": "adventures",
+  "title": "Blue Ice - Glacier Hike & Ice Climbing from Reykjavík",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Solheimajokull",
+   "Skogafoss",
+   "Seljalandsfoss"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-from-solheimajokull/glacier-experience",
+  "op": "adventures",
+  "title": "Glaciers & Waterfalls / South Coast and Glacier Hiking",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Seljalandsfoss",
+   "Skogafoss",
+   "Solheimajokull",
+   "Reynisfjara"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-on-vatnajokull/crevasse-labyrinth-tour",
+  "op": "adventures",
+  "title": "Crevasse Labyrinth - A Glacier Maze in Skaftafell",
+  "is_multi_stop": false,
+  "region": "South Coast",
+  "stops": [
+   "Skaftafell"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-on-vatnajokull/fjallsarlon-boat-tour-glacier-hike",
+  "op": "adventures",
+  "title": "Fjallsarlon Zodiac Boat Tour & Glacier Hike",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Fjallsarlon",
+   "Skaftafell"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-on-vatnajokull/glacier-explorer",
+  "op": "adventures",
+  "title": "Glacier Explorer",
+  "is_multi_stop": false,
+  "region": "South Coast",
+  "stops": [
+   "Skaftafell"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-on-vatnajokull/glacier-grand-slam",
+  "op": "adventures",
+  "title": "Jökulsárlón Zodiac Boat & Glacier Hike",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Skaftafell",
+   "Jokulsarlon"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-on-vatnajokull/glacier-tours-on-vatnajokull-glacier-beyond",
+  "op": "adventures",
+  "title": "Glacier Beyond: Remote Two-Glacier Hike from Skaftafell",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Skaftafell",
+   "Falljokull",
+   "Virkisjokull"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-on-vatnajokull/glacier-wonders",
+  "op": "adventures",
+  "title": "Glacier Wonders",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Skaftafell"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle",
+  "op": "adventures",
+  "title": "Golden Circle Superior / Golden Circle Small Group Tour",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Hveragerdi",
+   "Geysir",
+   "Gullfoss",
+   "Skalholt",
+   "Kerid"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-afternoon",
+  "op": "adventures",
+  "title": "Golden Circle Afternoon Small Group Tour",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Kerid"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-and-caving",
+  "op": "adventures",
+  "title": "Golden Circle & Caving",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Raufarholshellir",
+   "Faxi",
+   "Kerid",
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-and-laugaras-lagoon-tour",
+  "op": "adventures",
+  "title": "AA-Golden Circle & Laugarás Geothermal Lagoon Small Group Tour - Lerki",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Laugaras"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-and-laugarvatn-fontana-tour",
+  "op": "adventures",
+  "title": "Golden Circle & Laugarvatn Fontana Small Group Day Tour",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Kerid",
+   "Gullfoss",
+   "Geysir",
+   "Laugarvatn Fontana",
+   "Thingvellir"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-and-rafting",
+  "op": "adventures",
+  "title": "Golden Circle & Rafting",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Hvita",
+   "Bruarhlod",
+   "Geysir",
+   "Gullfoss",
+   "Thingvellir"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-and-snorkeling",
+  "op": "adventures",
+  "title": "Golden Circle & Snorkeling",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Silfra",
+   "Geysir",
+   "Gullfoss",
+   "Kerid"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-and-whale-watching-tour",
+  "op": "adventures",
+  "title": "Whale Watching & The Golden Circle",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Whale Watching",
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Kerid"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-aurora-surprise-minibus-tour-2",
+  "op": "adventures",
+  "title": "Golden Circle Aurora Surprise",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Kerid",
+   "Geysir",
+   "Gullfoss"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-glacier-monster-truck",
+  "op": "adventures",
+  "title": "Golden Circle + Monster Truck Glacier Adventure from Reykjavik",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Langjokull"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-ice-cave-monster-truck",
+  "op": "adventures",
+  "title": "Golden Circle & Ice Cave Tour in Monster Truck from Reykjavik",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Langjokull"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-northern-lights-boat-tour",
+  "op": "adventures",
+  "title": "Golden Circle & Northern Lights by Boat Combo Tour",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Kerid"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-secret-lagoon",
+  "op": "adventures",
+  "title": "Golden Circle & Secret Lagoon",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Kerid",
+   "Secret Lagoon"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/golden-circle-tours/golden-circle-secret-lagoon-northern-lights",
+  "op": "adventures",
+  "title": "Golden Circle, Secret Lagoon & Northern Lights",
+  "is_multi_stop": true,
+  "region": "Golden Circle",
+  "stops": [
+   "Thingvellir",
+   "Geysir",
+   "Gullfoss",
+   "Kerid",
+   "Secret Lagoon"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/hiking/hornstrandir-hiking-tour",
+  "op": "adventures",
+  "title": "Hornstrandir Panorama",
+  "is_multi_stop": true,
+  "region": "Westfjords",
+  "stops": [
+   "Isafjordur",
+   "Isafjardardjup",
+   "Veidileysufjordur",
+   "Hornstrandir",
+   "Adalvik",
+   "Kviadalur",
+   "Kviar"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/hiking/kerlingarfjoll-hiking-tour",
+  "op": "adventures",
+  "title": "Kerlingarfjöll Hiking Day Tour",
+  "is_multi_stop": false,
+  "region": "Highland",
+  "stops": [
+   "Kerlingarfjoll",
+   "Hveradalir"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/hiking/landmannalaugar-hiking-tour-from-reykjavik",
+  "op": "adventures",
+  "title": " Landmannalaugar Guided Hike & Hot Springs - From Reykjavik",
+  "is_multi_stop": false,
+  "region": "Highland",
+  "stops": [
+   "Landmannalaugar"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/hiking/volcano-trail-reykjanes-tour",
+  "op": "adventures",
+  "title": "AA - Volcano Hike & Geothermal Wonders Tour",
+  "is_multi_stop": true,
+  "region": "Reykjanes",
+  "stops": [
+   "Kleifarvatn",
+   "Seltun",
+   "Fagradalsfjall",
+   "Gunnuhver",
+   "Reykjanesviti",
+   "Bridge Between Continents"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/hiking/waterfall-trail",
+  "op": "adventures",
+  "title": "The Waterfall Trail",
+  "is_multi_stop": false,
+  "region": "East Iceland",
+  "stops": [
+   "Laugarfell"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/ice-caves/crystal-ice-cave",
+  "op": "adventures",
+  "title": "Crystal Ice Cave Tour",
+  "is_multi_stop": false,
+  "region": "South Coast",
+  "stops": [
+   "Jokulsarlon"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/ice-caves/diamond-ice-cave-and-monster-truck-tour",
+  "op": "adventures",
+  "title": "Ice Cave and Glacier Tour in Glacier Monster Truck from Gullfoss",
+  "is_multi_stop": false,
+  "region": "Highland",
+  "stops": [
+   "Langjokull"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/ice-caves/into-the-glacier-glacier-snowmobiling",
+  "op": "adventures",
+  "title": "Into The Glacier - With Snowmobiling From Reykjavík",
+  "is_multi_stop": true,
+  "region": "Highland",
+  "stops": [
+   "Deildartunguhver",
+   "Hraunfossar",
+   "Barnafoss",
+   "Husafell",
+   "Langjokull"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/ice-caves/katla-ice-cave-tour-under-the-volcano",
+  "op": "adventures",
+  "title": "Katla Ice Cave & South Coast Tour from Reykjavík",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Seljalandsfoss",
+   "Skogafoss",
+   "Vik",
+   "Myrdalsjokull",
+   "Katla Ice Cave"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/ice-caves/langjokull-ice-cave-experience",
+  "op": "adventures",
+  "title": "Into the Glacier - From Reykjavík",
+  "is_multi_stop": true,
+  "region": "Highland",
+  "stops": [
+   "Deildartunguhver",
+   "Hraunfossar",
+   "Barnafoss",
+   "Langjokull"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/ice-caves/northern-lights-ice-cave",
+  "op": "adventures",
+  "title": "Into The Glacier & Northern Lights From Reykjavík",
+  "is_multi_stop": false,
+  "region": "Highland",
+  "stops": [
+   "Langjokull"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/ice-caves/skaftafell-ice-cave-glacier-hike",
+  "op": "adventures",
+  "title": "Skaftafell Blue Ice Cave & Glacier Hike Tour",
+  "is_multi_stop": false,
+  "region": "South Coast",
+  "stops": [
+   "Skaftafell"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/natural-hot-springs-tours/forest-lagoon-akureyri-admission",
+  "op": "adventures",
+  "title": "Warm - Admission to Forest Lagoon",
+  "is_multi_stop": false,
+  "region": "North Iceland",
+  "stops": [
+   "Forest Lagoon"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/natural-hot-springs-tours/geosea-husavik-admission",
+  "op": "adventures",
+  "title": "Geosea Ticket",
+  "is_multi_stop": false,
+  "region": "North Iceland",
+  "stops": [
+   "Husavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/natural-hot-springs-tours/husafell-canyon-baths",
+  "op": "adventures",
+  "title": "Husafell Canyon Baths",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Husafell"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/natural-hot-springs-tours/hvammsvik-hot-springs",
+  "op": "adventures",
+  "title": "Hvammsvík Hot Springs Admission Ticket",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Hvammsvik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/natural-hot-springs-tours/krauma-geothermal-baths",
+  "op": "adventures",
+  "title": "Krauma Geothermal Baths & Spa – Admission",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Krauma"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/natural-hot-springs-tours/laugaras-lagoon-admission",
+  "op": "adventures",
+  "title": "Birki - Standard entry",
+  "is_multi_stop": false,
+  "region": "Golden Circle",
+  "stops": [
+   "Laugaras Lagoon"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/natural-hot-springs-tours/laugarvatn-fontana-geothermal-baths",
+  "op": "adventures",
+  "title": "Fontana - General Admission",
+  "is_multi_stop": false,
+  "region": "Golden Circle",
+  "stops": [
+   "Laugarvatn Fontana"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/natural-hot-springs-tours/myvatn-nature-baths",
+  "op": "adventures",
+  "title": "Earth Essential - Earth Lagoon Mývatn",
+  "is_multi_stop": false,
+  "region": "North Iceland",
+  "stops": [
+   "Myvatn"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/natural-hot-springs-tours/sky-lagoon",
+  "op": "adventures",
+  "title": "Sky Lagoon Saman Pass with Transfer",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Sky Lagoon"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/natural-hot-springs-tours/vok-baths-admission",
+  "op": "adventures",
+  "title": "Relax - The essential Vök Baths experience",
+  "is_multi_stop": false,
+  "region": "East Iceland",
+  "stops": [
+   "Vok Baths"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/northern-lights/akureyri-northern-lights-tour",
+  "op": "adventures",
+  "title": "Northern Lights Classic Tour from Akureyri",
+  "is_multi_stop": false,
+  "region": "North Iceland",
+  "stops": [
+   "Akureyri"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/northern-lights/magical-auroras",
+  "op": "adventures",
+  "title": "Magical Auroras - Northern lights in a minibus",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": []
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/northern-lights/northern-lights-4x4-sprinter",
+  "op": "adventures",
+  "title": "Northern Lights by 4x4",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Northern Lights"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/northern-lights/northern-lights-boat-tour",
+  "op": "adventures",
+  "title": "Northern Lights by Boat",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/northern-lights/northern-lights-explorer",
+  "op": "adventures",
+  "title": "Northern Lights Explorer / Northern Lights Super Jeep Tour",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Northern Lights"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/northern-lights/northern-lights-hunt-with-campfire",
+  "op": "adventures",
+  "title": "Aurora hunt with campfire, thermal suits & marshmallows",
+  "is_multi_stop": true,
+  "region": "Reykjavik",
+  "stops": [
+   "Thingvellir",
+   "Reykjanes",
+   "Hellisheidi"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/northern-lights/whale-watching-northern-lights-tour",
+  "op": "adventures",
+  "title": "Whale Watching and Northern Lights from Reykjavík",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/reykjavik-tours/aurora-museum-admission-ticket",
+  "op": "adventures",
+  "title": "Aurora Reykjavík, The Northern Lights Center of Iceland  - Museum Visit",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/reykjavik-tours/flyover-iceland",
+  "op": "adventures",
+  "title": "FlyOver Iceland",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "FlyOver Iceland"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/reykjavik-tours/guided-electric-bike-tour-reykjavik",
+  "op": "adventures",
+  "title": "Private tour - Small Groups. Big Experiences.",
+  "is_multi_stop": true,
+  "region": "Reykjavik",
+  "stops": [
+   "Nautholsvik",
+   "Fossvogsdalur",
+   "Ellidaardalur"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/reykjavik-tours/icelandic-lava-show-in-reykjavik",
+  "op": "adventures",
+  "title": "Lava Show Reykjavík",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/reykjavik-tours/perlan-museum",
+  "op": "adventures",
+  "title": "Perlan - Wonders of Iceland",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Perlan"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/reykjavik-tours/volcano-express",
+  "op": "adventures",
+  "title": "Volcano Express Iceland",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/reykjavik-tours/whales-iceland-museum",
+  "op": "adventures",
+  "title": "Whales of Iceland Museum Admission",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Whales of Iceland"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/askja-caldera-viti-crater",
+  "op": "adventures",
+  "title": "Askja Caldera and Viti Crater 4x4 Tour from Akureyri or Lake Myvatn",
+  "is_multi_stop": true,
+  "region": "Highland",
+  "stops": [
+   "Herdubreid",
+   "Drekagil",
+   "Askja",
+   "Viti",
+   "Holuhraun"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/hop-on-hop-off-reykjavik-sigthseeing",
+  "op": "adventures",
+  "title": "Hop On - Hop Off - City Sightseeing 24 hours",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/hornstrandir-hesteyri-tour",
+  "op": "adventures",
+  "title": "Wildlife & Heritage of Hesteyri",
+  "is_multi_stop": false,
+  "region": "Westfjords",
+  "stops": [
+   "Hornstrandir",
+   "Hesteyri"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/jokulsarlon-skaftafell-from-reykjavik",
+  "op": "adventures",
+  "title": "AA - Glacier Lagoon (Jökulsárlón) & South Iceland Tour",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Seljalandsfoss",
+   "Vik",
+   "Stjornarfoss",
+   "Fjallsarlon",
+   "Jokulsarlon",
+   "Diamond Beach"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/myvatn-godafoss-half-day-highlights-from-akureyri",
+  "op": "adventures",
+  "title": "Mývatn, Goðafoss & Grjótagjá Half Day Tour From Akureyri",
+  "is_multi_stop": true,
+  "region": "North Iceland",
+  "stops": [
+   "Godafoss",
+   "Myvatn",
+   "Namaskard",
+   "Grjotagja",
+   "Dimmuborgir",
+   "Skutustadagigar"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/reykjanes-peninsula-hot-springs",
+  "op": "adventures",
+  "title": "Reykjanes Geopark and Lava Landscapes",
+  "is_multi_stop": true,
+  "region": "Reykjanes",
+  "stops": [
+   "Kleifarvatn",
+   "Krysuvik",
+   "Gunnuhver",
+   "Valahnukur",
+   "Reykjanes Lighthouse",
+   "Bridge Between Continents"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/reykjavik-christmas-walk",
+  "op": "adventures",
+  "title": "Reykjavik Christmas Walking Tour",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/reykjavik-city-walking-tour",
+  "op": "adventures",
+  "title": "Reykjavik Walking Tour small group - CityWalk",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/silver-circle-minibus-tour",
+  "op": "adventures",
+  "title": "Into the Glacier & Silver Circle",
+  "is_multi_stop": true,
+  "region": "Highland",
+  "stops": [
+   "Deildartunguhver",
+   "Hraunfossar",
+   "Barnafoss",
+   "Reykholt",
+   "Langjokull"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/snaefellsnes-peninsula-small-group-tour",
+  "op": "adventures",
+  "title": "Snæfellsnes Peninsula and Kirkjufell Small Group Tour",
+  "is_multi_stop": true,
+  "region": "Snaefellsnes",
+  "stops": [
+   "Grundarfjordur",
+   "Kirkjufell",
+   "Kirkjufellsfoss",
+   "Berserkjahraun",
+   "Olafsvik",
+   "Djupalonssandur",
+   "Ingjaldsholl",
+   "Arnarstapi",
+   "Budir",
+   "Ytri Tunga"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/snowcat-snaefellsjokull-glacier",
+  "op": "adventures",
+  "title": "Snæfellsjökull Glacier Snow-cat Tour",
+  "is_multi_stop": false,
+  "region": "Snaefellsnes",
+  "stops": [
+   "Snaefellsjokull"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/south-coast-plane-wreck-tour",
+  "op": "adventures",
+  "title": "South Coast Highlights & Sólheimasandur Plane Wreck",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Seljalandsfoss",
+   "Gljufrabui",
+   "Skogafoss",
+   "Solheimasandur",
+   "Solheimajokull",
+   "Reynisfjara"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/south-shore-adventure",
+  "op": "adventures",
+  "title": "South Shore Adventure",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Solheimajokull",
+   "Reynisfjara",
+   "Vik",
+   "Skogafoss",
+   "Seljalandsfoss"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/vestmannaeyjar-island-tour",
+  "op": "adventures",
+  "title": "Vestmannaeyjar Day Tour",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Heimaey",
+   "Elephant Rock",
+   "Storhofdi",
+   "Eldheimar",
+   "Skansinn",
+   "Eldfell"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/viking-walking-tour",
+  "op": "adventures",
+  "title": "Private Reykjavik Walking Tour - Walk With a Viking",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/sightseeing-tours/walking-folklore-tour",
+  "op": "adventures",
+  "title": "Reykjavik Folklore Walking Tour",
+  "is_multi_stop": false,
+  "region": "Reykjavik",
+  "stops": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/super-jeeps/askja-caldera-super-jeep-tour",
+  "op": "adventures",
+  "title": "Askja Caldera & Herðubreiðarlindir  - Super jeep day tour",
+  "is_multi_stop": true,
+  "region": "Highland",
+  "stops": [
+   "Myvatn",
+   "Herdubreidarlindir",
+   "Drekagil",
+   "Askja",
+   "Viti",
+   "Holuhraun"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/super-jeeps/eyjafjallajokull-super-jeep-tour",
+  "op": "adventures",
+  "title": "Eyjafjallajökull volcano",
+  "is_multi_stop": true,
+  "region": "South Coast",
+  "stops": [
+   "Gigjokull",
+   "Seljalandsfoss",
+   "Eyjafjallajokull",
+   "Skogafoss"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/super-jeeps/iceland-eclipse-2026-tour-in-super-jeep",
+  "op": "adventures",
+  "title": "Total Solar Eclipse Super Jeep Tour",
+  "is_multi_stop": false,
+  "region": "Activity",
+  "stops": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/super-jeeps/landmannalaugar-safari",
+  "op": "adventures",
+  "title": "Landmannalaugar Safari - Super Jeep day tour",
+  "is_multi_stop": true,
+  "region": "Highland",
+  "stops": [
+   "Hjalparfoss",
+   "Sigoldufoss",
+   "Landmannalaugar",
+   "Brennisteinsalda",
+   "Blahnukur",
+   "Ljotipollur",
+   "Hekla"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/super-jeeps/super-jeep-black-beach-tour",
+  "op": "adventures",
+  "title": "Super Jeep Frozen Glacier Lagoon Tour",
+  "is_multi_stop": true,
+  "region": "East Iceland",
+  "stops": [
+   "Sudurfjara",
+   "Hvanney Lighthouse",
+   "Hofn",
+   "Flaajokull",
+   "Heinabergsjokull"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/super-jeeps/super-jeep-tour-on-vatnajokull",
+  "op": "adventures",
+  "title": "Super Jeep Glacier Tour",
+  "is_multi_stop": false,
+  "region": "East Iceland",
+  "stops": [
+   "Vatnajokull"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/super-jeeps/thorsmork-super-jeep-tour",
+  "op": "adventures",
+  "title": "Þórsmörk by Super Jeep",
+  "is_multi_stop": true,
+  "region": "Highland",
+  "stops": [
+   "Gigjokull",
+   "Thorsmork"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/volcano-tours/active-volcano-hike",
+  "op": "adventures",
+  "title": "AA - Active Volcano Afternoon & Evening Tour",
+  "is_multi_stop": false,
+  "region": "Reykjanes",
+  "stops": [
+   "Fagradalsfjall"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/volcano-tours/grindavik-and-krysuvik-volcanic-areas-tour",
+  "op": "adventures",
+  "title": "Grindavík, Krýsuvík & Eruption Site Half Day Tour",
+  "is_multi_stop": true,
+  "region": "Reykjanes",
+  "stops": [
+   "Kleifarvatn",
+   "Seltun",
+   "Graenavatn",
+   "Fagradalsfjall",
+   "Grindavik",
+   "Sundhnukagigar"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/volcano-tours/helicopter-tour-over-volcano-eruption",
+  "op": "adventures",
+  "title": "Volcano Eruption ",
+  "is_multi_stop": false,
+  "region": "Reykjanes",
+  "stops": [
+   "Fagradalsfjall"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/volcano-tours/helicopter-tour-to-volcano-site",
+  "op": "adventures",
+  "title": "The Eruption Escapade: Tour of New Volcanic Area in Iceland",
+  "is_multi_stop": false,
+  "region": "Reykjanes",
+  "stops": [
+   "Fagradalsfjall"
+  ]
+ },
+ {
+  "url": "https://cn.adventures.is/iceland/day-tours/volcano-tours/volcano-eruption-blue-lagoon-admission",
+  "op": "adventures",
+  "title": "AA - Volcano Eruption Site & Blue Lagoon Admission Tour",
+  "is_multi_stop": true,
+  "region": "Reykjanes",
+  "stops": [
+   "Kleifarvatn",
+   "Fagradalsfjall",
+   "Blue Lagoon"
+  ]
+ }
+]

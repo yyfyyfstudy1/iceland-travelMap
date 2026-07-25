@@ -1,0 +1,506 @@
+{
+ "thingvellir": [
+  64.2559,
+  -21.1295
+ ],
+ "thingvellirnationalpark": [
+  64.2559,
+  -21.1295
+ ],
+ "geysir": [
+  64.3104,
+  -20.3024
+ ],
+ "strokkur": [
+  64.3104,
+  -20.3024
+ ],
+ "gullfoss": [
+  64.3271,
+  -20.1199
+ ],
+ "kerid": [
+  64.0411,
+  -20.8856
+ ],
+ "bruarfoss": [
+  64.264,
+  -20.515
+ ],
+ "fridheimar": [
+  64.104,
+  -20.549
+ ],
+ "secretlagoon": [
+  64.1373,
+  -20.3094
+ ],
+ "gamlalaugin": [
+  64.1373,
+  -20.3094
+ ],
+ "laugarvatnfontana": [
+  64.2166,
+  -20.7306
+ ],
+ "laugarvatn": [
+  64.2166,
+  -20.7306
+ ],
+ "skalholt": [
+  64.1262,
+  -20.5353
+ ],
+ "efstidalur": [
+  64.23,
+  -20.42
+ ],
+ "laugaras": [
+  64.1,
+  -20.687
+ ],
+ "laugaraslagoon": [
+  64.1,
+  -20.687
+ ],
+ "seljalandsfoss": [
+  63.6156,
+  -19.9886
+ ],
+ "gljufrabui": [
+  63.622,
+  -19.989
+ ],
+ "skogafoss": [
+  63.532,
+  -19.511
+ ],
+ "solheimajokull": [
+  63.53,
+  -19.37
+ ],
+ "reynisfjara": [
+  63.404,
+  -19.044
+ ],
+ "dyrholaey": [
+  63.401,
+  -19.126
+ ],
+ "vik": [
+  63.418,
+  -19.006
+ ],
+ "kvernufoss": [
+  63.53,
+  -19.49
+ ],
+ "solheimasandurplanewreck": [
+  63.459,
+  -19.364
+ ],
+ "solheimasandur": [
+  63.459,
+  -19.364
+ ],
+ "katlaicecave": [
+  63.66,
+  -19.0
+ ],
+ "eyjafjallajokull": [
+  63.63,
+  -19.62
+ ],
+ "skogar": [
+  63.526,
+  -19.512
+ ],
+ "fjadrargljufur": [
+  63.771,
+  -18.171
+ ],
+ "skaftafell": [
+  64.016,
+  -16.966
+ ],
+ "svartifoss": [
+  64.028,
+  -16.975
+ ],
+ "jokulsarlon": [
+  64.048,
+  -16.179
+ ],
+ "diamondbeach": [
+  64.044,
+  -16.175
+ ],
+ "fjallsarlon": [
+  64.013,
+  -16.385
+ ],
+ "vatnajokull": [
+  64.4,
+  -16.8
+ ],
+ "hofn": [
+  64.252,
+  -15.209
+ ],
+ "stokksnes": [
+  64.25,
+  -14.98
+ ],
+ "vestrahorn": [
+  64.25,
+  -14.98
+ ],
+ "falljokull": [
+  64.007,
+  -16.86
+ ],
+ "crystalicecave": [
+  64.048,
+  -16.38
+ ],
+ "hvalnes": [
+  64.401,
+  -14.535
+ ],
+ "djupivogur": [
+  64.6558,
+  -14.2793
+ ],
+ "eystrahorn": [
+  64.2497,
+  -14.567
+ ],
+ "kirkjufell": [
+  64.9271,
+  -23.306
+ ],
+ "kirkjufellsfoss": [
+  64.9268,
+  -23.3096
+ ],
+ "arnarstapi": [
+  64.7699,
+  -23.6236
+ ],
+ "hellnar": [
+  64.771,
+  -23.646
+ ],
+ "djupalonssandur": [
+  64.7538,
+  -23.9007
+ ],
+ "snaefellsjokull": [
+  64.808,
+  -23.777
+ ],
+ "budir": [
+  64.8213,
+  -23.3855
+ ],
+ "ytritunga": [
+  64.79,
+  -23.08
+ ],
+ "londrangar": [
+  64.736,
+  -23.789
+ ],
+ "stykkisholmur": [
+  65.075,
+  -22.727
+ ],
+ "gerduberg": [
+  64.77,
+  -22.3
+ ],
+ "grundarfjordur": [
+  64.9223,
+  -23.2544
+ ],
+ "bluelagoon": [
+  63.8804,
+  -22.4495
+ ],
+ "gunnuhver": [
+  63.819,
+  -22.684
+ ],
+ "bridgebetweencontinents": [
+  63.868,
+  -22.675
+ ],
+ "grindavik": [
+  63.84,
+  -22.43
+ ],
+ "krysuvik": [
+  63.89,
+  -22.06
+ ],
+ "seltun": [
+  63.897,
+  -22.055
+ ],
+ "kleifarvatn": [
+  63.93,
+  -21.98
+ ],
+ "fagradalsfjall": [
+  63.9,
+  -22.27
+ ],
+ "reykjanes": [
+  63.82,
+  -22.71
+ ],
+ "skylagoon": [
+  64.1145,
+  -21.9407
+ ],
+ "landmannalaugar": [
+  63.99,
+  -19.06
+ ],
+ "thorsmork": [
+  63.68,
+  -19.5
+ ],
+ "haifoss": [
+  64.211,
+  -19.686
+ ],
+ "hjalparfoss": [
+  64.113,
+  -19.826
+ ],
+ "kerlingarfjoll": [
+  64.63,
+  -19.3
+ ],
+ "hekla": [
+  63.98,
+  -19.7
+ ],
+ "gjain": [
+  64.19,
+  -19.72
+ ],
+ "sigoldugljufur": [
+  64.16,
+  -19.12
+ ],
+ "askja": [
+  65.03,
+  -16.75
+ ],
+ "viti": [
+  65.045,
+  -16.72
+ ],
+ "herdubreid": [
+  65.18,
+  -16.34
+ ],
+ "godafoss": [
+  65.683,
+  -17.55
+ ],
+ "myvatn": [
+  65.6039,
+  -16.9959
+ ],
+ "dettifoss": [
+  65.814,
+  -16.385
+ ],
+ "asbyrgi": [
+  66.01,
+  -16.51
+ ],
+ "akureyri": [
+  65.688,
+  -18.09
+ ],
+ "grjotagja": [
+  65.626,
+  -16.882
+ ],
+ "husavik": [
+  66.045,
+  -17.338
+ ],
+ "namafjall": [
+  65.64,
+  -16.81
+ ],
+ "hverir": [
+  65.64,
+  -16.81
+ ],
+ "dimmuborgir": [
+  65.59,
+  -16.91
+ ],
+ "forestlagoon": [
+  65.69,
+  -18.05
+ ],
+ "krafla": [
+  65.716,
+  -16.78
+ ],
+ "aldeyjarfoss": [
+  65.36,
+  -17.34
+ ],
+ "dynjandi": [
+  65.733,
+  -23.203
+ ],
+ "isafjordur": [
+  66.075,
+  -23.135
+ ],
+ "hesteyri": [
+  66.34,
+  -22.9
+ ],
+ "hornstrandir": [
+  66.43,
+  -22.5
+ ],
+ "sudavik": [
+  66.04,
+  -22.99
+ ],
+ "perlan": [
+  64.129,
+  -21.919
+ ],
+ "flyovericeland": [
+  64.1552,
+  -21.938
+ ],
+ "whalesoficeland": [
+  64.157,
+  -21.949
+ ],
+ "hvammsvik": [
+  64.35,
+  -21.35
+ ],
+ "reykjadalur": [
+  64.024,
+  -21.212
+ ],
+ "hveragerdi": [
+  64.0,
+  -21.19
+ ],
+ "hvalfjordur": [
+  64.36,
+  -21.5
+ ],
+ "borgarnes": [
+  64.54,
+  -21.92
+ ],
+ "hraunfossar": [
+  64.702,
+  -20.978
+ ],
+ "barnafoss": [
+  64.703,
+  -20.972
+ ],
+ "deildartunguhver": [
+  64.663,
+  -21.41
+ ],
+ "krauma": [
+  64.663,
+  -21.41
+ ],
+ "husafell": [
+  64.7,
+  -20.87
+ ],
+ "langjokull": [
+  64.75,
+  -20.0
+ ],
+ "intotheglacier": [
+  64.73,
+  -20.29
+ ],
+ "reykjavik": [
+  64.1466,
+  -21.9426
+ ],
+ "vestmannaeyjar": [
+  63.44,
+  -20.27
+ ],
+ "silfra": [
+  64.2558,
+  -21.1188
+ ],
+ "faxafloibay": [
+  64.43,
+  -22.78
+ ],
+ "akranes": [
+  64.32,
+  -22.08
+ ],
+ "geysirgeothermalarea": [
+  64.3104,
+  -20.3024
+ ],
+ "gullfosswaterfall": [
+  64.3271,
+  -20.1199
+ ],
+ "hvalneslighthouse": [
+  64.401,
+  -14.535
+ ],
+ "keridcrater": [
+  64.0411,
+  -20.8856
+ ],
+ "keridvolcaniccrater": [
+  64.0411,
+  -20.8856
+ ],
+ "lofthellircave": [
+  65.55,
+  -16.72
+ ],
+ "raufarholshellir": [
+  63.933,
+  -21.475
+ ],
+ "reynisdrangar": [
+  63.397,
+  -19.038
+ ],
+ "silfrathingvellirnationalpark": [
+  64.2558,
+  -21.1188
+ ],
+ "stjornarfoss": [
+  63.784,
+  -18.06
+ ],
+ "vatnajokullnationalpark": [
+  64.0159,
+  -16.9666
+ ]
+}

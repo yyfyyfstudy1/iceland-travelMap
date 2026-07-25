@@ -1,0 +1,297 @@
+[
+ {
+  "url": "https://troll.is/day-tour/golden-circle-blue-lagoon",
+  "slug": "golden-circle-blue-lagoon",
+  "pid": "150549",
+  "title": "Golden Circle & Blue Lagoon Small Group Tour with Admission Ticket",
+  "price_isk": 31900.0,
+  "priceText": "ISK 31900",
+  "rating": 5.0,
+  "reviews": 22,
+  "duration": "11 hours",
+  "agenda": []
+ },
+ {
+  "url": "https://troll.is/day-tour/golden-circle-bruarfoss-kerid",
+  "slug": "golden-circle-bruarfoss-kerid",
+  "pid": "15053",
+  "title": "Golden Circle, Bruarfoss Waterfall & Kerid Volcanic crater",
+  "price_isk": 13334.0,
+  "priceText": "ISK 13334",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "8 hours",
+  "agenda": [
+   {
+    "name": "Thingvellir National Park",
+    "lat": 64.25591960000001,
+    "lng": -21.1295496
+   },
+   {
+    "name": "Geysir Geothermal Area",
+    "lat": 64.31377950000001,
+    "lng": -20.299508
+   },
+   {
+    "name": "Gullfoss Waterfall",
+    "lat": 64.32618099999999,
+    "lng": -20.1244322
+   }
+  ]
+ },
+ {
+  "url": "https://troll.is/day-tour/golden-circle-snorkeling-in-silfra",
+  "slug": "golden-circle-snorkeling-in-silfra",
+  "pid": "37687",
+  "title": "Golden Circle & Snorkeling in Silfra Minibus Tour | Free Underwater Photos",
+  "price_isk": 36353.0,
+  "priceText": "ISK 36353",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "10 hours",
+  "agenda": []
+ },
+ {
+  "url": "https://troll.is/day-tour/landmannalaugar-super-jeep-day-tour-from-reykjavik",
+  "slug": "landmannalaugar-super-jeep-day-tour-from-reykjavik",
+  "pid": "989881",
+  "title": "Landmannalaugar Hiking, Stranger Things Waterfall & Nature Bath ",
+  "price_isk": 44026.0,
+  "priceText": "ISK 44026",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "13 hours",
+  "agenda": [
+   {
+    "name": "Hjálparfoss",
+    "lat": 64.1159524,
+    "lng": -19.8494937
+   },
+   {
+    "name": "Háifoss",
+    "lat": 64.20788809999999,
+    "lng": -19.6868532
+   },
+   {
+    "name": "Hnausapollur Volcanic Crater",
+    "lat": 64.0518268,
+    "lng": -19.031271
+   },
+   {
+    "name": "Landmannalaugar",
+    "lat": 63.983,
+    "lng": -19.067
+   }
+  ]
+ },
+ {
+  "url": "https://troll.is/day-tour/riding-and-hiking-in-the-valley-reykjadalur",
+  "slug": "riding-and-hiking-in-the-valley-reykjadalur",
+  "pid": "1842",
+  "title": "05D - Riding and Hiking",
+  "price_isk": 27990.0,
+  "priceText": "ISK 27990",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "9 hours",
+  "agenda": []
+ },
+ {
+  "url": "https://troll.is/day-tour/snaefellsnes-peninsula",
+  "slug": "snaefellsnes-peninsula",
+  "pid": "15054",
+  "title": "Snaefellsnes Peninsula Minibus Tour",
+  "price_isk": 17611.0,
+  "priceText": "ISK 17611",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "12 hours",
+  "agenda": [
+   {
+    "name": "Borgarnes",
+    "lat": 64.75055777081494,
+    "lng": -23.646269094604463
+   },
+   {
+    "name": "Ytri Tunga Beach: Seal Colony",
+    "lat": 64.803794,
+    "lng": -23.0813366
+   },
+   {
+    "name": "Búðir Church",
+    "lat": 64.82165379999999,
+    "lng": -23.3842157
+   },
+   {
+    "name": "Arnarstapi",
+    "lat": 64.7695169,
+    "lng": -23.6224317
+   },
+   {
+    "name": "Djúpalónssandur",
+    "lat": 64.74929709999999,
+    "lng": -23.9121817
+   },
+   {
+    "name": "Lóndrangar Basalt Columns",
+    "lat": 64.86065529999999,
+    "lng": -22.3589141
+   },
+   {
+    "name": "Kirkjufell",
+    "lat": 64.9398701,
+    "lng": -23.3064651
+   }
+  ]
+ },
+ {
+  "url": "https://troll.is/day-tour/snaefellsnes-peninsula-chinese-day-tour",
+  "slug": "snaefellsnes-peninsula-chinese-day-tour",
+  "pid": "937180",
+  "title": "Chinese Tour: Snaefelsness ",
+  "price_isk": 22516.0,
+  "priceText": "ISK 22516",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "12 hours",
+  "agenda": [
+   {
+    "name": "Borgarnes",
+    "lat": 64.5446376,
+    "lng": -21.9105006
+   },
+   {
+    "name": "Búðir Church",
+    "lat": 64.82165379999999,
+    "lng": -23.3842157
+   },
+   {
+    "name": "Arnarstapi",
+    "lat": 64.7695169,
+    "lng": -23.6224317
+   },
+   {
+    "name": "Djúpalónssandur",
+    "lat": 64.74929709999999,
+    "lng": -23.9121817
+   },
+   {
+    "name": "Lóndrangar Basalt Columns",
+    "lat": 64.73252699999999,
+    "lng": -23.78460949999999
+   },
+   {
+    "name": "Ingjaldshólskirkja",
+    "lat": 64.9115264,
+    "lng": -23.8577631
+   },
+   {
+    "name": "Kirkjufell",
+    "lat": 64.9398701,
+    "lng": -23.3064651
+   }
+  ]
+ },
+ {
+  "url": "https://troll.is/day-tour/snorkeling-in-silfra-with-transfer-from-reykjavik",
+  "slug": "snorkeling-in-silfra-with-transfer-from-reykjavik",
+  "pid": "673701",
+  "title": "Snorkeling in Silfra -With Transfer from Reykjavík",
+  "price_isk": 28051.0,
+  "priceText": "ISK 28051",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "6 hours",
+  "agenda": []
+ },
+ {
+  "url": "https://troll.is/day-tour/south-coast-glacier-hike",
+  "slug": "south-coast-glacier-hike",
+  "pid": "15095",
+  "title": "South Coast & Glacier Hike Minibus Tour",
+  "price_isk": 22516.0,
+  "priceText": "ISK 22516",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "12 hours",
+  "agenda": [
+   {
+    "name": "Seljalandsfoss",
+    "lat": 63.6155997,
+    "lng": -19.9886113
+   },
+   {
+    "name": "Skógafoss",
+    "lat": 63.5295,
+    "lng": -19.5131612
+   },
+   {
+    "name": "Reynisfjara",
+    "lat": 63.404382,
+    "lng": -19.0451971
+   },
+   {
+    "name": "Sólheimajökull Glacier Expedition",
+    "lat": 63.5305244,
+    "lng": -19.3715533
+   }
+  ]
+ },
+ {
+  "url": "https://troll.is/day-tour/south-coast-katla",
+  "slug": "south-coast-katla",
+  "pid": "35161",
+  "title": "Katla Ice Cave South Coast - Day Tour from Reykjavik ",
+  "price_isk": 37611.0,
+  "priceText": "ISK 37611",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "12 hours",
+  "agenda": [
+   {
+    "name": "Seljalandsfoss Waterfall",
+    "lat": 63.61562319999999,
+    "lng": -19.9885688
+   },
+   {
+    "name": "Skogafoss Waterfall",
+    "lat": 63.5320523,
+    "lng": -19.5113706
+   },
+   {
+    "name": "Black Sand Beach",
+    "lat": 63.40574040000001,
+    "lng": -19.0716192
+   },
+   {
+    "name": "Katla Ice Cave",
+    "lat": 63.41845459999999,
+    "lng": -19.0101119
+   }
+  ]
+ },
+ {
+  "url": "https://troll.is/day-tour/south-coast-optional-glacier-hike-katla-private-tour",
+  "slug": "south-coast-optional-glacier-hike-katla-private-tour",
+  "pid": "634243",
+  "title": "Private VIP South Coast tour with optional glacier hike or katla ice cave activity",
+  "price_isk": 288051.0,
+  "priceText": "ISK 288051",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "12 hours",
+  "agenda": []
+ },
+ {
+  "url": "https://troll.is/day-tour/vip-private-golden-circle-day-tour",
+  "slug": "vip-private-golden-circle-day-tour",
+  "pid": "625184",
+  "title": "Private VIP Golden Circle Day tour 8h tour: optional extra activities on an extended 12h day tour",
+  "price_isk": 226416.0,
+  "priceText": "ISK 226416",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "8 hours",
+  "agenda": []
+ }
+]

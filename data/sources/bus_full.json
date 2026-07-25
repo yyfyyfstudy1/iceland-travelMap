@@ -1,0 +1,1882 @@
+[
+ {
+  "url": "https://bustravel.is/iceland-tours/afternoon-and-evening-volcano-hike",
+  "pid": "629086",
+  "title": "Afternoon Volcano Hiking Tour",
+  "price": 15990.0,
+  "currency": "ISK",
+  "rating": 3.83,
+  "reviews": 48,
+  "duration": "7 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.1443797,
+    "lng": -21.9104986
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/atv-quad-adventure-from-reykjavik",
+  "pid": "87",
+  "title": "2.5 Hour Twin Peaks ATV",
+  "price": 25000.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "2 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.1347942,
+    "lng": -21.755479700000024
+   },
+   {
+    "name": "Safety & Suit up",
+    "lat": 64.1347942,
+    "lng": -21.7554797
+   },
+   {
+    "name": "Twin Peaks ATV Tour from Reykjavik",
+    "lat": 64.1347942,
+    "lng": -21.7554797
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/blue-ice-cave-tour-by-super-jeep-from-jokulsarlon",
+  "pid": "692896",
+  "title": "Ice Cave Tour in Vatnajokull",
+  "price": 21850.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "3 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.04843393400692,
+    "lng": -16.179513931274414
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/diamond-circle-cruise-ship-express-tour-from-husavik",
+  "pid": "857682",
+  "title": "Dettifoss Waterfall, Ásbyrgi and Lake Mývatn - Shore Excursion from Húsavík",
+  "price": 24990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "5 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 66.04438401289259,
+    "lng": -17.359739465488936
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/diamond-circle-waterfalls-craters-lava-tour-from-akureyri",
+  "pid": "758652",
+  "title": "Diamond Circle Cruise Ship Express Tour",
+  "price": 24990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "8 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 65.68678348222412,
+    "lng": -18.080023628053375
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/diving-in-silfra-from-reykjavik",
+  "pid": "967621",
+  "title": "Diving Silfra Tour with Pick Up",
+  "price": 43999.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "5 hours and 30 minutes",
+  "waypoints": []
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/diving-in-silfra-meet-on-location-in-thingvellir-national-park",
+  "pid": "967592",
+  "title": "Diving Silfra Tour - Meet on location",
+  "price": 35999.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "2 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.25611058609454,
+    "lng": -21.11611830603795
+   },
+   {
+    "name": "Diving in Silfra",
+    "lat": 64.25618592966033,
+    "lng": -21.1163343113378
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/diving-in-silfra-whale-watching-self-drive-tour",
+  "pid": "1570",
+  "title": "Reykjavík Whales & Diving",
+  "price": 49490.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "10 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.25643288843443,
+    "lng": -21.11644685268402
+   },
+   {
+    "name": "Diving in Silfra",
+    "lat": 64.2564764,
+    "lng": -21.1163438
+   },
+   {
+    "name": "Whale Watching in Faxaflói bay",
+    "lat": 64.19750822419005,
+    "lng": -22.346313376562488
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/dynjandi-waterfall-farm-tour-german-guidance-from-isafjordur",
+  "pid": "1163658",
+  "title": "Dynjandi Waterfall & Farm Tour from Isafjordur Port - German ",
+  "price": 17990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "3 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 66.06696400601435,
+    "lng": -23.11845855506595
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/dynjandi-waterfall-westfjords-tour-from-isafjordur",
+  "pid": "753707",
+  "title": "Dynjandi Waterfall & Farm Tour from Isafjordur Port",
+  "price": 17990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "3 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 66.06696400601435,
+    "lng": -23.11845855506595
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/evening-atv-tour-from-reykjavik",
+  "pid": "6979",
+  "title": "Northern Lights the Viking way - ATV Reykjavik Adventure",
+  "price": 46000.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "2 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.15648788274181,
+    "lng": -21.7134949
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/family-friendly-atv-safari-from-reykjavik",
+  "pid": "86",
+  "title": "1.5 Hour Reykjavik Peak ATV",
+  "price": 18000.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "1 hour and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.1347942,
+    "lng": -21.755479700000024
+   },
+   {
+    "name": "Safety & Suit up",
+    "lat": 64.1347942,
+    "lng": -21.7554797
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/flyover-iceland-golden-circle-tour",
+  "pid": "611718",
+  "title": "FlyOver Iceland and Golden Circle Tour",
+  "price": 15490.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "10 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.1452454,
+    "lng": -21.9104638
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/forest-lagoon-godafoss-waterfall-tour-akureyri",
+  "pid": "1203527",
+  "title": "Forest Lagoon & Goðafoss Waterfall Tour from Akureyri",
+  "price": 20990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "5 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 65.68677464757153,
+    "lng": -18.080050450143524
+   },
+   {
+    "name": "Godafoss Waterfall",
+    "lat": 65.6827782,
+    "lng": -17.5501919
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/geothermal-bread-baking-at-laugarvatn",
+  "pid": "5944",
+  "title": "Rye Bread Tour (Geothermal bakery)",
+  "price": 3500.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.21474854701695,
+    "lng": -20.73010600744018
+   },
+   {
+    "name": "Start",
+    "lat": 64.21463841962202,
+    "lng": -20.731543441925055
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/glacier-hike-from-skaftafell",
+  "pid": "179350",
+  "title": "Skaftafell Glacier Adventure",
+  "price": 23400.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "4 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.00289294051746,
+    "lng": -16.941943260314588
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/glacier-hiking-on-falljokull-glacier-in-vatnajokull-national-park",
+  "pid": "18496",
+  "title": "Glacier Encounter ",
+  "price": 16900.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "3 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 63.990276,
+    "lng": -16.896072
+   },
+   {
+    "name": "We expect you to arrive at our meeting location 15 minutes before the tour starts.",
+    "lat": 63.9906562,
+    "lng": -16.8969278
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/glacier-hiking-tour-on-solheimajokull-meet-on-location",
+  "pid": "13684",
+  "title": "Solheimajokull 3h Easy Level Glacier Hike",
+  "price": 15076.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "3 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 63.5135676,
+    "lng": -19.379539
+   },
+   {
+    "name": "Glacier hike on Sólheimajökull",
+    "lat": 63.53280598031152,
+    "lng": -19.369755041259737
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/glacier-lagoon-south-iceland",
+  "pid": "150518",
+  "title": "Glacier Lagoon (Jökulsárlón) & South Iceland Tour",
+  "price": 27990.0,
+  "currency": "ISK",
+  "rating": 4.77,
+  "reviews": 69,
+  "duration": "14 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14462926667481,
+    "lng": -21.910251664321095
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/glacier-snowmobiling-tour-from-reykjavik",
+  "pid": "719",
+  "title": "Glacier Snowmobiling from Reykjavík",
+  "price": 42990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "8 hours",
+  "waypoints": [
+   {
+    "name": "Reykjavík",
+    "lat": 64.1467440006767,
+    "lng": -21.934547674316377
+   },
+   {
+    "name": "Snowmobile base Camp Langjökull",
+    "lat": 64.49527345131042,
+    "lng": -19.927826177734346
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/godafoss-waterfall-tour-from-akureyri",
+  "pid": "859595",
+  "title": "Goðafoss Waterfall & Fjord Viewpoint from Akureyri",
+  "price": 13990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "3 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 65.68677464757153,
+    "lng": -18.080050450143524
+   },
+   {
+    "name": "Godafoss Waterfall",
+    "lat": 65.6827782,
+    "lng": -17.5501919
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-afternoon-tour",
+  "pid": "146056",
+  "title": "Golden Circle Afternoon Tour ",
+  "price": 10990.0,
+  "currency": "ISK",
+  "rating": 4.5,
+  "reviews": 2,
+  "duration": "8 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14467810197414,
+    "lng": -21.910265386104584
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-blue-lagoon",
+  "pid": "150553",
+  "title": "Golden Circle Small Group Tour and Blue Lagoon Transfers",
+  "price": 17900.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "11 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14462551369672,
+    "lng": -21.910234066351222
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-blue-lagoon-admission-northern-lights-tour",
+  "pid": "736690",
+  "title": " Golden Circle, Blue Lagoon & Northern Lights Small Group Tour with Admission",
+  "price": 41990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "15 hours",
+  "waypoints": []
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-blue-lagoon-admission-small-group-tour",
+  "pid": "150549",
+  "title": "Golden Circle & Blue Lagoon Small Group Tour with Admission Ticket",
+  "price": 31900.0,
+  "currency": "ISK",
+  "rating": 5.0,
+  "reviews": 22,
+  "duration": "11 hours",
+  "waypoints": []
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-day-tour",
+  "pid": "141931",
+  "title": "Grand Golden Circle Tour",
+  "price": 11990.0,
+  "currency": "ISK",
+  "rating": 4.66,
+  "reviews": 158,
+  "duration": "8 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14464358900995,
+    "lng": -21.910285433100512
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-fridheimar-small-group-tour",
+  "pid": "150545",
+  "title": "Golden Circle Small Group Tour with Friðheimar Farm Visit",
+  "price": 15490.0,
+  "currency": "ISK",
+  "rating": 4.57,
+  "reviews": 14,
+  "duration": "9 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14462811760896,
+    "lng": -21.91023352358411
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-laugaras-lagoon-small-group-tour-from-reykjavik",
+  "pid": "1012018",
+  "title": "Golden Circle & Laugarás Geothermal Lagoon Small Group Tour",
+  "price": 24990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "10 hours",
+  "waypoints": []
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-northern-lights-tour",
+  "pid": "670310",
+  "title": "Golden Circle & Northern Lights Tour",
+  "price": 17990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "12 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14464358900995,
+    "lng": -21.910285433100512
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-secret-lagoon",
+  "pid": "17050",
+  "title": "Golden Circle & Secret Lagoon Tour",
+  "price": 15990.0,
+  "currency": "ISK",
+  "rating": 4.83,
+  "reviews": 40,
+  "duration": "10 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14459390643324,
+    "lng": -21.910218870978156
+   },
+   {
+    "name": "Start of the Tour at 10-11 Kringlan",
+    "lat": 64.13207303030138,
+    "lng": -21.892876875061006
+   },
+   {
+    "name": "1. Stop at Gamla Laugin - Secret Lagoon 120 minutes",
+    "lat": 64.13826994530734,
+    "lng": -20.310909998077364
+   },
+   {
+    "name": "2. Stop at Geysir 60 minutes",
+    "lat": 64.30957212733955,
+    "lng": -20.301876318115205
+   },
+   {
+    "name": "3. Stop at Gullfoss Waterfall 45 minutes",
+    "lat": 64.32525562827378,
+    "lng": -20.129882347244234
+   },
+   {
+    "name": "4. Stop at Thingvellir National Park 25 minutes",
+    "lat": 64.25582817680626,
+    "lng": -21.1310007687988
+   },
+   {
+    "name": "Stop at Kerid Crater",
+    "lat": 63.9334611,
+    "lng": -21.0013833
+   },
+   {
+    "name": "End of tour at Skógarhlíð 10",
+    "lat": 64.13438065340182,
+    "lng": -21.920643102783174
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-secret-lagoon-northern-lights-tour",
+  "pid": "670307",
+  "title": "Golden Circle, Secret Lagoon & Northern Lights Tour",
+  "price": 21990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "14 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14459390643324,
+    "lng": -21.910218870978156
+   },
+   {
+    "name": "Start of the Tour at 10-11 Kringlan",
+    "lat": 64.13207303030138,
+    "lng": -21.892876875061006
+   },
+   {
+    "name": "1. Stop at Gamla Laugin - Secret Lagoon 120 minutes",
+    "lat": 64.13826994530734,
+    "lng": -20.310909998077364
+   },
+   {
+    "name": "2. Stop at Geysir 60 minutes",
+    "lat": 64.30957212733955,
+    "lng": -20.301876318115205
+   },
+   {
+    "name": "3. Stop at Gullfoss Waterfall 45 minutes",
+    "lat": 64.32525562827378,
+    "lng": -20.129882347244234
+   },
+   {
+    "name": "4. Stop at Thingvellir National Park 25 minutes",
+    "lat": 64.25582817680626,
+    "lng": -21.1310007687988
+   },
+   {
+    "name": "5. Northern Lights Tour",
+    "lat": 64.146582,
+    "lng": -21.9426354
+   },
+   {
+    "name": "End of tour at Skógarhlíð 10",
+    "lat": 64.13438065340182,
+    "lng": -21.920643102783174
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-sky-lagoon-pure-pass-small-group-tour",
+  "pid": "691950",
+  "title": "Golden Circle, Fridheimar & Sky Lagoon Small-Group Saman Pass Tour",
+  "price": 30930.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "11 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14462811760896,
+    "lng": -21.91023352358411
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/golden-circle-super-jeep-tour-langjokull-glacier-snowmobiling",
+  "pid": "3",
+  "title": " Pearl Tour - Golden Circle Super Jeep Tour & Snowmobiling",
+  "price": 56920.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "10 hours",
+  "waypoints": [
+   {
+    "name": "Reykjavík",
+    "lat": 64.146582,
+    "lng": -21.9426354
+   },
+   {
+    "name": "Þingvellir",
+    "lat": 64.2558284,
+    "lng": -21.1298615
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.31037189999999,
+    "lng": -20.3023605
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3270716,
+    "lng": -20.1199478
+   },
+   {
+    "name": "Langjökull",
+    "lat": 64.6561868,
+    "lng": -20.1531476
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/grand-golden-circle-tour-with-german-speaking-guide",
+  "pid": "1144737",
+  "title": "Grand Golden Circle Tour in German",
+  "price": 12990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "8 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.15611089537342,
+    "lng": -21.86490454563884
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/horse-riding-golden-circle-tour",
+  "pid": "767709",
+  "title": "Grand Golden Circle & Horse Riding Tour",
+  "price": 27990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "11 hours and 30 minutes",
+  "waypoints": []
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/horse-riding-puffin-watching-from-reykjavik",
+  "pid": "1866",
+  "title": "04F - Horses and Puffins ",
+  "price": 28250.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "8 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 63.98537160000001,
+    "lng": -21.1705166
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/horse-riding-tour-in-heidmork-red-lava-from-reykjavik",
+  "pid": "11737",
+  "title": "Red Lava Horse Riding Tour - Reykjavik",
+  "price": 18000.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "2 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.10022019799186,
+    "lng": -21.733731847607405
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/horseriding-and-hot-springs-tour-from-hveragerdi",
+  "pid": "848",
+  "title": "03C - Horses and Hot Springs",
+  "price": 23100.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "5 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 63.98537160000001,
+    "lng": -21.1705166
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/horseriding-tour-from-hveragerdi",
+  "pid": "731",
+  "title": "02A - The Heritage Tour",
+  "price": 18950.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "5 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 63.98537160000001,
+    "lng": -21.1705166
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/horseriding-tour-on-black-sand-beach-from-vik",
+  "pid": "26487",
+  "title": "Black Beach Riding Tour",
+  "price": 15000.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "1 hour",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 63.41689720110074,
+    "lng": -18.997002840042118
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/ice-cave-glacier-hiking-tour-from-skaftafell",
+  "pid": "35297",
+  "title": "Skaftafell Blue Ice Cave & Glacier Hike",
+  "price": 20541.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "4 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 63.910551046474374,
+    "lng": -16.72830422020722
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/ice-cave-super-jeep-tour-on-vatnajokull-glacier",
+  "pid": "5443",
+  "title": "Ice Cave Tour",
+  "price": 23900.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "4 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.04830463618546,
+    "lng": -16.178516149520874
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/iceland-glacier-lagoon-diamond-beach-tour-from-djupivogur-port",
+  "pid": "1108130",
+  "title": "Glacier Lagoon & Diamond Beach Tour From Djúpivogur Port",
+  "price": 29990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "7 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.65787005395394,
+    "lng": -14.282033488654248
+   },
+   {
+    "name": "Jökulsárlón Glacier Lagoon",
+    "lat": 64.04891669999999,
+    "lng": -16.1957725
+   },
+   {
+    "name": "Diamond Beach",
+    "lat": 64.04433399999999,
+    "lng": -16.1776622
+   },
+   {
+    "name": "Hvalnes",
+    "lat": 64.4023495,
+    "lng": -14.5402262
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/iceland-golden-circle-with-reykjavik-puffin-tour",
+  "pid": "1034613",
+  "title": "Grand Golden Circle & Puffin Watching Tour ",
+  "price": 17990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "10 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.15037800000002,
+    "lng": -21.9418951
+   },
+   {
+    "name": "Puffin Watching Boat tour from Reykjavík harbour",
+    "lat": 64.1503784,
+    "lng": -21.9419333
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/iceland-total-solar-eclipse-tour-from-isafjordur-with-dynjandi",
+  "pid": "1171465",
+  "title": "Total Solar Eclipse & Dynjandi Waterfall from Isafjordur Port",
+  "price": 29990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "3 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 66.06696400601435,
+    "lng": -23.11845855506595
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/katla-ice-cave-tour-from-vik",
+  "pid": "838155",
+  "title": "Vik to Katla Ice Cave Adventure: Explore Iceland's Frozen Wonders",
+  "price": 29900.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "3 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 63.4175378,
+    "lng": -19.0002394
+   },
+   {
+    "name": "Exploration from Vik to Katla Ice cave,  Discover Iceland's Frozen Marvels",
+    "lat": 63.41770150000001,
+    "lng": -19.0014614
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/lake-myvatn-volcanoes-godafoss-waterfall-tour-with-german-speaking-guide",
+  "pid": "1182999",
+  "title": "BT-Lake Myvatn, Hot-Springs & Godafoss Waterfall Tour from Akureyri - German",
+  "price": 21990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "6 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 65.68509159125095,
+    "lng": -18.078725438890167
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/landmannalaugar-iceland-highland-tour",
+  "pid": "689268",
+  "title": "Landmannalaugar Hiking, Nature Bath & Háifoss Tour",
+  "price": 27990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "13 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14462926667481,
+    "lng": -21.910251664321095
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/monster-truck-glacier-tour-and-ice-cave-on-langjokull-glacier-from-gullfoss",
+  "pid": "746649",
+  "title": "Ice Cave and Glacier Tour in Glacier Monster Truck from Gullfoss",
+  "price": 24900.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "4 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.32589449285928,
+    "lng": -20.13063265358506
+   },
+   {
+    "name": "Gullfoss Waterfall Meeting Point",
+    "lat": 64.327,
+    "lng": -20.123133
+   },
+   {
+    "name": "Langjökull Glacier Exploration",
+    "lat": 64.6561868,
+    "lng": -20.1531477
+   },
+   {
+    "name": "Return to Gullfoss Waterfall",
+    "lat": 64.327,
+    "lng": -20.123133
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/monster-truck-tour-on-langjokull-glacier-from-gullfoss",
+  "pid": "693108",
+  "title": "Red Glacier Monster Truck Tour - Unique Langjökull Glacier Tour from Gullfoss",
+  "price": 22900.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "4 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.3258828918549,
+    "lng": -20.130633115768433
+   },
+   {
+    "name": "Gullfoss Waterfall Meeting Point",
+    "lat": 64.32581,
+    "lng": -20.1306241
+   },
+   {
+    "name": "Langjökull Glacier Adventure",
+    "lat": 64.56477699999999,
+    "lng": -20.013793
+   },
+   {
+    "name": "Return to Gullfoss Waterfall",
+    "lat": 64.3252353,
+    "lng": -20.129885
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/myvatn-lake-godafoss-waterfall-tour-from-akureyri",
+  "pid": "755776",
+  "title": "Myvatn, Waterfall, Hot Springs & Volcanoes Tour from Akureyri",
+  "price": 21990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "6 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 65.6867746475718,
+    "lng": -18.080012899217316
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/myvatn-nature-baths-godafoss-waterfall-tour-from-akureyri",
+  "pid": "758866",
+  "title": "Godafoss Waterfall & Earth Lagoon (Myvatn Nature Baths) Tour with Admission",
+  "price": 28990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "6 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 65.68679209999999,
+    "lng": -18.0800451
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/northern-lights-tour",
+  "pid": "908220",
+  "title": "Northern Lights Bus Tour From Reykjavík - Paid Pickup Service - Bustravel.is",
+  "price": 9990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "4 hours",
+  "waypoints": []
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/perlan-ice-cave-wonders-of-iceland-museum-ticket",
+  "pid": "211379",
+  "title": "Perlan - Wonders of Iceland",
+  "price": 6890.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "3 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.1292219078799,
+    "lng": -21.919097900390625
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/perlan-museum-golden-circle-tour",
+  "pid": "26426",
+  "title": "Perlan Ice Cave, Northern Lights Planetarium & Golden Circle Tour",
+  "price": 14990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "10 hours",
+  "waypoints": [
+   {
+    "name": "Start the day with our Grand Golden Circle Tour",
+    "lat": 64.12890383185433,
+    "lng": -21.918154012817354
+   },
+   {
+    "name": "1. Stop at Kerið Volcanic Crater 15 minutes",
+    "lat": 64.04127849999999,
+    "lng": -20.8851466
+   },
+   {
+    "name": "2. Stop at Geysir 60 minutes",
+    "lat": 64.31037189999999,
+    "lng": -20.3023605
+   },
+   {
+    "name": "3. Stop at Gullfoss Waterfall 40 minutes",
+    "lat": 64.3270716,
+    "lng": -20.1199478
+   },
+   {
+    "name": "4. Stop at Þingvellir National Park 20 minutes",
+    "lat": 64.2821725,
+    "lng": -21.0764491
+   },
+   {
+    "name": "Visit at the Perlan Museum",
+    "lat": 64.1292126,
+    "lng": -21.9190507
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/seal-watching-sudavik-village-scenic-fjord-tour-from-isafjordur",
+  "pid": "1147454",
+  "title": "Westjords Seal Watching & Avalanche Memorial Tour from Isafjordur",
+  "price": 17990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "3 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 66.06696400601435,
+    "lng": -23.11845855506595
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snaefellsnes-peninsula-kirkjufell-small-group-tour",
+  "pid": "150631",
+  "title": "Snæfellsnes Peninsula Small Group Tour",
+  "price": 19490.0,
+  "currency": "ISK",
+  "rating": 4.63,
+  "reviews": 16,
+  "duration": "11 hours",
+  "waypoints": []
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snaefellsnes-peninsula-kirkjufell-tour",
+  "pid": "150532",
+  "title": "Snæfellsnes Peninsula Tour",
+  "price": 17490.0,
+  "currency": "ISK",
+  "rating": 4.66,
+  "reviews": 85,
+  "duration": "11 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14462380807329,
+    "lng": -21.910188919815027
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snaefellsnes-peninsula-tour-from-grundarfjordur-port",
+  "pid": "846393",
+  "title": "Snæfellsnes Peninsula Tour from Grundarfjordur Port",
+  "price": 24990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "5 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.9261291,
+    "lng": -23.2533497
+   },
+   {
+    "name": "Pick-up",
+    "lat": 64.9251567,
+    "lng": -23.2612518
+   },
+   {
+    "name": "Kirkjufell",
+    "lat": 64.9416667,
+    "lng": -23.3069444
+   },
+   {
+    "name": "Djúpalónssandur",
+    "lat": 64.74929709999999,
+    "lng": -23.9121817
+   },
+   {
+    "name": "Lóndrangar",
+    "lat": 64.73252699999999,
+    "lng": -23.78460949999999
+   },
+   {
+    "name": "Arnarstapi",
+    "lat": 64.7695169,
+    "lng": -23.6224317
+   },
+   {
+    "name": "Búðir",
+    "lat": 64.8229594,
+    "lng": -23.3849762
+   },
+   {
+    "name": "Drop-off",
+    "lat": 64.9251567,
+    "lng": -23.2612518
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snorkeling-in-silfra-from-reykjavik",
+  "pid": "966432",
+  "title": "Snorkeling Silfra day tour with pick up",
+  "price": 27999.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "5 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Snorkeling in Silfra",
+    "lat": 64.2561079320488,
+    "lng": -21.116011830001362
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snorkeling-in-silfra-meet-on-location-in-thingvellir-national-park",
+  "pid": "966358",
+  "title": "Snorkeling Silfra tour - meet on location",
+  "price": 19999.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "2 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.25617956744526,
+    "lng": -21.11618936061859
+   },
+   {
+    "name": "Snorkeling in Silfra",
+    "lat": 64.2561079320488,
+    "lng": -21.116011830001362
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snorkeling-silfra-whale-watching-self-drive",
+  "pid": "1567",
+  "title": "Reykjavík Whales & Snorkeling",
+  "price": 37490.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "10 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.25533393752117,
+    "lng": -21.116924285888672
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snowmobiling-ice-cave-at-langjokull-glacier-from-reykjavik",
+  "pid": "821704",
+  "title": "Glacier Snowmobiling & Ice Cave from Reykjavík",
+  "price": 49990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "10 hours",
+  "waypoints": []
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/snowmobiling-ice-cave-at-langjokull-glacier-from-skjol",
+  "pid": "14903",
+  "title": "Glacier Snowmobiling & Ice Cave from Geysir Area",
+  "price": 38990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "5 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.30952535407528,
+    "lng": -20.301897525787354
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/south-coast-katla-ice-cave-from-reykjavik",
+  "pid": "820457",
+  "title": "South Coast & Katla Ice Cave",
+  "price": 35990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "11 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.1443797,
+    "lng": -21.9104986
+   },
+   {
+    "name": "Reykjavík",
+    "lat": 64.1469868,
+    "lng": -21.9407552
+   },
+   {
+    "name": "Hvolsvöllur",
+    "lat": 63.7511132,
+    "lng": -20.2229199
+   },
+   {
+    "name": "Katla Ice Cave",
+    "lat": 63.41720319999999,
+    "lng": -19.0005386
+   },
+   {
+    "name": "Vík",
+    "lat": 63.41765049999999,
+    "lng": -18.9974395
+   },
+   {
+    "name": "Skógafoss Waterfall",
+    "lat": 63.532032,
+    "lng": -19.511396
+   },
+   {
+    "name": "Seljalandsfoss Waterfall",
+    "lat": 63.61562319999999,
+    "lng": -19.9885688
+   },
+   {
+    "name": "Reykjavík",
+    "lat": 64.1469868,
+    "lng": -21.9407552
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/south-iceland-glacier-lagoon-with-boat-ride",
+  "pid": "14949",
+  "title": "Glacier Lagoon (Jökulsárlón) & South Coast Tour with boat ride",
+  "price": 34690.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "14 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.144594012887,
+    "lng": -21.910131577246148
+   },
+   {
+    "name": "Start of the Tour after pick-up at 10-11 Kringlan",
+    "lat": 64.13207303030138,
+    "lng": -21.892876875061006
+   },
+   {
+    "name": "1. Stop at Hvolsvöllur 15 minutes",
+    "lat": 63.749696379894736,
+    "lng": -20.234048616546602
+   },
+   {
+    "name": "3. Stop in Freysnes 40 minutes",
+    "lat": 63.9907568786552,
+    "lng": -16.896157514709557
+   },
+   {
+    "name": "4. Stop at Glacier Lagoon and Diamond Beach 90 minutes",
+    "lat": 64.04757029507886,
+    "lng": -16.178741705078096
+   },
+   {
+    "name": "5. Stop in Vík í Mýrdal 45 minutes",
+    "lat": 63.41783367246333,
+    "lng": -19.001004945892305
+   },
+   {
+    "name": "6. Stop at Seljalandsfoss Waterfall 20 minutes",
+    "lat": 63.61591465355375,
+    "lng": -19.992456686157198
+   },
+   {
+    "name": "End of the tour at Skógarhlíð 10",
+    "lat": 64.13425427738224,
+    "lng": -21.920589458602876
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/south-iceland-northern-lights-tour",
+  "pid": "420902",
+  "title": "South Coast & Northern Lights Tour",
+  "price": 21990.0,
+  "currency": "ISK",
+  "rating": 4.0,
+  "reviews": 1,
+  "duration": "14 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14457017953684,
+    "lng": -21.910215121792817
+   },
+   {
+    "name": "Start of the Tour from Reykjavík",
+    "lat": 64.13207303030138,
+    "lng": -21.892876875061006
+   },
+   {
+    "name": "1. Hvolsvöllur",
+    "lat": 63.749696379894736,
+    "lng": -20.234048616546602
+   },
+   {
+    "name": "2. Skógafoss Waterfall",
+    "lat": 63.52942991108653,
+    "lng": -19.513092291015596
+   },
+   {
+    "name": "3. Vík í Mýrdal",
+    "lat": 63.41783367246333,
+    "lng": -19.001004945892305
+   },
+   {
+    "name": "4. Reynisfjara Black Sand Beach",
+    "lat": 63.40478172673016,
+    "lng": -19.0470745679321
+   },
+   {
+    "name": "5. Sólheimajökull Glacier",
+    "lat": 63.532146100178956,
+    "lng": -19.370098364013643
+   },
+   {
+    "name": "6. Seljalandsfoss Waterfall",
+    "lat": 63.61591465355375,
+    "lng": -19.992456686157198
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/south-iceland-sky-lagoon-pure-pass",
+  "pid": "696446",
+  "title": "South Coast & Sky Lagoon Saman Pass Tour",
+  "price": 32390.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "13 hours",
+  "waypoints": [
+   {
+    "name": "",
+    "lat": 63.532032,
+    "lng": -19.511396
+   },
+   {
+    "name": "",
+    "lat": 63.534584,
+    "lng": -19.356466
+   },
+   {
+    "name": "",
+    "lat": 63.4197,
+    "lng": -19.00831
+   },
+   {
+    "name": "",
+    "lat": 63.40544,
+    "lng": -19.072105
+   },
+   {
+    "name": "",
+    "lat": 63.61563,
+    "lng": -19.989277
+   },
+   {
+    "name": "",
+    "lat": 64.11654,
+    "lng": -21.947132
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/south-iceland-small-group-tour",
+  "pid": "150541",
+  "title": "South Coast Small Group Tour: Waterfalls, Glacier & Black Sand Beach ",
+  "price": 17990.0,
+  "currency": "ISK",
+  "rating": 4.47,
+  "reviews": 32,
+  "duration": "10 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14465062254666,
+    "lng": -21.910258413416614
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/south-iceland-tour",
+  "pid": "150514",
+  "title": "South Coast Waterfalls, Glacier & Black Sand Beach Tour",
+  "price": 15990.0,
+  "currency": "ISK",
+  "rating": 4.73,
+  "reviews": 93,
+  "duration": "10 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.14457017953684,
+    "lng": -21.910215121792817
+   },
+   {
+    "name": "Start of the Tour from Reykjavík",
+    "lat": 64.13207303030138,
+    "lng": -21.892876875061006
+   },
+   {
+    "name": "1. Hvolsvöllur",
+    "lat": 63.749696379894736,
+    "lng": -20.234048616546602
+   },
+   {
+    "name": "2. Skógafoss Waterfall",
+    "lat": 63.52942991108653,
+    "lng": -19.513092291015596
+   },
+   {
+    "name": "3. Vík í Mýrdal",
+    "lat": 63.41783367246333,
+    "lng": -19.001004945892305
+   },
+   {
+    "name": "4. Reynisfjara Black Sand Beach",
+    "lat": 63.40478172673016,
+    "lng": -19.0470745679321
+   },
+   {
+    "name": "5. Sólheimajökull Glacier",
+    "lat": 63.532146100178956,
+    "lng": -19.370098364013643
+   },
+   {
+    "name": "6. Seljalandsfoss Waterfall",
+    "lat": 63.61591465355375,
+    "lng": -19.992456686157198
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/volcano-hike-and-blue-lagoon-admission-tour",
+  "pid": "621773",
+  "title": "Volcano Eruption Site & Blue Lagoon Admission Tour",
+  "price": 32990.0,
+  "currency": "ISK",
+  "rating": 4.67,
+  "reviews": 3,
+  "duration": "9 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.1443776,
+    "lng": -21.9105573
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/volcano-hike-and-northern-lights",
+  "pid": "670309",
+  "title": "Volcano Hike & Northern Lights Tour",
+  "price": 21990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "11 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.144342,
+    "lng": -21.9096322
+   },
+   {
+    "name": "",
+    "lat": 63.94405,
+    "lng": -21.97706
+   },
+   {
+    "name": "",
+    "lat": 63.8933333,
+    "lng": -22.2697222
+   },
+   {
+    "name": "",
+    "lat": 63.910545,
+    "lng": -22.419147
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/volcano-hike-and-reykjanes-tour",
+  "pid": "620679",
+  "title": "Hike to Volcanic Eruption Sites & Reykjanes Tour",
+  "price": 15990.0,
+  "currency": "ISK",
+  "rating": 4.44,
+  "reviews": 18,
+  "duration": "9 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.1443797,
+    "lng": -21.9104986
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/westman-islands-puffins-volcano-elephant-rock-tour",
+  "pid": "1175162",
+  "title": "Westman Islands Puffins, Volcano & Elephant Rock Tour",
+  "price": 14990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "2 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 63.444271315638495,
+    "lng": -20.268734807697776
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-puffin-watching-boat-tour-from-reykjavik",
+  "pid": "1689",
+  "title": "Whales & Puffins",
+  "price": 19540.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "4 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.15034349999999,
+    "lng": -21.9433002
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-puffin-watching-rib-safari-tour-from-husavik",
+  "pid": "6098",
+  "title": "Big Whales & Puffins RIB boat tour",
+  "price": 23990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "2 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 66.04620299999999,
+    "lng": -17.343602
+   },
+   {
+    "name": "Whale Watching",
+    "lat": 66.04629007780709,
+    "lng": -17.343490927014148
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-atv-from-reykjavik",
+  "pid": "1603",
+  "title": "Reykjavík Whales & ATV",
+  "price": 48375.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "8 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.1347942,
+    "lng": -21.7554797
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-boat-tour-from-akureyri-north-iceland",
+  "pid": "10973",
+  "title": "Akureyri Classic Whale Watching",
+  "price": 14500.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "3 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 65.68328695083585,
+    "lng": -18.085854770434626
+   },
+   {
+    "name": "Check-in and boarding",
+    "lat": 65.68326994357109,
+    "lng": -18.085588216781616
+   },
+   {
+    "name": "Whale Watching from Akureyri",
+    "lat": 66.0685282,
+    "lng": -18.4163704
+   },
+   {
+    "name": "Return to harbour",
+    "lat": 65.6825509,
+    "lng": -18.0906858
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-boat-tour-from-reykjavik-harbour",
+  "pid": "1292",
+  "title": "Reykjavík Classic Whale Watching ",
+  "price": 14500.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "3 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.1513796,
+    "lng": -21.9445215
+   },
+   {
+    "name": "Check-in",
+    "lat": 64.15138187256372,
+    "lng": -21.944423942327877
+   },
+   {
+    "name": "Wildlife Exhibiton & Boarding",
+    "lat": 64.15193170742981,
+    "lng": -21.94197177886963
+   },
+   {
+    "name": "Classic Whale Watching",
+    "lat": 64.19592705762629,
+    "lng": -22.14091718750001
+   },
+   {
+    "name": "Disembarking",
+    "lat": 64.15108128442633,
+    "lng": -21.943647054760458
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-buggy-from-reykjavik",
+  "pid": "7689",
+  "title": "Reykjavík Whales & Buggy",
+  "price": 52375.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "8 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.1347942,
+    "lng": -21.7554797
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-golden-circle-tour",
+  "pid": "767460",
+  "title": "Grand Golden Circle & Whale Watching Tour ",
+  "price": 22990.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "11 hours and 30 minutes",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.150443,
+    "lng": -21.941953
+   },
+   {
+    "name": "Whale Watching Boat tour from Reykjavík harbour",
+    "lat": 64.150443,
+    "lng": -21.941953
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-northern-lights-tour-from-reykjavik",
+  "pid": "37404",
+  "title": "Reykjavík Whales & Northern Lights",
+  "price": 25100.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "5 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.1513961,
+    "lng": -21.9444449
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-rib-boat-tour-from-reykjavik",
+  "pid": "20499",
+  "title": "RIB Express",
+  "price": 24490.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "2 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.15037800000002,
+    "lng": -21.9418951
+   },
+   {
+    "name": "Rib Express",
+    "lat": 64.15166768465662,
+    "lng": -21.943597447532625
+   }
+  ]
+ },
+ {
+  "url": "https://bustravel.is/iceland-tours/whale-watching-tour-whales-of-iceland-museum-from-reykjavik",
+  "pid": "5063",
+  "title": "Whale Watching & Whales of Iceland Museum",
+  "price": 16590.0,
+  "currency": "ISK",
+  "rating": 0.0,
+  "reviews": 0,
+  "duration": "4 hours",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.15034349999999,
+    "lng": -21.9433002
+   }
+  ]
+ }
+]
