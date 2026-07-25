@@ -425,15 +425,28 @@ function addLayers(){
 }
 
 function focusNo(){ return hoverNo!=null?hoverNo:pinnedNo; }
+function stopsOnTour(no){ const t=TOURS.find(x=>x.no===no); if(!t)return []; const idx=[]; STOPS.forEach((s,i)=>{ if(tourHitsStop(t,s)) idx.push(i); }); return idx; }
 function updateRoutePaint(){
   if(!map.getLayer("routes-line")) return;
   const f=focusNo();
   if(f!=null){
     map.setPaintProperty("routes-line","line-opacity",["case",["==",["get","no"],f],1,0.08]);
     map.setPaintProperty("routes-line","line-width",["case",["==",["get","no"],f],5,2.5]);
+    // fade stops (+ labels) not on the focused route so its own stops stand out
+    const on=["in",["get","i"],["literal",stopsOnTour(f)]];
+    if(map.getLayer("stops-dot")){
+      map.setPaintProperty("stops-dot","circle-opacity",["case",on,1,0.12]);
+      map.setPaintProperty("stops-dot","circle-stroke-opacity",["case",on,1,0.12]);
+    }
+    if(map.getLayer("stops-label")) map.setPaintProperty("stops-label","text-opacity",["case",on,1,0.15]);
   }else{
     map.setPaintProperty("routes-line","line-opacity",stopFilters.length?0.55:0.85);
     map.setPaintProperty("routes-line","line-width",3);
+    if(map.getLayer("stops-dot")){
+      map.setPaintProperty("stops-dot","circle-opacity",0.96);
+      map.setPaintProperty("stops-dot","circle-stroke-opacity",1);
+    }
+    if(map.getLayer("stops-label")) map.setPaintProperty("stops-label","text-opacity",1);
   }
 }
 function applyFilter(){

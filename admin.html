@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>冰岛一日游 · 管理后台</title>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <style>
   :root{
     --bg:#e7edf0; --panel:#fff; --ink:#0e1620; --ink2:#48555f; --muted:#8593a0;
@@ -75,6 +77,11 @@
   .f.full{grid-column:1/-1}
   .f label{font-size:11px;color:var(--muted);font-weight:700}
   .f input,.f select{padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink)}
+  .emap{height:300px;border-radius:12px;overflow:hidden;margin-bottom:14px;border:1px solid var(--line)}
+  .emap .maplibregl-ctrl-attrib{font-size:9px}
+  .wpmk{width:23px;height:23px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.45);cursor:grab}
+  .maphint{font-size:11.5px;color:var(--muted);margin:-8px 0 12px}
   .wps{margin-top:12px} .wps .hh{font-size:12px;color:var(--muted);font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
   .wp{display:grid;grid-template-columns:1fr 90px 90px 30px;gap:6px;margin-bottom:6px}
   .wp input{padding:7px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font-size:12.5px}
@@ -128,7 +135,10 @@
         <div class="count" id="count"></div>
         <div class="list" id="list"></div>
       </div>
-      <div class="card editor" id="editor"><div class="empty">← 从左侧选择一条路线开始编辑</div></div>
+      <div class="card editor">
+        <div id="editorMap" class="emap hidden"></div>
+        <div id="editorContent"><div class="empty">← 从左侧选择一条路线开始编辑</div></div>
+      </div>
     </div>
   </div>
 </div>
@@ -244,25 +254,84 @@ $("search").addEventListener("input", renderList);
 function esc(s){ return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 
 // ---------- editor ----------
+// ---- live editor map (MapLibre) ----
+let emap=null, emarkers=[], mapReady=false;
+function ensureMap(){
+  if(emap) return;
+  emap=new maplibregl.Map({container:"editorMap",style:"https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",center:[-19,64.9],zoom:5,attributionControl:{compact:true}});
+  emap.addControl(new maplibregl.NavigationControl({showCompass:false}),"top-right");
+  // click empty map -> add a waypoint at that point
+  emap.on("click",e=>{
+    if(!sel) return;
+    addWpRow({name:"新途径点",lat:+e.lngLat.lat.toFixed(4),lng:+e.lngLat.lng.toFixed(4)});
+    drawRoute(false);
+  });
+  // add the line source/layer once the style is ready (poll: robust if 'load' is slow)
+  (function trySetup(){
+    if(emap.isStyleLoaded()){
+      if(!emap.getSource("er")){
+        emap.addSource("er",{type:"geojson",data:{type:"Feature",geometry:{type:"LineString",coordinates:[]}}});
+        emap.addLayer({id:"er-line",type:"line",source:"er",layout:{"line-cap":"round","line-join":"round"},paint:{"line-color":"#0e7c86","line-width":3,"line-opacity":.85}});
+      }
+      mapReady=true; drawLineOnly();
+    } else setTimeout(trySetup,180);
+  })();
+}
+function readWps(){
+  return [...document.querySelectorAll("#wpList .wp")].map(row=>({
+    name: row.querySelector('[data-wk="name"]').value,
+    lat: parseFloat(row.querySelector('[data-wk="lat"]').value),
+    lng: parseFloat(row.querySelector('[data-wk="lng"]').value),
+  }));
+}
+function lineData(wps){ return {type:"Feature",geometry:{type:"LineString",coordinates:wps.filter(w=>isFinite(w.lat)&&isFinite(w.lng)).map(w=>[w.lng,w.lat])}}; }
+function drawLineOnly(){ if(emap&&emap.getSource&&emap.getSource("er")) emap.getSource("er").setData(lineData(readWps())); }
+function drawRoute(fit){
+  if(!emap) return;
+  const wps=readWps().filter(w=>isFinite(w.lat)&&isFinite(w.lng));
+  drawLineOnly();                                  // line (only if style ready)
+  emarkers.forEach(m=>m.remove()); emarkers=[];    // markers work without the style
+  const rows=[...document.querySelectorAll("#wpList .wp")];
+  rows.forEach((row,i)=>{
+    const lat=parseFloat(row.querySelector('[data-wk="lat"]').value), lng=parseFloat(row.querySelector('[data-wk="lng"]').value);
+    if(!isFinite(lat)||!isFinite(lng)) return;
+    const el=document.createElement("div"); el.className="wpmk"; el.textContent=i+1;
+    el.title=row.querySelector('[data-wk="name"]').value||("点 "+(i+1));
+    const mk=new maplibregl.Marker({element:el,draggable:true}).setLngLat([lng,lat]).addTo(emap);
+    mk.on("dragend",()=>{ const ll=mk.getLngLat();
+      row.querySelector('[data-wk="lat"]').value=(+ll.lat.toFixed(4));
+      row.querySelector('[data-wk="lng"]').value=(+ll.lng.toFixed(4));
+      drawLineOnly();
+    });
+    emarkers.push(mk);
+  });
+  if(fit && wps.length){ const b=new maplibregl.LngLatBounds(); wps.forEach(w=>b.extend([w.lng,w.lat])); emap.fitBounds(b,{padding:45,maxZoom:10,duration:0}); }
+}
+function newRow(w){
+  const row=document.createElement("div"); row.className="wp";
+  row.innerHTML=`<input data-wk="name" value="${esc(w.name||"")}" placeholder="站点名">
+    <input data-wk="lat" value="${w.lat??""}" placeholder="lat" class="tnum">
+    <input data-wk="lng" value="${w.lng??""}" placeholder="lng" class="tnum">
+    <button class="x" title="删除">×</button>`;
+  row.querySelector(".x").addEventListener("click",()=>{ row.remove(); drawRoute(false); });
+  row.querySelectorAll('[data-wk="lat"],[data-wk="lng"]').forEach(inp=> inp.addEventListener("input", drawRoute.bind(null,false)));
+  row.querySelector('[data-wk="name"]').addEventListener("input",()=>drawRoute(false));
+  return row;
+}
+function addWpRow(w){ $("wpList").appendChild(newRow(w)); }
+
 function openEditor(id){
   sel = TOURS.find(t=>t._id===id); if(!sel) return; renderList();
   const t=sel;
-  const field=(k,label,type="text")=>`<div class="f"><label>${label}</label><input data-k="${k}" type="${type}" value="${esc(String(t[k]??""))}"></div>`;
-  const wpRows=(t.waypoints||[]).map((w,i)=>`
-    <div class="wp" data-i="${i}">
-      <input data-wk="name" value="${esc(w.name||"")}" placeholder="站点名">
-      <input data-wk="lat" value="${w.lat??""}" placeholder="lat" class="tnum">
-      <input data-wk="lng" value="${w.lng??""}" placeholder="lng" class="tnum">
-      <button class="x" title="删除">×</button>
-    </div>`).join("");
-  $("editor").innerHTML = `
+  $("editorMap").classList.remove("hidden");
+  $("editorContent").innerHTML = `
     <div class="eh">
       <span class="dot" style="width:12px;height:12px;border-radius:50%;background:${OPS[t.operator]?.c}"></span>
       <b style="font-size:15px">${esc(t.short||t.name)}</b>
       <span class="id">${t._id}</span>
     </div>
     <div class="fgrid">
-      <div class="f full">${''}<label>短名 short</label><input data-k="short" value="${esc(t.short||"")}"></div>
+      <div class="f full"><label>短名 short</label><input data-k="short" value="${esc(t.short||"")}"></div>
       <div class="f full"><label>全名 name</label><input data-k="name" value="${esc(t.name||"")}"></div>
       <div class="f full"><label>中文名 name_zh</label><input data-k="name_zh" value="${esc(t.name_zh||"")}"></div>
       <div class="f"><label>价格(ISK)</label><input data-k="price" type="number" value="${t.price??""}"></div>
@@ -276,8 +345,8 @@ function openEditor(id){
       <div class="f full"><label>原网址 url</label><input data-k="url" value="${esc(t.url||"")}"></div>
     </div>
     <div class="wps">
-      <div class="hh">途径点 waypoints <button class="btn ghost sm" id="addWp">+ 添加</button></div>
-      <div id="wpList">${wpRows}</div>
+      <div class="hh">途径点 waypoints(拖动地图上的标记可移动 · 点地图空白处添加) <button class="btn ghost sm" id="addWp">+ 添加</button></div>
+      <div id="wpList"></div>
     </div>
     <div class="eactions">
       <button class="btn" id="saveBtn">💾 保存</button>
@@ -286,24 +355,24 @@ function openEditor(id){
       <button class="btn danger sm" id="delBtn">删除此路线</button>
     </div>
     ${t.src?`<div class="src">来源 src: ${esc(JSON.stringify(t.src))}</div>`:""}`;
-  $("addWp").addEventListener("click", ()=>{ (sel.waypoints=sel.waypoints||[]).push({name:"",lat:0,lng:0}); openEditor(id); });
-  $("wpList").querySelectorAll(".wp .x").forEach(x=> x.addEventListener("click", e=>{ const i=+e.target.closest(".wp").dataset.i; sel.waypoints.splice(i,1); openEditor(id); }));
+  (t.waypoints||[]).forEach(w=> addWpRow(w));
+  $("addWp").addEventListener("click", ()=>{ addWpRow({name:"",lat:"",lng:""}); });
   $("saveBtn").addEventListener("click", save);
   $("delBtn").addEventListener("click", del);
+  ensureMap();
+  emap.resize(); drawRoute(true);
 }
 
 function collect(){
   const t={ ...sel };
-  $("editor").querySelectorAll("[data-k]").forEach(el=>{
+  $("editorContent").querySelectorAll("[data-k]").forEach(el=>{
     let k=el.dataset.k, v=el.value;
     if(["price","rating","hours"].includes(k)) v = v===""?null:Number(v);
     if(k==="vip") v = v==="true";
     t[k]=v;
   });
-  t.waypoints = [...$("editor").querySelectorAll(".wp")].map(wp=>{
-    const g=k=>wp.querySelector(`[data-wk="${k}"]`).value;
-    return { name:g("name"), lat:Number(g("lat")), lng:Number(g("lng")) };
-  }).filter(w=>w.name || (w.lat&&w.lng));
+  t.waypoints = readWps().filter(w=> w.name || (isFinite(w.lat)&&isFinite(w.lng)))
+    .map(w=>({name:w.name, lat:w.lat, lng:w.lng}));
   delete t._id;
   return t;
 }
@@ -323,7 +392,8 @@ async function del(){
   try{
     await deleteDoc(doc(db,"tours",sel._id));
     TOURS=TOURS.filter(x=>x._id!==sel._id); sel=null;
-    $("editor").innerHTML='<div class="empty">已删除。← 选择另一条路线</div>'; renderList(); toast("已删除");
+    $("editorMap").classList.add("hidden");
+    $("editorContent").innerHTML='<div class="empty">已删除。← 选择另一条路线</div>'; renderList(); toast("已删除");
   }catch(e){ toast("删除失败:"+(e.code||e.message)); }
 }
 </script>
