@@ -1,0 +1,923 @@
+[
+ {
+  "name": "Solheimajokull Glacier Hike (Small Group)",
+  "name_zh": "冰川徒步8人小团",
+  "price": null,
+  "currency": "ISK",
+  "duration_hours": 4,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Solheimajokull",
+    "zh": "索尔黑马冰川"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Meet-on-site 4h glacier hike at Solheimajokull; no tour price listed (2000 ISK is only gear rental).",
+  "_i": 0
+ },
+ {
+  "name": "Glacier Lagoon & Diamond Beach Day Tour",
+  "name_zh": "冰岛钻石沙滩&冰河湖中文一日精品团",
+  "price": null,
+  "currency": "ISK",
+  "duration_hours": 14.5,
+  "region": "South Coast",
+  "stops": [
+   {
+    "name": "Reykjavik",
+    "zh": "雷克雅未克"
+   },
+   {
+    "name": "Skogafoss",
+    "zh": "斯科加瀑布"
+   },
+   {
+    "name": "Diamond Beach",
+    "zh": "钻石沙滩"
+   },
+   {
+    "name": "Jokulsarlon",
+    "zh": "杰古沙龙冰河湖"
+   },
+   {
+    "name": "Reynisfjara",
+    "zh": "黑沙滩"
+   },
+   {
+    "name": "Vik",
+    "zh": "维克"
+   },
+   {
+    "name": "Seljalandsfoss",
+    "zh": "塞里雅兰瀑布"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Chinese-guided South Coast tour; no price on page. Optional paid glacier-lagoon boat. Reynisfjara from title's \"Black Sand Beach\".",
+  "_i": 1
+ },
+ {
+  "name": "Djupivogur: Jokulsarlon & Diamond Beach Cruise Tour",
+  "name_zh": "",
+  "price": null,
+  "currency": "ISK",
+  "duration_hours": 6.5,
+  "region": "East Iceland",
+  "stops": [
+   {
+    "name": "Djupivogur"
+   },
+   {
+    "name": "Eystrahorn"
+   },
+   {
+    "name": "Jokulsarlon",
+    "zh": "杰古沙龙冰湖"
+   },
+   {
+    "name": "Diamond Beach",
+    "zh": "钻石沙滩"
+   },
+   {
+    "name": "Hvalnes Lighthouse"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Cruise shore excursion departing Djupivogur Port; no price shown on page. Return stops (Eystrahorn outbound, Hvalnes on return) named explicitly.",
+  "_i": 2
+ },
+ {
+  "name": "Golden Circle & Lagoon",
+  "name_zh": "冰岛黄金圈+可选小众温泉中文一日精品团",
+  "price": null,
+  "currency": "ISK",
+  "duration_hours": 10,
+  "region": "Golden Circle",
+  "stops": [
+   {
+    "name": "Reykjavik",
+    "zh": "雷克雅未克"
+   },
+   {
+    "name": "Thingvellir",
+    "zh": "Þingvellir 国家公园"
+   },
+   {
+    "name": "Kerid",
+    "zh": "Kerið 火山口"
+   },
+   {
+    "name": "Bruarfoss",
+    "zh": "Brúarfoss 瀑布"
+   },
+   {
+    "name": "Geysir",
+    "zh": "Geysir 地热区"
+   },
+   {
+    "name": "Gullfoss",
+    "zh": "Gullfoss 黄金瀑布"
+   },
+   {
+    "name": "Laugaras",
+    "zh": "Laugarás Lagoon 温泉"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Chinese-guided Golden Circle day tour; stops in described order; no price shown on page.",
+  "_i": 3
+ },
+ {
+  "name": "South Coast, Diamond Beach & Glacier Lagoon",
+  "name_zh": "冰岛南岸钻石沙滩&冰河湖中文一日团",
+  "price": null,
+  "currency": "ISK",
+  "duration_hours": 14.5,
+  "region": "South Coast",
+  "stops": [
+   {
+    "name": "Reykjavik",
+    "zh": "雷克雅未克"
+   },
+   {
+    "name": "Seljalandsfoss",
+    "zh": "塞里雅兰瀑布"
+   },
+   {
+    "name": "Skogafoss",
+    "zh": "斯科加瀑布"
+   },
+   {
+    "name": "Reynisfjara",
+    "zh": "黑沙滩"
+   },
+   {
+    "name": "Vik",
+    "zh": "维克"
+   },
+   {
+    "name": "Jokulsarlon",
+    "zh": "冰河湖"
+   },
+   {
+    "name": "Diamond Beach",
+    "zh": "钻石沙滩"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Chinese-guided South Coast day tour; no price shown on page (currency defaulted to ISK). Black Sand Beach (Reynisfjara) named in header subtitle.",
+  "_i": 4
+ },
+ {
+  "name": "Glacier Hike & Blue Ice Experience",
+  "name_zh": "",
+  "price": null,
+  "currency": "ISK",
+  "duration_hours": 5,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Jokulsarlon",
+    "zh": ""
+   },
+   {
+    "name": "Vatnajokull",
+    "zh": ""
+   }
+  ],
+  "confidence": "high",
+  "notes": "Super Jeep glacier hike / blue ice tour departing from Jokulsarlon onto Vatnajokull; no price shown on page.",
+  "_i": 5
+ },
+ {
+  "name": "Skaftafell Glacier Hike & Photoshoot (Falljokull)",
+  "name_zh": "",
+  "price": null,
+  "currency": "ISK",
+  "duration_hours": 3,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Skaftafell"
+   },
+   {
+    "name": "Falljokull"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Meet-on-location glacier hike/photoshoot on Falljokull in Skaftafell; no base price shown (optional Reykjavik pickup +175,000 ISK makes it ~15h private).",
+  "_i": 6
+ },
+ {
+  "name": "Glacier Hike, South Coast Waterfalls & Black Sand Beach",
+  "name_zh": "",
+  "price": null,
+  "currency": "ISK",
+  "duration_hours": 11,
+  "region": "South Coast",
+  "stops": [
+   {
+    "name": "Reykjavik"
+   },
+   {
+    "name": "Seljalandsfoss"
+   },
+   {
+    "name": "Skogafoss"
+   },
+   {
+    "name": "Solheimajokull"
+   },
+   {
+    "name": "Reynisfjara"
+   }
+  ],
+  "confidence": "high",
+  "notes": "South Coast day tour with Solheimajokull glacier hike; ordered by driving route from Reykjavik. No price shown on page.",
+  "_i": 7
+ },
+ {
+  "name": "Golden Circle Day Tour with Local Surprise",
+  "name_zh": "",
+  "price": null,
+  "currency": "ISK",
+  "duration_hours": 9,
+  "region": "Golden Circle",
+  "stops": [
+   {
+    "name": "Reykjavik"
+   },
+   {
+    "name": "Thingvellir"
+   },
+   {
+    "name": "Geysir"
+   },
+   {
+    "name": "Gullfoss"
+   },
+   {
+    "name": "Kerid"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Classic Golden Circle loop from Reykjavik; page lists Thingvellir, Geysir, Gullfoss, Kerid. No price shown.",
+  "_i": 8
+ },
+ {
+  "name": "Golden Circle Day Tour with Local Surprise",
+  "name_zh": "",
+  "price": null,
+  "currency": "ISK",
+  "duration_hours": 9,
+  "region": "Golden Circle",
+  "stops": [
+   {
+    "name": "Reykjavik"
+   },
+   {
+    "name": "Thingvellir"
+   },
+   {
+    "name": "Geysir"
+   },
+   {
+    "name": "Gullfoss"
+   },
+   {
+    "name": "Kerid"
+   }
+  ],
+  "confidence": "high",
+  "notes": "English small-group minibus Golden Circle tour; no price shown on page. Stops from included list: Thingvellir, Geysir, Gullfoss, Kerid crater.",
+  "_i": 9
+ },
+ {
+  "name": "Golden Circle & Surprise Full Day Tour (Chinese-guided)",
+  "name_zh": "冰岛黄金圈与小惊喜中文一日团",
+  "price": null,
+  "currency": "ISK",
+  "duration_hours": 9,
+  "region": "Golden Circle",
+  "stops": [
+   {
+    "name": "Reykjavik",
+    "zh": "雷克雅未克"
+   },
+   {
+    "name": "Kerid",
+    "zh": "克瑞泽火山口"
+   },
+   {
+    "name": "Geysir",
+    "zh": "盖歇尔间歇泉"
+   },
+   {
+    "name": "Gullfoss",
+    "zh": "古佛斯瀑布"
+   },
+   {
+    "name": "Bruarfoss",
+    "zh": "蓝色瀑布"
+   },
+   {
+    "name": "Thingvellir National Park",
+    "zh": "辛格维利尔国家公园"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Stops explicitly listed in tour order; \"surprise stop\" excluded as unnamed; no price shown on page.",
+  "_i": 10
+ },
+ {
+  "name": "Snaefellsnes Peninsula Cruise Shore Excursion",
+  "name_zh": "",
+  "price": null,
+  "currency": "ISK",
+  "duration_hours": 5.5,
+  "region": "Snaefellsnes",
+  "stops": [
+   {
+    "name": "Grundarfjordur",
+    "zh": ""
+   },
+   {
+    "name": "Kirkjufell",
+    "zh": ""
+   },
+   {
+    "name": "Kirkjufellsfoss",
+    "zh": ""
+   },
+   {
+    "name": "Djupalonssandur",
+    "zh": ""
+   },
+   {
+    "name": "Londrangar",
+    "zh": ""
+   },
+   {
+    "name": "Arnarstapi",
+    "zh": ""
+   },
+   {
+    "name": "Budir",
+    "zh": ""
+   }
+  ],
+  "confidence": "high",
+  "notes": "Cruise shore excursion departing Grundarfjordur Port; no price shown on page.",
+  "_i": 11
+ },
+ {
+  "name": "Blue Ice Cave by Super Jeep from Jokulsarlon",
+  "name_zh": "",
+  "price": 21850,
+  "currency": "ISK",
+  "duration_hours": 3,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Jokulsarlon"
+   },
+   {
+    "name": "Vatnajokull National Park"
+   },
+   {
+    "name": "Crystal Ice Cave"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Winter super-jeep ice cave activity departing from Jokulsarlon glacier lagoon (not Reykjavik); ice cave inside Vatnajokull.",
+  "_i": 12
+ },
+ {
+  "name": "Silfra Diving Tour",
+  "name_zh": "",
+  "price": 42499,
+  "currency": "ISK",
+  "duration_hours": 5,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Reykjavik"
+   },
+   {
+    "name": "Thingvellir"
+   },
+   {
+    "name": "Silfra"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Single-dive scuba tour of the Silfra fissure in Thingvellir National Park; departs Reykjavik.",
+  "_i": 13
+ },
+ {
+  "name": "Silfra Fissure Diving (Thingvellir)",
+  "name_zh": "",
+  "price": 34499,
+  "currency": "ISK",
+  "duration_hours": 5,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Thingvellir National Park"
+   },
+   {
+    "name": "Silfra"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Dry suit diving activity; meet on location at Silfra/Thingvellir (no Reykjavik pickup), 5h.",
+  "_i": 14
+ },
+ {
+  "name": "Silfra Diving & Whale Watching Self Drive Tour",
+  "name_zh": "",
+  "price": 49490,
+  "currency": "ISK",
+  "duration_hours": 10,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Reykjavik"
+   },
+   {
+    "name": "Silfra, Thingvellir National Park"
+   },
+   {
+    "name": "Faxafloi Bay"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Self-drive to Silfra for diving, then whale watching from Reykjavik Old Harbour in Faxafloi Bay.",
+  "_i": 15
+ },
+ {
+  "name": "FlyOver Iceland & Golden Circle Tour",
+  "name_zh": "",
+  "price": 15490,
+  "currency": "ISK",
+  "duration_hours": 10,
+  "region": "Golden Circle",
+  "stops": [
+   {
+    "name": "Reykjavik"
+   },
+   {
+    "name": "Thingvellir National Park"
+   },
+   {
+    "name": "Geysir Geothermal Area"
+   },
+   {
+    "name": "Gullfoss Waterfall"
+   },
+   {
+    "name": "Kerid Volcanic Crater"
+   },
+   {
+    "name": "FlyOver Iceland"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Golden Circle loop (Thingvellir, Geysir, Gullfoss, Kerid) plus FlyOver Iceland flight simulation at Reykjavik old harbour.",
+  "_i": 16
+ },
+ {
+  "name": "Glacier Hiking Tour from Skaftafell (Falljokull)",
+  "name_zh": "",
+  "price": 23400,
+  "currency": "ISK",
+  "duration_hours": 4,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Skaftafell"
+   },
+   {
+    "name": "Falljokull"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Meet-on-location 4-hour glacier hike at Skaftafell Visitor Center onto Falljokull outlet glacier; not a Reykjavik departure.",
+  "_i": 17
+ },
+ {
+  "name": "Easy Glacier Hike on Falljokull Glacier (Vatnajokull)",
+  "name_zh": "",
+  "price": 16900,
+  "currency": "ISK",
+  "duration_hours": 3,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Skaftafell"
+   },
+   {
+    "name": "Falljokull"
+   }
+  ],
+  "confidence": "medium",
+  "notes": "Meet-on-location glacier hike (no Reykjavik pickup); meeting point Hof/Skaftafell in Vatnajokull National Park, operated by Troll Expeditions.",
+  "_i": 18
+ },
+ {
+  "name": "Solheimajokull Glacier Hike (meet on location)",
+  "name_zh": "",
+  "price": 15057,
+  "currency": "ISK",
+  "duration_hours": 3,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Solheimajokull"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Meet-on-location glacier hike; no Reykjavik pickup, only stop is Solheimajokull glacier.",
+  "_i": 19
+ },
+ {
+  "name": "Jokulsarlon Glacier Lagoon & South Iceland",
+  "name_zh": "",
+  "price": 27990,
+  "currency": "ISK",
+  "duration_hours": 14,
+  "region": "South Coast",
+  "stops": [
+   {
+    "name": "Reykjavik"
+   },
+   {
+    "name": "Seljalandsfoss"
+   },
+   {
+    "name": "Vik"
+   },
+   {
+    "name": "Reynisdrangar"
+   },
+   {
+    "name": "Stjornarfoss"
+   },
+   {
+    "name": "Fjallsarlon"
+   },
+   {
+    "name": "Jokulsarlon"
+   },
+   {
+    "name": "Diamond Beach"
+   }
+  ],
+  "confidence": "high",
+  "notes": "14-hour South Coast day tour from Reykjavik; stops ordered geographically eastbound to the glacier lagoons.",
+  "_i": 20
+ },
+ {
+  "name": "Langjökull Glacier Snowmobiling",
+  "name_zh": "",
+  "price": 42990,
+  "currency": "ISK",
+  "duration_hours": 9,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Reykjavik"
+   },
+   {
+    "name": "Langjokull"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Snowmobiling activity on Langjökull glacier with super-jeep transfer from Reykjavik; other glaciers (Eiríksjökull, Hofsjökull) only mentioned as distant views, not stops.",
+  "_i": 21
+ },
+ {
+  "name": "Golden Circle Afternoon Tour",
+  "name_zh": "",
+  "price": 10990,
+  "currency": "ISK",
+  "duration_hours": 8,
+  "region": "Golden Circle",
+  "stops": [
+   {
+    "name": "Reykjavik"
+   },
+   {
+    "name": "Thingvellir National Park"
+   },
+   {
+    "name": "Geysir"
+   },
+   {
+    "name": "Gullfoss"
+   },
+   {
+    "name": "Kerid"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Classic Golden Circle; Kerid crater only on morning departures (skipped 12:00+).",
+  "_i": 22
+ },
+ {
+  "name": "Golden Circle & Blue Lagoon",
+  "name_zh": "",
+  "price": 17900,
+  "currency": "ISK",
+  "duration_hours": 11,
+  "region": "Golden Circle",
+  "stops": [
+   {
+    "name": "Reykjavik"
+   },
+   {
+    "name": "Thingvellir National Park"
+   },
+   {
+    "name": "Geysir"
+   },
+   {
+    "name": "Gullfoss"
+   },
+   {
+    "name": "Kerid Crater"
+   },
+   {
+    "name": "Blue Lagoon"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Itinerary lists Thingvellir, Geysir, Gullfoss, Kerid crater, then Blue Lagoon transfer (admission not included).",
+  "_i": 23
+ },
+ {
+  "name": "Golden Circle & Blue Lagoon",
+  "name_zh": "黄金圈&蓝湖",
+  "price": null,
+  "currency": "CNY",
+  "duration_hours": null,
+  "region": "Golden Circle",
+  "stops": [
+   {
+    "name": "Reykjavik",
+    "zh": "雷克雅未克"
+   },
+   {
+    "name": "Thingvellir",
+    "zh": "辛格维利尔"
+   },
+   {
+    "name": "Geysir",
+    "zh": "盖歇尔间歇泉"
+   },
+   {
+    "name": "Gullfoss",
+    "zh": "黄金瀑布"
+   },
+   {
+    "name": "Blue Lagoon",
+    "zh": "蓝湖"
+   }
+  ],
+  "confidence": "medium",
+  "notes": "Page text is mostly site nav; stops inferred from title (Golden Circle combo = Thingvellir/Geysir/Gullfoss + Blue Lagoon). No price/duration shown; CNY is the page's selected currency.",
+  "_i": 24
+ },
+ {
+  "name": "Jokulsarlon Glacier Lagoon Zodiac Boat Tour",
+  "name_zh": "杰古沙龙冰湖水上充气快艇",
+  "price": null,
+  "currency": "CNY",
+  "duration_hours": null,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Jokulsarlon",
+    "zh": "杰古沙龙冰河湖"
+   }
+  ],
+  "confidence": "low",
+  "notes": "Zodiac boat tour on Jokulsarlon lagoon (meet-on-location activity); page text is only site nav, so no price, duration, or itinerary stops beyond the lagoon.",
+  "_i": 25
+ },
+ {
+  "name": "Lava Tunnel Caving & Northern Lights",
+  "name_zh": "赫法瑞熔岩隧道+极光小巴团",
+  "price": null,
+  "currency": "CNY",
+  "duration_hours": null,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Reykjavik",
+    "zh": "雷克雅未克"
+   },
+   {
+    "name": "Raufarholshellir",
+    "zh": "瑞法赫火山岩洞隧道"
+   }
+  ],
+  "confidence": "medium",
+  "notes": "Caving in Raufarholshellir lava tunnel plus a northern lights hunt; page text was mostly site nav, no price/duration/itinerary detail shown.",
+  "_i": 26
+ },
+ {
+  "name": "Lofthellir Ice Cave from Myvatn",
+  "name_zh": "米湖出发：Lofthellir冰洞之旅",
+  "price": null,
+  "currency": "CNY",
+  "duration_hours": null,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Myvatn",
+    "zh": "米湖"
+   },
+   {
+    "name": "Lofthellir Cave",
+    "zh": "Lofthellir冰洞"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Caving day tour departing Myvatn (or Akureyri) to the ice-filled Lofthellir lava cave; page body is mostly nav menu, no price/duration shown.",
+  "_i": 27
+ },
+ {
+  "name": "Langjokull Glacier Monster Truck Tour",
+  "name_zh": "朗格冰川怪兽卡车之旅",
+  "price": null,
+  "currency": "CNY",
+  "duration_hours": null,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Reykjavik",
+    "zh": "雷克雅未克"
+   },
+   {
+    "name": "Langjokull",
+    "zh": "朗格冰川"
+   }
+  ],
+  "confidence": "medium",
+  "notes": "Reykjavik-departure monster truck day tour onto Langjokull glacier; page text is mostly site nav, so no price/duration/extra stops given.",
+  "_i": 28
+ },
+ {
+  "name": "South Coast Glaciers & Waterfalls (Glacier Hike)",
+  "name_zh": "冰川与瀑布（南岸经典游与冰川健行）",
+  "price": null,
+  "currency": "CNY",
+  "duration_hours": null,
+  "region": "South Coast",
+  "stops": [
+   {
+    "name": "Reykjavik",
+    "zh": "雷克雅未克"
+   },
+   {
+    "name": "Seljalandsfoss",
+    "zh": "塞里雅兰瀑布"
+   },
+   {
+    "name": "Skogafoss",
+    "zh": "斯科加瀑布"
+   },
+   {
+    "name": "Solheimajokull",
+    "zh": "索尔黑马冰川"
+   }
+  ],
+  "confidence": "medium",
+  "notes": "Page text is mostly site nav; no itinerary/price/duration shown. Stops inferred from title/URL (Arctic Adventures \"Glaciers and Waterfalls\" South Coast glacier-hike tour): south coast waterfalls + Solheimajokull glacier hike.",
+  "_i": 29
+ },
+ {
+  "name": "Solheimajokull Glacier Hike & Ice Climbing",
+  "name_zh": "索尔黑马冰川徒步与攀冰",
+  "price": null,
+  "currency": "CNY",
+  "duration_hours": null,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Reykjavik",
+    "zh": "雷克雅未克"
+   },
+   {
+    "name": "Solheimajokull",
+    "zh": "索尔黑马冰川"
+   }
+  ],
+  "confidence": "medium",
+  "notes": "Ice-climbing/glacier-hike activity at Solheimajokull; page text is mostly site nav, no price or duration shown.",
+  "_i": 30
+ },
+ {
+  "name": "Solheimajokull Glacier Hike Experience",
+  "name_zh": "索尔黑马冰川徒步体验",
+  "price": null,
+  "currency": "CNY",
+  "duration_hours": null,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Reykjavik",
+    "zh": "雷克雅未克"
+   },
+   {
+    "name": "Solheimajokull",
+    "zh": "索尔黑马冰川"
+   }
+  ],
+  "confidence": "medium",
+  "notes": "Glacier hiking activity tour; page body is mostly site nav, no price/duration shown, so price null and currency defaults to page's CNY.",
+  "_i": 31
+ },
+ {
+  "name": "Vatnajokull Glacier Hike - Crevasse Labyrinth",
+  "name_zh": "蓝冰迷宫-瓦特纳冰川徒步与冰缝奇境",
+  "price": null,
+  "currency": "CNY",
+  "duration_hours": null,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Skaftafell",
+    "zh": "斯卡夫塔山（瓦特纳冰川）"
+   }
+  ],
+  "confidence": "medium",
+  "notes": "Glacier-hiking activity on Vatnajokull (crevasse/blue-ice labyrinth); meet-up near Skaftafell. Visible text is mostly site nav menu — no price or duration shown.",
+  "_i": 32
+ },
+ {
+  "name": "Vatnajökull Glacier Hike & Fjallsárlón Boat Tour",
+  "name_zh": "冰川徒步与Fjallsarlon小冰湖快艇",
+  "price": null,
+  "currency": "CNY",
+  "duration_hours": null,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Skaftafell",
+    "zh": "斯卡夫塔山"
+   },
+   {
+    "name": "Fjallsarlon",
+    "zh": "Fjallsarlon冰河湖"
+   }
+  ],
+  "confidence": "low",
+  "notes": "Page text is almost entirely site navigation; no price, duration, or itinerary shown. Glacier hike on Vatnajökull (Falljökull, Skaftafell area) plus Fjallsárlón boat tour; too far for Reykjavik pickup, so likely a self-drive meetup at Skaftafell.",
+  "_i": 33
+ },
+ {
+  "name": "Vatnajokull Glacier Explorer Hike",
+  "name_zh": "瓦特纳冰川深度徒步",
+  "price": null,
+  "currency": "CNY",
+  "duration_hours": null,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Reykjavik",
+    "zh": "雷克雅未克"
+   },
+   {
+    "name": "Skaftafell",
+    "zh": "瓦特纳冰川/斯卡夫塔山"
+   }
+  ],
+  "confidence": "high",
+  "notes": "Glacier hike on Vatnajokull at Skaftafell; departs Reykjavik (per gmaps_dir). No price or duration in visible text.",
+  "_i": 34
+ },
+ {
+  "name": "Glacier Hike & Jökulsárlón Lagoon Boat (Glacier Grand Slam)",
+  "name_zh": "冰川徒步与杰古沙龙湖快艇",
+  "price": null,
+  "currency": "CNY",
+  "duration_hours": null,
+  "region": "Activity",
+  "stops": [
+   {
+    "name": "Skaftafell",
+    "zh": "斯卡夫塔山"
+   },
+   {
+    "name": "Jokulsarlon",
+    "zh": "杰古沙龙冰河湖"
+   }
+  ],
+  "confidence": "medium",
+  "notes": "Page text is site nav only; stops inferred from title/URL (Vatnajökull glacier hike at Skaftafell) + gmaps destination (Skaftafell) + Jökulsárlón lagoon boat. No price/duration/departure city shown.",
+  "_i": 35
+ }
+]

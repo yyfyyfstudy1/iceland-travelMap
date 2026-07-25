@@ -1,0 +1,489 @@
+<meta charset="utf-8">
+<style>
+  :root{
+    --bg:#e9eff2; --panel:#ffffff; --ink:#0f1720; --ink2:#47535e; --muted:#8a97a1;
+    --line:#d7e0e4; --ocean:#d8e6ec; --land:#e6ece9; --land-stroke:#bfcccf;
+    --accent:#0e7c86; --pill:rgba(255,255,255,.94); --pill-ink:#0f1720;
+    --shadow:0 1px 3px rgba(12,26,36,.10),0 8px 30px rgba(12,26,36,.08);
+    --chip:#eef3f5; --chip-on:#0e7c86;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#0b0f13; --panel:#12181d; --ink:#eaf1f3; --ink2:#a9b6bf; --muted:#6d7a84;
+      --line:#212a31; --ocean:#0a1519; --land:#18212a; --land-stroke:#30404a;
+      --accent:#43c6d0; --pill:rgba(16,22,27,.92); --pill-ink:#eaf1f3;
+      --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 34px rgba(0,0,0,.45);
+      --chip:#1a232b; --chip-on:#0e7c86;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0b0f13; --panel:#12181d; --ink:#eaf1f3; --ink2:#a9b6bf; --muted:#6d7a84;
+    --line:#212a31; --ocean:#0a1519; --land:#18212a; --land-stroke:#30404a;
+    --accent:#43c6d0; --pill:rgba(16,22,27,.92); --pill-ink:#eaf1f3;
+    --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 34px rgba(0,0,0,.45);
+    --chip:#1a232b; --chip-on:#0e7c86;
+  }
+  *{box-sizing:border-box}
+  .tt-wrap{
+    font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif;
+    color:var(--ink); background:var(--bg); min-height:100%;
+    padding:22px clamp(14px,4vw,34px); line-height:1.5;
+  }
+  .tt-inner{max-width:1220px;margin:0 auto}
+  .tt-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:6px}
+  .tt-head h1{font-size:clamp(20px,3.4vw,29px);font-weight:800;letter-spacing:-.01em;margin:0;text-wrap:balance}
+  .tt-head .sub{color:var(--ink2);font-size:13.5px;margin-top:6px;max-width:74ch}
+  .theme-btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;
+    padding:8px 14px;font-size:13px;cursor:pointer;box-shadow:var(--shadow);white-space:nowrap}
+  .theme-btn:hover{border-color:var(--accent)}
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 6px}
+  .toolbar .lbl{font-size:12px;color:var(--muted);font-weight:700;margin-right:2px}
+  .chip{border:1px solid var(--line);background:var(--chip);color:var(--ink2);border-radius:999px;
+    padding:5px 12px;font-size:12.5px;cursor:pointer;transition:.15s;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+  .chip:hover{border-color:var(--accent);color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--chip-on);color:#fff;border-color:var(--chip-on)}
+  .chip .cdot{width:9px;height:9px;border-radius:50%;flex:none}
+  .toolbar .sep{flex:1}
+  .vip-toggle{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink2);cursor:pointer;user-select:none}
+  .vip-toggle input{accent-color:var(--accent);width:15px;height:15px}
+  .main{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(310px,1fr);gap:16px;align-items:start;margin-top:10px}
+  @media (max-width:900px){.main{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+  .map-card{position:relative;overflow:hidden;padding:6px}
+  #map{width:100%;height:auto;display:block;border-radius:12px;background:var(--ocean);touch-action:none;cursor:grab}
+  #map.grabbing{cursor:grabbing}
+  .zoom-ctl{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:5px;z-index:4}
+  .zoom-ctl button{width:33px;height:33px;border:1px solid var(--line);background:var(--pill);color:var(--ink);
+    border-radius:8px;font-size:18px;font-weight:700;cursor:pointer;box-shadow:var(--shadow);line-height:1;
+    display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+  .zoom-ctl button:hover{border-color:var(--accent);color:var(--accent)}
+  .maphint{position:absolute;top:12px;left:12px;font-size:10.5px;color:var(--ink2);background:var(--pill);
+    border:1px solid var(--line);border-radius:7px;padding:4px 8px;pointer-events:none;backdrop-filter:blur(6px)}
+  .legend{display:flex;flex-wrap:wrap;align-items:center;gap:7px 14px;padding:11px 14px 5px;font-size:11.5px;
+    color:var(--ink2);border-top:1px solid var(--line);margin-top:4px}
+  .legend b{width:100%;color:var(--ink);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:700;margin-bottom:1px}
+  .legend .lg{display:flex;align-items:center;gap:6px;white-space:nowrap}
+  .legend .sw{width:16px;height:3px;border-radius:2px;flex:none}
+  .legend .sw.dot{width:11px;height:11px;border-radius:50%}
+  .legend .sw.dash{background:none!important;border-top:3px dashed var(--muted)}
+  .side{padding:8px}
+  .side h2{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:6px 8px 8px;font-weight:700}
+  .list{max-height:640px;overflow-y:auto;padding-right:2px}
+  @media (max-width:900px){.list{max-height:none}}
+  .tour{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;
+    color:var(--ink);padding:8px;border-radius:10px;cursor:pointer;transition:.12s}
+  .tour:hover,.tour.active{background:var(--chip)}
+  .tour.pinned{background:var(--chip);box-shadow:inset 3px 0 0 var(--accent)}
+  .tour .dot{width:11px;height:11px;border-radius:50%;flex:none;align-self:flex-start;margin-top:3px}
+  .tbody{flex:1;min-width:0}
+  .tname{font-size:13.5px;font-weight:650;display:flex;align-items:center;gap:6px;line-height:1.25}
+  .tname .badge{font-size:9.5px;font-weight:800;letter-spacing:.04em;color:#8a5a00;background:#ffe4a8;border-radius:4px;padding:1px 5px}
+  :root[data-theme="dark"] .tname .badge{color:#ffd985;background:#4a3a10}
+  @media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .tname .badge{color:#ffd985;background:#4a3a10}}
+  .tzh{display:block;font-size:11px;color:var(--ink2);margin-top:1px}
+  .tmeta{font-size:11px;color:var(--muted);margin-top:2px;font-variant-numeric:tabular-nums}
+  .turl{display:inline-block;margin-top:3px;font-size:10px;color:var(--accent);text-decoration:none;word-break:break-all;line-height:1.3}
+  .turl:hover{text-decoration:underline}
+  .tprice{font-size:14px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+  .tprice small{font-size:9.5px;font-weight:600;color:var(--muted)}
+  .stops{margin:0 8px 8px 30px;padding:0;font-size:12px;color:var(--ink2)}
+  .stops li{margin:3px 0;list-style:none;position:relative;padding-left:14px}
+  .stops li:before{content:"";position:absolute;left:3px;top:6px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .stops .apx{color:var(--muted);font-style:italic}
+  .hidden{display:none!important}
+  .route{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;transition:opacity .15s}
+  .route-hit{fill:none;stroke:transparent;stroke-width:14;cursor:pointer}
+  .route.approx{stroke-dasharray:6 5}
+  .wp{transition:opacity .15s}
+  .wp-label{fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-linejoin:round;
+    font-weight:650;font-family:system-ui,-apple-system,"PingFang SC",sans-serif}
+  .wp-label-bg{fill:var(--panel);opacity:.78}
+  .wp-leader{stroke:var(--muted);opacity:.55}
+  .pill-g{cursor:pointer;transition:opacity .15s}
+  .pill-bg{fill:var(--pill);stroke:var(--line)}
+  .pill-tx{fill:var(--pill-ink);font-size:12px;font-weight:800;font-family:system-ui,sans-serif}
+  .reyk-star{fill:var(--accent)}
+  .reyk-tx{fill:var(--ink);font-size:12.5px;font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:3px}
+  .map-card.has-active .route{opacity:.06}
+  .map-card.has-active .active .route{opacity:1}
+  .map-card.has-active .pill-g:not(.active){opacity:.1}
+  .map-card.has-active .wp{opacity:.1}
+  .map-card.has-active .wp.active{opacity:1}
+  .active .route{stroke-width:4.5}
+  .pill-g.active .pill-bg{stroke:var(--accent);stroke-width:1.5}
+  .tip{position:absolute;pointer-events:none;background:var(--pill);backdrop-filter:blur(8px);border:1px solid var(--line);
+    border-radius:10px;padding:9px 11px;font-size:12.5px;color:var(--ink);box-shadow:var(--shadow);max-width:270px;
+    opacity:0;transform:translateY(4px);transition:.1s;z-index:5}
+  .tip.on{opacity:1;transform:none}
+  .tip .h{font-weight:750;margin-bottom:3px;font-size:13px}
+  .tip .r{color:var(--ink2);font-size:11.5px}
+  .tip .p{color:var(--accent);font-weight:800;margin-top:4px}
+  .foot{color:var(--muted);font-size:11.5px;margin-top:16px;line-height:1.6}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="tt-wrap">
+ <div class="tt-inner">
+  <div class="tt-head">
+    <div>
+      <h1>冰岛一日游 · 多平台路线与价格地图</h1>
+      <div class="sub"><b id="count">44</b> 条线路,来自 <b>4 家运营商</b>(Troll.is / Magic Iceland / BusTravel / Arctic Adventures),<b>按运营商着色</b>。悬停高亮 · <b>点击锁定并缩放</b>某条线路(再点 / 点空白 / Esc 取消)· <b>虚线</b> = 坐标为地理编码估算 · 价格为各站<b>原始币种</b>(留空=页面未标价)。</div>
+    </div>
+    <button class="theme-btn" id="themeBtn">◑ 深/浅色</button>
+  </div>
+
+  <div class="toolbar" id="opBar">
+    <span class="lbl">运营商</span>
+    <button class="chip" data-op="All" aria-pressed="true">全部</button>
+    <button class="chip" data-op="trollis" aria-pressed="false"><span class="cdot"></span>Troll.is</button>
+    <button class="chip" data-op="magicicelandtravel" aria-pressed="false"><span class="cdot"></span>Magic Iceland</button>
+    <button class="chip" data-op="bustravel" aria-pressed="false"><span class="cdot"></span>BusTravel</button>
+    <button class="chip" data-op="adventures" aria-pressed="false"><span class="cdot"></span>Arctic Adventures</button>
+    <span class="sep"></span>
+    <label class="vip-toggle"><input type="checkbox" id="vipChk" checked> 显示私人 VIP 团</label>
+  </div>
+  <div class="toolbar" id="regionBar">
+    <span class="lbl">区域</span>
+    <button class="chip" data-region="All" aria-pressed="true">全部</button>
+    <button class="chip" data-region="South Coast" aria-pressed="false">南岸</button>
+    <button class="chip" data-region="Golden Circle" aria-pressed="false">黄金圈</button>
+    <button class="chip" data-region="Snæfellsnes" aria-pressed="false">斯奈山</button>
+    <button class="chip" data-region="Highland" aria-pressed="false">高地</button>
+    <button class="chip" data-region="East Iceland" aria-pressed="false">东部</button>
+    <button class="chip" data-region="North Iceland" aria-pressed="false">北部</button>
+    <button class="chip" data-region="Reykjanes" aria-pressed="false">雷克雅内斯</button>
+    <button class="chip" data-region="Activity" aria-pressed="false">单点活动</button>
+  </div>
+
+  <div class="main">
+    <div class="card map-card" id="mapCard">
+      <svg id="map" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Iceland tour routes map (4 operators)"></svg>
+      <div class="maphint">滚轮 / 按钮缩放 · 拖动平移</div>
+      <div class="zoom-ctl" id="zoomCtl">
+        <button data-z="in" aria-label="放大">＋</button>
+        <button data-z="out" aria-label="缩小">−</button>
+        <button data-z="reset" aria-label="重置视图">⟲</button>
+      </div>
+      <div class="legend" id="legend"></div>
+      <div class="tip" id="tip"></div>
+    </div>
+    <div class="card side">
+      <h2 id="listTitle">全部线路</h2>
+      <div class="list" id="list"></div>
+    </div>
+  </div>
+
+  <div class="foot" id="foot"></div>
+ </div>
+</div>
+
+<script>
+const ICELAND = /*__ICELAND__*/null;
+const TOURS = /*__TOURS__*/null;
+document.title = "冰岛一日游 · 多平台路线与价格地图";
+
+const OPERATORS = {
+  trollis:            {l:"#2a78d6", d:"#3987e5", zh:"Troll.is"},
+  magicicelandtravel: {l:"#eb6834", d:"#d95926", zh:"Magic Iceland"},
+  bustravel:          {l:"#1baf7a", d:"#199e70", zh:"BusTravel"},
+  adventures:         {l:"#6a4bd6", d:"#9085e9", zh:"Arctic Adventures"},
+};
+const OPORD = {trollis:0, magicicelandtravel:1, bustravel:2, adventures:3};
+const REGIONS = {
+  "South Coast":   "南岸 South Coast",   "Golden Circle": "黄金圈 Golden Circle",
+  "Snæfellsnes":   "斯奈山 Snæfellsnes",  "Highland":      "高地 Highland",
+  "East Iceland":  "东部 East Iceland",   "North Iceland": "北部 North Iceland",
+  "Reykjanes":     "雷克雅内斯 Reykjanes", "Activity":     "单点活动 Activity",
+};
+const regZh = (r)=> (REGIONS[r]||r);
+const REYK = {lat:64.14202864719405, lng:-21.926494177316346};
+const SVGNS="http://www.w3.org/2000/svg";
+const isDark = ()=> document.documentElement.dataset.theme==="dark" ||
+  (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme:dark)").matches);
+const oc = (op)=>{const o=OPERATORS[op]||OPERATORS.trollis; return isDark()? o.d : o.l;};
+function fmt(p,cur){
+  if(p==null) return "";
+  if(cur==="USD") return "$"+(p%1?p.toFixed(2):p);
+  if(cur==="EUR") return "€"+(p%1?p.toFixed(2):p);
+  if(cur==="CNY") return "¥"+Math.round(p).toLocaleString();
+  if(cur==="ISK") return Math.round(p).toLocaleString()+" kr";
+  return (p%1?p.toFixed(2):p)+" "+(cur||"");
+}
+let pinned=null;   // locked route no (persists when mouse leaves)
+let activeNo=null; // route whose waypoint labels are currently rendered
+
+// ---- projection fit to all tour waypoints ----
+let lonMin=999,lonMax=-999,latMin=999,latMax=-999;
+(function(){
+  const pts=[[REYK.lng,REYK.lat]];
+  for(const t of TOURS) for(const w of t.waypoints) pts.push([w.lng,w.lat]);
+  for(const [lo,la] of pts){ if(lo<lonMin)lonMin=lo; if(lo>lonMax)lonMax=lo; if(la<latMin)latMin=la; if(la>latMax)latMax=la; }
+})();
+const padLon=(lonMax-lonMin)*.08, padLat=(latMax-latMin)*.12;
+lonMin-=padLon;lonMax+=padLon;latMin-=padLat;latMax+=padLat;
+const midLat=(latMin+latMax)/2, kx=Math.cos(midLat*Math.PI/180);
+const spanX=(lonMax-lonMin)*kx, spanY=(latMax-latMin);
+const W=1000, H=Math.round(W*spanY/spanX), S=W/spanX;
+const px=(lo,la)=>[ (lo-lonMin)*kx*S, (latMax-la)*S ];
+
+const svg=document.getElementById("map");
+function el(n,a={},p){const e=document.createElementNS(SVGNS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+
+// ---- Iceland landmass ----
+(function(){
+  const rings = ICELAND.geometry.type==="Polygon" ? ICELAND.geometry.coordinates : ICELAND.geometry.coordinates.flat();
+  let d="";
+  for(const ring of rings){ d += ring.map(([lo,la],i)=>{const [x,y]=px(lo,la);return (i?"L":"M")+x.toFixed(1)+" "+y.toFixed(1);}).join(" ")+" Z "; }
+  el("path",{d, fill:"var(--land)", stroke:"var(--land-stroke)","stroke-width":1, "stroke-linejoin":"round"}, svg);
+})();
+
+const routesL=el("g",{},svg), wpL=el("g",{},svg), pillsL=el("g",{},svg), reykL=el("g",{},svg), labelsL=el("g",{},svg);
+const near=(a,b)=> Math.abs(a.lat-b.lat)<0.02 && Math.abs(a.lng-b.lng)<0.02;
+const pillNodes={}, routeNodes={};
+const shortName=(n)=>{let s=n.replace(/^Included (Activity|Tour):\s*/i,"").replace(/^(Pickup in|Back to)\s*/i,"");return s.length>30?s.slice(0,29).trim()+"…":s;};
+const textW=(s)=>{let w=0;for(const ch of s)w+= ch.charCodeAt(0)>0x2e80?11:6.2;return w;};
+
+for(const t of TOURS){
+  const col=oc(t.operator);
+  const pts=t.waypoints.map(w=>px(w.lng,w.lat));
+  const dstr=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" ");
+  const g=el("g",{},routesL); g.dataset.no=t.no; routeNodes[t.no]=g;
+  el("path",{class:"route-hit", d:dstr}, g);
+  el("path",{class:"route"+(t.approx?" approx":""), d:dstr, stroke:col}, g);
+  t.waypoints.forEach(w=>{
+    if(near(w,REYK)) return;
+    const [x,y]=px(w.lng,w.lat);
+    const c=el("circle",{class:"wp",cx:x,cy:y,r:3.2,fill:col,stroke:"var(--panel)","stroke-width":1.1},wpL);
+    c.dataset.no=t.no; el("title",{},c).textContent=w.name;
+  });
+  // price pill at farthest stop (only if a price is known)
+  if(t.price!=null){
+    let far=null,fd=-1;
+    t.waypoints.forEach(w=>{const dx=(w.lng-REYK.lng)*kx,dy=w.lat-REYK.lat,dd=dx*dx+dy*dy;if(dd>fd){fd=dd;far=w;}});
+    const [fx,fy]=px(far.lng,far.lat);
+    const label=fmt(t.price,t.currency)+(t.unit==="每团"?"/团":"");
+    const pg=el("g",{class:"pill-g"},pillsL); pg.dataset.no=t.no; pillNodes[t.no]=pg;
+    const tw=label.length*7.0+14, th=18;
+    let bx=Math.max(3,Math.min(W-tw-3,fx-tw/2)), by=Math.max(3,Math.min(H-th-3,fy-th-7));
+    el("rect",{class:"pill-bg",x:bx,y:by,width:tw,height:th,rx:6},pg);
+    el("text",{class:"pill-tx",x:bx+tw/2,y:by+th/2+4,"text-anchor":"middle","font-size":11},pg).textContent=label;
+  }
+}
+
+(function(){
+  const [x,y]=px(REYK.lng,REYK.lat);
+  el("circle",{cx:x,cy:y,r:6,class:"reyk-star",stroke:"var(--panel)","stroke-width":2},reykL);
+  el("circle",{cx:x,cy:y,r:2.2,fill:"var(--panel)"},reykL);
+  el("text",{class:"reyk-tx",x:x+10,y:y+4},reykL).textContent="Reykjavík";
+})();
+
+// ---- legend ----
+(function(){
+  let h='<b>运营商 / Operator</b>';
+  for(const k in OPERATORS) h+=`<span class="lg"><span class="sw" style="background:${oc(k)}"></span>${OPERATORS[k].zh}</span>`;
+  h+=`<span class="lg"><span class="sw dash"></span>虚线 = 估算坐标</span><span class="lg"><span class="sw dot" style="background:var(--accent)"></span>Reykjavík</span>`;
+  document.getElementById("legend").innerHTML=h;
+})();
+
+// ---- side list (grouped by operator, then price) ----
+const listEl=document.getElementById("list");
+document.getElementById("count").textContent=TOURS.length;
+document.getElementById("listTitle").textContent=`全部 ${TOURS.length} 条线路`;
+[...TOURS].sort((a,b)=> (OPORD[a.operator]-OPORD[b.operator]) || ((a.price==null)-(b.price==null)) || ((a.price||0)-(b.price||0)) ).forEach(t=>{
+  const col=oc(t.operator);
+  const btn=document.createElement("div");
+  btn.className="tour"; btn.dataset.no=t.no; btn.tabIndex=0;
+  const unit=t.unit==="每团"?"/团":"/人";
+  const addr=t.url.replace(/^https?:\/\//,"");
+  const priceHtml = t.price!=null ? `${fmt(t.price,t.currency)}<small>${unit}</small>`
+                                  : `<span style="color:var(--muted);font-weight:600">未标价</span>`;
+  btn.innerHTML=`<span class="dot" style="background:${col}"></span>
+    <span class="tbody"><span class="tname">${t.short}${t.vip?'<span class="badge">VIP</span>':''}</span>
+    ${t.name_zh?`<span class="tzh">${t.name_zh}</span>`:''}
+    <span class="tmeta">${OPERATORS[t.operator].zh} · ${regZh(t.region).split(" ")[0]}${t.hours?` · ${t.hours}h`:''}${t.rating?` · ★${t.rating}`:''}${t.approx?' · ~估算':''}</span>
+    <a class="turl" href="${t.url}" target="_blank" rel="noopener">${addr} ↗</a></span>
+    <span class="tprice">${priceHtml}</span>`;
+  const stops=document.createElement("ul");
+  stops.className="stops hidden";
+  stops.innerHTML=t.waypoints.map(w=>`<li${/Reykjav|Pickup|Back to/.test(w.name)?' style="color:var(--muted)"':''}>${w.name}${w.zh?` · ${w.zh}`:''}</li>`).join("")
+    + (t.approx?'<li class="apx">~ 坐标由地名地理编码估算</li>':'');
+  btn.querySelector(".turl").addEventListener("click",e=>e.stopPropagation());
+  btn.addEventListener("mouseenter",()=>setActive(t.no));
+  btn.addEventListener("mouseleave",()=>setActive(pinned));
+  btn.addEventListener("click",()=>{
+    if(pinned===t.no){ pinned=null; setActive(null); stops.classList.add("hidden"); }
+    else{
+      pinned=t.no; setActive(t.no); zoomToTour(t.no);
+      document.querySelectorAll(".stops").forEach(s=>s.classList.add("hidden"));
+      stops.classList.remove("hidden");
+    }
+    updatePinCue();
+  });
+  listEl.appendChild(btn); listEl.appendChild(stops);
+});
+
+// ---- highlight interaction ----
+const mapCard=document.getElementById("mapCard"), tip=document.getElementById("tip");
+function setActive(no){
+  const on=no!=null;
+  mapCard.classList.toggle("has-active",on);
+  for(const g of routesL.children) g.classList.toggle("active",on&&g.dataset.no==no);
+  for(const g of pillsL.children) g.classList.toggle("active",on&&g.dataset.no==no);
+  for(const c of wpL.children) c.classList.toggle("active",on&&c.dataset.no==no);
+  document.querySelectorAll(".tour").forEach(b=>b.classList.toggle("active",on&&b.dataset.no==no));
+  activeNo = on ? +no : null;
+  layoutLabels();
+}
+function updatePinCue(){document.querySelectorAll(".tour").forEach(b=>b.classList.toggle("pinned",pinned!=null&&+b.dataset.no===pinned));}
+// Greedy anti-collision waypoint labels, constant screen size, recomputed on activate + zoom/pan.
+function layoutLabels(){
+  labelsL.replaceChildren();
+  if(activeNo==null) return;
+  const t=TOURS.find(x=>x.no===activeNo); if(!t) return;
+  const f=vb.w/W, fs=11.5*f, boxh=17*f, off=9*f, gap=3.5*f, padx=4*f, halo=3.4*f;
+  const mx=vb.w*0.02, my=vb.h*0.02;
+  const items=[];
+  t.waypoints.forEach(w=>{
+    if(near(w,REYK)) return;
+    const [x,y]=px(w.lng,w.lat);
+    if(x<vb.x-mx||x>vb.x+vb.w+mx||y<vb.y-my||y>vb.y+vb.h+my) return;
+    items.push({x,y,text:shortName(w.name)});
+  });
+  items.sort((a,b)=>a.y-b.y);
+  const placed=[];
+  const hit=(b)=>placed.some(p=>!(b[2]<=p[0]||b[0]>=p[2]||b[3]<=p[1]||b[1]>=p[3]));
+  for(const it of items){
+    const tw=textW(it.text)*f, left=it.x>vb.x+vb.w*0.62;
+    const ax=left?it.x-off:it.x+off, bx0=left?ax-tw-padx:ax-padx, bw=tw+padx*2;
+    let ly=it.y, b=[bx0,ly-boxh*0.72,bx0+bw,ly+boxh*0.28], tries=0;
+    while(hit(b)&&tries<60){ ly+=boxh+gap; b=[bx0,ly-boxh*0.72,bx0+bw,ly+boxh*0.28]; tries++; }
+    if(b[3]>vb.y+vb.h){ ly-=b[3]-(vb.y+vb.h); b=[bx0,ly-boxh*0.72,bx0+bw,ly+boxh*0.28]; }
+    placed.push(b);
+    if(Math.abs(ly-it.y)>boxh*0.55)
+      el("line",{class:"wp-leader",x1:it.x,y1:it.y,x2:ax,y2:ly-boxh*0.2,"stroke-width":Math.max(0.5,f)},labelsL);
+    el("rect",{class:"wp-label-bg",x:bx0,y:b[1],width:bw,height:boxh,rx:3*f},labelsL);
+    el("text",{class:"wp-label",x:ax,y:ly,"text-anchor":left?"end":"start","font-size":fs,style:`stroke-width:${halo}px`},labelsL).textContent=it.text;
+  }
+}
+function showTip(no,ev){
+  const t=TOURS.find(x=>x.no==no); if(!t)return;
+  const unit=t.unit==="每团"?" / 团 (整团)":" / 人";
+  const stops=t.waypoints.filter(w=>!/Reykjav|Pickup|Back to/.test(w.name)).map(w=>w.name);
+  const priceLine = t.price!=null ? fmt(t.price,t.currency)+unit : "页面未标价";
+  tip.innerHTML=`<div class="h">${t.short}</div>
+    <div class="r">${OPERATORS[t.operator].zh} · ${regZh(t.region)}${t.hours?` · ${t.hours} 小时`:''}${t.vip?' · 私人VIP':''}${t.approx?' · 估算':''}</div>
+    <div class="r" style="margin-top:3px">经过 ${stops.length} 站${stops.length?': '+stops.slice(0,4).join(' → ')+(stops.length>4?' …':''):''}</div>
+    <div class="p">${priceLine}</div>`;
+  const r=mapCard.getBoundingClientRect();
+  tip.classList.add("on");
+  let x=Math.min(ev.clientX-r.left+14, r.width-tip.offsetWidth-8);
+  let y=Math.min(ev.clientY-r.top+14, r.height-tip.offsetHeight-8);
+  tip.style.left=Math.max(6,x)+"px"; tip.style.top=Math.max(6,y)+"px";
+}
+const hideTip=()=>tip.classList.remove("on");
+function bindHover(layer){
+  for(const g of layer.children){
+    const no=+g.dataset.no;
+    g.addEventListener("mouseenter",e=>{if(!panMoved)setActive(no);showTip(no,e);});
+    g.addEventListener("mousemove",e=>{if(!dragging)showTip(no,e);});
+    g.addEventListener("mouseleave",()=>{setActive(pinned);hideTip();});
+    g.addEventListener("click",e=>{ if(panMoved)return; pinned=pinned===no?null:no; setActive(pinned); if(pinned!=null)zoomToTour(pinned); updatePinCue(); e.stopPropagation();});
+  }
+}
+bindHover(routesL); bindHover(pillsL);
+
+// ---- zoom & pan (viewBox based) ----
+const VB0={x:0,y:0,w:W,h:H};
+let vb={...VB0};
+const MINW=W/9;
+function setVB(){svg.setAttribute("viewBox",`${vb.x} ${vb.y} ${vb.w} ${vb.h}`); layoutLabels();}
+function clampVB(){ vb.x=Math.min(W-vb.w,Math.max(0,vb.x)); vb.y=Math.min(H-vb.h,Math.max(0,vb.y)); }
+function clientToVB(cx,cy){const r=svg.getBoundingClientRect();return {x:vb.x+(cx-r.left)/r.width*vb.w, y:vb.y+(cy-r.top)/r.height*vb.h};}
+function zoomAt(cx,cy,factor){
+  const p=clientToVB(cx,cy), r=svg.getBoundingClientRect();
+  let nw=Math.min(W,Math.max(MINW,vb.w/factor)), nh=nw*H/W;
+  vb.x=p.x-(cx-r.left)/r.width*nw; vb.y=p.y-(cy-r.top)/r.height*nh; vb.w=nw; vb.h=nh;
+  clampVB(); setVB();
+}
+function zoomToTour(no){
+  const t=TOURS.find(x=>x.no==no); if(!t)return;
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  for(const w of t.waypoints){const [x,y]=px(w.lng,w.lat);x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y);}
+  const pad=46; x0-=pad;y0-=pad;x1+=pad;y1+=pad;
+  let w=Math.max(x1-x0,(y1-y0)*W/H); w=Math.min(W,Math.max(MINW,w));
+  const h=w*H/W, cx=(x0+x1)/2, cy=(y0+y1)/2;
+  vb={x:cx-w/2,y:cy-h/2,w,h}; clampVB(); setVB();
+}
+svg.addEventListener("wheel",e=>{e.preventDefault();zoomAt(e.clientX,e.clientY,e.deltaY<0?1.18:1/1.18);},{passive:false});
+let dragging=false,panMoved=false,last=null;
+svg.addEventListener("pointerdown",e=>{dragging=true;panMoved=false;last=[e.clientX,e.clientY];svg.classList.add("grabbing");try{svg.setPointerCapture(e.pointerId);}catch(_){}} );
+svg.addEventListener("pointermove",e=>{
+  if(!dragging)return;
+  const r=svg.getBoundingClientRect(), dx=e.clientX-last[0], dy=e.clientY-last[1];
+  if(Math.abs(dx)+Math.abs(dy)>2){panMoved=true;hideTip();}
+  vb.x-=dx/r.width*vb.w; vb.y-=dy/r.height*vb.h; last=[e.clientX,e.clientY]; clampVB(); setVB();
+});
+function endDrag(){dragging=false;svg.classList.remove("grabbing");}
+svg.addEventListener("pointerup",endDrag); svg.addEventListener("pointercancel",endDrag); svg.addEventListener("pointerleave",endDrag);
+document.getElementById("zoomCtl").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b)return;
+  if(b.dataset.z==="reset"){vb={...VB0};setVB();return;}
+  const r=svg.getBoundingClientRect();
+  zoomAt(r.left+r.width/2, r.top+r.height/2, b.dataset.z==="in"?1.5:1/1.5);
+});
+svg.addEventListener("click",()=>{ if(!panMoved){ pinned=null; setActive(null); updatePinCue(); } });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ pinned=null; setActive(null); updatePinCue(); } });
+setVB();
+
+// ---- filters (operator + region + vip) ----
+let region="All", operator="All", showVip=true;
+function visible(t){ return (region==="All"||t.region===region) && (operator==="All"||t.operator===operator) && (showVip||!t.vip); }
+function applyFilter(){
+  for(const t of TOURS){
+    const vis=visible(t);
+    routeNodes[t.no].style.display=vis?"":"none";
+    if(pillNodes[t.no]) pillNodes[t.no].style.display=vis?"":"none";
+    const li=document.querySelector(`.tour[data-no="${t.no}"]`);
+    if(li){li.classList.toggle("hidden",!vis); if(li.nextElementSibling&&!vis)li.nextElementSibling.classList.add("hidden");}
+  }
+  for(const c of wpL.children){const t=TOURS.find(x=>x.no==c.dataset.no);c.style.display=(t&&visible(t))?"":"none";}
+}
+document.getElementById("opBar").addEventListener("click",e=>{
+  const b=e.target.closest(".chip"); if(!b)return;
+  operator=b.dataset.op;
+  document.querySelectorAll("#opBar .chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false"));
+  applyFilter();
+});
+document.getElementById("regionBar").addEventListener("click",e=>{
+  const b=e.target.closest(".chip"); if(!b)return;
+  region=b.dataset.region;
+  document.querySelectorAll("#regionBar .chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false"));
+  applyFilter();
+});
+document.getElementById("vipChk").addEventListener("change",e=>{showVip=e.target.checked;applyFilter();});
+
+// ---- theme ----
+function recolor(){
+  for(const t of TOURS){
+    routeNodes[t.no].querySelector(".route").setAttribute("stroke",oc(t.operator));
+  }
+  wpL.querySelectorAll("circle").forEach(c=>{const t=TOURS.find(x=>x.no==c.dataset.no);if(t)c.setAttribute("fill",oc(t.operator));});
+  document.querySelectorAll(".tour").forEach(b=>{const t=TOURS.find(x=>x.no==b.dataset.no);if(t)b.querySelector(".dot").style.background=oc(t.operator);});
+  const keys=Object.keys(OPERATORS);
+  document.getElementById("legend").querySelectorAll(".sw").forEach((sw,i)=>{if(i<keys.length)sw.style.background=oc(keys[i]);});
+  document.querySelectorAll("#opBar .chip .cdot").forEach((d,i)=>{d.style.background=oc(keys[i]);});
+}
+document.querySelectorAll("#opBar .chip .cdot").forEach((d,i)=>{d.style.background=oc(Object.keys(OPERATORS)[i]);});
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  const cur=document.documentElement.dataset.theme;
+  document.documentElement.dataset.theme = cur==="dark"?"light":(cur==="light"?"dark":(isDark()?"light":"dark"));
+  recolor();
+});
+matchMedia("(prefers-color-scheme:dark)").addEventListener("change",()=>{if(!document.documentElement.dataset.theme)recolor();});
+
+// ---- footer ----
+document.getElementById("foot").innerHTML =
+  "数据抓取:2026-07-25 · 来源:troll.is(12,真实坐标)/ magicicelandtravel.com / bustravel.is / cn.adventures.is(3 家共 32 条,路线站点由页面标题+行程文字提取,坐标经地名地理编码估算,故标<b>虚线</b>)· "+
+  "价格为各页面<b>原始币种</b>(Troll.is=USD,BusTravel=ISK 等;magic/adventures 多为动态加载未标价,显示「未标价」)· "+
+  "路线为<b>示意直线</b>(仅连接站点,非真实驾驶路径)· 单点活动(仅 1 个可定位站点)已略去。";
+</script>
