@@ -323,7 +323,7 @@
 </div>
 
 <script>
-const TOURS = /*__TOURS__*/null;
+let TOURS = /*__TOURS__*/null;  // build-time fallback; Firestore overrides on load (see module script)
 const OPERATORS = {
   trollis:{l:"#2a78d6",d:"#3987e5",zh:"Troll.is"},
   magicicelandtravel:{l:"#eb6834",d:"#d95926",zh:"Magic Iceland"},
@@ -428,6 +428,20 @@ function applyFilter(){
   if(map.getSource("selstops")) map.getSource("selstops").setData(selStopsGeoJSON());
   updateStopChip(); updateStopPicker(); renderList(nos); measureSheet();
 }
+
+// Live data: replace TOURS with the Firestore snapshot and re-render everything.
+function refreshData(){
+  STOPS.length=0; buildStops(); renderStopPicker();
+  if(map.getLayer("routes-line")){
+    map.getSource("routes").setData(routesGeoJSON());
+    map.getSource("stops").setData(stopsGeoJSON());
+    pinnedNo=null; hoverNo=null; stopFilters.length=0;
+    applyFilter(); fitAll();
+  }else{
+    renderList(TOURS.map(t=>t.no)); measureSheet();
+  }
+}
+window.__applyTours=function(arr){ if(arr&&arr.length){ TOURS=arr; refreshData(); } };
 
 function boundsOf(pts){ const b=new maplibregl.LngLatBounds(); pts.forEach(p=>b.extend(p)); return b; }
 function fitPad(){
@@ -648,6 +662,34 @@ $("foot").innerHTML =
   "数据抓取:2026-07 · 来源:troll.is / bustravel.is / cn.adventures.is / magicicelandtravel.com · "+
   "价格<b>统一为冰岛克朗 ISK</b>,四家均取自各站 Bókun 预订引擎的实时「起价」(无需选日期)· "+
   "底图 © CARTO © OpenStreetMap © Esri。";
+</script>
+
+<!-- Live data: read tours from Firestore (IcelandTravel). Falls back to the
+     build-time inlined data if the fetch fails / offline. Public read-only. -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+  const cfg = {
+    apiKey: "AIzaSyDnlko1B19JHfsaFPeCPBLCHu6bwDRlyAU",
+    authDomain: "icelandtravel-5ad81.firebaseapp.com",
+    projectId: "icelandtravel-5ad81",
+    storageBucket: "icelandtravel-5ad81.firebasestorage.app",
+    messagingSenderId: "231703663419",
+    appId: "1:231703663419:web:4c9ba31e578fbc143a9d1e"
+  };
+  try {
+    const db = getFirestore(initializeApp(cfg));
+    const snap = await getDocs(collection(db, "tours"));
+    const arr = snap.docs.map(d => d.data())
+      .filter(t => t && Array.isArray(t.waypoints) && t.waypoints.length >= 2);
+    const OP = { trollis:0, magicicelandtravel:1, bustravel:2, adventures:3 };
+    arr.sort((a,b) => (OP[a.operator]-OP[b.operator]) || ((a.price==null)-(b.price==null)) || ((a.price||0)-(b.price||0)));
+    arr.forEach((t,i) => t.no = i+1);          // stable per-session id for filtering/paint
+    if (window.__applyTours) window.__applyTours(arr);
+    console.log("loaded " + arr.length + " tours from Firestore");
+  } catch (e) {
+    console.warn("Firestore load failed — using inlined fallback data.", e);
+  }
 </script>
 </body>
 </html>
