@@ -44,6 +44,22 @@
   .chip[aria-pressed="true"]{background:var(--chip-on);color:#fff;border-color:var(--chip-on)}
   .chip .cdot{width:9px;height:9px;border-radius:50%;flex:none}
   .toolbar .sep{flex:1}
+  .stopchip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0 0;padding:8px 13px;border:1px solid var(--accent);
+    background:var(--chip);border-radius:10px;font-size:13px;color:var(--ink)}
+  .stopchip .sctext{flex:1;min-width:210px}
+  .stopchip .x,.stopchip .modebtn{cursor:pointer;border:1px solid var(--line);border-radius:7px;padding:3px 11px;font-weight:700;background:var(--panel);font-size:12px}
+  .stopchip .x:hover,.stopchip .modebtn:hover{border-color:var(--accent);color:var(--accent)}
+  .stopchip .modebtn{border-color:var(--accent);background:var(--accent);color:#fff}
+  .stopchip .modebtn:hover{color:#fff;opacity:.9}
+  .picker{padding:9px 8px 4px;border-bottom:1px solid var(--line)}
+  .picker-head{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700;margin:2px 4px 7px}
+  .picker-head .muted{text-transform:none;letter-spacing:0;font-weight:600}
+  .picker-body{display:flex;flex-wrap:wrap;gap:5px;max-height:128px;overflow-y:auto;padding:1px 4px 4px}
+  .spchip{border:1px solid var(--line);background:var(--chip);color:var(--ink2);border-radius:999px;padding:3px 9px;font-size:11.5px;cursor:pointer;white-space:nowrap;font-weight:600;transition:.12s}
+  .spchip:hover{border-color:var(--accent);color:var(--ink)}
+  .spchip.sel{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .spchip .n{opacity:.7;font-weight:700;margin-left:3px}
+  .spchip.sel .n{opacity:.85}
   .vip-toggle{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink2);cursor:pointer;user-select:none}
   .vip-toggle input{accent-color:var(--accent);width:15px;height:15px}
   .main{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(310px,1fr);gap:16px;align-items:start;margin-top:10px}
@@ -93,7 +109,6 @@
   .hidden{display:none!important}
   .route{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;transition:opacity .15s}
   .route-hit{fill:none;stroke:transparent;stroke-width:14;cursor:pointer}
-  .route.approx{stroke-dasharray:6 5}
   .wp{transition:opacity .15s}
   .wp-label{fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-linejoin:round;
     font-weight:650;font-family:system-ui,-apple-system,"PingFang SC",sans-serif}
@@ -104,6 +119,8 @@
   .pill-tx{fill:var(--pill-ink);font-size:12px;font-weight:800;font-family:system-ui,sans-serif}
   .reyk-star{fill:var(--accent)}
   .reyk-tx{fill:var(--ink);font-size:12.5px;font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:3px}
+  .map-card.stop-mode:not(.has-active) .route{opacity:.4;stroke-width:2}
+  .stop-label{fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-linejoin:round;font-weight:750;font-family:system-ui,-apple-system,"PingFang SC",sans-serif}
   .map-card.has-active .route{opacity:.06}
   .map-card.has-active .active .route{opacity:1}
   .map-card.has-active .pill-g:not(.active){opacity:.1}
@@ -127,7 +144,7 @@
   <div class="tt-head">
     <div>
       <h1>冰岛一日游 · 多平台路线与价格地图</h1>
-      <div class="sub"><b id="count">44</b> 条线路,来自 <b>4 家运营商</b>(Troll.is / Magic Iceland / BusTravel / Arctic Adventures),<b>按运营商着色</b>。悬停高亮 · <b>点击锁定并缩放</b>某条线路(再点 / 点空白 / Esc 取消)· <b>虚线</b> = 坐标为地理编码估算 · 价格为各站<b>原始币种</b>(留空=页面未标价)。</div>
+      <div class="sub"><b id="count">44</b> 条线路,来自 <b>4 家运营商</b>(Troll.is / Magic Iceland / BusTravel / Arctic Adventures),<b>按运营商着色</b>。悬停高亮 · <b>点击锁定并缩放</b>某条线路(再点 / 点空白 / Esc 取消)· 价格为各站<b>原始币种</b>(留空=页面未标价)。</div>
     </div>
     <button class="theme-btn" id="themeBtn">◑ 深/浅色</button>
   </div>
@@ -154,11 +171,12 @@
     <button class="chip" data-region="Reykjanes" aria-pressed="false">雷克雅内斯</button>
     <button class="chip" data-region="Activity" aria-pressed="false">单点活动</button>
   </div>
+  <div id="stopChip" class="stopchip hidden"></div>
 
   <div class="main">
     <div class="card map-card" id="mapCard">
       <svg id="map" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Iceland tour routes map (4 operators)"></svg>
-      <div class="maphint">滚轮 / 按钮缩放 · 拖动平移</div>
+      <div class="maphint">滚轮/按钮缩放 · 拖动 · 点圆点或右侧「途径点」筛线路(可多选)</div>
       <div class="zoom-ctl" id="zoomCtl">
         <button data-z="in" aria-label="放大">＋</button>
         <button data-z="out" aria-label="缩小">−</button>
@@ -168,6 +186,10 @@
       <div class="tip" id="tip"></div>
     </div>
     <div class="card side">
+      <div class="picker">
+        <div class="picker-head">途径点筛选 <span class="muted">· 点选可多选,与地图圆点同步</span></div>
+        <div class="picker-body" id="stopPicker"></div>
+      </div>
       <h2 id="listTitle">全部线路</h2>
       <div class="list" id="list"></div>
     </div>
@@ -211,6 +233,7 @@ function fmt(p,cur){
 }
 let pinned=null;   // locked route no (persists when mouse leaves)
 let activeNo=null; // route whose waypoint labels are currently rendered
+let stopFilters=[], stopMode="and"; const STOPS=[]; // selected stops + AND/OR mode + unique-stop index
 
 // ---- projection fit to all tour waypoints ----
 let lonMin=999,lonMax=-999,latMin=999,latMax=-999;
@@ -237,7 +260,7 @@ function el(n,a={},p){const e=document.createElementNS(SVGNS,n);for(const k in a
   el("path",{d, fill:"var(--land)", stroke:"var(--land-stroke)","stroke-width":1, "stroke-linejoin":"round"}, svg);
 })();
 
-const routesL=el("g",{},svg), wpL=el("g",{},svg), pillsL=el("g",{},svg), reykL=el("g",{},svg), labelsL=el("g",{},svg);
+const routesL=el("g",{},svg), wpL=el("g",{},svg), pillsL=el("g",{},svg), reykL=el("g",{},svg), labelsL=el("g",{},svg), stopL=el("g",{},svg);
 const near=(a,b)=> Math.abs(a.lat-b.lat)<0.02 && Math.abs(a.lng-b.lng)<0.02;
 const pillNodes={}, routeNodes={};
 const shortName=(n)=>{let s=n.replace(/^Included (Activity|Tour):\s*/i,"").replace(/^(Pickup in|Back to)\s*/i,"");return s.length>30?s.slice(0,29).trim()+"…":s;};
@@ -253,8 +276,10 @@ for(const t of TOURS){
   t.waypoints.forEach(w=>{
     if(near(w,REYK)) return;
     const [x,y]=px(w.lng,w.lat);
-    const c=el("circle",{class:"wp",cx:x,cy:y,r:3.2,fill:col,stroke:"var(--panel)","stroke-width":1.1},wpL);
-    c.dataset.no=t.no; el("title",{},c).textContent=w.name;
+    el("circle",{class:"wp",cx:x,cy:y,r:3.7,fill:col,stroke:"var(--panel)","stroke-width":1.1},wpL).dataset.no=t.no;
+    const hit=el("circle",{class:"wp-hit",cx:x,cy:y,r:9,fill:"transparent"},wpL);
+    hit.dataset.no=t.no; hit.style.cursor="pointer"; el("title",{},hit).textContent=w.name;
+    hit.addEventListener("click",ev=>{ ev.stopPropagation(); selectStop(w); });
   });
   // price pill at farthest stop (only if a price is known)
   if(t.price!=null){
@@ -281,7 +306,7 @@ for(const t of TOURS){
 (function(){
   let h='<b>运营商 / Operator</b>';
   for(const k in OPERATORS) h+=`<span class="lg"><span class="sw" style="background:${oc(k)}"></span>${OPERATORS[k].zh}</span>`;
-  h+=`<span class="lg"><span class="sw dash"></span>虚线 = 估算坐标</span><span class="lg"><span class="sw dot" style="background:var(--accent)"></span>Reykjavík</span>`;
+  h+=`<span class="lg"><span class="sw dot" style="background:var(--accent)"></span>Reykjavík 出发/返回</span>`;
   document.getElementById("legend").innerHTML=h;
 })();
 
@@ -300,13 +325,12 @@ document.getElementById("listTitle").textContent=`全部 ${TOURS.length} 条线�
   btn.innerHTML=`<span class="dot" style="background:${col}"></span>
     <span class="tbody"><span class="tname">${t.short}${t.vip?'<span class="badge">VIP</span>':''}</span>
     ${t.name_zh?`<span class="tzh">${t.name_zh}</span>`:''}
-    <span class="tmeta">${OPERATORS[t.operator].zh} · ${regZh(t.region).split(" ")[0]}${t.hours?` · ${t.hours}h`:''}${t.rating?` · ★${t.rating}`:''}${t.approx?' · ~估算':''}</span>
+    <span class="tmeta">${OPERATORS[t.operator].zh} · ${regZh(t.region).split(" ")[0]}${t.hours?` · ${t.hours}h`:''}${t.rating?` · ★${t.rating}`:''}</span>
     <a class="turl" href="${t.url}" target="_blank" rel="noopener">${addr} ↗</a></span>
     <span class="tprice">${priceHtml}</span>`;
   const stops=document.createElement("ul");
   stops.className="stops hidden";
-  stops.innerHTML=t.waypoints.map(w=>`<li${/Reykjav|Pickup|Back to/.test(w.name)?' style="color:var(--muted)"':''}>${w.name}${w.zh?` · ${w.zh}`:''}</li>`).join("")
-    + (t.approx?'<li class="apx">~ 坐标由地名地理编码估算</li>':'');
+  stops.innerHTML=t.waypoints.map(w=>`<li${/Reykjav|Pickup|Back to/.test(w.name)?' style="color:var(--muted)"':''}>${w.name}${w.zh?` · ${w.zh}`:''}</li>`).join("");
   btn.querySelector(".turl").addEventListener("click",e=>e.stopPropagation());
   btn.addEventListener("mouseenter",()=>setActive(t.no));
   btn.addEventListener("mouseleave",()=>setActive(pinned));
@@ -335,6 +359,79 @@ function setActive(no){
   layoutLabels();
 }
 function updatePinCue(){document.querySelectorAll(".tour").forEach(b=>b.classList.toggle("pinned",pinned!=null&&+b.dataset.no===pinned));}
+
+// ---- stop filter: pick dots on map OR chips in the right panel (multi-select, AND/OR) ----
+function normStop(s){ return (s||"").toLowerCase().split(",")[0].normalize("NFD").replace(/[^a-z0-9]/g,""); }
+function wpNear(w,s){ const n=normStop(w.name); if(n&&n===s.norm)return true; return Math.abs(w.lat-s.lat)<0.025 && Math.abs(w.lng-s.lng)<0.04; }
+function tourHitsStop(t,s){ return t.waypoints.some(w=>wpNear(w,s)); }
+function tourMatchesFilter(t){ if(!stopFilters.length)return true; return stopMode==="and" ? stopFilters.every(s=>tourHitsStop(t,s)) : stopFilters.some(s=>tourHitsStop(t,s)); }
+function matchingTours(){ return TOURS.filter(t=>tourMatchesFilter(t)&&(operator==="All"||t.operator===operator)&&(region==="All"||t.region===region)&&(showVip||!t.vip)); }
+function selectStop(w){
+  const i=stopFilters.findIndex(s=>wpNear(w,s));
+  if(i>=0) stopFilters.splice(i,1);
+  else stopFilters.push({lat:w.lat,lng:w.lng,name:w.name,norm:normStop(w.name)});
+  pinned=null; setActive(null); updatePinCue();
+  applyFilter(); drawStopHighlight();
+}
+function clearStops(){ stopFilters.length=0; applyFilter(); drawStopHighlight(); }
+function drawStopHighlight(){
+  stopL.replaceChildren();
+  mapCard.classList.toggle("stop-mode", stopFilters.length>0);
+  const f=vb.w/W;
+  for(const s of stopFilters){
+    const [x,y]=px(s.lng,s.lat);
+    el("circle",{cx:x,cy:y,r:11*f,fill:"none",stroke:"var(--accent)","stroke-width":3*f,"pointer-events":"none"},stopL);
+    el("circle",{cx:x,cy:y,r:4*f,fill:"var(--accent)","pointer-events":"none"},stopL);
+    const nm=shortName(s.name), left=x>vb.x+vb.w*0.6;
+    el("text",{class:"stop-label",x:left?x-15*f:x+15*f,y:y+4*f,"text-anchor":left?"end":"start","font-size":13*f,style:`stroke-width:${3.6*f}px`,"pointer-events":"none"},stopL).textContent=nm;
+  }
+}
+function fitBox(x0,y0,x1,y1){
+  const pad=52; x0-=pad;y0-=pad;x1+=pad;y1+=pad;
+  let w=Math.max(x1-x0,(y1-y0)*W/H); w=Math.min(W,Math.max(MINW,w));
+  const h=w*H/W, cx=(x0+x1)/2, cy=(y0+y1)/2;
+  vb={x:cx-w/2,y:cy-h/2,w,h}; clampVB(); setVB();
+}
+function zoomFit(){
+  const ms=matchingTours();
+  let pts=[];
+  if(ms.length){ for(const t of ms) for(const w of t.waypoints) pts.push(px(w.lng,w.lat)); }
+  else { for(const s of stopFilters) pts.push(px(s.lng,s.lat)); }
+  if(!pts.length) return;
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  for(const [x,y] of pts){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y);}
+  fitBox(x0,y0,x1,y1);
+}
+function updateStopChip(){
+  const box=document.getElementById("stopChip");
+  if(!stopFilters.length){ box.classList.add("hidden"); box.innerHTML=""; return; }
+  const n=matchingTours().length, names=stopFilters.map(s=>shortName(s.name)).join(" + ");
+  box.classList.remove("hidden");
+  box.innerHTML=`<span class="sctext">途径点(${stopFilters.length}):<b>${names}</b> · 经过<b>${stopMode==="and"?"全部":"任一"}</b> · <b>${n}</b> 条线路 <span style="color:var(--muted)">(点圆点/右侧增减 · 悬停单独描线)</span></span>`+
+    `<span class="modebtn" id="modeBtn">${stopMode==="and"?"全部":"任一"} ⇄</span><span class="x" id="stopZoom">缩放到结果</span><span class="x" id="stopClear">清除 ✕</span>`;
+  box.querySelector("#modeBtn").addEventListener("click",()=>{ stopMode = stopMode==="and"?"or":"and"; applyFilter(); });
+  box.querySelector("#stopZoom").addEventListener("click",zoomFit);
+  box.querySelector("#stopClear").addEventListener("click",clearStops);
+}
+// unique stops (deduped by proximity/name) with per-stop tour counts, for the right-panel picker
+function buildStops(){
+  for(const t of TOURS) for(const w of t.waypoints){
+    if(/Reykjav|Pickup|Back to/.test(w.name) || near(w,REYK)) continue;
+    let s=STOPS.find(s=>wpNear(w,s));
+    if(!s){ STOPS.push({name:w.name, norm:normStop(w.name), lat:w.lat, lng:w.lng}); }
+    else if(w.name.length<s.name.length){ s.name=w.name; s.norm=normStop(w.name); }
+  }
+  for(const s of STOPS) s.count=TOURS.filter(t=>tourHitsStop(t,s)).length;
+  STOPS.sort((a,b)=> b.count-a.count || a.name.localeCompare(b.name));
+}
+function renderStopPicker(){
+  const box=document.getElementById("stopPicker");
+  box.innerHTML=STOPS.map((s,i)=>`<span class="spchip" data-i="${i}">${shortName(s.name)}<span class="n">${s.count}</span></span>`).join("");
+  box.querySelectorAll(".spchip").forEach(ch=>ch.addEventListener("click",()=>selectStop(STOPS[+ch.dataset.i])));
+}
+function updateStopPicker(){
+  document.querySelectorAll("#stopPicker .spchip").forEach(ch=>{ const s=STOPS[+ch.dataset.i]; if(s) ch.classList.toggle("sel", stopFilters.some(f=>wpNear(f,s))); });
+}
 // Greedy anti-collision waypoint labels, constant screen size, recomputed on activate + zoom/pan.
 function layoutLabels(){
   labelsL.replaceChildren();
@@ -371,7 +468,7 @@ function showTip(no,ev){
   const stops=t.waypoints.filter(w=>!/Reykjav|Pickup|Back to/.test(w.name)).map(w=>w.name);
   const priceLine = t.price!=null ? fmt(t.price,t.currency)+unit : "页面未标价";
   tip.innerHTML=`<div class="h">${t.short}</div>
-    <div class="r">${OPERATORS[t.operator].zh} · ${regZh(t.region)}${t.hours?` · ${t.hours} 小时`:''}${t.vip?' · 私人VIP':''}${t.approx?' · 估算':''}</div>
+    <div class="r">${OPERATORS[t.operator].zh} · ${regZh(t.region)}${t.hours?` · ${t.hours} 小时`:''}${t.vip?' · 私人VIP':''}</div>
     <div class="r" style="margin-top:3px">经过 ${stops.length} 站${stops.length?': '+stops.slice(0,4).join(' → ')+(stops.length>4?' …':''):''}</div>
     <div class="p">${priceLine}</div>`;
   const r=mapCard.getBoundingClientRect();
@@ -396,7 +493,7 @@ bindHover(routesL); bindHover(pillsL);
 const VB0={x:0,y:0,w:W,h:H};
 let vb={...VB0};
 const MINW=W/9;
-function setVB(){svg.setAttribute("viewBox",`${vb.x} ${vb.y} ${vb.w} ${vb.h}`); layoutLabels();}
+function setVB(){svg.setAttribute("viewBox",`${vb.x} ${vb.y} ${vb.w} ${vb.h}`); layoutLabels(); drawStopHighlight();}
 function clampVB(){ vb.x=Math.min(W-vb.w,Math.max(0,vb.x)); vb.y=Math.min(H-vb.h,Math.max(0,vb.y)); }
 function clientToVB(cx,cy){const r=svg.getBoundingClientRect();return {x:vb.x+(cx-r.left)/r.width*vb.w, y:vb.y+(cy-r.top)/r.height*vb.h};}
 function zoomAt(cx,cy,factor){
@@ -415,13 +512,20 @@ function zoomToTour(no){
   vb={x:cx-w/2,y:cy-h/2,w,h}; clampVB(); setVB();
 }
 svg.addEventListener("wheel",e=>{e.preventDefault();zoomAt(e.clientX,e.clientY,e.deltaY<0?1.18:1/1.18);},{passive:false});
-let dragging=false,panMoved=false,last=null;
-svg.addEventListener("pointerdown",e=>{dragging=true;panMoved=false;last=[e.clientX,e.clientY];svg.classList.add("grabbing");try{svg.setPointerCapture(e.pointerId);}catch(_){}} );
+let dragging=false,panMoved=false,last=null,pid=null;
+svg.addEventListener("pointerdown",e=>{dragging=true;panMoved=false;pid=e.pointerId;last=[e.clientX,e.clientY];});
 svg.addEventListener("pointermove",e=>{
   if(!dragging)return;
-  const r=svg.getBoundingClientRect(), dx=e.clientX-last[0], dy=e.clientY-last[1];
-  if(Math.abs(dx)+Math.abs(dy)>2){panMoved=true;hideTip();}
-  vb.x-=dx/r.width*vb.w; vb.y-=dy/r.height*vb.h; last=[e.clientX,e.clientY]; clampVB(); setVB();
+  const dx=e.clientX-last[0], dy=e.clientY-last[1];
+  if(!panMoved){
+    if(Math.abs(dx)+Math.abs(dy)<=3) return;          // still a click, not a drag → let click through to dots
+    panMoved=true; hideTip(); svg.classList.add("grabbing");
+    try{svg.setPointerCapture(pid);}catch(_){}
+    last=[e.clientX,e.clientY]; return;                // reset origin so the pan starts smoothly
+  }
+  const r=svg.getBoundingClientRect();
+  vb.x-=(e.clientX-last[0])/r.width*vb.w; vb.y-=(e.clientY-last[1])/r.height*vb.h;
+  last=[e.clientX,e.clientY]; clampVB(); setVB();
 });
 function endDrag(){dragging=false;svg.classList.remove("grabbing");}
 svg.addEventListener("pointerup",endDrag); svg.addEventListener("pointercancel",endDrag); svg.addEventListener("pointerleave",endDrag);
@@ -432,12 +536,12 @@ document.getElementById("zoomCtl").addEventListener("click",e=>{
   zoomAt(r.left+r.width/2, r.top+r.height/2, b.dataset.z==="in"?1.5:1/1.5);
 });
 svg.addEventListener("click",()=>{ if(!panMoved){ pinned=null; setActive(null); updatePinCue(); } });
-document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ pinned=null; setActive(null); updatePinCue(); } });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ pinned=null; setActive(null); updatePinCue(); if(stopFilters.length) clearStops(); } });
 setVB();
 
 // ---- filters (operator + region + vip) ----
 let region="All", operator="All", showVip=true;
-function visible(t){ return (region==="All"||t.region===region) && (operator==="All"||t.operator===operator) && (showVip||!t.vip); }
+function visible(t){ return (region==="All"||t.region===region) && (operator==="All"||t.operator===operator) && (showVip||!t.vip) && tourMatchesFilter(t); }
 function applyFilter(){
   for(const t of TOURS){
     const vis=visible(t);
@@ -447,6 +551,7 @@ function applyFilter(){
     if(li){li.classList.toggle("hidden",!vis); if(li.nextElementSibling&&!vis)li.nextElementSibling.classList.add("hidden");}
   }
   for(const c of wpL.children){const t=TOURS.find(x=>x.no==c.dataset.no);c.style.display=(t&&visible(t))?"":"none";}
+  updateStopChip(); updateStopPicker();
 }
 document.getElementById("opBar").addEventListener("click",e=>{
   const b=e.target.closest(".chip"); if(!b)return;
@@ -467,7 +572,7 @@ function recolor(){
   for(const t of TOURS){
     routeNodes[t.no].querySelector(".route").setAttribute("stroke",oc(t.operator));
   }
-  wpL.querySelectorAll("circle").forEach(c=>{const t=TOURS.find(x=>x.no==c.dataset.no);if(t)c.setAttribute("fill",oc(t.operator));});
+  wpL.querySelectorAll("circle.wp").forEach(c=>{const t=TOURS.find(x=>x.no==c.dataset.no);if(t)c.setAttribute("fill",oc(t.operator));});
   document.querySelectorAll(".tour").forEach(b=>{const t=TOURS.find(x=>x.no==b.dataset.no);if(t)b.querySelector(".dot").style.background=oc(t.operator);});
   const keys=Object.keys(OPERATORS);
   document.getElementById("legend").querySelectorAll(".sw").forEach((sw,i)=>{if(i<keys.length)sw.style.background=oc(keys[i]);});
@@ -481,9 +586,11 @@ document.getElementById("themeBtn").addEventListener("click",()=>{
 });
 matchMedia("(prefers-color-scheme:dark)").addEventListener("change",()=>{if(!document.documentElement.dataset.theme)recolor();});
 
+// ---- build the right-panel stop picker ----
+buildStops(); renderStopPicker();
+
 // ---- footer ----
 document.getElementById("foot").innerHTML =
-  "数据抓取:2026-07-25 · 来源:troll.is(12,真实坐标)/ magicicelandtravel.com / bustravel.is / cn.adventures.is(3 家共 32 条,路线站点由页面标题+行程文字提取,坐标经地名地理编码估算,故标<b>虚线</b>)· "+
-  "价格为各页面<b>原始币种</b>(Troll.is=USD,BusTravel=ISK 等;magic/adventures 多为动态加载未标价,显示「未标价」)· "+
-  "路线为<b>示意直线</b>(仅连接站点,非真实驾驶路径)· 单点活动(仅 1 个可定位站点)已略去。";
+  "数据抓取:2026-07-25 · 来源:troll.is / magicicelandtravel.com / bustravel.is / cn.adventures.is,共 44 条线路 · "+
+  "价格为各页面<b>原始币种</b>(Troll.is=USD,BusTravel=ISK 等;部分页面未标价则显示「未标价」)。";
 </script>
