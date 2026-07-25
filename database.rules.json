@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "tours": {
+      ".read": true,
+      ".write": false
+    }
+  }
+}

@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Public read-only tour data; writes only from the Admin SDK (upload script)
+    match /tours/{doc} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}

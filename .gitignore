@@ -3,3 +3,10 @@ __pycache__/
 .DS_Store
 .venv/
 ~$*
+
+# Firebase service-account keys — NEVER commit
+serviceAccount*.json
+*serviceAccount*.json
+.firebase/
+firebase-debug.log
+node_modules/
