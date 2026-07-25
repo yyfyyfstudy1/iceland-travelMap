@@ -33,6 +33,23 @@ def geo(name):
 
 REGION_MAP={"Snaefellsnes":"Snæfellsnes","Reykjavik":"Activity"}
 def reg(r): return REGION_MAP.get(r,r or "Activity")
+REGION_SIG=[
+ ("Snæfellsnes",{"kirkjufell","arnarstapi","snaefellsjokull","djupalonssandur","budir","londrangar","grundarfjordur","stykkisholmur","ytritunga","ingjaldsholl"}),
+ ("Westfjords",{"dynjandi","isafjordur","hesteyri","hornstrandir","sudavik","vigur"}),
+ ("North Iceland",{"akureyri","myvatn","godafoss","dettifoss","asbyrgi","husavik","grjotagja","namafjall","dimmuborgir","eyjafjordur"}),
+ ("East Iceland",{"djupivogur","seydisfjordur","studlagil","stodvarfjordur","eystrahorn","hvalnes"}),
+ ("Highland",{"landmannalaugar","thorsmork","kerlingarfjoll","askja","haifoss","hjalparfoss","hekla"}),
+ ("Reykjanes",{"bluelagoon","fagradalsfjall","grindavik","krysuvik","seltun","kleifarvatn","gunnuhver","reykjanesviti","sundhnukagigar","skylagoon"}),
+ ("South Coast",{"seljalandsfoss","skogafoss","vik","reynisfjara","solheimajokull","dyrholaey","jokulsarlon","diamondbeach","skaftafell","fjallsarlon","fjadrargljufur","katlaicecave","myrdalsjokull"}),
+ ("Golden Circle",{"thingvellir","geysir","gullfoss","kerid","bruarfoss","fridheimar","secretlagoon","silfra","faxi","laugarvatn"}),
+]
+def scan_region(wps):
+    names=[norm(w["name"]) for w in wps if "Pickup" not in w["name"]]
+    best=None;bestc=0
+    for rg,sig in REGION_SIG:
+        c=sum(1 for term in sig if any(term in nm for nm in names))
+        if c>bestc: best=rg;bestc=c
+    return best or "Activity"
 def hours_of(txt):
     if not txt: return None
     m=re.search(r'(\d+)\s*hour', txt); h=int(m.group(1)) if m else None
@@ -129,16 +146,45 @@ for url,a in ADV.items():
         "name":a.get("title") or "","name_zh":"","price":round(a["price"]),"currency":"ISK","unit":"每人",
         "hours":None,"rating":0,"region":region_of(url),"vip":False,"url":url,"waypoints":wps})
 
-# ---------- magic : keep previous (unchanged, skipped this round) ----------
-PREV=load(S("sources_tours.json"),[])
-for s in PREV:
-    if s.get("operator")!="magicicelandtravel": continue
+# ---------- magic : Bokun row data (base64) + agenda coords, unified ISK ----------
+GAZ_ITEMS=sorted(GAZ.items(), key=lambda kv:-len(kv[0]))  # longest names first
+def scan_desc(text):
+    """find canonical gazetteer places mentioned in text, ordered by first appearance"""
+    low=(text or "").lower(); hits=[]
+    for name,coord in GAZ_ITEMS:
+        if name in ("Reykjavik","Reykjavík"): continue
+        pos=low.find(name.lower())
+        if pos>=0 and not any(name==h[0] for h in hits):
+            hits.append((name,coord,pos))
+    hits.sort(key=lambda x:x[2])
+    out=[]
+    for name,coord,_ in hits:
+        if not any(abs(coord[0]-x["lat"])<0.01 and abs(coord[1]-x["lng"])<0.01 for x in out):
+            out.append({"name":name,"lat":coord[0],"lng":coord[1]})
+    return out
+MDROP=re.compile(r'winter-dream|glacier-hiking-dream|iceclimbing-dream|northen-light-dream|'
+                 r'transfer|shuttle|eclipse|festival|flyover|-ticket|admission|lava-show|'
+                 r'perlan|whales?-of-iceland|hvammsvik|food-and-history|northern-lights|'
+                 r'ice-cave-tour$|snowmobile', re.I)
+MAG=[m for m in load(S("magic_full.json"),[]) if m.get("price_isk") is not None]
+for m in MAG:
+    slug=m.get("slug","").rstrip("/")
+    if MDROP.search(slug): continue
+    ag=[w for w in (m.get("agenda") or []) if "Pickup" not in w["name"] and w["name"].strip()]
+    if len(ag)>=2:
+        wps=[REYK]+[{"name":w["name"],"lat":round(w["lat"],4),"lng":round(w["lng"],4)} for w in ag]
+    else:
+        stops=scan_desc(m.get("desc",""))
+        if len(stops)<2: continue
+        wps=[REYK]+stops
+    rating=m.get("rating")
+    try: rating=round(float(rating),2)
+    except: rating=0
     no+=1
-    tours.append({"no":no,"operator":"magicicelandtravel","short":s["name"][:52],"name":s["name"],
-        "name_zh":s.get("name_zh",""),"price":s.get("price"),"currency":s.get("currency","") or "",
-        "unit":s.get("unit","每人"),"hours":s.get("hours"),"rating":s.get("rating"),
-        "region":s.get("region","Activity"),"vip":False,"url":s["url"],
-        "waypoints":[{"name":w["name"],"lat":w["lat"],"lng":w["lng"],**({"zh":w["zh"]} if w.get("zh") else {})} for w in s["waypoints"]]})
+    tours.append({"no":no,"operator":"magicicelandtravel","short":(m.get("title") or slug)[:52],
+        "name":m.get("title") or "","name_zh":"","price":m["price_isk"],"currency":"ISK","unit":"每人",
+        "hours":hours_of(m.get("duration")),"rating":rating,
+        "region":scan_region(wps),"vip":False,"url":m["url"],"waypoints":wps})
 
 # ---------- write + inject ----------
 json.dump(tours, open(S("all_tours.json"),"w",encoding="utf-8"), ensure_ascii=False, indent=1)

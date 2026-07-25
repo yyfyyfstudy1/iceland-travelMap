@@ -7,15 +7,15 @@
 | [troll.is](https://troll.is/day-tour/) | 12 | schema.org JSON-LD 真实坐标行程 | **Bókun API 实时 ISK 起价** |
 | [bustravel.is](https://bustravel.is/) | 29 | Bókun `activity` API(部分带真实坐标行程)+ LLM 抽站点 → 地理编码 | **Bókun API 实时 ISK 起价** |
 | [cn.adventures.is](https://cn.adventures.is/) | 57 | `api.adventures.is` 价格 + LLM 从中文页抽站点 → 地理编码 | **api.adventures.is 实时 ISK 起价** |
-| [magicicelandtravel.com](https://www.magicicelandtravel.com/) | 11 | (本轮未更新;产品 ID 被 Duda 运行时注入,需浏览器逐页采) | 未标价 |
+| [magicicelandtravel.com](https://www.magicicelandtravel.com/) | 27 | Duda 动态页内 `base64JsonRowData` 解出 id+价格 + Bókun agenda 真实坐标 | **ISK(页面行数据 defaultPrice)** |
 
-共 **109 条线路**(单点活动已过滤)。价格来源:三家均使用 **Bókun** 预订引擎,起价通过其 `widgets.bokun.io/widgets/<channel>/activity/<id>` 接口取到(无需选日期)。
+共 **125 条线路,全部含真实 ISK 价格**(单点活动已过滤)。价格来源:四家均基于 **Bókun** 预订引擎,起价无需选日期即可取到。
 
 ## 成品
 
 | 文件 | 说明 |
 |---|---|
-| `index.html` | **MapLibre 版(推荐,GitHub Pages 主页)**:移动端优先的**原生 App 式 UI**——地图全屏铺满作主视觉,手机上是可拖拽的**底部抽屉**(收起只露「N 条线路 + 运营商」,上滑展开区域/途径点/线路列表,三档吸附),桌面端是「地图 + 右侧结果栏」双栏。真实底图(**街道 / 卫星 / 地形** 可切换)+ 109 条线路按运营商着色。玻璃拟态浮层控件、原生手势(滚轮/双指捏合/拖动)、悬停高亮、点击线路锁定、点圆点或「途径点」多选筛线路、途径点自动避让标签、深/浅色自适应、刘海安全区适配。**需联网**(加载 MapLibre + 底图瓦片)。 |
+| `index.html` | **MapLibre 版(推荐,GitHub Pages 主页)**:移动端优先的**原生 App 式 UI**——地图全屏铺满作主视觉,手机上是可拖拽的**底部抽屉**(收起只露「N 条线路 + 运营商」,上滑展开区域/途径点/线路列表,三档吸附),桌面端是「地图 + 右侧结果栏」双栏。真实底图(**街道 / 卫星 / 地形** 可切换)+ 125 条线路按运营商着色。玻璃拟态浮层控件、原生手势(滚轮/双指捏合/拖动)、悬停高亮、点击线路锁定、点圆点或「途径点」多选筛线路、途径点自动避让标签、深/浅色自适应、刘海安全区适配。**需联网**(加载 MapLibre + 底图瓦片)。 |
 | `troll_tours_map.html` | 手搓 SVG 版:**自包含、离线可开**(不依赖任何外部资源),作后备。同样的 44 条线路 + 筛选/多选途径点/手机适配。 |
 | `troll_daily_tours_prices.xlsx` | troll.is 12 条线路的价格表(仅 troll.is,价格齐全)。 |
 

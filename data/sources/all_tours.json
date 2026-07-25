@@ -4258,275 +4258,257 @@
  {
   "no": 99,
   "operator": "magicicelandtravel",
-  "short": "Glacier Lagoon & Diamond Beach Day Tour",
-  "name": "Glacier Lagoon & Diamond Beach Day Tour",
-  "name_zh": "冰岛钻石沙滩&冰河湖中文一日精品团",
-  "price": null,
+  "short": "Akureyri: Lake Mývatn, Goðafoss & Lava Fields Cruise",
+  "name": "Akureyri: Lake Mývatn, Goðafoss & Lava Fields Cruise Tour",
+  "name_zh": "",
+  "price": 21990,
   "currency": "ISK",
   "unit": "每人",
-  "hours": 14.5,
-  "rating": null,
-  "region": "South Coast",
+  "hours": 6,
+  "rating": 4.9,
+  "region": "North Iceland",
   "vip": false,
-  "url": "https://www.magicicelandtravel.com/tour/diamond-beach-glacier-lagoon-small-group-day-tour-guided-in-chinese",
+  "url": "https://www.magicicelandtravel.com/tour/akureyri-lake-myvatn-godafoss-lava-fields-cruise-tour",
   "waypoints": [
    {
-    "name": "Reykjavik",
-    "lat": 64.1466,
-    "lng": -21.9426,
-    "zh": "雷克雅未克"
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
    },
    {
-    "name": "Skogafoss",
-    "lat": 63.532,
-    "lng": -19.5114,
-    "zh": "斯科加瀑布"
+    "name": "Ljósavatn",
+    "lat": 65.6999,
+    "lng": -17.6707
    },
    {
-    "name": "Diamond Beach",
-    "lat": 64.0447,
-    "lng": -16.1793,
-    "zh": "钻石沙滩"
+    "name": "Godafoss",
+    "lat": 65.6828,
+    "lng": -17.5502
    },
    {
-    "name": "Jokulsarlon",
-    "lat": 64.0784,
-    "lng": -16.2306,
-    "zh": "杰古沙龙冰河湖"
+    "name": "Myvatn Craters",
+    "lat": 65.5709,
+    "lng": -17.0347
    },
    {
-    "name": "Reynisfjara",
-    "lat": 63.4041,
-    "lng": -19.0448,
-    "zh": "黑沙滩"
+    "name": "Dimmuborgir",
+    "lat": 65.6028,
+    "lng": -16.9284
    },
    {
-    "name": "Vik",
-    "lat": 63.4186,
-    "lng": -19.006,
-    "zh": "维克"
+    "name": "Grjótagjá",
+    "lat": 65.6264,
+    "lng": -16.883
    },
    {
-    "name": "Seljalandsfoss",
-    "lat": 63.6156,
-    "lng": -19.9886,
-    "zh": "塞里雅兰瀑布"
+    "name": "The Fly Lands",
+    "lat": 65.6416,
+    "lng": -16.8065
    }
   ]
  },
  {
   "no": 100,
   "operator": "magicicelandtravel",
-  "short": "Djupivogur: Jokulsarlon & Diamond Beach Cruise Tour",
-  "name": "Djupivogur: Jokulsarlon & Diamond Beach Cruise Tour",
+  "short": "Classic Whales & Viking Horses",
+  "name": "Classic Whales & Viking Horses",
   "name_zh": "",
-  "price": null,
+  "price": 38400,
   "currency": "ISK",
   "unit": "每人",
-  "hours": 6.5,
-  "rating": null,
-  "region": "East Iceland",
+  "hours": 7,
+  "rating": 0,
+  "region": "Activity",
   "vip": false,
-  "url": "https://www.magicicelandtravel.com/tour/djupivogur-jokulsarlon-diamond-beach-cruise-tour",
+  "url": "https://www.magicicelandtravel.com/tour/classic-whales-viking-horses",
   "waypoints": [
    {
-    "name": "Djupivogur",
-    "lat": 64.6558,
-    "lng": -14.2793
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
    },
    {
-    "name": "Eystrahorn",
-    "lat": 64.2497,
-    "lng": -14.567
+    "name": "Horse Riding",
+    "lat": 64.0996,
+    "lng": -21.7406
    },
    {
-    "name": "Jokulsarlon",
-    "lat": 64.0784,
-    "lng": -16.2306,
-    "zh": "杰古沙龙冰湖"
-   },
-   {
-    "name": "Diamond Beach",
-    "lat": 64.0447,
-    "lng": -16.1793,
-    "zh": "钻石沙滩"
-   },
-   {
-    "name": "Hvalnes Lighthouse",
-    "lat": 64.401,
-    "lng": -14.535
+    "name": "Whale Watching",
+    "lat": 64.1511,
+    "lng": -21.9454
    }
   ]
  },
  {
   "no": 101,
   "operator": "magicicelandtravel",
-  "short": "Golden Circle & Lagoon",
-  "name": "Golden Circle & Lagoon",
-  "name_zh": "冰岛黄金圈+可选小众温泉中文一日精品团",
-  "price": null,
+  "short": "Diamond Beach&Glacier Lagoon Small group Day Tour gu",
+  "name": "Diamond Beach&Glacier Lagoon Small group Day Tour guided in Chinese冰岛钻石沙滩&冰河湖中文一日精品团(可选冰河湖游船)",
+  "name_zh": "",
+  "price": 34118,
   "currency": "ISK",
   "unit": "每人",
-  "hours": 10,
-  "rating": null,
-  "region": "Golden Circle",
+  "hours": 14.5,
+  "rating": 5.0,
+  "region": "South Coast",
   "vip": false,
-  "url": "https://www.magicicelandtravel.com/tour/from-reykjavik-golden-circle-lagoon-full-day-small-group-guided-in-chinese",
+  "url": "https://www.magicicelandtravel.com/tour/diamond-beach-glacier-lagoon-small-group-day-tour-guided-in-chinese",
   "waypoints": [
    {
-    "name": "Reykjavik",
-    "lat": 64.1466,
-    "lng": -21.9426,
-    "zh": "雷克雅未克"
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
    },
    {
-    "name": "Thingvellir",
-    "lat": 64.2559,
-    "lng": -21.1295,
-    "zh": "Þingvellir 国家公园"
+    "name": "Skógafoss 斯科加瀑布",
+    "lat": 63.6112,
+    "lng": -19.4408
    },
    {
-    "name": "Kerid",
-    "lat": 64.0411,
-    "lng": -20.8856,
-    "zh": "Kerið 火山口"
+    "name": "Diamond beach & Jökulsárlón 钻石沙滩&冰河湖",
+    "lat": 64.0479,
+    "lng": -16.1796
    },
    {
-    "name": "Bruarfoss",
-    "lat": 64.264,
-    "lng": -20.515,
-    "zh": "Brúarfoss 瀑布"
+    "name": "Amphibian Boat tour at Jokulsarlon冰河湖游船",
+    "lat": 64.0784,
+    "lng": -16.2306
    },
    {
-    "name": "Geysir",
-    "lat": 64.3104,
-    "lng": -20.3024,
-    "zh": "Geysir 地热区"
+    "name": "Vik 维克镇",
+    "lat": 63.4173,
+    "lng": -18.9998
    },
    {
-    "name": "Gullfoss",
-    "lat": 64.3271,
-    "lng": -20.1199,
-    "zh": "Gullfoss 黄金瀑布"
-   },
-   {
-    "name": "Laugaras",
-    "lat": 64.1,
-    "lng": -20.687,
-    "zh": "Laugarás Lagoon 温泉"
+    "name": "Seljalandsfoss 塞里雅兰瀑布",
+    "lat": 63.6156,
+    "lng": -19.9886
    }
   ]
  },
  {
   "no": 102,
   "operator": "magicicelandtravel",
-  "short": "South Coast, Diamond Beach & Glacier Lagoon",
-  "name": "South Coast, Diamond Beach & Glacier Lagoon",
-  "name_zh": "冰岛南岸钻石沙滩&冰河湖中文一日团",
-  "price": null,
+  "short": "Djúpivogur: Jökulsárlón & Diamond Beach Cruise Tour",
+  "name": "Djúpivogur: Jökulsárlón & Diamond Beach Cruise Tour",
+  "name_zh": "",
+  "price": 27550,
   "currency": "ISK",
   "unit": "每人",
-  "hours": 14.5,
-  "rating": null,
-  "region": "South Coast",
+  "hours": 6.5,
+  "rating": 4.9,
+  "region": "East Iceland",
   "vip": false,
-  "url": "https://www.magicicelandtravel.com/tour/from-reykjavik-south-coast-diamond-beach-glacier-lagoon-day-tour-guided-in-chinese",
+  "url": "https://www.magicicelandtravel.com/tour/djupivogur-jokulsarlon-diamond-beach-cruise-tour",
   "waypoints": [
    {
-    "name": "Reykjavik",
-    "lat": 64.1466,
-    "lng": -21.9426,
-    "zh": "雷克雅未克"
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
    },
    {
-    "name": "Seljalandsfoss",
-    "lat": 63.6156,
-    "lng": -19.9886,
-    "zh": "塞里雅兰瀑布"
+    "name": "Eystrahorn Mountain",
+    "lat": 64.4458,
+    "lng": -14.5339
    },
    {
-    "name": "Skogafoss",
-    "lat": 63.532,
-    "lng": -19.5114,
-    "zh": "斯科加瀑布"
-   },
-   {
-    "name": "Reynisfjara",
-    "lat": 63.4041,
-    "lng": -19.0448,
-    "zh": "黑沙滩"
-   },
-   {
-    "name": "Vik",
-    "lat": 63.4186,
-    "lng": -19.006,
-    "zh": "维克"
-   },
-   {
-    "name": "Jokulsarlon",
-    "lat": 64.0784,
-    "lng": -16.2306,
-    "zh": "冰河湖"
+    "name": "Jökulsárlón Glacier Lagoon",
+    "lat": 64.0489,
+    "lng": -16.1958
    },
    {
     "name": "Diamond Beach",
-    "lat": 64.0447,
-    "lng": -16.1793,
-    "zh": "钻石沙滩"
+    "lat": 64.0443,
+    "lng": -16.1777
+   },
+   {
+    "name": "Hvalnes Lighthouse",
+    "lat": 64.4023,
+    "lng": -14.5402
    }
   ]
  },
  {
   "no": 103,
   "operator": "magicicelandtravel",
-  "short": "Glacier Hike & Blue Ice Experience",
-  "name": "Glacier Hike & Blue Ice Experience",
+  "short": "From Reykjavik: Golden Circle & Lagoon Full Day Smal",
+  "name": "From Reykjavik: Golden Circle & Lagoon Full Day Small Group guided in Chinese冰岛黄金圈+可选小众温泉中文一日精品团",
   "name_zh": "",
-  "price": null,
+  "price": 17195,
   "currency": "ISK",
   "unit": "每人",
-  "hours": 5,
-  "rating": null,
-  "region": "Activity",
+  "hours": 10,
+  "rating": 4.9,
+  "region": "Golden Circle",
   "vip": false,
-  "url": "https://www.magicicelandtravel.com/tour/glacier-hike-blue-ice-experience-small-group-tour",
+  "url": "https://www.magicicelandtravel.com/tour/from-reykjavik-golden-circle-lagoon-full-day-small-group-guided-in-chinese",
   "waypoints": [
    {
-    "name": "Jokulsarlon",
-    "lat": 64.0784,
-    "lng": -16.2306
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
    },
    {
-    "name": "Vatnajokull",
-    "lat": 64.0159,
-    "lng": -16.9666
+    "name": "Þingvellir National Park",
+    "lat": 64.2822,
+    "lng": -21.0764
+   },
+   {
+    "name": "Kerið Volcanic Crater",
+    "lat": 64.0413,
+    "lng": -20.8851
+   },
+   {
+    "name": "Brúarfoss Waterfall",
+    "lat": 64.2643,
+    "lng": -20.5157
+   },
+   {
+    "name": "Geysir Geothermal Area",
+    "lat": 64.3167,
+    "lng": -20.2999
+   },
+   {
+    "name": "Gullfoss Waterfall",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Laugaras Lagoon",
+    "lat": 64.1128,
+    "lng": -20.5074
    }
   ]
  },
  {
   "no": 104,
   "operator": "magicicelandtravel",
-  "short": "Skaftafell Glacier Hike & Photoshoot (Falljokull)",
-  "name": "Skaftafell Glacier Hike & Photoshoot (Falljokull)",
+  "short": "From Reykjavik: South coast, Diamond Beach &Glacier ",
+  "name": "From Reykjavik: South coast, Diamond Beach &Glacier Lagoon Day Tour guided in Chinese冰岛南岸钻石沙滩&冰河湖中文一日团",
   "name_zh": "",
-  "price": null,
+  "price": 27888,
   "currency": "ISK",
   "unit": "每人",
-  "hours": 3,
-  "rating": null,
-  "region": "Activity",
+  "hours": 14.5,
+  "rating": 5.0,
+  "region": "South Coast",
   "vip": false,
-  "url": "https://www.magicicelandtravel.com/tour/glacier-hike-captured-in-skaftafell",
+  "url": "https://www.magicicelandtravel.com/tour/from-reykjavik-south-coast-diamond-beach-glacier-lagoon-day-tour-guided-in-chinese",
   "waypoints": [
    {
-    "name": "Skaftafell",
-    "lat": 64.0159,
-    "lng": -16.9666
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
    },
    {
-    "name": "Falljokull",
-    "lat": 64.007,
-    "lng": -16.86
+    "name": "Diamond Beach",
+    "lat": 64.044,
+    "lng": -16.175
+   },
+   {
+    "name": "Seljalandsfoss",
+    "lat": 63.6156,
+    "lng": -19.9886
    }
   ]
  },
@@ -4536,19 +4518,888 @@
   "short": "Glacier Hike, South Coast Waterfalls & Black Sand Be",
   "name": "Glacier Hike, South Coast Waterfalls & Black Sand Beach",
   "name_zh": "",
-  "price": null,
+  "price": 23990,
   "currency": "ISK",
   "unit": "每人",
   "hours": 11,
-  "rating": null,
+  "rating": 4.9,
   "region": "South Coast",
   "vip": false,
   "url": "https://www.magicicelandtravel.com/tour/glacier-hike-south-coast-waterfalls-black-sand-beach",
   "waypoints": [
    {
-    "name": "Reykjavik",
-    "lat": 64.1466,
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Glacier hike",
+    "lat": 63.5708,
+    "lng": -19.2924
+   },
+   {
+    "name": "The Black Sand Beach - Reynisfjara",
+    "lat": 63.4053,
+    "lng": -19.0634
+   },
+   {
+    "name": "Skógarfoss waterfall",
+    "lat": 63.5321,
+    "lng": -19.5114
+   },
+   {
+    "name": "Seljalandsfoss waterfall",
+    "lat": 63.6156,
+    "lng": -19.9886
+   }
+  ]
+ },
+ {
+  "no": 106,
+  "operator": "magicicelandtravel",
+  "short": "Glacier Lagoon, Golden Circle & Snaefellsnes small g",
+  "name": "Glacier Lagoon, Golden Circle & Snaefellsnes small group in Chinese SUMMER COMBO 冰岛南岸冰河湖，黄金圈，斯奈山三日游中文精品团夏季礼包",
+  "name_zh": "",
+  "price": 83849,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": null,
+  "rating": 4.9,
+  "region": "Snæfellsnes",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/glacier-lagoon-golden-circle-snaefellsnes-small-group-in-chinese-summer-combo",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Kirkjufellsfoss",
+    "lat": 64.9268,
+    "lng": -23.3096
+   },
+   {
+    "name": "Arnarstapi",
+    "lat": 64.7699,
+    "lng": -23.6236
+   },
+   {
+    "name": "Ytri Tunga",
+    "lat": 64.79,
+    "lng": -23.08
+   },
+   {
+    "name": "Seljalandsfoss",
+    "lat": 63.6156,
+    "lng": -19.9886
+   }
+  ]
+ },
+ {
+  "no": 107,
+  "operator": "magicicelandtravel",
+  "short": "Golden Circle Day Tour with Local Surprise (English ",
+  "name": "Golden Circle Day Tour with Local Surprise (English Guide, occasional German departures available)",
+  "name_zh": "",
+  "price": 11990,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 9,
+  "rating": 4.9,
+  "region": "Golden Circle",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/golden-circle-day-tour-with-local-surprise-english-guide-occasional-german-departures-available",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Þingvellir National Park",
+    "lat": 64.2822,
+    "lng": -21.0764
+   },
+   {
+    "name": "Geysir Geothermal Area",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss Waterfall",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Kerið Volcanic Crater",
+    "lat": 64.0413,
+    "lng": -20.8851
+   }
+  ]
+ },
+ {
+  "no": 108,
+  "operator": "magicicelandtravel",
+  "short": "Golden Circle Day Tour with Local Surprise - Small G",
+  "name": "Golden Circle Day Tour with Local Surprise - Small Group Minibus",
+  "name_zh": "",
+  "price": 16950,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 9,
+  "rating": 4.9,
+  "region": "Golden Circle",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/golden-circle-day-tour-with-local-surprise-small-group-minibus",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Þingvellir National Park",
+    "lat": 64.2822,
+    "lng": -21.0764
+   },
+   {
+    "name": "Geysir Geothermal Area",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss Waterfall",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Kerið Volcanic Crater",
+    "lat": 64.0413,
+    "lng": -20.8851
+   }
+  ]
+ },
+ {
+  "no": 109,
+  "operator": "magicicelandtravel",
+  "short": "Golden Circle + Glacier Lagoon Combo (Chinese-Speaki",
+  "name": "Golden Circle + Glacier Lagoon Combo (Chinese-Speaking Guide)黄金圈+冰河湖礼包中文两日游",
+  "name_zh": "",
+  "price": 33824,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": null,
+  "rating": 4.9,
+  "region": "South Coast",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/golden-circle-glacier-lagoon-combo-chinese-speaking-guide",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Geysir Geothermal Area",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss Waterfall",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Diamond Beach",
+    "lat": 64.044,
+    "lng": -16.175
+   },
+   {
+    "name": "Seljalandsfoss",
+    "lat": 63.6156,
+    "lng": -19.9886
+   }
+  ]
+ },
+ {
+  "no": 110,
+  "operator": "magicicelandtravel",
+  "short": "Golden Circle & Suprise Full Day Bus Tour guided in ",
+  "name": "Golden Circle & Suprise Full Day Bus Tour guided in Chinese冰岛黄金圈与小惊喜中文一日团",
+  "name_zh": "",
+  "price": 10990,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 9,
+  "rating": 4.9,
+  "region": "Golden Circle",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/golden-circle-suprise-full-day-bus-tour-guided-in-chinese",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Kerið Volcanic Crater",
+    "lat": 64.0413,
+    "lng": -20.8851
+   },
+   {
+    "name": "Gullfoss Waterfall",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Geysir Geothermal Area",
+    "lat": 64.3167,
+    "lng": -20.2999
+   },
+   {
+    "name": "Brúarfoss Waterfall",
+    "lat": 64.2643,
+    "lng": -20.5157
+   },
+   {
+    "name": "Þingvellir National Park",
+    "lat": 64.2822,
+    "lng": -21.0764
+   }
+  ]
+ },
+ {
+  "no": 111,
+  "operator": "magicicelandtravel",
+  "short": "Grundarfjörður Cruise Tour: Snæfellsnes Peninsula wi",
+  "name": "Grundarfjörður Cruise Tour: Snæfellsnes Peninsula with Local Surprise",
+  "name_zh": "",
+  "price": 24500,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 5.5,
+  "rating": 4.9,
+  "region": "Snæfellsnes",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/grundarfjordur-cruise-tour-snaefellsnes-peninsula-with-local-surprise",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Kirkjufell Waterfall & Viewpoint",
+    "lat": 64.9262,
+    "lng": -23.3114
+   },
+   {
+    "name": "Ólafsvík Viewpoint",
+    "lat": 64.8918,
+    "lng": -23.6806
+   },
+   {
+    "name": "Djúpalónssandur Black Sand Beach",
+    "lat": 64.7523,
+    "lng": -23.9005
+   },
+   {
+    "name": "Lóndrangar Basalt Cliffs",
+    "lat": 64.7354,
+    "lng": -23.7751
+   },
+   {
+    "name": "Arnarstapi Village & Cliffs",
+    "lat": 64.7695,
+    "lng": -23.6224
+   },
+   {
+    "name": "Búðir Black Church",
+    "lat": 64.8217,
+    "lng": -23.384
+   }
+  ]
+ },
+ {
+  "no": 112,
+  "operator": "magicicelandtravel",
+  "short": "Ice Cave & Glacier Hike with South Coast Waterfalls",
+  "name": "Ice Cave & Glacier Hike with South Coast Waterfalls",
+  "name_zh": "",
+  "price": 29900,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 11,
+  "rating": 0,
+  "region": "South Coast",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/ice-cave-glacier-hike-with-south-coast-waterfalls",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Glacier hike",
+    "lat": 63.5708,
+    "lng": -19.2924
+   },
+   {
+    "name": "Skógarfoss waterfall",
+    "lat": 63.5321,
+    "lng": -19.5114
+   },
+   {
+    "name": "Seljalandsfoss waterfall",
+    "lat": 63.6156,
+    "lng": -19.9886
+   }
+  ]
+ },
+ {
+  "no": 113,
+  "operator": "magicicelandtravel",
+  "short": "Landmannalaugar Highlands 4x4 Minibus Tour with Hot ",
+  "name": "Landmannalaugar Highlands 4x4 Minibus Tour with Hot Spring Bath",
+  "name_zh": "",
+  "price": 26990,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 14,
+  "rating": 4.9,
+  "region": "Highland",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/landmannalaugar-highlands-4x4-minibus-tour-with-hot-spring-bath",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Hjálparfoss (30 min stop)",
+    "lat": 64.116,
+    "lng": -19.8495
+   },
+   {
+    "name": "Háifoss (30 min stop)",
+    "lat": 64.2079,
+    "lng": -19.6868
+   },
+   {
+    "name": "Sigöldufoss (20 min stop)",
+    "lat": 64.1698,
+    "lng": -19.1295
+   },
+   {
+    "name": "Landmannalaugar (4 hours stop)",
+    "lat": 63.983,
+    "lng": -19.067
+   },
+   {
+    "name": "Hnausapollur Crater (20 min stop)",
+    "lat": 64.0555,
+    "lng": -19.0338
+   },
+   {
+    "name": "Sigöldugljúfur Canyon (30 min stop)",
+    "lat": 64.1627,
+    "lng": -19.1409
+   },
+   {
+    "name": "Return to Reykjavik",
+    "lat": 64.147,
+    "lng": -21.9408
+   }
+  ]
+ },
+ {
+  "no": 114,
+  "operator": "magicicelandtravel",
+  "short": "Reykjavik History and Sightseeing Walking Tour",
+  "name": "Reykjavik History and Sightseeing Walking Tour",
+  "name_zh": "",
+  "price": 6084,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 2,
+  "rating": 3.0,
+  "region": "Activity",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/reykjavik-history-and-sightseeing-walking-tour",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Grjótathorp",
+    "lat": 64.1485,
     "lng": -21.9426
+   },
+   {
+    "name": "Althingi",
+    "lat": 64.1467,
+    "lng": -21.9402
+   },
+   {
+    "name": "Tjörnin",
+    "lat": 64.1436,
+    "lng": -21.942
+   },
+   {
+    "name": "Bæjarins Bestu",
+    "lat": 64.1482,
+    "lng": -21.9379
+   },
+   {
+    "name": "Reðursafnid",
+    "lat": 64.1485,
+    "lng": -21.9358
+   },
+   {
+    "name": "Arnarhóll",
+    "lat": 64.148,
+    "lng": -21.9335
+   },
+   {
+    "name": "Stjórnarrádid",
+    "lat": 64.1473,
+    "lng": -21.9352
+   },
+   {
+    "name": "Skólavördustígur & Laugavegur",
+    "lat": 64.146,
+    "lng": -21.9325
+   },
+   {
+    "name": "Taste of Iceland",
+    "lat": 64.1463,
+    "lng": -21.9318
+   }
+  ]
+ },
+ {
+  "no": 115,
+  "operator": "magicicelandtravel",
+  "short": "Seyðisfjörður: Hidden Stuðlagil Canyon & Reindeer To",
+  "name": "Seyðisfjörður: Hidden Stuðlagil Canyon & Reindeer Tour",
+  "name_zh": "",
+  "price": 25990,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 6,
+  "rating": 4.9,
+  "region": "Activity",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/seydisfjordur-hidden-studlagil-canyon-reindeer-tour",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Reindeer Park",
+    "lat": 65.2883,
+    "lng": -14.4443
+   },
+   {
+    "name": "Rjúkandi Waterfall",
+    "lat": 65.3344,
+    "lng": -15.081
+   },
+   {
+    "name": "Stuðlagil Canyon",
+    "lat": 65.1633,
+    "lng": -15.3069
+   },
+   {
+    "name": "Gufufoss Waterfall",
+    "lat": 65.2399,
+    "lng": -14.0576
+   }
+  ]
+ },
+ {
+  "no": 116,
+  "operator": "magicicelandtravel",
+  "short": "Seyðisfjörður: Puffins, Reindeer & Eastfjords Tour",
+  "name": "Seyðisfjörður: Puffins, Reindeer & Eastfjords Tour",
+  "name_zh": "",
+  "price": 25990,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 6,
+  "rating": 4.9,
+  "region": "Activity",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/seydisfjordur-puffins-reindeer-eastfjords-tour",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Reindeer Park Experience",
+    "lat": 65.2879,
+    "lng": -14.4334
+   },
+   {
+    "name": "Borgarfjörður Eystri Puffin Viewing",
+    "lat": 65.54,
+    "lng": -13.7536
+   },
+   {
+    "name": "Álfaborg – Elf Rock & Scenic Swing Stop",
+    "lat": 65.5258,
+    "lng": -13.8104
+   },
+   {
+    "name": "Gufufoss Waterfall Photo Stop",
+    "lat": 65.2399,
+    "lng": -14.0576
+   }
+  ]
+ },
+ {
+  "no": 117,
+  "operator": "magicicelandtravel",
+  "short": "Snæfellsnes, Golden Circle & Glacier Lagoon Combo (C",
+  "name": "Snæfellsnes, Golden Circle & Glacier Lagoon Combo (Chinese-Speaking Guide)斯奈山+黄金圈+冰河湖礼包中文三日游",
+  "name_zh": "",
+  "price": 49386,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": null,
+  "rating": 4.9,
+  "region": "Snæfellsnes",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/snaefellsnes-golden-circle-glacier-lagoon-combo-chinese-speaking-guide",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Budir",
+    "lat": 64.8213,
+    "lng": -23.3855
+   },
+   {
+    "name": "Kirkjufellsfoss",
+    "lat": 64.9268,
+    "lng": -23.3096
+   },
+   {
+    "name": "Arnarstapi",
+    "lat": 64.7699,
+    "lng": -23.6236
+   },
+   {
+    "name": "Ytri Tunga",
+    "lat": 64.79,
+    "lng": -23.08
+   },
+   {
+    "name": "Diamond Beach",
+    "lat": 64.044,
+    "lng": -16.175
+   },
+   {
+    "name": "Seljalandsfoss",
+    "lat": 63.6156,
+    "lng": -19.9886
+   },
+   {
+    "name": "Geysir Geothermal Area",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss Waterfall",
+    "lat": 64.3271,
+    "lng": -20.1199
+   }
+  ]
+ },
+ {
+  "no": 118,
+  "operator": "magicicelandtravel",
+  "short": "Snæfellsnes, Ingjaldshóll church & Stykkishólmur in ",
+  "name": "Snæfellsnes, Ingjaldshóll church & Stykkishólmur in Chinese冰岛斯奈山中文一日精品团",
+  "name_zh": "",
+  "price": 23940,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 12,
+  "rating": 4.9,
+  "region": "Snæfellsnes",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/snaefellsnes-ingjaldsholl-church-stykkisholmur-in-chinese",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Ytri Tunga",
+    "lat": 64.8027,
+    "lng": -23.0803
+   },
+   {
+    "name": "Búðakirkja",
+    "lat": 64.8217,
+    "lng": -23.384
+   },
+   {
+    "name": "Arnarstapi",
+    "lat": 64.7695,
+    "lng": -23.6224
+   },
+   {
+    "name": "Djúpálónssandur",
+    "lat": 64.7493,
+    "lng": -23.9122
+   },
+   {
+    "name": "Ingjaldshólskirkja",
+    "lat": 64.9112,
+    "lng": -23.8573
+   },
+   {
+    "name": "Kirkjufellsfoss",
+    "lat": 64.9262,
+    "lng": -23.3114
+   },
+   {
+    "name": "Stykkishólmur - the town from The secret life of Walter Mitty",
+    "lat": 65.0724,
+    "lng": -22.7334
+   }
+  ]
+ },
+ {
+  "no": 119,
+  "operator": "magicicelandtravel",
+  "short": "Snæfellsnes Peninsula and Stykkishólmur Day Tour gui",
+  "name": "Snæfellsnes Peninsula and Stykkishólmur Day Tour guided in Chinese冰岛斯奈山中文一日团",
+  "name_zh": "",
+  "price": 17888,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 12,
+  "rating": 4.9,
+  "region": "Snæfellsnes",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/snaefellsnes-peninsula-and-stykkisholmur-day-tour-guided-in-chinese",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Ytri Tunga",
+    "lat": 64.8027,
+    "lng": -23.0803
+   },
+   {
+    "name": "Búðakirkja",
+    "lat": 64.823,
+    "lng": -23.385
+   },
+   {
+    "name": "Arnarstapi",
+    "lat": 64.7691,
+    "lng": -23.6259
+   },
+   {
+    "name": "Djúpálónssandur",
+    "lat": 64.753,
+    "lng": -23.8983
+   },
+   {
+    "name": "Ingjaldshólskirkja",
+    "lat": 64.9079,
+    "lng": -23.8525
+   },
+   {
+    "name": "Kirkjufellsfoss",
+    "lat": 64.926,
+    "lng": -23.312
+   },
+   {
+    "name": "Stykkishólmur - the town from The secret life of Walter Mitty",
+    "lat": 65.0781,
+    "lng": -22.7252
+   }
+  ]
+ },
+ {
+  "no": 120,
+  "operator": "magicicelandtravel",
+  "short": "Snæfellsnes Peninsula + Golden Circle Combo (Chinese",
+  "name": "Snæfellsnes Peninsula + Golden Circle Combo (Chinese-Speaking Guide)斯奈山+黄金圈礼包中文两日游",
+  "name_zh": "",
+  "price": 25124,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": null,
+  "rating": 4.9,
+  "region": "Snæfellsnes",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/snaefellsnes-peninsula-golden-circle-combo-chinese-speaking-guide",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Geysir Geothermal Area",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss Waterfall",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Kirkjufellsfoss",
+    "lat": 64.9268,
+    "lng": -23.3096
+   },
+   {
+    "name": "Arnarstapi",
+    "lat": 64.7699,
+    "lng": -23.6236
+   },
+   {
+    "name": "Ytri Tunga",
+    "lat": 64.79,
+    "lng": -23.08
+   }
+  ]
+ },
+ {
+  "no": 121,
+  "operator": "magicicelandtravel",
+  "short": "Snæfellsnes Peninsula, Kirkjufell & Saxhóll Crater D",
+  "name": "Snæfellsnes Peninsula, Kirkjufell & Saxhóll Crater Day Tour",
+  "name_zh": "",
+  "price": 16990,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 12,
+  "rating": 4.9,
+  "region": "Snæfellsnes",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/snaefellsnes-peninsula-kirkjufell-saxholl-crater-day-tour",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Pick up & Departure from Reykjavík",
+    "lat": 64.147,
+    "lng": -21.9408
+   },
+   {
+    "name": "Borgarnes Break Stop",
+    "lat": 64.5446,
+    "lng": -21.9105
+   },
+   {
+    "name": "Ytri Tunga Seal Beach",
+    "lat": 64.8027,
+    "lng": -23.0803
+   },
+   {
+    "name": "Búðir Black Church",
+    "lat": 64.8217,
+    "lng": -23.384
+   },
+   {
+    "name": "Arnarstapi",
+    "lat": 64.7695,
+    "lng": -23.6224
+   },
+   {
+    "name": "Djúpalónssandur Black Pebble Beach",
+    "lat": 64.7493,
+    "lng": -23.9122
+   },
+   {
+    "name": "Saxhóll Volcanic Crater",
+    "lat": 64.8509,
+    "lng": -23.9246
+   },
+   {
+    "name": "Snæfellsjökull National Park Visitor Center",
+    "lat": 64.9137,
+    "lng": -23.8886
+   },
+   {
+    "name": "Kirkjufell & Kirkjufellsfoss",
+    "lat": 64.9417,
+    "lng": -23.3069
+   },
+   {
+    "name": "Borgarnes Break Stop",
+    "lat": 64.5446,
+    "lng": -21.9105
+   },
+   {
+    "name": "Arrival and Drop-offs in Reykjavík",
+    "lat": 64.147,
+    "lng": -21.9408
+   }
+  ]
+ },
+ {
+  "no": 122,
+  "operator": "magicicelandtravel",
+  "short": "South Coast & Katla Ice Cave From Reykjavik ",
+  "name": "South Coast & Katla Ice Cave From Reykjavik ",
+  "name_zh": "",
+  "price": 35500,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 10,
+  "rating": 4.4,
+  "region": "South Coast",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/south-coast-katla-ice-cave-from-reykjavik",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Vik",
+    "lat": 63.418,
+    "lng": -19.006
    },
    {
     "name": "Seljalandsfoss",
@@ -4558,206 +5409,193 @@
    {
     "name": "Skogafoss",
     "lat": 63.532,
+    "lng": -19.511
+   },
+   {
+    "name": "Katla Ice Cave",
+    "lat": 63.66,
+    "lng": -19.0
+   },
+   {
+    "name": "Into the Glacier",
+    "lat": 64.73,
+    "lng": -20.29
+   }
+  ]
+ },
+ {
+  "no": 123,
+  "operator": "magicicelandtravel",
+  "short": "South Coast - Plane Wreck, Bird watching &Glacier hi",
+  "name": "South Coast - Plane Wreck, Bird watching &Glacier hike冰岛南岸飞机残骸,观鸟&冰川中文一日中巴团",
+  "name_zh": "",
+  "price": 27322,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 12,
+  "rating": 4.9,
+  "region": "South Coast",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/south-coast-plane-wreck-bird-watching-glacier-hike",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Solheimasandur Plane Wreck 飞机残骸",
+    "lat": 63.4591,
+    "lng": -19.3648
+   },
+   {
+    "name": "Dyrhólaey- Bird watching 观鸟",
+    "lat": 63.4047,
+    "lng": -19.1186
+   },
+   {
+    "name": "Reynisfjara Black Sand Beach 雷尼斯黑沙滩",
+    "lat": 63.4057,
+    "lng": -19.0716
+   },
+   {
+    "name": "Sólheimajökull glacier hike 索尔黑马冰川徒步",
+    "lat": 63.5569,
+    "lng": -19.3028
+   }
+  ]
+ },
+ {
+  "no": 124,
+  "operator": "magicicelandtravel",
+  "short": "South Coast Tour - Black Sand Beach, Plane wreck, Sk",
+  "name": "South Coast Tour - Black Sand Beach, Plane wreck, Skogafoss, Seljalandsfoss guided in Chinese冰岛南岸飞机残骸中文一日团",
+  "name_zh": "",
+  "price": 19880,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 11,
+  "rating": 4.9,
+  "region": "South Coast",
+  "vip": false,
+  "url": "https://www.magicicelandtravel.com/tour/south-coast-tour-black-sand-beach-plane-wreck-skogafoss-seljalandsfoss-guided-in-chinese",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Skógafoss Waterfall",
+    "lat": 63.5321,
     "lng": -19.5114
    },
    {
-    "name": "Solheimajokull",
-    "lat": 63.5316,
-    "lng": -19.3706
+    "name": "Reynisfjara Black Sand Beach",
+    "lat": 63.4057,
+    "lng": -19.0716
    },
    {
-    "name": "Reynisfjara",
-    "lat": 63.4041,
-    "lng": -19.0448
+    "name": "Seljalandsfoss Waterfall",
+    "lat": 63.6156,
+    "lng": -19.9886
+   },
+   {
+    "name": "Plane Wreck",
+    "lat": 63.4591,
+    "lng": -19.3648
    }
   ]
  },
  {
-  "no": 106,
+  "no": 125,
   "operator": "magicicelandtravel",
-  "short": "Golden Circle Day Tour with Local Surprise",
-  "name": "Golden Circle Day Tour with Local Surprise",
+  "short": "Walk with a Viking - Reykjavik Walking Tour - Small ",
+  "name": "Walk with a Viking - Reykjavik Walking Tour - Small group",
   "name_zh": "",
-  "price": null,
+  "price": 6865,
   "currency": "ISK",
   "unit": "每人",
-  "hours": 9,
-  "rating": null,
-  "region": "Golden Circle",
+  "hours": 2,
+  "rating": 4.8,
+  "region": "South Coast",
   "vip": false,
-  "url": "https://www.magicicelandtravel.com/tour/golden-circle-day-tour-with-local-surprise-english-guide-occasional-german-departures-available",
+  "url": "https://www.magicicelandtravel.com/tour/walk-with-a-viking-reykjavik-walking-tour-small-group",
   "waypoints": [
    {
-    "name": "Reykjavik",
-    "lat": 64.1466,
-    "lng": -21.9426
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
    },
    {
-    "name": "Thingvellir",
-    "lat": 64.2559,
-    "lng": -21.1295
+    "name": "We meet up outside Hlöllabátar, facing Ingólfstorg Square and the two tall stone pillars.",
+    "lat": 64.1483,
+    "lng": -21.9413
    },
    {
-    "name": "Geysir",
-    "lat": 64.3104,
-    "lng": -20.3024
+    "name": "A peek down at the first Viking house in Iceland",
+    "lat": 64.1474,
+    "lng": -21.9425
    },
    {
-    "name": "Gullfoss",
-    "lat": 64.3271,
-    "lng": -20.1199
+    "name": "The Reykjavik City Council house",
+    "lat": 64.1462,
+    "lng": -21.9424
    },
    {
-    "name": "Kerid",
-    "lat": 64.0411,
-    "lng": -20.8856
-   }
-  ]
- },
- {
-  "no": 107,
-  "operator": "magicicelandtravel",
-  "short": "Golden Circle Day Tour with Local Surprise",
-  "name": "Golden Circle Day Tour with Local Surprise",
-  "name_zh": "",
-  "price": null,
-  "currency": "ISK",
-  "unit": "每人",
-  "hours": 9,
-  "rating": null,
-  "region": "Golden Circle",
-  "vip": false,
-  "url": "https://www.magicicelandtravel.com/tour/golden-circle-day-tour-with-local-surprise-small-group-minibus",
-  "waypoints": [
-   {
-    "name": "Reykjavik",
-    "lat": 64.1466,
-    "lng": -21.9426
+    "name": "A visit to an Elf home and we talk about the Elves of Iceland",
+    "lat": 64.1478,
+    "lng": -21.9437
    },
    {
-    "name": "Thingvellir",
-    "lat": 64.2559,
-    "lng": -21.1295
+    "name": "Austurvöllur where Icelander come together if the sun is visible",
+    "lat": 64.1473,
+    "lng": -21.9397
    },
    {
-    "name": "Geysir",
-    "lat": 64.3104,
-    "lng": -20.3024
+    "name": "The Parliament house",
+    "lat": 64.1467,
+    "lng": -21.9402
    },
    {
-    "name": "Gullfoss",
-    "lat": 64.3271,
-    "lng": -20.1199
+    "name": "Discover the Reykjavik Pond and it's birdlife",
+    "lat": 64.1436,
+    "lng": -21.942
    },
    {
-    "name": "Kerid",
-    "lat": 64.0411,
-    "lng": -20.8856
-   }
-  ]
- },
- {
-  "no": 108,
-  "operator": "magicicelandtravel",
-  "short": "Golden Circle & Surprise Full Day Tour (Chinese-guid",
-  "name": "Golden Circle & Surprise Full Day Tour (Chinese-guided)",
-  "name_zh": "冰岛黄金圈与小惊喜中文一日团",
-  "price": null,
-  "currency": "ISK",
-  "unit": "每人",
-  "hours": 9,
-  "rating": null,
-  "region": "Golden Circle",
-  "vip": false,
-  "url": "https://www.magicicelandtravel.com/tour/golden-circle-suprise-full-day-bus-tour-guided-in-chinese",
-  "waypoints": [
-   {
-    "name": "Reykjavik",
-    "lat": 64.1466,
-    "lng": -21.9426,
-    "zh": "雷克雅未克"
+    "name": "Check out the oldest house in the Reykjavik City Center",
+    "lat": 64.1478,
+    "lng": -21.9422
    },
    {
-    "name": "Kerid",
-    "lat": 64.0411,
-    "lng": -20.8856,
-    "zh": "克瑞泽火山口"
+    "name": "Point out the one and only Icelandic Hot Dog stand and talk about it's history",
+    "lat": 64.1483,
+    "lng": -21.938
    },
    {
-    "name": "Geysir",
-    "lat": 64.3104,
-    "lng": -20.3024,
-    "zh": "盖歇尔间歇泉"
+    "name": "We walk down to the Reykjavik Harbor",
+    "lat": 64.1517,
+    "lng": -21.9436
    },
    {
-    "name": "Gullfoss",
-    "lat": 64.3271,
-    "lng": -20.1199,
-    "zh": "古佛斯瀑布"
+    "name": "Marvel at the wonderful architecture of the Harpa Concert Hall",
+    "lat": 64.1503,
+    "lng": -21.9323
    },
    {
-    "name": "Bruarfoss",
-    "lat": 64.264,
-    "lng": -20.515,
-    "zh": "蓝色瀑布"
+    "name": "Walk by Arnarhóll hill where Icelanders come together to celebrate on big occasions",
+    "lat": 64.148,
+    "lng": -21.9335
    },
    {
-    "name": "Thingvellir National Park",
-    "lat": 64.2559,
-    "lng": -21.1295,
-    "zh": "辛格维利尔国家公园"
-   }
-  ]
- },
- {
-  "no": 109,
-  "operator": "magicicelandtravel",
-  "short": "Snaefellsnes Peninsula Cruise Shore Excursion",
-  "name": "Snaefellsnes Peninsula Cruise Shore Excursion",
-  "name_zh": "",
-  "price": null,
-  "currency": "ISK",
-  "unit": "每人",
-  "hours": 5.5,
-  "rating": null,
-  "region": "Snæfellsnes",
-  "vip": false,
-  "url": "https://www.magicicelandtravel.com/tour/grundarfjordur-cruise-tour-snaefellsnes-peninsula-with-local-surprise",
-  "waypoints": [
-   {
-    "name": "Grundarfjordur",
-    "lat": 64.9223,
-    "lng": -23.2544
+    "name": "Stroll up Laugavegur the main shopping street of Iceland",
+    "lat": 64.143,
+    "lng": -21.9124
    },
    {
-    "name": "Kirkjufell",
-    "lat": 64.9271,
-    "lng": -23.306
-   },
-   {
-    "name": "Kirkjufellsfoss",
-    "lat": 64.9268,
-    "lng": -23.3096
-   },
-   {
-    "name": "Djupalonssandur",
-    "lat": 64.7538,
-    "lng": -23.9007
-   },
-   {
-    "name": "Londrangar",
-    "lat": 64.736,
-    "lng": -23.789
-   },
-   {
-    "name": "Arnarstapi",
-    "lat": 64.7699,
-    "lng": -23.6236
-   },
-   {
-    "name": "Budir",
-    "lat": 64.8213,
-    "lng": -23.3855
+    "name": "Admire Hallgrimskirkja church and talk about religion",
+    "lat": 64.142,
+    "lng": -21.9265
    }
   ]
  }
