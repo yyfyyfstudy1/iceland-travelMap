@@ -62,7 +62,9 @@ Return ONLY a JSON object with these fields (use null / "" / [] when unknown):
 - hours: tour duration in hours as a number, else null
 - rating: review rating number (0-5), else 0
 - region: EXACTLY one of ["South Coast","Golden Circle","Snæfellsnes","Highland","East Iceland","North Iceland","Westfjords","Reykjanes","Activity"]
-- operator: one of ["trollis","magicicelandtravel","bustravel","adventures"] inferred from the URL/brand, else ""
+- operator: short lowercase operator key inferred from the URL domain. Prefer one of
+  ["trollis","magicicelandtravel","bustravel","adventures","nicetravel"]; if the domain is none of these,
+  use the domain's second-level name (e.g. grayline.is -> "grayline"). else ""
 - waypoints: ORDERED array of the real geographic stops the tour visits, each {name, lat, lng}.
   name = canonical Icelandic place name spelled in English (e.g. Thingvellir, Geysir, Gullfoss, Seljalandsfoss, Skogafoss, Reynisfjara, Vik, Jokulsarlon, Kirkjufell). lat/lng = your best-known coordinates for that place (decimal degrees). EXCLUDE the Reykjavik hotel pickup/dropoff. Only include places actually visited.`;
 

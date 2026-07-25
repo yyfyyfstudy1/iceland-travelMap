@@ -244,7 +244,7 @@
     <div class="brand">
       <span class="flag">🇮🇸</span>
       <h1>冰岛一日游</h1>
-      <span class="meta">· <b id="count">44</b> 条线路 · <b>4</b> 家运营商</span>
+      <span class="meta">· <b id="count">44</b> 条线路 · <b>5</b> 家运营商</span>
     </div>
     <span class="spacer"></span>
     <select id="curSel" class="cursel" aria-label="显示货币" title="显示货币"><option value="ISK">ISK kr</option></select>
@@ -278,7 +278,7 @@
         <div class="sheet-head">
           <div class="head-txt">
             <span class="head-num tnum" id="headNum">44</span><span class="head-unit">条线路</span>
-            <div class="head-sub" id="headSub">4 家运营商 · 点线路或圆点筛选</div>
+            <div class="head-sub" id="headSub">5 家运营商 · 点线路或圆点筛选</div>
           </div>
           <button class="sheet-toggle" id="sheetToggle" aria-label="展开/收起结果">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
@@ -292,6 +292,7 @@
             <button class="chip" data-op="magicicelandtravel" aria-pressed="false"><span class="cdot"></span>Magic Iceland</button>
             <button class="chip" data-op="bustravel" aria-pressed="false"><span class="cdot"></span>BusTravel</button>
             <button class="chip" data-op="adventures" aria-pressed="false"><span class="cdot"></span>Arctic Adventures</button>
+            <button class="chip" data-op="nicetravel" aria-pressed="false"><span class="cdot"></span>Nice Travel</button>
           </div>
         </div>
         <div id="stopChip" class="stopchip hidden"></div>
@@ -333,8 +334,9 @@ const OPERATORS = {
   magicicelandtravel:{l:"#eb6834",d:"#d95926",zh:"Magic Iceland"},
   bustravel:{l:"#1baf7a",d:"#199e70",zh:"BusTravel"},
   adventures:{l:"#6a4bd6",d:"#9085e9",zh:"Arctic Adventures"},
+  nicetravel:{l:"#c84f96",d:"#e070b4",zh:"Nice Travel"},
 };
-const OPORD={trollis:0,magicicelandtravel:1,bustravel:2,adventures:3};
+const OPORD={trollis:0,magicicelandtravel:1,bustravel:2,adventures:3,nicetravel:4};
 const REGIONS={"South Coast":"南岸 South Coast","Golden Circle":"黄金圈 Golden Circle","Snæfellsnes":"斯奈山 Snæfellsnes","Highland":"高地 Highland","East Iceland":"东部 East Iceland","North Iceland":"北部 North Iceland","Westfjords":"西峡湾 Westfjords","Reykjanes":"雷克雅内斯 Reykjanes","Activity":"单点活动 Activity"};
 const regZh=r=>REGIONS[r]||r;
 const REYK={lat:64.14202864719405,lng:-21.926494177316346};
@@ -386,7 +388,7 @@ function routesGeoJSON(){ return {type:"FeatureCollection",features:TOURS.map(t=
 function stopsGeoJSON(){ return {type:"FeatureCollection",features:STOPS.map((s,i)=>({type:"Feature",properties:{i,label:shortStop(s.name),count:s.count},geometry:{type:"Point",coordinates:[s.lng,s.lat]}}))}; }
 function selStopsGeoJSON(){ return {type:"FeatureCollection",features:stopFilters.map(s=>({type:"Feature",properties:{},geometry:{type:"Point",coordinates:[s.lng,s.lat]}}))}; }
 function opColorExpr(){ return ["match",["get","operator"],
-  "trollis",oc("trollis"),"magicicelandtravel",oc("magicicelandtravel"),"bustravel",oc("bustravel"),"adventures",oc("adventures"),"#888"]; }
+  "trollis",oc("trollis"),"magicicelandtravel",oc("magicicelandtravel"),"bustravel",oc("bustravel"),"adventures",oc("adventures"),"nicetravel",oc("nicetravel"),"#888"]; }
 
 // ---- MapLibre ----
 const STYLE_LIGHT="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json";
@@ -594,7 +596,7 @@ function renderList(visibleNos){
   const filtered = stopFilters.length||operator!=="All"||region!=="All"||!showVip;
   $("count").textContent=TOURS.length;
   $("headNum").textContent=visibleNos.length;
-  $("headSub").textContent = filtered ? "匹配当前筛选 · 共 "+TOURS.length+" 条" : "4 家运营商 · 点线路或圆点筛选";
+  $("headSub").textContent = filtered ? "匹配当前筛选 · 共 "+TOURS.length+" 条" : "5 家运营商 · 点线路或圆点筛选";
   $("listTitle").textContent = filtered ? `匹配 ${visibleNos.length} 条` : `全部 ${TOURS.length} 条线路`;
   listEl.innerHTML="";
   [...TOURS].sort((a,b)=>(OPORD[a.operator]-OPORD[b.operator])||((a.price==null)-(b.price==null))||((a.price||0)-(b.price||0))).forEach(t=>{
@@ -691,7 +693,7 @@ window.addEventListener("load",initSheet);
 
 $("foot").innerHTML =
   "数据抓取:2026-07 · 来源:troll.is / bustravel.is / cn.adventures.is / magicicelandtravel.com · "+
-  "价格<b>统一为冰岛克朗 ISK</b>,四家均取自各站 Bókun 预订引擎的实时「起价」(无需选日期)· "+
+  "价格<b>统一为冰岛克朗 ISK</b>(取自各站 Bókun 实时起价 / AI 提取)· "+
   "底图 © CARTO © OpenStreetMap © Esri。";
 </script>
 
