@@ -186,6 +186,27 @@ for m in MAG:
         "hours":hours_of(m.get("duration")),"rating":rating,
         "region":scan_region(wps),"vip":False,"url":m["url"],"waypoints":wps})
 
+# ---------- attach source ids (enables a future server-side price refresh) ----------
+CH_TROLL="823a4d04-fbbe-4710-a762-5d8634ecf50f"; CH_BUS="56d5e7cb-6b04-4cf6-8eb1-6fc1cf3734d4"; CH_MAGIC="39c9bba8-8263-4fc3-b1cc-bd2d87cafc17"
+TB_BY_SLUG={t.get("slug"):t for t in load(S("troll_bokun.json"),[])}
+BUS_BY_URL={b["url"].rstrip("/"):b for b in load(S("bus_full.json"),[])}
+ADV_BY_URL={a["url"].rstrip("/"):a for a in load(S("adv_api.json"),[])}
+MAG_BY_URL={m["url"].rstrip("/"):m for m in load(S("magic_full.json"),[])}
+def attach_src(t):
+    u=t["url"].rstrip("/"); op=t["operator"]
+    if op=="trollis":
+        b=TB_BY_SLUG.get(u.split("/day-tour/")[-1]);  return {"provider":"bokun","channel":CH_TROLL,"pid":b["pid"]} if b and b.get("pid") else None
+    if op=="bustravel":
+        b=BUS_BY_URL.get(u);   return {"provider":"bokun","channel":CH_BUS,"pid":b["pid"]} if b and b.get("pid") else None
+    if op=="magicicelandtravel":
+        m=MAG_BY_URL.get(u);   return {"provider":"bokun","channel":CH_MAGIC,"pid":m["id"]} if m and m.get("id") else None
+    if op=="adventures":
+        a=ADV_BY_URL.get(u);   return {"provider":"adventures","aid":a["aid"]} if a and a.get("aid") else None
+    return None
+for t in tours:
+    s=attach_src(t)
+    if s: t["src"]=s
+
 # ---------- canonicalize coords: snap recognizable waypoints to the gazetteer ----------
 # Fixes mis-geocoded stops (e.g. bustravel "Katla Ice Cave" landing on Vík) so the same
 # named place has ONE correct coordinate everywhere and the stop-filter can't false-match.

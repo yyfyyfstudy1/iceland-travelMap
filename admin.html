@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>冰岛一日游 · 管理后台</title>
+<style>
+  :root{
+    --bg:#e7edf0; --panel:#fff; --ink:#0e1620; --ink2:#48555f; --muted:#8593a0;
+    --line:#dce4e9; --accent:#0e7c86; --accent-ink:#0b5f67; --chip:#eef3f5;
+    --ok:#137a53; --warn:#a8600a; --danger:#b23b3b;
+    --shadow:0 1px 2px rgba(12,26,36,.08),0 8px 30px rgba(12,26,36,.08);
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#0b0f13; --panel:#12181d; --ink:#e9f1f4; --ink2:#a4b2bc; --muted:#6f7d88;
+    --line:#212a31; --accent:#43c6d0; --accent-ink:#7fe0e7; --chip:#18212a;
+    --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 34px rgba(0,0,0,.45);}}
+  *{box-sizing:border-box} html,body{margin:0}
+  body{font-family:system-ui,-apple-system,"PingFang SC","Hiragino Sans GB",sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  .tnum{font-variant-numeric:tabular-nums}
+  button{font-family:inherit;cursor:pointer}
+  input,select{font-family:inherit;font-size:14px}
+  .hidden{display:none!important}
+
+  /* login */
+  .login{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:20px}
+  .login .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);
+    padding:28px;width:100%;max-width:360px}
+  .login h1{font-size:19px;margin:0 0 4px}
+  .login p{color:var(--muted);font-size:13px;margin:0 0 20px}
+  .field{display:block;margin-bottom:12px}
+  .field label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:5px}
+  .field input{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:var(--bg);color:var(--ink)}
+  .btn{border:0;border-radius:11px;padding:11px 16px;font-size:14px;font-weight:700;background:var(--accent);color:#fff}
+  .btn:hover{filter:brightness(1.05)} .btn:disabled{opacity:.5;cursor:default}
+  .btn.ghost{background:var(--chip);color:var(--ink)}
+  .btn.sm{padding:7px 12px;font-size:13px;border-radius:9px}
+  .btn.danger{background:var(--danger)}
+  .msg{font-size:12.5px;margin-top:10px;min-height:16px}
+  .msg.err{color:var(--danger)} .msg.ok{color:var(--ok)}
+
+  /* app */
+  .top{display:flex;align-items:center;gap:12px;padding:12px clamp(12px,3vw,22px);background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  .top h1{font-size:16px;margin:0;font-weight:800}
+  .top .who{font-size:12.5px;color:var(--muted);margin-left:auto}
+  .wrap{max-width:1200px;margin:0 auto;padding:16px clamp(12px,3vw,22px)}
+  .rates{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;margin-bottom:16px}
+  .rates .h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .rates .h b{font-size:14px} .rates .upd{font-size:11.5px;color:var(--muted)}
+  .rates .grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .rate-pill{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12.5px}
+  .rate-pill b{color:var(--accent-ink)}
+  .toolrow{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+
+  .grid2{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:16px;align-items:start}
+  @media (max-width:820px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+  .listwrap{padding:10px}
+  .search{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);margin-bottom:8px}
+  .list{max-height:70vh;overflow:auto}
+  .row{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:10px;cursor:pointer}
+  .row:hover{background:var(--chip)} .row.sel{background:var(--chip);box-shadow:inset 3px 0 0 var(--accent)}
+  .row .dot{width:10px;height:10px;border-radius:50%;flex:none}
+  .row .nm{flex:1;min-width:0;font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row .pr{font-size:12px;color:var(--muted);white-space:nowrap}
+  .count{font-size:11.5px;color:var(--muted);padding:2px 6px 8px}
+
+  .editor{padding:16px}
+  .editor .empty{color:var(--muted);font-size:13.5px;text-align:center;padding:60px 0}
+  .eh{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+  .eh .id{font-size:11px;color:var(--muted);font-family:ui-monospace,monospace}
+  .fgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media (max-width:560px){.fgrid{grid-template-columns:1fr}}
+  .f{display:flex;flex-direction:column;gap:4px}
+  .f.full{grid-column:1/-1}
+  .f label{font-size:11px;color:var(--muted);font-weight:700}
+  .f input,.f select{padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink)}
+  .wps{margin-top:12px} .wps .hh{font-size:12px;color:var(--muted);font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .wp{display:grid;grid-template-columns:1fr 90px 90px 30px;gap:6px;margin-bottom:6px}
+  .wp input{padding:7px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font-size:12.5px}
+  .wp .x{background:var(--chip);border:1px solid var(--line);border-radius:8px;color:var(--danger);font-weight:800}
+  .eactions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+  .eactions .sep{flex:1}
+  .src{font-size:11px;color:var(--muted);margin-top:8px;font-family:ui-monospace,monospace;word-break:break-all}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);
+    padding:10px 16px;border-radius:10px;font-size:13px;box-shadow:var(--shadow);opacity:0;transition:.2s;pointer-events:none;z-index:20}
+  .toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login" id="loginView">
+  <div class="card">
+    <h1>🇮🇸 冰岛一日游 · 管理后台</h1>
+    <p>用管理员账号登录以编辑路线与汇率。</p>
+    <label class="field"><span>邮箱</span><input id="email" type="email" autocomplete="username" placeholder="admin@…"></label>
+    <label class="field"><span>密码</span><input id="password" type="password" autocomplete="current-password" placeholder="••••••••"></label>
+    <button class="btn" id="loginBtn" style="width:100%">登录</button>
+    <div class="msg" id="loginMsg"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="appView" class="hidden">
+  <div class="top">
+    <h1>🇮🇸 管理后台</h1>
+    <span class="who" id="who"></span>
+    <button class="btn ghost sm" id="logoutBtn">退出</button>
+  </div>
+  <div class="wrap">
+    <!-- rates -->
+    <div class="rates">
+      <div class="h">
+        <b>汇率(基准:ISK 冰岛克朗)</b>
+        <span class="upd" id="ratesUpd"></span>
+        <span class="toolrow">
+          <button class="btn sm" id="updRatesBtn">🔄 一键更新汇率</button>
+          <button class="btn ghost sm" id="refreshPricesBtn" title="需先部署 Cloud Function(Blaze 计划)">💰 刷新所有价格</button>
+        </span>
+      </div>
+      <div class="grid" id="ratesGrid"></div>
+    </div>
+
+    <div class="grid2">
+      <div class="card listwrap">
+        <input class="search" id="search" placeholder="搜索路线 / 运营商…">
+        <div class="count" id="count"></div>
+        <div class="list" id="list"></div>
+      </div>
+      <div class="card editor" id="editor"><div class="empty">← 从左侧选择一条路线开始编辑</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getFirestore, collection, getDocs, doc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-functions.js";
+
+const cfg = {
+  apiKey: "AIzaSyDnlko1B19JHfsaFPeCPBLCHu6bwDRlyAU",
+  authDomain: "icelandtravel-5ad81.firebaseapp.com",
+  projectId: "icelandtravel-5ad81",
+  storageBucket: "icelandtravel-5ad81.firebasestorage.app",
+  messagingSenderId: "231703663419",
+  appId: "1:231703663419:web:4c9ba31e578fbc143a9d1e"
+};
+const app = initializeApp(cfg);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const functions = getFunctions(app, "australia-southeast1");
+
+const OPS = { trollis:{zh:"Troll.is",c:"#2a78d6"}, magicicelandtravel:{zh:"Magic Iceland",c:"#eb6834"},
+  bustravel:{zh:"BusTravel",c:"#1baf7a"}, adventures:{zh:"Arctic Adventures",c:"#6a4bd6"} };
+const REGIONS = ["South Coast","Golden Circle","Snæfellsnes","Highland","East Iceland","North Iceland","Westfjords","Reykjanes","Activity"];
+const CURS = ["ISK","AUD","USD","EUR","CNY","GBP"];
+const $ = id => document.getElementById(id);
+let TOURS = [], sel = null;
+
+function toast(t){ const el=$("toast"); el.textContent=t; el.classList.add("show"); setTimeout(()=>el.classList.remove("show"),2200); }
+
+// ---------- auth ----------
+$("loginBtn").addEventListener("click", async () => {
+  const btn=$("loginBtn"), msg=$("loginMsg"); msg.className="msg"; msg.textContent="";
+  btn.disabled=true; btn.textContent="登录中…";
+  try { await signInWithEmailAndPassword(auth, $("email").value.trim(), $("password").value); }
+  catch(e){ msg.className="msg err"; msg.textContent = "登录失败:"+(e.code||e.message); }
+  btn.disabled=false; btn.textContent="登录";
+});
+$("password").addEventListener("keydown", e => { if(e.key==="Enter") $("loginBtn").click(); });
+$("logoutBtn").addEventListener("click", () => signOut(auth));
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    $("loginView").classList.add("hidden"); $("appView").classList.remove("hidden");
+    $("who").textContent = user.email;
+    await loadAll();
+  } else {
+    $("appView").classList.add("hidden"); $("loginView").classList.remove("hidden");
+    TOURS=[]; sel=null;
+  }
+});
+
+// ---------- load ----------
+async function loadAll(){
+  const snap = await getDocs(collection(db,"tours"));
+  TOURS = snap.docs.map(d => ({ _id:d.id, ...d.data() }));
+  TOURS.sort((a,b)=> (a.operator||"").localeCompare(b.operator) || (a.short||"").localeCompare(b.short||""));
+  renderList();
+  try { const rs = await getDocs(collection(db,"config")); const r = rs.docs.find(d=>d.id==="rates"); renderRates(r?r.data():null); }
+  catch(e){ renderRates(null); }
+}
+
+// ---------- rates ----------
+function renderRates(data){
+  const g=$("ratesGrid");
+  if(!data || !data.rates){ g.innerHTML='<span class="rate-pill">尚无汇率,点「一键更新汇率」</span>'; $("ratesUpd").textContent=""; return; }
+  $("ratesUpd").textContent = "更新于 " + (data.updated||"").slice(0,16).replace("T"," ");
+  g.innerHTML = CURS.filter(c=>c!=="ISK" && data.rates[c]).map(c =>
+    `<span class="rate-pill">1 ISK = <b>${(+data.rates[c]).toFixed(5)}</b> ${c}</span>`).join("")
+    + `<span class="rate-pill" style="opacity:.7">10,000 ISK ≈ <b>${data.rates.AUD?Math.round(10000*data.rates.AUD):"?"}</b> AUD</span>`;
+}
+$("updRatesBtn").addEventListener("click", async () => {
+  const b=$("updRatesBtn"); b.disabled=true; b.textContent="更新中…";
+  try{
+    const d = await (await fetch("https://open.er-api.com/v6/latest/ISK")).json();
+    if(d.result!=="success") throw new Error("FX API 返回失败");
+    const rates={}; CURS.forEach(c=>{ if(d.rates[c]!=null) rates[c]=d.rates[c]; });
+    const payload={ base:"ISK", rates, updated:new Date().toISOString(), source:"open.er-api.com" };
+    await setDoc(doc(db,"config","rates"), payload);
+    renderRates(payload); toast("汇率已更新 ✓");
+  }catch(e){ toast("更新失败:"+(e.code||e.message)); }
+  b.disabled=false; b.textContent="🔄 一键更新汇率";
+});
+$("refreshPricesBtn").addEventListener("click", async () => {
+  const b=$("refreshPricesBtn"); b.disabled=true; b.textContent="刷新中…";
+  try{
+    const res = await httpsCallable(functions,"refreshPrices")({});
+    toast("价格已刷新:"+JSON.stringify(res.data)); await loadAll();
+  }catch(e){
+    toast("需先部署 Cloud Function(Blaze):"+(e.code||e.message));
+  }
+  b.disabled=false; b.textContent="💰 刷新所有价格";
+});
+
+// ---------- list ----------
+function renderList(){
+  const q=($("search").value||"").toLowerCase();
+  const vis=TOURS.filter(t=> !q || (t.short||"").toLowerCase().includes(q) || (t.name||"").toLowerCase().includes(q) || (OPS[t.operator]?.zh||"").toLowerCase().includes(q));
+  $("count").textContent = `${vis.length} / ${TOURS.length} 条路线`;
+  $("list").innerHTML = vis.map(t=>`
+    <div class="row ${sel&&sel._id===t._id?'sel':''}" data-id="${t._id}">
+      <span class="dot" style="background:${OPS[t.operator]?.c||'#888'}"></span>
+      <span class="nm">${esc(t.short||t.name||t._id)}</span>
+      <span class="pr tnum">${t.price!=null?(+t.price).toLocaleString()+" kr":"—"}</span>
+    </div>`).join("");
+  $("list").querySelectorAll(".row").forEach(r=> r.addEventListener("click",()=> openEditor(r.dataset.id)));
+}
+$("search").addEventListener("input", renderList);
+function esc(s){ return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+// ---------- editor ----------
+function openEditor(id){
+  sel = TOURS.find(t=>t._id===id); if(!sel) return; renderList();
+  const t=sel;
+  const field=(k,label,type="text")=>`<div class="f"><label>${label}</label><input data-k="${k}" type="${type}" value="${esc(String(t[k]??""))}"></div>`;
+  const wpRows=(t.waypoints||[]).map((w,i)=>`
+    <div class="wp" data-i="${i}">
+      <input data-wk="name" value="${esc(w.name||"")}" placeholder="站点名">
+      <input data-wk="lat" value="${w.lat??""}" placeholder="lat" class="tnum">
+      <input data-wk="lng" value="${w.lng??""}" placeholder="lng" class="tnum">
+      <button class="x" title="删除">×</button>
+    </div>`).join("");
+  $("editor").innerHTML = `
+    <div class="eh">
+      <span class="dot" style="width:12px;height:12px;border-radius:50%;background:${OPS[t.operator]?.c}"></span>
+      <b style="font-size:15px">${esc(t.short||t.name)}</b>
+      <span class="id">${t._id}</span>
+    </div>
+    <div class="fgrid">
+      <div class="f full">${''}<label>短名 short</label><input data-k="short" value="${esc(t.short||"")}"></div>
+      <div class="f full"><label>全名 name</label><input data-k="name" value="${esc(t.name||"")}"></div>
+      <div class="f full"><label>中文名 name_zh</label><input data-k="name_zh" value="${esc(t.name_zh||"")}"></div>
+      <div class="f"><label>价格(ISK)</label><input data-k="price" type="number" value="${t.price??""}"></div>
+      <div class="f"><label>货币</label><input data-k="currency" value="${esc(t.currency||"ISK")}"></div>
+      <div class="f"><label>单位</label><input data-k="unit" value="${esc(t.unit||"每人")}"></div>
+      <div class="f"><label>评分</label><input data-k="rating" type="number" step="0.01" value="${t.rating??0}"></div>
+      <div class="f"><label>时长(h)</label><input data-k="hours" type="number" step="0.5" value="${t.hours??""}"></div>
+      <div class="f"><label>区域</label><select data-k="region">${REGIONS.map(r=>`<option ${t.region===r?"selected":""}>${r}</option>`).join("")}</select></div>
+      <div class="f"><label>运营商</label><select data-k="operator">${Object.keys(OPS).map(o=>`<option value="${o}" ${t.operator===o?"selected":""}>${OPS[o].zh}</option>`).join("")}</select></div>
+      <div class="f"><label>VIP 私人团</label><select data-k="vip"><option value="false" ${!t.vip?"selected":""}>否</option><option value="true" ${t.vip?"selected":""}>是</option></select></div>
+      <div class="f full"><label>原网址 url</label><input data-k="url" value="${esc(t.url||"")}"></div>
+    </div>
+    <div class="wps">
+      <div class="hh">途径点 waypoints <button class="btn ghost sm" id="addWp">+ 添加</button></div>
+      <div id="wpList">${wpRows}</div>
+    </div>
+    <div class="eactions">
+      <button class="btn" id="saveBtn">💾 保存</button>
+      <a class="btn ghost sm" href="index.html" target="_blank" style="text-decoration:none;display:inline-flex;align-items:center">在地图查看 ↗</a>
+      <span class="sep"></span>
+      <button class="btn danger sm" id="delBtn">删除此路线</button>
+    </div>
+    ${t.src?`<div class="src">来源 src: ${esc(JSON.stringify(t.src))}</div>`:""}`;
+  $("addWp").addEventListener("click", ()=>{ (sel.waypoints=sel.waypoints||[]).push({name:"",lat:0,lng:0}); openEditor(id); });
+  $("wpList").querySelectorAll(".wp .x").forEach(x=> x.addEventListener("click", e=>{ const i=+e.target.closest(".wp").dataset.i; sel.waypoints.splice(i,1); openEditor(id); }));
+  $("saveBtn").addEventListener("click", save);
+  $("delBtn").addEventListener("click", del);
+}
+
+function collect(){
+  const t={ ...sel };
+  $("editor").querySelectorAll("[data-k]").forEach(el=>{
+    let k=el.dataset.k, v=el.value;
+    if(["price","rating","hours"].includes(k)) v = v===""?null:Number(v);
+    if(k==="vip") v = v==="true";
+    t[k]=v;
+  });
+  t.waypoints = [...$("editor").querySelectorAll(".wp")].map(wp=>{
+    const g=k=>wp.querySelector(`[data-wk="${k}"]`).value;
+    return { name:g("name"), lat:Number(g("lat")), lng:Number(g("lng")) };
+  }).filter(w=>w.name || (w.lat&&w.lng));
+  delete t._id;
+  return t;
+}
+async function save(){
+  const b=$("saveBtn"); b.disabled=true; b.textContent="保存中…";
+  try{
+    const data=collect();
+    await setDoc(doc(db,"tours",sel._id), data);
+    Object.assign(sel, data);
+    const idx=TOURS.findIndex(x=>x._id===sel._id); if(idx>=0) TOURS[idx]={_id:sel._id,...data};
+    renderList(); toast("已保存 ✓,刷新地图即生效");
+  }catch(e){ toast("保存失败:"+(e.code||e.message)); }
+  b.disabled=false; b.textContent="💾 保存";
+}
+async function del(){
+  if(!confirm("确定删除「"+(sel.short||sel._id)+"」?此操作会从地图移除该路线。")) return;
+  try{
+    await deleteDoc(doc(db,"tours",sel._id));
+    TOURS=TOURS.filter(x=>x._id!==sel._id); sel=null;
+    $("editor").innerHTML='<div class="empty">已删除。← 选择另一条路线</div>'; renderList(); toast("已删除");
+  }catch(e){ toast("删除失败:"+(e.code||e.message)); }
+}
+</script>
+</body>
+</html>
