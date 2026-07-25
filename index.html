@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>冰岛一日游 · 多平台路线与价格地图</title>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>
+  :root{
+    --bg:#e9eff2; --panel:#ffffff; --ink:#0f1720; --ink2:#47535e; --muted:#8a97a1;
+    --line:#d7e0e4; --accent:#0e7c86; --pill:rgba(255,255,255,.94);
+    --shadow:0 1px 3px rgba(12,26,36,.10),0 8px 30px rgba(12,26,36,.08);
+    --chip:#eef3f5; --chip-on:#0e7c86;
+  }
+  :root[data-theme="dark"], :root:not([data-theme="light"]){}
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+    --bg:#0b0f13; --panel:#12181d; --ink:#eaf1f3; --ink2:#a9b6bf; --muted:#6d7a84;
+    --line:#212a31; --accent:#43c6d0; --pill:rgba(16,22,27,.92);
+    --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 34px rgba(0,0,0,.45); --chip:#1a232b; }}
+  :root[data-theme="dark"]{
+    --bg:#0b0f13; --panel:#12181d; --ink:#eaf1f3; --ink2:#a9b6bf; --muted:#6d7a84;
+    --line:#212a31; --accent:#43c6d0; --pill:rgba(16,22,27,.92);
+    --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 34px rgba(0,0,0,.45); --chip:#1a232b; }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.5;padding:22px clamp(12px,4vw,34px)}
+  .inner{max-width:1220px;margin:0 auto}
+  .head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px}
+  .head h1{font-size:clamp(20px,3.4vw,29px);font-weight:800;letter-spacing:-.01em;margin:0;text-wrap:balance}
+  .head .sub{color:var(--ink2);font-size:13.5px;margin-top:6px;max-width:74ch}
+  .theme-btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;box-shadow:var(--shadow);white-space:nowrap}
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 6px}
+  .toolbar .lbl{font-size:12px;color:var(--muted);font-weight:700;margin-right:2px}
+  .chip{border:1px solid var(--line);background:var(--chip);color:var(--ink2);border-radius:999px;padding:6px 13px;font-size:12.5px;cursor:pointer;transition:.15s;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+  .chip:hover{border-color:var(--accent);color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--chip-on);color:#fff;border-color:var(--chip-on)}
+  .chip .cdot{width:9px;height:9px;border-radius:50%;flex:none}
+  .toolbar .sep{flex:1}
+  .vip-toggle{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink2);cursor:pointer;user-select:none}
+  .vip-toggle input{accent-color:var(--accent);width:15px;height:15px}
+  .stopchip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0 0;padding:8px 13px;border:1px solid var(--accent);background:var(--chip);border-radius:10px;font-size:13px;color:var(--ink)}
+  .stopchip .sctext{flex:1;min-width:210px}
+  .stopchip .x,.stopchip .modebtn{cursor:pointer;border:1px solid var(--line);border-radius:7px;padding:3px 11px;font-weight:700;background:var(--panel);font-size:12px}
+  .stopchip .x:hover,.stopchip .modebtn:hover{border-color:var(--accent);color:var(--accent)}
+  .stopchip .modebtn{border-color:var(--accent);background:var(--accent);color:#fff}
+  .main{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(310px,1fr);gap:16px;align-items:start;margin-top:10px}
+  @media (max-width:900px){.main{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+  .map-card{position:relative;height:min(70vh,560px);overflow:hidden}
+  @media (max-width:900px){.map-card{height:58vh;min-height:340px}}
+  #map{position:absolute;inset:0;border-radius:16px}
+  .legend{position:absolute;left:12px;bottom:22px;z-index:2;background:var(--pill);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:11px;padding:9px 11px;font-size:11.5px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:5px 12px;max-width:70%;box-shadow:var(--shadow)}
+  .legend b{width:100%;color:var(--ink);font-size:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:700;margin-bottom:1px}
+  .legend .lg{display:flex;align-items:center;gap:6px;white-space:nowrap}
+  .legend .sw{width:15px;height:3px;border-radius:2px;flex:none}
+  .basemap-ctl{position:absolute;left:12px;top:12px;z-index:2;display:flex;background:var(--pill);border:1px solid var(--line);border-radius:9px;overflow:hidden;box-shadow:var(--shadow);backdrop-filter:blur(6px)}
+  .basemap-ctl button{border:0;background:none;color:var(--ink2);font-size:12px;font-weight:700;padding:6px 12px;cursor:pointer}
+  .basemap-ctl button+button{border-left:1px solid var(--line)}
+  .basemap-ctl button.on{background:var(--accent);color:#fff}
+  .basemap-ctl button:hover:not(.on){color:var(--ink)}
+  .side{padding:8px}
+  .picker{padding:9px 8px 4px;border-bottom:1px solid var(--line)}
+  .picker-head{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700;margin:2px 4px 7px}
+  .picker-head .muted{text-transform:none;letter-spacing:0;font-weight:600}
+  .picker-body{display:flex;flex-wrap:wrap;gap:5px;max-height:128px;overflow-y:auto;padding:1px 4px 4px}
+  @media (max-width:560px){.picker-body{max-height:104px}}
+  .spchip{border:1px solid var(--line);background:var(--chip);color:var(--ink2);border-radius:999px;padding:3px 9px;font-size:11.5px;cursor:pointer;white-space:nowrap;font-weight:600;transition:.12s}
+  .spchip:hover{border-color:var(--accent);color:var(--ink)}
+  .spchip.sel{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .spchip .n{opacity:.7;font-weight:700;margin-left:3px}
+  .side h2{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:8px 8px;font-weight:700}
+  .list{max-height:520px;overflow-y:auto;padding-right:2px}
+  @media (max-width:900px){.list{max-height:none}}
+  .tour{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:8px;border-radius:10px;cursor:pointer;transition:.12s}
+  .tour:hover,.tour.active{background:var(--chip)}
+  .tour.pinned{background:var(--chip);box-shadow:inset 3px 0 0 var(--accent)}
+  .tour .dot{width:11px;height:11px;border-radius:50%;flex:none;align-self:flex-start;margin-top:3px}
+  .tbody{flex:1;min-width:0}
+  .tname{font-size:13.5px;font-weight:650;display:flex;align-items:center;gap:6px;line-height:1.25}
+  .tname .badge{font-size:9.5px;font-weight:800;letter-spacing:.04em;color:#8a5a00;background:#ffe4a8;border-radius:4px;padding:1px 5px}
+  :root[data-theme="dark"] .tname .badge{color:#ffd985;background:#4a3a10}
+  .tzh{display:block;font-size:11px;color:var(--ink2);margin-top:1px}
+  .tmeta{font-size:11px;color:var(--muted);margin-top:2px}
+  .turl{display:inline-block;margin-top:3px;font-size:10px;color:var(--accent);text-decoration:none;word-break:break-all}
+  .tprice{font-size:14px;font-weight:800;color:var(--ink);white-space:nowrap;text-align:right}
+  .tprice small{font-size:9.5px;font-weight:600;color:var(--muted)}
+  .stops{margin:0 8px 8px 30px;padding:0;font-size:12px;color:var(--ink2)}
+  .stops li{margin:3px 0;list-style:none;position:relative;padding-left:14px}
+  .stops li:before{content:"";position:absolute;left:3px;top:6px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .hidden{display:none!important}
+  .foot{color:var(--muted);font-size:11.5px;margin-top:16px;line-height:1.6}
+  .maplibregl-popup{max-width:260px!important}
+  .maplibregl-popup-content{background:var(--pill);color:var(--ink);border:1px solid var(--line);border-radius:10px;font-size:12.5px;box-shadow:var(--shadow);padding:9px 11px}
+  .maplibregl-popup-tip{display:none}
+  .pop .h{font-weight:750;font-size:13px}
+  .pop .r{color:var(--ink2);font-size:11.5px;margin-top:2px}
+  .pop .p{color:var(--accent);font-weight:800;margin-top:3px}
+  @media (max-width:560px){body{padding:16px 12px}.head h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="inner">
+  <div class="head">
+    <div>
+      <h1>冰岛一日游 · 多平台路线与价格地图</h1>
+      <div class="sub"><b id="count">44</b> 条线路,来自 <b>4 家运营商</b>(Troll.is / Magic Iceland / BusTravel / Arctic Adventures),按运营商着色,真实底图。悬停高亮 · 点击线路锁定 · 点圆点或右侧「途径点」筛线路(可多选)· 价格为各站<b>原始币种</b>(留空=未标价)。</div>
+    </div>
+    <button class="theme-btn" id="themeBtn">◑ 深/浅色</button>
+  </div>
+
+  <div class="toolbar" id="opBar">
+    <span class="lbl">运营商</span>
+    <button class="chip" data-op="All" aria-pressed="true">全部</button>
+    <button class="chip" data-op="trollis" aria-pressed="false"><span class="cdot"></span>Troll.is</button>
+    <button class="chip" data-op="magicicelandtravel" aria-pressed="false"><span class="cdot"></span>Magic Iceland</button>
+    <button class="chip" data-op="bustravel" aria-pressed="false"><span class="cdot"></span>BusTravel</button>
+    <button class="chip" data-op="adventures" aria-pressed="false"><span class="cdot"></span>Arctic Adventures</button>
+    <span class="sep"></span>
+    <label class="vip-toggle"><input type="checkbox" id="vipChk" checked> 显示私人 VIP 团</label>
+  </div>
+  <div class="toolbar" id="regionBar">
+    <span class="lbl">区域</span>
+    <button class="chip" data-region="All" aria-pressed="true">全部</button>
+    <button class="chip" data-region="South Coast" aria-pressed="false">南岸</button>
+    <button class="chip" data-region="Golden Circle" aria-pressed="false">黄金圈</button>
+    <button class="chip" data-region="Snæfellsnes" aria-pressed="false">斯奈山</button>
+    <button class="chip" data-region="Highland" aria-pressed="false">高地</button>
+    <button class="chip" data-region="East Iceland" aria-pressed="false">东部</button>
+    <button class="chip" data-region="North Iceland" aria-pressed="false">北部</button>
+    <button class="chip" data-region="Reykjanes" aria-pressed="false">雷克雅内斯</button>
+    <button class="chip" data-region="Activity" aria-pressed="false">单点活动</button>
+  </div>
+  <div id="stopChip" class="stopchip hidden"></div>
+
+  <div class="main">
+    <div class="card map-card">
+      <div id="map"></div>
+      <div class="basemap-ctl" id="basemapCtl">
+        <button data-bm="street" class="on">街道</button>
+        <button data-bm="satellite">卫星</button>
+        <button data-bm="terrain">地形</button>
+      </div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="card side">
+      <div class="picker">
+        <div class="picker-head">途径点筛选 <span class="muted">· 点选可多选,与地图圆点同步</span></div>
+        <div class="picker-body" id="stopPicker"></div>
+      </div>
+      <h2 id="listTitle">全部线路</h2>
+      <div class="list" id="list"></div>
+    </div>
+  </div>
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+const TOURS = [{"no": 1, "operator": "trollis", "short": "Golden Circle + Brúarfoss & Kerið", "name": "Golden Circle, Bruarfoss & Kerid Volcanic Crater - Small Group Day Tour", "name_zh": "", "price": 106, "currency": "USD", "unit": "每人", "hours": 8, "rating": 4.8, "region": "Golden Circle", "vip": false, "url": "https://troll.is/day-tour/golden-circle-bruarfoss-kerid/", "waypoints": [{"name": "Pickup in Reykjavik", "lat": 64.14202864719405, "lng": -21.926494177316346}, {"name": "Thingvellir National Park", "lat": 64.279576, "lng": -21.088117}, {"name": "Bruarfoss Waterfall", "lat": 64.262104, "lng": -20.52066}, {"name": "Geysir Geothermal Area", "lat": 64.309798, "lng": -20.301526}, {"name": "Gullfoss Waterfall", "lat": 64.324997, "lng": -20.125606}, {"name": "Kerid Volcano Crater", "lat": 64.041866, "lng": -20.886713}, {"name": "Back To Reykjavík", "lat": 64.14202864719405, "lng": -21.926494177316346}]}, {"no": 2, "operator": "trollis", "short": "Snæfellsnes Peninsula", "name": "Snæfellsnes Peninsula Small Group Day Tour from Reykjavík", "name_zh": "", "price": 140, "currency": "USD", "unit": "每人", "hours": 12, "rating": 4.9, "region": "Snæfellsnes", "vip": false, "url": "https://troll.is/day-tour/snaefellsnes-peninsula/", "waypoints": [{"name": "Pickup in Reykjavik", "lat": 64.14202864719405, "lng": -21.926494177316346}, {"name": "Borgarnes", "lat": 64.543786, "lng": -21.90897}, {"name": "Ytri Tunga Beach: Seal Colony", "lat": 64.802576, "lng": -23.079931}, {"name": "Búðir: The Black Church in the Lava Fields", "lat": 64.822794, "lng": -23.38459}, {"name": "Arnarstapi: Fishing Village", "lat": 64.770482, "lng": -23.619242}, {"name": "Djúpalónssandur", "lat": 64.751694, "lng": -23.906739}, {"name": "Lóndrangar Basalt Cliffs", "lat": 64.73776, "lng": -23.775259}, {"name": "Ingjaldshóll Church", "lat": 64.9078867, "lng": -23.8550507}, {"name": "Kirkjufell", "lat": 64.93114, "lng": -23.31351}, {"name": "Back to Reykjavík", "lat": 64.14202864719405, "lng": -21.926494177316346}]}, {"no": 3, "operator": "trollis", "short": "South Coast + Glacier Hike", "name": "South Coast & Glacier Hike Minibus Tour from Reykjavík", "name_zh": "", "price": 179, "currency": "USD", "unit": "每人", "hours": 12, "rating": 5.0, "region": "South Coast", "vip": false, "url": "https://troll.is/day-tour/south-coast-glacier-hike/", "waypoints": [{"name": "Pickup in Reykjavik", "lat": 64.14202864719405, "lng": -21.926494177316346}, {"name": "Seljalandsfoss", "lat": 63.61598, "lng": -19.992901}, {"name": "Skógafoss Waterfall", "lat": 63.529193, "lng": -19.513269}, {"name": "Included Tour: Glacier Hike on Sólheimajökull Glacier", "lat": 63.529508, "lng": -19.372663}, {"name": "Reynisfjara: the Black Sand Beach", "lat": 63.404411, "lng": -19.045529}, {"name": "Back to Reykjavík", "lat": 64.14202864719405, "lng": -21.926494177316346}]}, {"no": 4, "operator": "trollis", "short": "Snæfellsnes 斯奈山 (中文团)", "name": "斯奈山半岛一日游", "name_zh": "", "price": 179, "currency": "USD", "unit": "每人", "hours": 12, "rating": 4.9, "region": "Snæfellsnes", "vip": false, "url": "https://troll.is/day-tour/snaefellsnes-peninsula-chinese-day-tour/", "waypoints": [{"name": "雷克雅未克接送", "lat": 64.14202864719405, "lng": -21.926494177316346}, {"name": "Borgarnes", "lat": 64.543786, "lng": -21.90897}, {"name": "Ytri Tunga Beach: Seal Colony", "lat": 64.802576, "lng": -23.079931}, {"name": "Búðir: The Black Church in the Lava Fields", "lat": 64.822794, "lng": -23.38459}, {"name": "Arnarstapi: Fishing Village", "lat": 64.770482, "lng": -23.619242}, {"name": "Djúpalónssandur", "lat": 64.751694, "lng": -23.906739}, {"name": "Lóndrangar Basalt Cliffs", "lat": 64.73776, "lng": -23.775259}, {"name": "Ingjaldshóll Church", "lat": 64.9078867, "lng": -23.8550507}, {"name": "Kirkjufell", "lat": 64.93114, "lng": -23.31351}, {"name": "Back to Reykjavík", "lat": 64.14202864719405, "lng": -21.926494177316346}]}, {"no": 5, "operator": "trollis", "short": "Silfra Snorkeling", "name": "Snorkeling in Silfra with transfer from Reykjavik - Free Underwater Photos", "name_zh": "", "price": 223, "currency": "USD", "unit": "每人", "hours": 6, "rating": 5.0, "region": "Activity", "vip": false, "url": "https://troll.is/day-tour/snorkeling-in-silfra-with-transfer-from-reykjavik/", "waypoints": [{"name": "Pickup in Reykjavik", "lat": 64.14202864719405, "lng": -21.926494177316346}, {"name": "Silfra Fissure (Þingvellir)", "lat": 64.2558, "lng": -21.1188}, {"name": "Back to Reykjavík", "lat": 64.14202864719405, "lng": -21.926494177316346}]}, {"no": 6, "operator": "trollis", "short": "Reykjadalur Riding + Hiking", "name": "Riding and Hiking in the Valley Reykjadalur", "name_zh": "", "price": 225.44, "currency": "USD", "unit": "每人", "hours": 9, "rating": 4.5, "region": "Activity", "vip": false, "url": "https://troll.is/day-tour/riding-and-hiking-in-the-valley-reykjadalur/", "waypoints": [{"name": "Pickup in Reykjavik", "lat": 64.14202864719405, "lng": -21.926494177316346}, {"name": "Reykjadalur Valley", "lat": 64.024, "lng": -21.212}, {"name": "Back to Reykjavík", "lat": 64.14202864719405, "lng": -21.926494177316346}]}, {"no": 7, "operator": "trollis", "short": "Golden Circle + Blue Lagoon", "name": "Golden Circle & Blue Lagoon Day Tour from Reykjavik", "name_zh": "", "price": 253.8, "currency": "USD", "unit": "每人", "hours": 11, "rating": 4.8, "region": "Golden Circle", "vip": false, "url": "https://troll.is/day-tour/golden-circle-blue-lagoon/", "waypoints": [{"name": "Pickup in Reykjavik", "lat": 64.14202864719405, "lng": -21.926494177316346}, {"name": "Thingvellir National Park", "lat": 64.279545, "lng": -21.088114}, {"name": "Geysir Geothermal Area", "lat": 64.309425, "lng": -20.303591}, {"name": "Gullfoss Waterfall", "lat": 64.325212, "lng": -20.129861}, {"name": "Kerið Volcanic Crater Lake", "lat": 64.041851, "lng": -20.886649}, {"name": "Blue Lagoon", "lat": 63.881559, "lng": -22.453773}, {"name": "Back to Reykjavík", "lat": 64.14202864719405, "lng": -21.926494177316346}]}, {"no": 8, "operator": "trollis", "short": "Golden Circle + Silfra Snorkel", "name": "Golden Circle & Snorkel in Silfra Day Tour from Reykjavik", "name_zh": "", "price": 289, "currency": "USD", "unit": "每人", "hours": 10, "rating": 5.0, "region": "Golden Circle", "vip": false, "url": "https://troll.is/day-tour/golden-circle-snorkeling-in-silfra/", "waypoints": [{"name": "Pickup in Reykjavik", "lat": 64.14202864719405, "lng": -21.926494177316346}, {"name": "Thingvellir National Park", "lat": 64.279576, "lng": -21.088117}, {"name": "Geysir Geothermal Area", "lat": 64.309798, "lng": -20.301526}, {"name": "Gullfoss Waterfall", "lat": 64.324997, "lng": -20.125606}, {"name": "Back To Reykjavík", "lat": 64.14202864719405, "lng": -21.926494177316346}]}, {"no": 9, "operator": "trollis", "short": "South Coast + Katla Ice Cave", "name": "South Coast & Katla Ice Cave Small Group Day Tour from Reykjavik", "name_zh": "", "price": 299, "currency": "USD", "unit": "每人", "hours": 12, "rating": 5.0, "region": "South Coast", "vip": false, "url": "https://troll.is/day-tour/south-coast-katla/", "waypoints": [{"name": "Pickup in Reykjavik", "lat": 64.14202864719405, "lng": -21.926494177316346}, {"name": "Seljalandsfoss Waterfall", "lat": 63.61598, "lng": -19.992901}, {"name": "Skógafoss Waterfall", "lat": 63.529193, "lng": -19.513269}, {"name": "Reynisfjara: the Black Sand Beach", "lat": 63.404411, "lng": -19.045529}, {"name": "Included Activity: 3-hour Katla Ice Cave & Super Jeep Tour", "lat": 63.4833533, "lng": -19.0028895}, {"name": "Back to Reykjavík", "lat": 64.14202864719405, "lng": -21.926494177316346}]}, {"no": 10, "operator": "trollis", "short": "Landmannalaugar Super Jeep", "name": "Landmannalaugar Super Jeep Day Tour from Reykjavík", "name_zh": "", "price": 350, "currency": "USD", "unit": "每人", "hours": 13, "rating": 4.9, "region": "Highland", "vip": false, "url": "https://troll.is/day-tour/landmannalaugar-super-jeep-day-tour-from-reykjavik/", "waypoints": [{"name": "Pickup in Reykjavik", "lat": 64.14202864719405, "lng": -21.926494177316346}, {"name": "Hjálparfoss", "lat": 64.113, "lng": -19.826}, {"name": "Háifoss", "lat": 64.211, "lng": -19.686}, {"name": "Landmannalaugar", "lat": 63.9903, "lng": -19.0578}, {"name": "Back to Reykjavík", "lat": 64.14202864719405, "lng": -21.926494177316346}]}, {"no": 11, "operator": "trollis", "short": "VIP Golden Circle (Private)", "name": "Private VIP Golden Circle Day Tour-8 Hour Tour: Optional Extra Activities On An Extended 12 Hour Day Tour", "name_zh": "", "price": 1350, "currency": "USD", "unit": "每人", "hours": 8, "rating": 4.7, "region": "Golden Circle", "vip": true, "url": "https://troll.is/day-tour/vip-private-golden-circle-day-tour/", "waypoints": [{"name": "Pickup in Reykjavik", "lat": 64.14202864719405, "lng": -21.926494177316346}, {"name": "Thingvellir National Park", "lat": 64.279576, "lng": -21.088117}, {"name": "Bruarfoss Waterfall", "lat": 64.262104, "lng": -20.52066}, {"name": "Geysir Geothermal Area", "lat": 64.309798, "lng": -20.301526}, {"name": "Gullfoss Waterfall", "lat": 64.324997, "lng": -20.125606}]}, {"no": 12, "operator": "trollis", "short": "VIP South Coast (Private)", "name": "VIP Private South Coast Tour With Optional Glacier Hike or Katla Ice Cave Activity", "name_zh": "", "price": 1800, "currency": "USD", "unit": "每团", "hours": 12, "rating": 5.0, "region": "South Coast", "vip": true, "url": "https://troll.is/day-tour/south-coast-optional-glacier-hike-katla-private-tour/", "waypoints": [{"name": "Pickup in Reykjavik", "lat": 64.133482, "lng": -22.0083221}, {"name": "Seljalandsfoss", "lat": 63.61598, "lng": -19.992901}, {"name": "Skógafoss Waterfall", "lat": 63.529193, "lng": -19.513269}, {"name": "Included Tour: Glacier Hike on Sólheimajökull Glacier or Katla Ice Cave", "lat": 63.529508, "lng": -19.372663}, {"name": "Reynisfjara: the Black Sand Beach", "lat": 63.404411, "lng": -19.045529}, {"name": "Back to Reykjavík", "lat": 64.133482, "lng": -22.0083221}]}, {"no": 13, "operator": "magicicelandtravel", "short": "Glacier Lagoon & Diamond Beach Day Tour", "name": "Glacier Lagoon & Diamond Beach Day Tour", "name_zh": "冰岛钻石沙滩&冰河湖中文一日精品团", "price": null, "currency": "ISK", "unit": "每人", "hours": 14.5, "rating": null, "region": "South Coast", "vip": false, "url": "https://www.magicicelandtravel.com/tour/diamond-beach-glacier-lagoon-small-group-day-tour-guided-in-chinese", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426, "zh": "雷克雅未克"}, {"name": "Skogafoss", "lat": 63.532, "lng": -19.5114, "zh": "斯科加瀑布"}, {"name": "Diamond Beach", "lat": 64.0447, "lng": -16.1793, "zh": "钻石沙滩"}, {"name": "Jokulsarlon", "lat": 64.0784, "lng": -16.2306, "zh": "杰古沙龙冰河湖"}, {"name": "Reynisfjara", "lat": 63.4041, "lng": -19.0448, "zh": "黑沙滩"}, {"name": "Vik", "lat": 63.4186, "lng": -19.006, "zh": "维克"}, {"name": "Seljalandsfoss", "lat": 63.6156, "lng": -19.9886, "zh": "塞里雅兰瀑布"}]}, {"no": 14, "operator": "magicicelandtravel", "short": "Djupivogur: Jokulsarlon & Diamond Beach Cruise Tour", "name": "Djupivogur: Jokulsarlon & Diamond Beach Cruise Tour", "name_zh": "", "price": null, "currency": "ISK", "unit": "每人", "hours": 6.5, "rating": null, "region": "East Iceland", "vip": false, "url": "https://www.magicicelandtravel.com/tour/djupivogur-jokulsarlon-diamond-beach-cruise-tour", "waypoints": [{"name": "Djupivogur", "lat": 64.6558, "lng": -14.2793}, {"name": "Eystrahorn", "lat": 64.2497, "lng": -14.567}, {"name": "Jokulsarlon", "lat": 64.0784, "lng": -16.2306, "zh": "杰古沙龙冰湖"}, {"name": "Diamond Beach", "lat": 64.0447, "lng": -16.1793, "zh": "钻石沙滩"}, {"name": "Hvalnes Lighthouse", "lat": 64.401, "lng": -14.535}]}, {"no": 15, "operator": "magicicelandtravel", "short": "Golden Circle & Lagoon", "name": "Golden Circle & Lagoon", "name_zh": "冰岛黄金圈+可选小众温泉中文一日精品团", "price": null, "currency": "ISK", "unit": "每人", "hours": 10, "rating": null, "region": "Golden Circle", "vip": false, "url": "https://www.magicicelandtravel.com/tour/from-reykjavik-golden-circle-lagoon-full-day-small-group-guided-in-chinese", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426, "zh": "雷克雅未克"}, {"name": "Thingvellir", "lat": 64.2559, "lng": -21.1295, "zh": "Þingvellir 国家公园"}, {"name": "Kerid", "lat": 64.0411, "lng": -20.8856, "zh": "Kerið 火山口"}, {"name": "Bruarfoss", "lat": 64.264, "lng": -20.515, "zh": "Brúarfoss 瀑布"}, {"name": "Geysir", "lat": 64.3104, "lng": -20.3024, "zh": "Geysir 地热区"}, {"name": "Gullfoss", "lat": 64.3271, "lng": -20.1199, "zh": "Gullfoss 黄金瀑布"}, {"name": "Laugaras", "lat": 64.1, "lng": -20.687, "zh": "Laugarás Lagoon 温泉"}]}, {"no": 16, "operator": "magicicelandtravel", "short": "South Coast, Diamond Beach & Glacier Lagoon", "name": "South Coast, Diamond Beach & Glacier Lagoon", "name_zh": "冰岛南岸钻石沙滩&冰河湖中文一日团", "price": null, "currency": "ISK", "unit": "每人", "hours": 14.5, "rating": null, "region": "South Coast", "vip": false, "url": "https://www.magicicelandtravel.com/tour/from-reykjavik-south-coast-diamond-beach-glacier-lagoon-day-tour-guided-in-chinese", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426, "zh": "雷克雅未克"}, {"name": "Seljalandsfoss", "lat": 63.6156, "lng": -19.9886, "zh": "塞里雅兰瀑布"}, {"name": "Skogafoss", "lat": 63.532, "lng": -19.5114, "zh": "斯科加瀑布"}, {"name": "Reynisfjara", "lat": 63.4041, "lng": -19.0448, "zh": "黑沙滩"}, {"name": "Vik", "lat": 63.4186, "lng": -19.006, "zh": "维克"}, {"name": "Jokulsarlon", "lat": 64.0784, "lng": -16.2306, "zh": "冰河湖"}, {"name": "Diamond Beach", "lat": 64.0447, "lng": -16.1793, "zh": "钻石沙滩"}]}, {"no": 17, "operator": "magicicelandtravel", "short": "Glacier Hike & Blue Ice Experience", "name": "Glacier Hike & Blue Ice Experience", "name_zh": "", "price": null, "currency": "ISK", "unit": "每人", "hours": 5, "rating": null, "region": "Activity", "vip": false, "url": "https://www.magicicelandtravel.com/tour/glacier-hike-blue-ice-experience-small-group-tour", "waypoints": [{"name": "Jokulsarlon", "lat": 64.0784, "lng": -16.2306}, {"name": "Vatnajokull", "lat": 64.0159, "lng": -16.9666}]}, {"no": 18, "operator": "magicicelandtravel", "short": "Skaftafell Glacier Hike & Photoshoot (Falljokull)", "name": "Skaftafell Glacier Hike & Photoshoot (Falljokull)", "name_zh": "", "price": null, "currency": "ISK", "unit": "每人", "hours": 3, "rating": null, "region": "Activity", "vip": false, "url": "https://www.magicicelandtravel.com/tour/glacier-hike-captured-in-skaftafell", "waypoints": [{"name": "Skaftafell", "lat": 64.0159, "lng": -16.9666}, {"name": "Falljokull", "lat": 64.007, "lng": -16.86}]}, {"no": 19, "operator": "magicicelandtravel", "short": "Glacier Hike, South Coast Waterfalls & Black Sand Beac", "name": "Glacier Hike, South Coast Waterfalls & Black Sand Beach", "name_zh": "", "price": null, "currency": "ISK", "unit": "每人", "hours": 11, "rating": null, "region": "South Coast", "vip": false, "url": "https://www.magicicelandtravel.com/tour/glacier-hike-south-coast-waterfalls-black-sand-beach", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426}, {"name": "Seljalandsfoss", "lat": 63.6156, "lng": -19.9886}, {"name": "Skogafoss", "lat": 63.532, "lng": -19.5114}, {"name": "Solheimajokull", "lat": 63.5316, "lng": -19.3706}, {"name": "Reynisfjara", "lat": 63.4041, "lng": -19.0448}]}, {"no": 20, "operator": "magicicelandtravel", "short": "Golden Circle Day Tour with Local Surprise", "name": "Golden Circle Day Tour with Local Surprise", "name_zh": "", "price": null, "currency": "ISK", "unit": "每人", "hours": 9, "rating": null, "region": "Golden Circle", "vip": false, "url": "https://www.magicicelandtravel.com/tour/golden-circle-day-tour-with-local-surprise-english-guide-occasional-german-departures-available", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426}, {"name": "Thingvellir", "lat": 64.2559, "lng": -21.1295}, {"name": "Geysir", "lat": 64.3104, "lng": -20.3024}, {"name": "Gullfoss", "lat": 64.3271, "lng": -20.1199}, {"name": "Kerid", "lat": 64.0411, "lng": -20.8856}]}, {"no": 21, "operator": "magicicelandtravel", "short": "Golden Circle Day Tour with Local Surprise", "name": "Golden Circle Day Tour with Local Surprise", "name_zh": "", "price": null, "currency": "ISK", "unit": "每人", "hours": 9, "rating": null, "region": "Golden Circle", "vip": false, "url": "https://www.magicicelandtravel.com/tour/golden-circle-day-tour-with-local-surprise-small-group-minibus", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426}, {"name": "Thingvellir", "lat": 64.2559, "lng": -21.1295}, {"name": "Geysir", "lat": 64.3104, "lng": -20.3024}, {"name": "Gullfoss", "lat": 64.3271, "lng": -20.1199}, {"name": "Kerid", "lat": 64.0411, "lng": -20.8856}]}, {"no": 22, "operator": "magicicelandtravel", "short": "Golden Circle & Surprise Full Day Tour (Chinese-guided", "name": "Golden Circle & Surprise Full Day Tour (Chinese-guided)", "name_zh": "冰岛黄金圈与小惊喜中文一日团", "price": null, "currency": "ISK", "unit": "每人", "hours": 9, "rating": null, "region": "Golden Circle", "vip": false, "url": "https://www.magicicelandtravel.com/tour/golden-circle-suprise-full-day-bus-tour-guided-in-chinese", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426, "zh": "雷克雅未克"}, {"name": "Kerid", "lat": 64.0411, "lng": -20.8856, "zh": "克瑞泽火山口"}, {"name": "Geysir", "lat": 64.3104, "lng": -20.3024, "zh": "盖歇尔间歇泉"}, {"name": "Gullfoss", "lat": 64.3271, "lng": -20.1199, "zh": "古佛斯瀑布"}, {"name": "Bruarfoss", "lat": 64.264, "lng": -20.515, "zh": "蓝色瀑布"}, {"name": "Thingvellir National Park", "lat": 64.2559, "lng": -21.1295, "zh": "辛格维利尔国家公园"}]}, {"no": 23, "operator": "magicicelandtravel", "short": "Snaefellsnes Peninsula Cruise Shore Excursion", "name": "Snaefellsnes Peninsula Cruise Shore Excursion", "name_zh": "", "price": null, "currency": "ISK", "unit": "每人", "hours": 5.5, "rating": null, "region": "Snæfellsnes", "vip": false, "url": "https://www.magicicelandtravel.com/tour/grundarfjordur-cruise-tour-snaefellsnes-peninsula-with-local-surprise", "waypoints": [{"name": "Grundarfjordur", "lat": 64.9223, "lng": -23.2544}, {"name": "Kirkjufell", "lat": 64.9271, "lng": -23.306}, {"name": "Kirkjufellsfoss", "lat": 64.9268, "lng": -23.3096}, {"name": "Djupalonssandur", "lat": 64.7538, "lng": -23.9007}, {"name": "Londrangar", "lat": 64.736, "lng": -23.789}, {"name": "Arnarstapi", "lat": 64.7699, "lng": -23.6236}, {"name": "Budir", "lat": 64.8213, "lng": -23.3855}]}, {"no": 24, "operator": "bustravel", "short": "Blue Ice Cave by Super Jeep from Jokulsarlon", "name": "Blue Ice Cave by Super Jeep from Jokulsarlon", "name_zh": "", "price": 21850, "currency": "ISK", "unit": "每人", "hours": 3, "rating": null, "region": "Activity", "vip": false, "url": "https://bustravel.is/iceland-tours/blue-ice-cave-tour-by-super-jeep-from-jokulsarlon", "waypoints": [{"name": "Jokulsarlon", "lat": 64.0784, "lng": -16.2306}, {"name": "Vatnajokull National Park", "lat": 64.0159, "lng": -16.9666}, {"name": "Crystal Ice Cave", "lat": 64.048, "lng": -16.38}]}, {"no": 25, "operator": "bustravel", "short": "Silfra Diving Tour", "name": "Silfra Diving Tour", "name_zh": "", "price": 42499, "currency": "ISK", "unit": "每人", "hours": 5, "rating": null, "region": "Activity", "vip": false, "url": "https://bustravel.is/iceland-tours/diving-in-silfra-from-reykjavik", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426}, {"name": "Thingvellir", "lat": 64.2559, "lng": -21.1295}, {"name": "Silfra", "lat": 64.2558, "lng": -21.1188}]}, {"no": 26, "operator": "bustravel", "short": "Silfra Fissure Diving (Thingvellir)", "name": "Silfra Fissure Diving (Thingvellir)", "name_zh": "", "price": 34499, "currency": "ISK", "unit": "每人", "hours": 5, "rating": null, "region": "Activity", "vip": false, "url": "https://bustravel.is/iceland-tours/diving-in-silfra-meet-on-location-in-thingvellir-national-park", "waypoints": [{"name": "Thingvellir National Park", "lat": 64.2559, "lng": -21.1295}, {"name": "Silfra", "lat": 64.2558, "lng": -21.1188}]}, {"no": 27, "operator": "bustravel", "short": "Silfra Diving & Whale Watching Self Drive Tour", "name": "Silfra Diving & Whale Watching Self Drive Tour", "name_zh": "", "price": 49490, "currency": "ISK", "unit": "每人", "hours": 10, "rating": null, "region": "Activity", "vip": false, "url": "https://bustravel.is/iceland-tours/diving-in-silfra-whale-watching-self-drive-tour", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426}, {"name": "Silfra, Thingvellir National Park", "lat": 64.2558, "lng": -21.1188}, {"name": "Faxafloi Bay", "lat": 64.43246, "lng": -22.77571}]}, {"no": 28, "operator": "bustravel", "short": "FlyOver Iceland & Golden Circle Tour", "name": "FlyOver Iceland & Golden Circle Tour", "name_zh": "", "price": 15490, "currency": "ISK", "unit": "每人", "hours": 10, "rating": null, "region": "Golden Circle", "vip": false, "url": "https://bustravel.is/iceland-tours/flyover-iceland-golden-circle-tour", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426}, {"name": "Thingvellir National Park", "lat": 64.2559, "lng": -21.1295}, {"name": "Geysir Geothermal Area", "lat": 64.3104, "lng": -20.3024}, {"name": "Gullfoss Waterfall", "lat": 64.3271, "lng": -20.1199}, {"name": "Kerid Volcanic Crater", "lat": 64.0411, "lng": -20.8856}, {"name": "FlyOver Iceland", "lat": 64.1552, "lng": -21.938}]}, {"no": 29, "operator": "bustravel", "short": "Glacier Hiking Tour from Skaftafell (Falljokull)", "name": "Glacier Hiking Tour from Skaftafell (Falljokull)", "name_zh": "", "price": 23400, "currency": "ISK", "unit": "每人", "hours": 4, "rating": null, "region": "Activity", "vip": false, "url": "https://bustravel.is/iceland-tours/glacier-hike-from-skaftafell", "waypoints": [{"name": "Skaftafell", "lat": 64.0159, "lng": -16.9666}, {"name": "Falljokull", "lat": 64.007, "lng": -16.86}]}, {"no": 30, "operator": "bustravel", "short": "Easy Glacier Hike on Falljokull Glacier (Vatnajokull)", "name": "Easy Glacier Hike on Falljokull Glacier (Vatnajokull)", "name_zh": "", "price": 16900, "currency": "ISK", "unit": "每人", "hours": 3, "rating": null, "region": "Activity", "vip": false, "url": "https://bustravel.is/iceland-tours/glacier-hiking-on-falljokull-glacier-in-vatnajokull-national-park", "waypoints": [{"name": "Skaftafell", "lat": 64.0159, "lng": -16.9666}, {"name": "Falljokull", "lat": 64.007, "lng": -16.86}]}, {"no": 31, "operator": "bustravel", "short": "Jokulsarlon Glacier Lagoon & South Iceland", "name": "Jokulsarlon Glacier Lagoon & South Iceland", "name_zh": "", "price": 27990, "currency": "ISK", "unit": "每人", "hours": 14, "rating": null, "region": "South Coast", "vip": false, "url": "https://bustravel.is/iceland-tours/glacier-lagoon-south-iceland", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426}, {"name": "Seljalandsfoss", "lat": 63.6156, "lng": -19.9886}, {"name": "Vik", "lat": 63.4186, "lng": -19.006}, {"name": "Reynisdrangar", "lat": 63.397, "lng": -19.038}, {"name": "Stjornarfoss", "lat": 63.784, "lng": -18.06}, {"name": "Fjallsarlon", "lat": 64.0128, "lng": -16.3853}, {"name": "Jokulsarlon", "lat": 64.0784, "lng": -16.2306}, {"name": "Diamond Beach", "lat": 64.0447, "lng": -16.1793}]}, {"no": 32, "operator": "bustravel", "short": "Langjökull Glacier Snowmobiling", "name": "Langjökull Glacier Snowmobiling", "name_zh": "", "price": 42990, "currency": "ISK", "unit": "每人", "hours": 9, "rating": null, "region": "Activity", "vip": false, "url": "https://bustravel.is/iceland-tours/glacier-snowmobiling-tour-from-reykjavik", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426}, {"name": "Langjokull", "lat": 64.75, "lng": -20.0}]}, {"no": 33, "operator": "bustravel", "short": "Golden Circle Afternoon Tour", "name": "Golden Circle Afternoon Tour", "name_zh": "", "price": 10990, "currency": "ISK", "unit": "每人", "hours": 8, "rating": null, "region": "Golden Circle", "vip": false, "url": "https://bustravel.is/iceland-tours/golden-circle-afternoon-tour", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426}, {"name": "Thingvellir National Park", "lat": 64.2559, "lng": -21.1295}, {"name": "Geysir", "lat": 64.3104, "lng": -20.3024}, {"name": "Gullfoss", "lat": 64.3271, "lng": -20.1199}, {"name": "Kerid", "lat": 64.0411, "lng": -20.8856}]}, {"no": 34, "operator": "bustravel", "short": "Golden Circle & Blue Lagoon", "name": "Golden Circle & Blue Lagoon", "name_zh": "", "price": 17900, "currency": "ISK", "unit": "每人", "hours": 11, "rating": null, "region": "Golden Circle", "vip": false, "url": "https://bustravel.is/iceland-tours/golden-circle-blue-lagoon", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426}, {"name": "Thingvellir National Park", "lat": 64.2559, "lng": -21.1295}, {"name": "Geysir", "lat": 64.3104, "lng": -20.3024}, {"name": "Gullfoss", "lat": 64.3271, "lng": -20.1199}, {"name": "Kerid Crater", "lat": 64.0411, "lng": -20.8856}, {"name": "Blue Lagoon", "lat": 63.8804, "lng": -22.4495}]}, {"no": 35, "operator": "adventures", "short": "Golden Circle & Blue Lagoon", "name": "Golden Circle & Blue Lagoon", "name_zh": "黄金圈&蓝湖", "price": null, "currency": "CNY", "unit": "每人", "hours": null, "rating": null, "region": "Golden Circle", "vip": false, "url": "https://cn.adventures.is/iceland/day-tours/blue-lagoon-tours/golden-circle-and-blue-lagoon-tour/", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426, "zh": "雷克雅未克"}, {"name": "Thingvellir", "lat": 64.2559, "lng": -21.1295, "zh": "辛格维利尔"}, {"name": "Geysir", "lat": 64.3104, "lng": -20.3024, "zh": "盖歇尔间歇泉"}, {"name": "Gullfoss", "lat": 64.3271, "lng": -20.1199, "zh": "黄金瀑布"}, {"name": "Blue Lagoon", "lat": 63.8804, "lng": -22.4495, "zh": "蓝湖"}]}, {"no": 36, "operator": "adventures", "short": "Lava Tunnel Caving & Northern Lights", "name": "Lava Tunnel Caving & Northern Lights", "name_zh": "赫法瑞熔岩隧道+极光小巴团", "price": null, "currency": "CNY", "unit": "每人", "hours": null, "rating": null, "region": "Activity", "vip": false, "url": "https://cn.adventures.is/iceland/day-tours/caving/lava-tunnel-and-northern-lights/", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426, "zh": "雷克雅未克"}, {"name": "Raufarholshellir", "lat": 63.933, "lng": -21.475, "zh": "瑞法赫火山岩洞隧道"}]}, {"no": 37, "operator": "adventures", "short": "Lofthellir Ice Cave from Myvatn", "name": "Lofthellir Ice Cave from Myvatn", "name_zh": "米湖出发：Lofthellir冰洞之旅", "price": null, "currency": "CNY", "unit": "每人", "hours": null, "rating": null, "region": "Activity", "vip": false, "url": "https://cn.adventures.is/iceland/day-tours/caving/lofthellir-ice-cave-from-akureyri-or-myvatn/", "waypoints": [{"name": "Myvatn", "lat": 65.6039, "lng": -16.9959, "zh": "米湖"}, {"name": "Lofthellir Cave", "lat": 65.55, "lng": -16.72, "zh": "Lofthellir冰洞"}]}, {"no": 38, "operator": "adventures", "short": "Langjokull Glacier Monster Truck Tour", "name": "Langjokull Glacier Monster Truck Tour", "name_zh": "朗格冰川怪兽卡车之旅", "price": null, "currency": "CNY", "unit": "每人", "hours": null, "rating": null, "region": "Activity", "vip": false, "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-monster-truck-tour-to-langjokull/", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426, "zh": "雷克雅未克"}, {"name": "Langjokull", "lat": 64.75, "lng": -20.0, "zh": "朗格冰川"}]}, {"no": 39, "operator": "adventures", "short": "South Coast Glaciers & Waterfalls (Glacier Hike)", "name": "South Coast Glaciers & Waterfalls (Glacier Hike)", "name_zh": "冰川与瀑布（南岸经典游与冰川健行）", "price": null, "currency": "CNY", "unit": "每人", "hours": null, "rating": null, "region": "South Coast", "vip": false, "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-from-reykjavik/glaciers-and-waterfalls/", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426, "zh": "雷克雅未克"}, {"name": "Seljalandsfoss", "lat": 63.6156, "lng": -19.9886, "zh": "塞里雅兰瀑布"}, {"name": "Skogafoss", "lat": 63.532, "lng": -19.5114, "zh": "斯科加瀑布"}, {"name": "Solheimajokull", "lat": 63.5316, "lng": -19.3706, "zh": "索尔黑马冰川"}]}, {"no": 40, "operator": "adventures", "short": "Solheimajokull Glacier Hike & Ice Climbing", "name": "Solheimajokull Glacier Hike & Ice Climbing", "name_zh": "索尔黑马冰川徒步与攀冰", "price": null, "currency": "CNY", "unit": "每人", "hours": null, "rating": null, "region": "Activity", "vip": false, "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-from-solheimajokull/blue-ice/", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426, "zh": "雷克雅未克"}, {"name": "Solheimajokull", "lat": 63.5316, "lng": -19.3706, "zh": "索尔黑马冰川"}]}, {"no": 41, "operator": "adventures", "short": "Solheimajokull Glacier Hike Experience", "name": "Solheimajokull Glacier Hike Experience", "name_zh": "索尔黑马冰川徒步体验", "price": null, "currency": "CNY", "unit": "每人", "hours": null, "rating": null, "region": "Activity", "vip": false, "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-from-solheimajokull/glacier-experience/", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426, "zh": "雷克雅未克"}, {"name": "Solheimajokull", "lat": 63.5316, "lng": -19.3706, "zh": "索尔黑马冰川"}]}, {"no": 42, "operator": "adventures", "short": "Vatnajökull Glacier Hike & Fjallsárlón Boat Tour", "name": "Vatnajökull Glacier Hike & Fjallsárlón Boat Tour", "name_zh": "冰川徒步与Fjallsarlon小冰湖快艇", "price": null, "currency": "CNY", "unit": "每人", "hours": null, "rating": null, "region": "Activity", "vip": false, "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-on-vatnajokull/fjallsarlon-boat-tour-glacier-hike/", "waypoints": [{"name": "Skaftafell", "lat": 64.0159, "lng": -16.9666, "zh": "斯卡夫塔山"}, {"name": "Fjallsarlon", "lat": 64.0128, "lng": -16.3853, "zh": "Fjallsarlon冰河湖"}]}, {"no": 43, "operator": "adventures", "short": "Vatnajokull Glacier Explorer Hike", "name": "Vatnajokull Glacier Explorer Hike", "name_zh": "瓦特纳冰川深度徒步", "price": null, "currency": "CNY", "unit": "每人", "hours": null, "rating": null, "region": "Activity", "vip": false, "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-on-vatnajokull/glacier-explorer/", "waypoints": [{"name": "Reykjavik", "lat": 64.1466, "lng": -21.9426, "zh": "雷克雅未克"}, {"name": "Skaftafell", "lat": 64.0159, "lng": -16.9666, "zh": "瓦特纳冰川/斯卡夫塔山"}]}, {"no": 44, "operator": "adventures", "short": "Glacier Hike & Jökulsárlón Lagoon Boat (Glacier Grand ", "name": "Glacier Hike & Jökulsárlón Lagoon Boat (Glacier Grand Slam)", "name_zh": "冰川徒步与杰古沙龙湖快艇", "price": null, "currency": "CNY", "unit": "每人", "hours": null, "rating": null, "region": "Activity", "vip": false, "url": "https://cn.adventures.is/iceland/day-tours/glacier-tours/glacier-tours-on-vatnajokull/glacier-grand-slam/", "waypoints": [{"name": "Skaftafell", "lat": 64.0159, "lng": -16.9666, "zh": "斯卡夫塔山"}, {"name": "Jokulsarlon", "lat": 64.0784, "lng": -16.2306, "zh": "杰古沙龙冰河湖"}]}];
+const OPERATORS = {
+  trollis:{l:"#2a78d6",d:"#3987e5",zh:"Troll.is"},
+  magicicelandtravel:{l:"#eb6834",d:"#d95926",zh:"Magic Iceland"},
+  bustravel:{l:"#1baf7a",d:"#199e70",zh:"BusTravel"},
+  adventures:{l:"#6a4bd6",d:"#9085e9",zh:"Arctic Adventures"},
+};
+const OPORD={trollis:0,magicicelandtravel:1,bustravel:2,adventures:3};
+const REGIONS={"South Coast":"南岸 South Coast","Golden Circle":"黄金圈 Golden Circle","Snæfellsnes":"斯奈山 Snæfellsnes","Highland":"高地 Highland","East Iceland":"东部 East Iceland","North Iceland":"北部 North Iceland","Reykjanes":"雷克雅内斯 Reykjanes","Activity":"单点活动 Activity"};
+const regZh=r=>REGIONS[r]||r;
+const REYK={lat:64.14202864719405,lng:-21.926494177316346};
+const isDark=()=> document.documentElement.dataset.theme==="dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme:dark)").matches);
+const oc=op=>{const o=OPERATORS[op]||OPERATORS.trollis; return isDark()?o.d:o.l;};
+function fmt(p,cur){ if(p==null)return ""; if(cur==="USD")return "$"+(p%1?p.toFixed(2):p); if(cur==="EUR")return "€"+(p%1?p.toFixed(2):p); if(cur==="CNY")return "¥"+Math.round(p).toLocaleString(); if(cur==="ISK")return Math.round(p).toLocaleString()+" kr"; return (p%1?p.toFixed(2):p)+" "+(cur||""); }
+const shortStop=n=>{let s=(n||"").replace(/^Included (Activity|Tour):\s*/i,"").replace(/^(Pickup in|Back to)\s*/i,""); return s.length>28?s.slice(0,27).trim()+"…":s;};
+
+let stopFilters=[], stopMode="and", region="All", operator="All", showVip=true;
+let pinnedNo=null, hoverNo=null;
+const STOPS=[];
+
+// ---- stop matching (identical logic to the vanilla version) ----
+function normStop(s){ return (s||"").toLowerCase().split(",")[0].normalize("NFD").replace(/[^a-z0-9]/g,""); }
+function wpNear(w,s){ const n=normStop(w.name); if(n&&n===s.norm)return true; return Math.abs(w.lat-s.lat)<0.025 && Math.abs(w.lng-s.lng)<0.04; }
+function near(w,s){ return Math.abs(w.lat-s.lat)<0.02 && Math.abs(w.lng-s.lng)<0.02; }
+function tourHitsStop(t,s){ return t.waypoints.some(w=>wpNear(w,s)); }
+function tourMatchesFilter(t){ if(!stopFilters.length)return true; return stopMode==="and"?stopFilters.every(s=>tourHitsStop(t,s)):stopFilters.some(s=>tourHitsStop(t,s)); }
+function tourVisible(t){ return (region==="All"||t.region===region)&&(operator==="All"||t.operator===operator)&&(showVip||!t.vip)&&tourMatchesFilter(t); }
+function matchingTours(){ return TOURS.filter(tourVisible); }
+function buildStops(){
+  for(const t of TOURS) for(const w of t.waypoints){
+    if(/Reykjav|Pickup|Back to/.test(w.name) || near(w,REYK)) continue;
+    let s=STOPS.find(s=>wpNear(w,s));
+    if(!s) STOPS.push({name:w.name,norm:normStop(w.name),lat:w.lat,lng:w.lng});
+    else if(w.name.length<s.name.length){ s.name=w.name; s.norm=normStop(w.name); }
+  }
+  for(const s of STOPS) s.count=TOURS.filter(t=>tourHitsStop(t,s)).length;
+  STOPS.sort((a,b)=> b.count-a.count || a.name.localeCompare(b.name));
+}
+
+// ---- GeoJSON ----
+function routesGeoJSON(){ return {type:"FeatureCollection",features:TOURS.map(t=>({type:"Feature",properties:{no:t.no,operator:t.operator},geometry:{type:"LineString",coordinates:t.waypoints.map(w=>[w.lng,w.lat])}}))}; }
+function stopsGeoJSON(){ return {type:"FeatureCollection",features:STOPS.map((s,i)=>({type:"Feature",properties:{i,label:shortStop(s.name),count:s.count},geometry:{type:"Point",coordinates:[s.lng,s.lat]}}))}; }
+function selStopsGeoJSON(){ return {type:"FeatureCollection",features:stopFilters.map(s=>({type:"Feature",properties:{},geometry:{type:"Point",coordinates:[s.lng,s.lat]}}))}; }
+function opColorExpr(){ return ["match",["get","operator"],
+  "trollis",oc("trollis"),"magicicelandtravel",oc("magicicelandtravel"),"bustravel",oc("bustravel"),"adventures",oc("adventures"),"#888"]; }
+
+// ---- MapLibre ----
+const STYLE_LIGHT="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json";
+const STYLE_DARK="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
+const GLYPHS="https://tiles.basemaps.cartocdn.com/fonts/{fontstack}/{range}.pbf";
+let basemap="street";
+const onImagery=()=> basemap!=="street";
+function rasterStyle(tiles,attr){ return {version:8,glyphs:GLYPHS,sources:{base:{type:"raster",tiles:[tiles],tileSize:256,attribution:attr}},layers:[{id:"base",type:"raster",source:"base"}]}; }
+function styleFor(){
+  if(basemap==="satellite") return rasterStyle("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}","© Esri, Maxar, Earthstar Geographics");
+  if(basemap==="terrain")   return rasterStyle("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}","© Esri World Topo");
+  return isDark()?STYLE_DARK:STYLE_LIGHT;
+}
+const map=new maplibregl.Map({container:"map",style:styleFor(),center:[-19,64.9],zoom:5.1,attributionControl:{compact:true}});
+map.addControl(new maplibregl.NavigationControl({showCompass:false}),"top-right");
+const popup=new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:12});
+let inited=false, fitted=false;
+
+function addLayers(){
+  ["routes-line","sel-ring","stops-dot","stops-label"].forEach(id=>{ if(map.getLayer(id))map.removeLayer(id); });
+  ["routes","stops","selstops"].forEach(id=>{ if(map.getSource(id))map.removeSource(id); });
+  map.addSource("routes",{type:"geojson",data:routesGeoJSON()});
+  map.addSource("stops",{type:"geojson",data:stopsGeoJSON()});
+  map.addSource("selstops",{type:"geojson",data:selStopsGeoJSON()});
+  map.addLayer({id:"routes-line",type:"line",source:"routes",layout:{"line-cap":"round","line-join":"round"},
+    paint:{"line-color":opColorExpr(),"line-width":3,"line-opacity":0.85}});
+  map.addLayer({id:"sel-ring",type:"circle",source:"selstops",
+    paint:{"circle-radius":9,"circle-color":"rgba(14,124,134,0.12)","circle-stroke-color":"#0e7c86","circle-stroke-width":3}});
+  map.addLayer({id:"stops-dot",type:"circle",source:"stops",
+    paint:{"circle-radius":["interpolate",["linear"],["get","count"],1,3.5,4,4.6,12,7.5],
+      "circle-color":"#0e7c86","circle-stroke-color":onImagery()?"#0b0f13":"#ffffff","circle-stroke-width":1.5,"circle-opacity":0.95}});
+  map.addLayer({id:"stops-label",type:"symbol",source:"stops",minzoom:6,
+    layout:{"text-field":["get","label"],"text-size":11,"text-offset":[0,1.05],"text-anchor":"top","text-optional":true,"text-font":["Open Sans Regular","Noto Sans Regular"]},
+    paint:{"text-color":onImagery()?"#ffffff":(isDark()?"#eaf1f3":"#0f1720"),
+      "text-halo-color":onImagery()?"rgba(0,0,0,0.8)":(isDark()?"#0b0f13":"#ffffff"),"text-halo-width":1.7}});
+}
+
+function focusNo(){ return hoverNo!=null?hoverNo:pinnedNo; }
+function updateRoutePaint(){
+  if(!map.getLayer("routes-line")) return;
+  const f=focusNo();
+  if(f!=null){
+    map.setPaintProperty("routes-line","line-opacity",["case",["==",["get","no"],f],1,0.08]);
+    map.setPaintProperty("routes-line","line-width",["case",["==",["get","no"],f],5,2.5]);
+  }else{
+    map.setPaintProperty("routes-line","line-opacity",stopFilters.length?0.55:0.85);
+    map.setPaintProperty("routes-line","line-width",3);
+  }
+}
+function applyFilter(){
+  if(!map.getLayer("routes-line")) return;
+  const nos=matchingTours().map(t=>t.no);
+  map.setFilter("routes-line",["in",["get","no"],["literal",nos]]);
+  updateRoutePaint();
+  if(map.getSource("selstops")) map.getSource("selstops").setData(selStopsGeoJSON());
+  updateStopChip(); updateStopPicker(); renderList(nos);
+}
+
+function boundsOf(pts){ const b=new maplibregl.LngLatBounds(); pts.forEach(p=>b.extend(p)); return b; }
+function fitAll(){ const pts=[]; TOURS.forEach(t=>t.waypoints.forEach(w=>pts.push([w.lng,w.lat]))); if(pts.length)map.fitBounds(boundsOf(pts),{padding:40,duration:0}); }
+function fitTour(no){ const t=TOURS.find(x=>x.no===no); if(!t)return; map.fitBounds(boundsOf(t.waypoints.map(w=>[w.lng,w.lat])),{padding:60,duration:600}); }
+
+// ---- selection ----
+function selectStop(w){
+  const i=stopFilters.findIndex(s=>wpNear(w,s));
+  if(i>=0) stopFilters.splice(i,1);
+  else stopFilters.push({lat:w.lat,lng:w.lng,name:w.name,norm:normStop(w.name)});
+  pinnedNo=null; hoverNo=null; applyFilter();
+}
+function clearStops(){ stopFilters.length=0; applyFilter(); }
+function togglePin(no){ pinnedNo=pinnedNo===no?null:no; hoverNo=null; updateRoutePaint(); updatePinCue(); if(pinnedNo!=null){fitTour(pinnedNo); popupFor(pinnedNo);} else popup.remove(); }
+function updatePinCue(){ document.querySelectorAll(".tour").forEach(b=>b.classList.toggle("pinned", pinnedNo!=null && +b.dataset.no===pinnedNo)); }
+
+function popupFor(no,lngLat){
+  const t=TOURS.find(x=>x.no===no); if(!t)return;
+  const stops=t.waypoints.filter(w=>!/Reykjav|Pickup|Back to/.test(w.name)).map(w=>w.name);
+  const unit=t.unit==="每团"?" / 团":" / 人";
+  const html=`<div class="pop"><div class="h">${t.short}</div>
+    <div class="r">${OPERATORS[t.operator].zh} · ${regZh(t.region)}${t.hours?` · ${t.hours} 小时`:""}${t.vip?" · 私人VIP":""}</div>
+    <div class="r">经过 ${stops.length} 站${stops.length?": "+stops.slice(0,4).join(" → ")+(stops.length>4?" …":""):""}</div>
+    <div class="p">${t.price!=null?fmt(t.price,t.currency)+unit:"页面未标价"}</div></div>`;
+  const at=lngLat||t.waypoints[Math.floor(t.waypoints.length/2)];
+  popup.setLngLat(lngLat||[at.lng,at.lat]).setHTML(html).addTo(map);
+}
+
+map.on("style.load",()=>{
+  if(!inited) buildStops();
+  addLayers();
+  if(!inited){ inited=true; renderStopPicker(); renderList(TOURS.map(t=>t.no)); wireMap(); }
+  applyFilter();
+  if(!fitted){ fitted=true; fitAll(); }
+});
+// safety net: whenever a basemap/theme swap drops our custom layers, re-add them
+map.on("styledata",()=>{ if(inited && !map.getLayer("routes-line")){ try{ addLayers(); applyFilter(); }catch(e){} } });
+// switching basemap/theme replaces the style and drops our layers; re-add with a poll-retry
+function switchStyle(){ map.setStyle(styleFor()); reAddAfterSwitch(0); }
+function reAddAfterSwitch(tries){
+  if(map.getLayer("routes-line")) return;
+  try{ addLayers(); applyFilter(); }catch(e){}
+  if(!map.getLayer("routes-line") && tries<20) setTimeout(()=>reAddAfterSwitch(tries+1),180);
+}
+
+function wireMap(){
+  map.on("mousemove",e=>{
+    const f=map.queryRenderedFeatures([[e.point.x-4,e.point.y-4],[e.point.x+4,e.point.y+4]],{layers:["routes-line"]});
+    const no=f.length?f[0].properties.no:null;
+    if(no!==hoverNo){ hoverNo=no; updateRoutePaint(); }
+    if(no!=null){ popupFor(no,e.lngLat); }
+    else if(pinnedNo==null){ popup.remove(); }
+    const overStop=map.queryRenderedFeatures([[e.point.x-5,e.point.y-5],[e.point.x+5,e.point.y+5]],{layers:["stops-dot"]}).length;
+    map.getCanvas().style.cursor=(no!=null||overStop)?"pointer":"";
+  });
+  map.on("mouseleave",()=>{ hoverNo=null; updateRoutePaint(); if(pinnedNo==null)popup.remove(); });
+  map.on("click",e=>{
+    const box=[[e.point.x-6,e.point.y-6],[e.point.x+6,e.point.y+6]];
+    const st=map.queryRenderedFeatures(box,{layers:["stops-dot"]});
+    if(st.length){ selectStop(STOPS[st[0].properties.i]); return; }
+    const rt=map.queryRenderedFeatures(box,{layers:["routes-line"]});
+    if(rt.length){ togglePin(rt[0].properties.no); return; }
+    if(pinnedNo!=null){ pinnedNo=null; updateRoutePaint(); updatePinCue(); popup.remove(); }
+  });
+}
+
+// ---- right panel: stop picker ----
+function renderStopPicker(){
+  const box=document.getElementById("stopPicker");
+  box.innerHTML=STOPS.map((s,i)=>`<span class="spchip" data-i="${i}">${shortStop(s.name)}<span class="n">${s.count}</span></span>`).join("");
+  box.querySelectorAll(".spchip").forEach(ch=>ch.addEventListener("click",()=>selectStop(STOPS[+ch.dataset.i])));
+}
+function updateStopPicker(){ document.querySelectorAll("#stopPicker .spchip").forEach(ch=>{const s=STOPS[+ch.dataset.i]; if(s)ch.classList.toggle("sel", stopFilters.some(f=>wpNear(f,s)));}); }
+function updateStopChip(){
+  const boxEl=document.getElementById("stopChip");
+  if(!stopFilters.length){ boxEl.classList.add("hidden"); boxEl.innerHTML=""; return; }
+  const n=matchingTours().length, names=stopFilters.map(s=>shortStop(s.name)).join(" + ");
+  boxEl.classList.remove("hidden");
+  boxEl.innerHTML=`<span class="sctext">途径点(${stopFilters.length}):<b>${names}</b> · 经过<b>${stopMode==="and"?"全部":"任一"}</b> · <b>${n}</b> 条线路 <span style="color:var(--muted)">(点圆点/右侧增减 · 悬停单独描线)</span></span>`+
+    `<span class="modebtn" id="modeBtn">${stopMode==="and"?"全部":"任一"} ⇄</span><span class="x" id="stopZoom">缩放到结果</span><span class="x" id="stopClear">清除 ✕</span>`;
+  boxEl.querySelector("#modeBtn").addEventListener("click",()=>{ stopMode=stopMode==="and"?"or":"and"; applyFilter(); });
+  boxEl.querySelector("#stopZoom").addEventListener("click",()=>{ const ms=matchingTours(); const pts=[]; (ms.length?ms.flatMap(t=>t.waypoints):stopFilters).forEach(w=>pts.push([w.lng,w.lat])); if(pts.length)map.fitBounds(boundsOf(pts),{padding:60,duration:600}); });
+  boxEl.querySelector("#stopClear").addEventListener("click",clearStops);
+}
+
+// ---- right panel: route list ----
+const listEl=document.getElementById("list");
+function renderList(visibleNos){
+  const vis=new Set(visibleNos);
+  document.getElementById("count").textContent=TOURS.length;
+  document.getElementById("listTitle").textContent = stopFilters.length||operator!=="All"||region!=="All" ? `匹配 ${visibleNos.length} 条线路` : `全部 ${TOURS.length} 条线路`;
+  listEl.innerHTML="";
+  [...TOURS].sort((a,b)=>(OPORD[a.operator]-OPORD[b.operator])||((a.price==null)-(b.price==null))||((a.price||0)-(b.price||0))).forEach(t=>{
+    if(!vis.has(t.no)) return;
+    const col=oc(t.operator), unit=t.unit==="每团"?"/团":"/人", addr=t.url.replace(/^https?:\/\//,"");
+    const btn=document.createElement("div"); btn.className="tour"; btn.dataset.no=t.no; btn.tabIndex=0;
+    const priceHtml=t.price!=null?`${fmt(t.price,t.currency)}<small>${unit}</small>`:`<span style="color:var(--muted);font-weight:600">未标价</span>`;
+    btn.innerHTML=`<span class="dot" style="background:${col}"></span>
+      <span class="tbody"><span class="tname">${t.short}${t.vip?'<span class="badge">VIP</span>':''}</span>
+      ${t.name_zh?`<span class="tzh">${t.name_zh}</span>`:''}
+      <span class="tmeta">${OPERATORS[t.operator].zh} · ${regZh(t.region).split(" ")[0]}${t.hours?` · ${t.hours}h`:''}${t.rating?` · ★${t.rating}`:''}</span>
+      <a class="turl" href="${t.url}" target="_blank" rel="noopener">${addr} ↗</a></span>
+      <span class="tprice">${priceHtml}</span>`;
+    const stops=document.createElement("ul"); stops.className="stops hidden";
+    stops.innerHTML=t.waypoints.map(w=>`<li${/Reykjav|Pickup|Back to/.test(w.name)?' style="color:var(--muted)"':''}>${w.name}${w.zh?` · ${w.zh}`:''}</li>`).join("");
+    btn.querySelector(".turl").addEventListener("click",e=>e.stopPropagation());
+    btn.addEventListener("mouseenter",()=>{ hoverNo=t.no; updateRoutePaint(); document.querySelectorAll(".tour").forEach(b=>b.classList.toggle("active",+b.dataset.no===t.no)); });
+    btn.addEventListener("mouseleave",()=>{ hoverNo=null; updateRoutePaint(); document.querySelectorAll(".tour").forEach(b=>b.classList.remove("active")); });
+    btn.addEventListener("click",()=>{ document.querySelectorAll(".stops").forEach(s=>{if(s!==stops)s.classList.add("hidden");}); stops.classList.toggle("hidden"); togglePin(t.no); });
+    listEl.appendChild(btn); listEl.appendChild(stops);
+  });
+  updatePinCue();
+}
+
+// ---- filters ----
+document.getElementById("opBar").addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(!b)return; operator=b.dataset.op; document.querySelectorAll("#opBar .chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false")); applyFilter(); });
+document.getElementById("regionBar").addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(!b)return; region=b.dataset.region; document.querySelectorAll("#regionBar .chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false")); applyFilter(); });
+document.getElementById("vipChk").addEventListener("change",e=>{ showVip=e.target.checked; applyFilter(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ pinnedNo=null; hoverNo=null; updateRoutePaint(); updatePinCue(); popup.remove(); if(stopFilters.length)clearStops(); } });
+
+// ---- legend ----
+function renderLegend(){
+  let h='<b>运营商 / Operator</b>';
+  for(const k in OPERATORS) h+=`<span class="lg"><span class="sw" style="background:${oc(k)}"></span>${OPERATORS[k].zh}</span>`;
+  document.getElementById("legend").innerHTML=h;
+}
+renderLegend();
+
+// ---- theme ----
+function recolorPanels(){
+  renderLegend();
+  document.querySelectorAll("#opBar .chip .cdot").forEach((d,i)=>{d.style.background=oc(Object.keys(OPERATORS)[i]);});
+  document.querySelectorAll(".tour").forEach(b=>{const t=TOURS.find(x=>x.no==b.dataset.no); if(t)b.querySelector(".dot").style.background=oc(t.operator);});
+}
+document.querySelectorAll("#opBar .chip .cdot").forEach((d,i)=>{d.style.background=oc(Object.keys(OPERATORS)[i]);});
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  const cur=document.documentElement.dataset.theme;
+  document.documentElement.dataset.theme = cur==="dark"?"light":(cur==="light"?"dark":(isDark()?"light":"dark"));
+  switchStyle();
+  recolorPanels();
+});
+matchMedia("(prefers-color-scheme:dark)").addEventListener("change",()=>{ if(!document.documentElement.dataset.theme){ switchStyle(); recolorPanels(); } });
+document.getElementById("basemapCtl").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b)return;
+  basemap=b.dataset.bm;
+  document.querySelectorAll("#basemapCtl button").forEach(x=>x.classList.toggle("on",x===b));
+  switchStyle();
+});
+
+document.getElementById("foot").innerHTML =
+  "数据抓取:2026-07-25 · 来源:troll.is / magicicelandtravel.com / bustravel.is / cn.adventures.is,共 44 条线路 · "+
+  "价格为各页面原始币种(Troll.is=USD,BusTravel=ISK 等;部分页面未标价则显示「未标价」)· 底图 © CARTO © OpenStreetMap。";
+</script>
+</body>
+</html>

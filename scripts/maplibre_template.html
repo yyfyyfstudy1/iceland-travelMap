@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>冰岛一日游 · 多平台路线与价格地图</title>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>
+  :root{
+    --bg:#e9eff2; --panel:#ffffff; --ink:#0f1720; --ink2:#47535e; --muted:#8a97a1;
+    --line:#d7e0e4; --accent:#0e7c86; --pill:rgba(255,255,255,.94);
+    --shadow:0 1px 3px rgba(12,26,36,.10),0 8px 30px rgba(12,26,36,.08);
+    --chip:#eef3f5; --chip-on:#0e7c86;
+  }
+  :root[data-theme="dark"], :root:not([data-theme="light"]){}
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+    --bg:#0b0f13; --panel:#12181d; --ink:#eaf1f3; --ink2:#a9b6bf; --muted:#6d7a84;
+    --line:#212a31; --accent:#43c6d0; --pill:rgba(16,22,27,.92);
+    --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 34px rgba(0,0,0,.45); --chip:#1a232b; }}
+  :root[data-theme="dark"]{
+    --bg:#0b0f13; --panel:#12181d; --ink:#eaf1f3; --ink2:#a9b6bf; --muted:#6d7a84;
+    --line:#212a31; --accent:#43c6d0; --pill:rgba(16,22,27,.92);
+    --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 34px rgba(0,0,0,.45); --chip:#1a232b; }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.5;padding:22px clamp(12px,4vw,34px)}
+  .inner{max-width:1220px;margin:0 auto}
+  .head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px}
+  .head h1{font-size:clamp(20px,3.4vw,29px);font-weight:800;letter-spacing:-.01em;margin:0;text-wrap:balance}
+  .head .sub{color:var(--ink2);font-size:13.5px;margin-top:6px;max-width:74ch}
+  .theme-btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;box-shadow:var(--shadow);white-space:nowrap}
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 6px}
+  .toolbar .lbl{font-size:12px;color:var(--muted);font-weight:700;margin-right:2px}
+  .chip{border:1px solid var(--line);background:var(--chip);color:var(--ink2);border-radius:999px;padding:6px 13px;font-size:12.5px;cursor:pointer;transition:.15s;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+  .chip:hover{border-color:var(--accent);color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--chip-on);color:#fff;border-color:var(--chip-on)}
+  .chip .cdot{width:9px;height:9px;border-radius:50%;flex:none}
+  .toolbar .sep{flex:1}
+  .vip-toggle{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink2);cursor:pointer;user-select:none}
+  .vip-toggle input{accent-color:var(--accent);width:15px;height:15px}
+  .stopchip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0 0;padding:8px 13px;border:1px solid var(--accent);background:var(--chip);border-radius:10px;font-size:13px;color:var(--ink)}
+  .stopchip .sctext{flex:1;min-width:210px}
+  .stopchip .x,.stopchip .modebtn{cursor:pointer;border:1px solid var(--line);border-radius:7px;padding:3px 11px;font-weight:700;background:var(--panel);font-size:12px}
+  .stopchip .x:hover,.stopchip .modebtn:hover{border-color:var(--accent);color:var(--accent)}
+  .stopchip .modebtn{border-color:var(--accent);background:var(--accent);color:#fff}
+  .main{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(310px,1fr);gap:16px;align-items:start;margin-top:10px}
+  @media (max-width:900px){.main{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+  .map-card{position:relative;height:min(70vh,560px);overflow:hidden}
+  @media (max-width:900px){.map-card{height:58vh;min-height:340px}}
+  #map{position:absolute;inset:0;border-radius:16px}
+  .legend{position:absolute;left:12px;bottom:22px;z-index:2;background:var(--pill);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:11px;padding:9px 11px;font-size:11.5px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:5px 12px;max-width:70%;box-shadow:var(--shadow)}
+  .legend b{width:100%;color:var(--ink);font-size:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:700;margin-bottom:1px}
+  .legend .lg{display:flex;align-items:center;gap:6px;white-space:nowrap}
+  .legend .sw{width:15px;height:3px;border-radius:2px;flex:none}
+  .basemap-ctl{position:absolute;left:12px;top:12px;z-index:2;display:flex;background:var(--pill);border:1px solid var(--line);border-radius:9px;overflow:hidden;box-shadow:var(--shadow);backdrop-filter:blur(6px)}
+  .basemap-ctl button{border:0;background:none;color:var(--ink2);font-size:12px;font-weight:700;padding:6px 12px;cursor:pointer}
+  .basemap-ctl button+button{border-left:1px solid var(--line)}
+  .basemap-ctl button.on{background:var(--accent);color:#fff}
+  .basemap-ctl button:hover:not(.on){color:var(--ink)}
+  .side{padding:8px}
+  .picker{padding:9px 8px 4px;border-bottom:1px solid var(--line)}
+  .picker-head{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700;margin:2px 4px 7px}
+  .picker-head .muted{text-transform:none;letter-spacing:0;font-weight:600}
+  .picker-body{display:flex;flex-wrap:wrap;gap:5px;max-height:128px;overflow-y:auto;padding:1px 4px 4px}
+  @media (max-width:560px){.picker-body{max-height:104px}}
+  .spchip{border:1px solid var(--line);background:var(--chip);color:var(--ink2);border-radius:999px;padding:3px 9px;font-size:11.5px;cursor:pointer;white-space:nowrap;font-weight:600;transition:.12s}
+  .spchip:hover{border-color:var(--accent);color:var(--ink)}
+  .spchip.sel{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .spchip .n{opacity:.7;font-weight:700;margin-left:3px}
+  .side h2{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:8px 8px;font-weight:700}
+  .list{max-height:520px;overflow-y:auto;padding-right:2px}
+  @media (max-width:900px){.list{max-height:none}}
+  .tour{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:8px;border-radius:10px;cursor:pointer;transition:.12s}
+  .tour:hover,.tour.active{background:var(--chip)}
+  .tour.pinned{background:var(--chip);box-shadow:inset 3px 0 0 var(--accent)}
+  .tour .dot{width:11px;height:11px;border-radius:50%;flex:none;align-self:flex-start;margin-top:3px}
+  .tbody{flex:1;min-width:0}
+  .tname{font-size:13.5px;font-weight:650;display:flex;align-items:center;gap:6px;line-height:1.25}
+  .tname .badge{font-size:9.5px;font-weight:800;letter-spacing:.04em;color:#8a5a00;background:#ffe4a8;border-radius:4px;padding:1px 5px}
+  :root[data-theme="dark"] .tname .badge{color:#ffd985;background:#4a3a10}
+  .tzh{display:block;font-size:11px;color:var(--ink2);margin-top:1px}
+  .tmeta{font-size:11px;color:var(--muted);margin-top:2px}
+  .turl{display:inline-block;margin-top:3px;font-size:10px;color:var(--accent);text-decoration:none;word-break:break-all}
+  .tprice{font-size:14px;font-weight:800;color:var(--ink);white-space:nowrap;text-align:right}
+  .tprice small{font-size:9.5px;font-weight:600;color:var(--muted)}
+  .stops{margin:0 8px 8px 30px;padding:0;font-size:12px;color:var(--ink2)}
+  .stops li{margin:3px 0;list-style:none;position:relative;padding-left:14px}
+  .stops li:before{content:"";position:absolute;left:3px;top:6px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .hidden{display:none!important}
+  .foot{color:var(--muted);font-size:11.5px;margin-top:16px;line-height:1.6}
+  .maplibregl-popup{max-width:260px!important}
+  .maplibregl-popup-content{background:var(--pill);color:var(--ink);border:1px solid var(--line);border-radius:10px;font-size:12.5px;box-shadow:var(--shadow);padding:9px 11px}
+  .maplibregl-popup-tip{display:none}
+  .pop .h{font-weight:750;font-size:13px}
+  .pop .r{color:var(--ink2);font-size:11.5px;margin-top:2px}
+  .pop .p{color:var(--accent);font-weight:800;margin-top:3px}
+  @media (max-width:560px){body{padding:16px 12px}.head h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="inner">
+  <div class="head">
+    <div>
+      <h1>冰岛一日游 · 多平台路线与价格地图</h1>
+      <div class="sub"><b id="count">44</b> 条线路,来自 <b>4 家运营商</b>(Troll.is / Magic Iceland / BusTravel / Arctic Adventures),按运营商着色,真实底图。悬停高亮 · 点击线路锁定 · 点圆点或右侧「途径点」筛线路(可多选)· 价格为各站<b>原始币种</b>(留空=未标价)。</div>
+    </div>
+    <button class="theme-btn" id="themeBtn">◑ 深/浅色</button>
+  </div>
+
+  <div class="toolbar" id="opBar">
+    <span class="lbl">运营商</span>
+    <button class="chip" data-op="All" aria-pressed="true">全部</button>
+    <button class="chip" data-op="trollis" aria-pressed="false"><span class="cdot"></span>Troll.is</button>
+    <button class="chip" data-op="magicicelandtravel" aria-pressed="false"><span class="cdot"></span>Magic Iceland</button>
+    <button class="chip" data-op="bustravel" aria-pressed="false"><span class="cdot"></span>BusTravel</button>
+    <button class="chip" data-op="adventures" aria-pressed="false"><span class="cdot"></span>Arctic Adventures</button>
+    <span class="sep"></span>
+    <label class="vip-toggle"><input type="checkbox" id="vipChk" checked> 显示私人 VIP 团</label>
+  </div>
+  <div class="toolbar" id="regionBar">
+    <span class="lbl">区域</span>
+    <button class="chip" data-region="All" aria-pressed="true">全部</button>
+    <button class="chip" data-region="South Coast" aria-pressed="false">南岸</button>
+    <button class="chip" data-region="Golden Circle" aria-pressed="false">黄金圈</button>
+    <button class="chip" data-region="Snæfellsnes" aria-pressed="false">斯奈山</button>
+    <button class="chip" data-region="Highland" aria-pressed="false">高地</button>
+    <button class="chip" data-region="East Iceland" aria-pressed="false">东部</button>
+    <button class="chip" data-region="North Iceland" aria-pressed="false">北部</button>
+    <button class="chip" data-region="Reykjanes" aria-pressed="false">雷克雅内斯</button>
+    <button class="chip" data-region="Activity" aria-pressed="false">单点活动</button>
+  </div>
+  <div id="stopChip" class="stopchip hidden"></div>
+
+  <div class="main">
+    <div class="card map-card">
+      <div id="map"></div>
+      <div class="basemap-ctl" id="basemapCtl">
+        <button data-bm="street" class="on">街道</button>
+        <button data-bm="satellite">卫星</button>
+        <button data-bm="terrain">地形</button>
+      </div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="card side">
+      <div class="picker">
+        <div class="picker-head">途径点筛选 <span class="muted">· 点选可多选,与地图圆点同步</span></div>
+        <div class="picker-body" id="stopPicker"></div>
+      </div>
+      <h2 id="listTitle">全部线路</h2>
+      <div class="list" id="list"></div>
+    </div>
+  </div>
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+const TOURS = /*__TOURS__*/null;
+const OPERATORS = {
+  trollis:{l:"#2a78d6",d:"#3987e5",zh:"Troll.is"},
+  magicicelandtravel:{l:"#eb6834",d:"#d95926",zh:"Magic Iceland"},
+  bustravel:{l:"#1baf7a",d:"#199e70",zh:"BusTravel"},
+  adventures:{l:"#6a4bd6",d:"#9085e9",zh:"Arctic Adventures"},
+};
+const OPORD={trollis:0,magicicelandtravel:1,bustravel:2,adventures:3};
+const REGIONS={"South Coast":"南岸 South Coast","Golden Circle":"黄金圈 Golden Circle","Snæfellsnes":"斯奈山 Snæfellsnes","Highland":"高地 Highland","East Iceland":"东部 East Iceland","North Iceland":"北部 North Iceland","Reykjanes":"雷克雅内斯 Reykjanes","Activity":"单点活动 Activity"};
+const regZh=r=>REGIONS[r]||r;
+const REYK={lat:64.14202864719405,lng:-21.926494177316346};
+const isDark=()=> document.documentElement.dataset.theme==="dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme:dark)").matches);
+const oc=op=>{const o=OPERATORS[op]||OPERATORS.trollis; return isDark()?o.d:o.l;};
+function fmt(p,cur){ if(p==null)return ""; if(cur==="USD")return "$"+(p%1?p.toFixed(2):p); if(cur==="EUR")return "€"+(p%1?p.toFixed(2):p); if(cur==="CNY")return "¥"+Math.round(p).toLocaleString(); if(cur==="ISK")return Math.round(p).toLocaleString()+" kr"; return (p%1?p.toFixed(2):p)+" "+(cur||""); }
+const shortStop=n=>{let s=(n||"").replace(/^Included (Activity|Tour):\s*/i,"").replace(/^(Pickup in|Back to)\s*/i,""); return s.length>28?s.slice(0,27).trim()+"…":s;};
+
+let stopFilters=[], stopMode="and", region="All", operator="All", showVip=true;
+let pinnedNo=null, hoverNo=null;
+const STOPS=[];
+
+// ---- stop matching (identical logic to the vanilla version) ----
+function normStop(s){ return (s||"").toLowerCase().split(",")[0].normalize("NFD").replace(/[^a-z0-9]/g,""); }
+function wpNear(w,s){ const n=normStop(w.name); if(n&&n===s.norm)return true; return Math.abs(w.lat-s.lat)<0.025 && Math.abs(w.lng-s.lng)<0.04; }
+function near(w,s){ return Math.abs(w.lat-s.lat)<0.02 && Math.abs(w.lng-s.lng)<0.02; }
+function tourHitsStop(t,s){ return t.waypoints.some(w=>wpNear(w,s)); }
+function tourMatchesFilter(t){ if(!stopFilters.length)return true; return stopMode==="and"?stopFilters.every(s=>tourHitsStop(t,s)):stopFilters.some(s=>tourHitsStop(t,s)); }
+function tourVisible(t){ return (region==="All"||t.region===region)&&(operator==="All"||t.operator===operator)&&(showVip||!t.vip)&&tourMatchesFilter(t); }
+function matchingTours(){ return TOURS.filter(tourVisible); }
+function buildStops(){
+  for(const t of TOURS) for(const w of t.waypoints){
+    if(/Reykjav|Pickup|Back to/.test(w.name) || near(w,REYK)) continue;
+    let s=STOPS.find(s=>wpNear(w,s));
+    if(!s) STOPS.push({name:w.name,norm:normStop(w.name),lat:w.lat,lng:w.lng});
+    else if(w.name.length<s.name.length){ s.name=w.name; s.norm=normStop(w.name); }
+  }
+  for(const s of STOPS) s.count=TOURS.filter(t=>tourHitsStop(t,s)).length;
+  STOPS.sort((a,b)=> b.count-a.count || a.name.localeCompare(b.name));
+}
+
+// ---- GeoJSON ----
+function routesGeoJSON(){ return {type:"FeatureCollection",features:TOURS.map(t=>({type:"Feature",properties:{no:t.no,operator:t.operator},geometry:{type:"LineString",coordinates:t.waypoints.map(w=>[w.lng,w.lat])}}))}; }
+function stopsGeoJSON(){ return {type:"FeatureCollection",features:STOPS.map((s,i)=>({type:"Feature",properties:{i,label:shortStop(s.name),count:s.count},geometry:{type:"Point",coordinates:[s.lng,s.lat]}}))}; }
+function selStopsGeoJSON(){ return {type:"FeatureCollection",features:stopFilters.map(s=>({type:"Feature",properties:{},geometry:{type:"Point",coordinates:[s.lng,s.lat]}}))}; }
+function opColorExpr(){ return ["match",["get","operator"],
+  "trollis",oc("trollis"),"magicicelandtravel",oc("magicicelandtravel"),"bustravel",oc("bustravel"),"adventures",oc("adventures"),"#888"]; }
+
+// ---- MapLibre ----
+const STYLE_LIGHT="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json";
+const STYLE_DARK="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
+const GLYPHS="https://tiles.basemaps.cartocdn.com/fonts/{fontstack}/{range}.pbf";
+let basemap="street";
+const onImagery=()=> basemap!=="street";
+function rasterStyle(tiles,attr){ return {version:8,glyphs:GLYPHS,sources:{base:{type:"raster",tiles:[tiles],tileSize:256,attribution:attr}},layers:[{id:"base",type:"raster",source:"base"}]}; }
+function styleFor(){
+  if(basemap==="satellite") return rasterStyle("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}","© Esri, Maxar, Earthstar Geographics");
+  if(basemap==="terrain")   return rasterStyle("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}","© Esri World Topo");
+  return isDark()?STYLE_DARK:STYLE_LIGHT;
+}
+const map=new maplibregl.Map({container:"map",style:styleFor(),center:[-19,64.9],zoom:5.1,attributionControl:{compact:true}});
+map.addControl(new maplibregl.NavigationControl({showCompass:false}),"top-right");
+const popup=new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:12});
+let inited=false, fitted=false;
+
+function addLayers(){
+  ["routes-line","sel-ring","stops-dot","stops-label"].forEach(id=>{ if(map.getLayer(id))map.removeLayer(id); });
+  ["routes","stops","selstops"].forEach(id=>{ if(map.getSource(id))map.removeSource(id); });
+  map.addSource("routes",{type:"geojson",data:routesGeoJSON()});
+  map.addSource("stops",{type:"geojson",data:stopsGeoJSON()});
+  map.addSource("selstops",{type:"geojson",data:selStopsGeoJSON()});
+  map.addLayer({id:"routes-line",type:"line",source:"routes",layout:{"line-cap":"round","line-join":"round"},
+    paint:{"line-color":opColorExpr(),"line-width":3,"line-opacity":0.85}});
+  map.addLayer({id:"sel-ring",type:"circle",source:"selstops",
+    paint:{"circle-radius":9,"circle-color":"rgba(14,124,134,0.12)","circle-stroke-color":"#0e7c86","circle-stroke-width":3}});
+  map.addLayer({id:"stops-dot",type:"circle",source:"stops",
+    paint:{"circle-radius":["interpolate",["linear"],["get","count"],1,3.5,4,4.6,12,7.5],
+      "circle-color":"#0e7c86","circle-stroke-color":onImagery()?"#0b0f13":"#ffffff","circle-stroke-width":1.5,"circle-opacity":0.95}});
+  map.addLayer({id:"stops-label",type:"symbol",source:"stops",minzoom:6,
+    layout:{"text-field":["get","label"],"text-size":11,"text-offset":[0,1.05],"text-anchor":"top","text-optional":true,"text-font":["Open Sans Regular","Noto Sans Regular"]},
+    paint:{"text-color":onImagery()?"#ffffff":(isDark()?"#eaf1f3":"#0f1720"),
+      "text-halo-color":onImagery()?"rgba(0,0,0,0.8)":(isDark()?"#0b0f13":"#ffffff"),"text-halo-width":1.7}});
+}
+
+function focusNo(){ return hoverNo!=null?hoverNo:pinnedNo; }
+function updateRoutePaint(){
+  if(!map.getLayer("routes-line")) return;
+  const f=focusNo();
+  if(f!=null){
+    map.setPaintProperty("routes-line","line-opacity",["case",["==",["get","no"],f],1,0.08]);
+    map.setPaintProperty("routes-line","line-width",["case",["==",["get","no"],f],5,2.5]);
+  }else{
+    map.setPaintProperty("routes-line","line-opacity",stopFilters.length?0.55:0.85);
+    map.setPaintProperty("routes-line","line-width",3);
+  }
+}
+function applyFilter(){
+  if(!map.getLayer("routes-line")) return;
+  const nos=matchingTours().map(t=>t.no);
+  map.setFilter("routes-line",["in",["get","no"],["literal",nos]]);
+  updateRoutePaint();
+  if(map.getSource("selstops")) map.getSource("selstops").setData(selStopsGeoJSON());
+  updateStopChip(); updateStopPicker(); renderList(nos);
+}
+
+function boundsOf(pts){ const b=new maplibregl.LngLatBounds(); pts.forEach(p=>b.extend(p)); return b; }
+function fitAll(){ const pts=[]; TOURS.forEach(t=>t.waypoints.forEach(w=>pts.push([w.lng,w.lat]))); if(pts.length)map.fitBounds(boundsOf(pts),{padding:40,duration:0}); }
+function fitTour(no){ const t=TOURS.find(x=>x.no===no); if(!t)return; map.fitBounds(boundsOf(t.waypoints.map(w=>[w.lng,w.lat])),{padding:60,duration:600}); }
+
+// ---- selection ----
+function selectStop(w){
+  const i=stopFilters.findIndex(s=>wpNear(w,s));
+  if(i>=0) stopFilters.splice(i,1);
+  else stopFilters.push({lat:w.lat,lng:w.lng,name:w.name,norm:normStop(w.name)});
+  pinnedNo=null; hoverNo=null; applyFilter();
+}
+function clearStops(){ stopFilters.length=0; applyFilter(); }
+function togglePin(no){ pinnedNo=pinnedNo===no?null:no; hoverNo=null; updateRoutePaint(); updatePinCue(); if(pinnedNo!=null){fitTour(pinnedNo); popupFor(pinnedNo);} else popup.remove(); }
+function updatePinCue(){ document.querySelectorAll(".tour").forEach(b=>b.classList.toggle("pinned", pinnedNo!=null && +b.dataset.no===pinnedNo)); }
+
+function popupFor(no,lngLat){
+  const t=TOURS.find(x=>x.no===no); if(!t)return;
+  const stops=t.waypoints.filter(w=>!/Reykjav|Pickup|Back to/.test(w.name)).map(w=>w.name);
+  const unit=t.unit==="每团"?" / 团":" / 人";
+  const html=`<div class="pop"><div class="h">${t.short}</div>
+    <div class="r">${OPERATORS[t.operator].zh} · ${regZh(t.region)}${t.hours?` · ${t.hours} 小时`:""}${t.vip?" · 私人VIP":""}</div>
+    <div class="r">经过 ${stops.length} 站${stops.length?": "+stops.slice(0,4).join(" → ")+(stops.length>4?" …":""):""}</div>
+    <div class="p">${t.price!=null?fmt(t.price,t.currency)+unit:"页面未标价"}</div></div>`;
+  const at=lngLat||t.waypoints[Math.floor(t.waypoints.length/2)];
+  popup.setLngLat(lngLat||[at.lng,at.lat]).setHTML(html).addTo(map);
+}
+
+map.on("style.load",()=>{
+  if(!inited) buildStops();
+  addLayers();
+  if(!inited){ inited=true; renderStopPicker(); renderList(TOURS.map(t=>t.no)); wireMap(); }
+  applyFilter();
+  if(!fitted){ fitted=true; fitAll(); }
+});
+// safety net: whenever a basemap/theme swap drops our custom layers, re-add them
+map.on("styledata",()=>{ if(inited && !map.getLayer("routes-line")){ try{ addLayers(); applyFilter(); }catch(e){} } });
+// switching basemap/theme replaces the style and drops our layers; re-add with a poll-retry
+function switchStyle(){ map.setStyle(styleFor()); reAddAfterSwitch(0); }
+function reAddAfterSwitch(tries){
+  if(map.getLayer("routes-line")) return;
+  try{ addLayers(); applyFilter(); }catch(e){}
+  if(!map.getLayer("routes-line") && tries<20) setTimeout(()=>reAddAfterSwitch(tries+1),180);
+}
+
+function wireMap(){
+  map.on("mousemove",e=>{
+    const f=map.queryRenderedFeatures([[e.point.x-4,e.point.y-4],[e.point.x+4,e.point.y+4]],{layers:["routes-line"]});
+    const no=f.length?f[0].properties.no:null;
+    if(no!==hoverNo){ hoverNo=no; updateRoutePaint(); }
+    if(no!=null){ popupFor(no,e.lngLat); }
+    else if(pinnedNo==null){ popup.remove(); }
+    const overStop=map.queryRenderedFeatures([[e.point.x-5,e.point.y-5],[e.point.x+5,e.point.y+5]],{layers:["stops-dot"]}).length;
+    map.getCanvas().style.cursor=(no!=null||overStop)?"pointer":"";
+  });
+  map.on("mouseleave",()=>{ hoverNo=null; updateRoutePaint(); if(pinnedNo==null)popup.remove(); });
+  map.on("click",e=>{
+    const box=[[e.point.x-6,e.point.y-6],[e.point.x+6,e.point.y+6]];
+    const st=map.queryRenderedFeatures(box,{layers:["stops-dot"]});
+    if(st.length){ selectStop(STOPS[st[0].properties.i]); return; }
+    const rt=map.queryRenderedFeatures(box,{layers:["routes-line"]});
+    if(rt.length){ togglePin(rt[0].properties.no); return; }
+    if(pinnedNo!=null){ pinnedNo=null; updateRoutePaint(); updatePinCue(); popup.remove(); }
+  });
+}
+
+// ---- right panel: stop picker ----
+function renderStopPicker(){
+  const box=document.getElementById("stopPicker");
+  box.innerHTML=STOPS.map((s,i)=>`<span class="spchip" data-i="${i}">${shortStop(s.name)}<span class="n">${s.count}</span></span>`).join("");
+  box.querySelectorAll(".spchip").forEach(ch=>ch.addEventListener("click",()=>selectStop(STOPS[+ch.dataset.i])));
+}
+function updateStopPicker(){ document.querySelectorAll("#stopPicker .spchip").forEach(ch=>{const s=STOPS[+ch.dataset.i]; if(s)ch.classList.toggle("sel", stopFilters.some(f=>wpNear(f,s)));}); }
+function updateStopChip(){
+  const boxEl=document.getElementById("stopChip");
+  if(!stopFilters.length){ boxEl.classList.add("hidden"); boxEl.innerHTML=""; return; }
+  const n=matchingTours().length, names=stopFilters.map(s=>shortStop(s.name)).join(" + ");
+  boxEl.classList.remove("hidden");
+  boxEl.innerHTML=`<span class="sctext">途径点(${stopFilters.length}):<b>${names}</b> · 经过<b>${stopMode==="and"?"全部":"任一"}</b> · <b>${n}</b> 条线路 <span style="color:var(--muted)">(点圆点/右侧增减 · 悬停单独描线)</span></span>`+
+    `<span class="modebtn" id="modeBtn">${stopMode==="and"?"全部":"任一"} ⇄</span><span class="x" id="stopZoom">缩放到结果</span><span class="x" id="stopClear">清除 ✕</span>`;
+  boxEl.querySelector("#modeBtn").addEventListener("click",()=>{ stopMode=stopMode==="and"?"or":"and"; applyFilter(); });
+  boxEl.querySelector("#stopZoom").addEventListener("click",()=>{ const ms=matchingTours(); const pts=[]; (ms.length?ms.flatMap(t=>t.waypoints):stopFilters).forEach(w=>pts.push([w.lng,w.lat])); if(pts.length)map.fitBounds(boundsOf(pts),{padding:60,duration:600}); });
+  boxEl.querySelector("#stopClear").addEventListener("click",clearStops);
+}
+
+// ---- right panel: route list ----
+const listEl=document.getElementById("list");
+function renderList(visibleNos){
+  const vis=new Set(visibleNos);
+  document.getElementById("count").textContent=TOURS.length;
+  document.getElementById("listTitle").textContent = stopFilters.length||operator!=="All"||region!=="All" ? `匹配 ${visibleNos.length} 条线路` : `全部 ${TOURS.length} 条线路`;
+  listEl.innerHTML="";
+  [...TOURS].sort((a,b)=>(OPORD[a.operator]-OPORD[b.operator])||((a.price==null)-(b.price==null))||((a.price||0)-(b.price||0))).forEach(t=>{
+    if(!vis.has(t.no)) return;
+    const col=oc(t.operator), unit=t.unit==="每团"?"/团":"/人", addr=t.url.replace(/^https?:\/\//,"");
+    const btn=document.createElement("div"); btn.className="tour"; btn.dataset.no=t.no; btn.tabIndex=0;
+    const priceHtml=t.price!=null?`${fmt(t.price,t.currency)}<small>${unit}</small>`:`<span style="color:var(--muted);font-weight:600">未标价</span>`;
+    btn.innerHTML=`<span class="dot" style="background:${col}"></span>
+      <span class="tbody"><span class="tname">${t.short}${t.vip?'<span class="badge">VIP</span>':''}</span>
+      ${t.name_zh?`<span class="tzh">${t.name_zh}</span>`:''}
+      <span class="tmeta">${OPERATORS[t.operator].zh} · ${regZh(t.region).split(" ")[0]}${t.hours?` · ${t.hours}h`:''}${t.rating?` · ★${t.rating}`:''}</span>
+      <a class="turl" href="${t.url}" target="_blank" rel="noopener">${addr} ↗</a></span>
+      <span class="tprice">${priceHtml}</span>`;
+    const stops=document.createElement("ul"); stops.className="stops hidden";
+    stops.innerHTML=t.waypoints.map(w=>`<li${/Reykjav|Pickup|Back to/.test(w.name)?' style="color:var(--muted)"':''}>${w.name}${w.zh?` · ${w.zh}`:''}</li>`).join("");
+    btn.querySelector(".turl").addEventListener("click",e=>e.stopPropagation());
+    btn.addEventListener("mouseenter",()=>{ hoverNo=t.no; updateRoutePaint(); document.querySelectorAll(".tour").forEach(b=>b.classList.toggle("active",+b.dataset.no===t.no)); });
+    btn.addEventListener("mouseleave",()=>{ hoverNo=null; updateRoutePaint(); document.querySelectorAll(".tour").forEach(b=>b.classList.remove("active")); });
+    btn.addEventListener("click",()=>{ document.querySelectorAll(".stops").forEach(s=>{if(s!==stops)s.classList.add("hidden");}); stops.classList.toggle("hidden"); togglePin(t.no); });
+    listEl.appendChild(btn); listEl.appendChild(stops);
+  });
+  updatePinCue();
+}
+
+// ---- filters ----
+document.getElementById("opBar").addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(!b)return; operator=b.dataset.op; document.querySelectorAll("#opBar .chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false")); applyFilter(); });
+document.getElementById("regionBar").addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(!b)return; region=b.dataset.region; document.querySelectorAll("#regionBar .chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false")); applyFilter(); });
+document.getElementById("vipChk").addEventListener("change",e=>{ showVip=e.target.checked; applyFilter(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ pinnedNo=null; hoverNo=null; updateRoutePaint(); updatePinCue(); popup.remove(); if(stopFilters.length)clearStops(); } });
+
+// ---- legend ----
+function renderLegend(){
+  let h='<b>运营商 / Operator</b>';
+  for(const k in OPERATORS) h+=`<span class="lg"><span class="sw" style="background:${oc(k)}"></span>${OPERATORS[k].zh}</span>`;
+  document.getElementById("legend").innerHTML=h;
+}
+renderLegend();
+
+// ---- theme ----
+function recolorPanels(){
+  renderLegend();
+  document.querySelectorAll("#opBar .chip .cdot").forEach((d,i)=>{d.style.background=oc(Object.keys(OPERATORS)[i]);});
+  document.querySelectorAll(".tour").forEach(b=>{const t=TOURS.find(x=>x.no==b.dataset.no); if(t)b.querySelector(".dot").style.background=oc(t.operator);});
+}
+document.querySelectorAll("#opBar .chip .cdot").forEach((d,i)=>{d.style.background=oc(Object.keys(OPERATORS)[i]);});
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  const cur=document.documentElement.dataset.theme;
+  document.documentElement.dataset.theme = cur==="dark"?"light":(cur==="light"?"dark":(isDark()?"light":"dark"));
+  switchStyle();
+  recolorPanels();
+});
+matchMedia("(prefers-color-scheme:dark)").addEventListener("change",()=>{ if(!document.documentElement.dataset.theme){ switchStyle(); recolorPanels(); } });
+document.getElementById("basemapCtl").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b)return;
+  basemap=b.dataset.bm;
+  document.querySelectorAll("#basemapCtl button").forEach(x=>x.classList.toggle("on",x===b));
+  switchStyle();
+});
+
+document.getElementById("foot").innerHTML =
+  "数据抓取:2026-07-25 · 来源:troll.is / magicicelandtravel.com / bustravel.is / cn.adventures.is,共 44 条线路 · "+
+  "价格为各页面原始币种(Troll.is=USD,BusTravel=ISK 等;部分页面未标价则显示「未标价」)· 底图 © CARTO © OpenStreetMap。";
+</script>
+</body>
+</html>
