@@ -186,6 +186,20 @@ for m in MAG:
         "hours":hours_of(m.get("duration")),"rating":rating,
         "region":scan_region(wps),"vip":False,"url":m["url"],"waypoints":wps})
 
+# ---------- nicetravel.is : static-scraped ISK price + itinerary stops ----------
+# Source built from a fan-out scrape + independent price verification (data/sources/nicetravel_full.json).
+# WordPress/Elementor site with no booking API, so prices are static (no live src for refresh).
+NICE=[m for m in load(S("nicetravel_full.json"),[]) if m.get("price_isk") is not None]
+for m in NICE:
+    stops=[{"name":w["name"],"lat":w["lat"],"lng":w["lng"]} for w in m.get("waypoints",[])]
+    if len(stops)<2: continue
+    wps=[REYK]+stops
+    no+=1
+    tours.append({"no":no,"operator":"nicetravel","short":(m.get("short") or m.get("name") or "")[:52],
+        "name":m.get("name") or "","name_zh":m.get("name_zh") or "","price":round(m["price_isk"]),
+        "currency":"ISK","unit":"每人","hours":m.get("hours"),"rating":round(float(m.get("rating") or 0),2),
+        "region":m.get("region") or scan_region(wps),"vip":False,"url":m["url"],"waypoints":wps})
+
 # ---------- attach source ids (enables a future server-side price refresh) ----------
 CH_TROLL="823a4d04-fbbe-4710-a762-5d8634ecf50f"; CH_BUS="56d5e7cb-6b04-4cf6-8eb1-6fc1cf3734d4"; CH_MAGIC="39c9bba8-8263-4fc3-b1cc-bd2d87cafc17"
 TB_BY_SLUG={t.get("slug"):t for t in load(S("troll_bokun.json"),[])}
@@ -219,7 +233,13 @@ def snap(wp):
         gl=asciilow(name)
         if len(gl)<3: continue
         if re.search(r'\b'+re.escape(gl)+r'\b', low):
-            wp["lat"],wp["lng"]=coord[0],coord[1]; return
+            # Distance guard: only snap when the gazetteer coord is near the source coord.
+            # Corrects small errors (e.g. Katla mis-geocoded to Vík, ~0.24°) but refuses to
+            # teleport a stop across the country when a name is ambiguous (e.g. West-Iceland
+            # "Reykholt"/"Hvita" vs their southern namesakes ~0.5° away).
+            if abs(coord[0]-wp["lat"])<=0.35 and abs(coord[1]-wp["lng"])<=0.5:
+                wp["lat"],wp["lng"]=coord[0],coord[1]
+            return
 snapped=0
 for t in tours:
     for w in t["waypoints"]:

@@ -1,0 +1,427 @@
+[
+ {
+  "url": "https://nicetravel.is/iceland-tours/geothermal-wonderland-small-group-tour-golden-circle-two-geysers-geothermal-bakery/",
+  "short": "Golden Circle Geothermal Wonderland Tour",
+  "name": "Golden Circle Geothermal Wonderland Day Tour | Two Geysers & Geothermal Bakery",
+  "name_zh": "",
+  "price_isk": 16900,
+  "hours": 8.5,
+  "rating": 0.0,
+  "region": "Golden Circle",
+  "waypoints": [
+   {
+    "name": "Hveragerdi",
+    "lat": 63.9989,
+    "lng": -21.1881
+   },
+   {
+    "name": "Kerid",
+    "lat": 64.0411,
+    "lng": -20.885
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Thingvellir",
+    "lat": 64.2559,
+    "lng": -21.1295
+   }
+  ]
+ },
+ {
+  "url": "https://nicetravel.is/iceland-tours/golden-circle-hvamssvik-hot-spring-whale-fjord/",
+  "short": "Golden Circle & Hvammsvik Hot Spring Spa",
+  "name": "Golden Circle Geothermal Wonderland & Hvammsvík Spa in Hvalfjörður Fjord",
+  "name_zh": "",
+  "price_isk": 28900,
+  "hours": 11,
+  "rating": 0.0,
+  "region": "Golden Circle",
+  "waypoints": [
+   {
+    "name": "Hveragerdi",
+    "lat": 64.0006,
+    "lng": -21.1911
+   },
+   {
+    "name": "Kerid",
+    "lat": 64.0411,
+    "lng": -20.885
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Thingvellir",
+    "lat": 64.2559,
+    "lng": -21.1295
+   },
+   {
+    "name": "Hvammsvik",
+    "lat": 64.3486,
+    "lng": -21.5266
+   }
+  ]
+ },
+ {
+  "url": "https://nicetravel.is/iceland-tours/golden-circle-blue-lagoon-and-kerid-crater/",
+  "short": "Golden Circle, Blue Lagoon & Kerid Crater",
+  "name": "Golden Circle, Blue Lagoon & Kerid Volcano | With all admissions included",
+  "name_zh": "",
+  "price_isk": 31900,
+  "hours": 11,
+  "rating": 0.0,
+  "region": "Golden Circle",
+  "waypoints": [
+   {
+    "name": "Thingvellir",
+    "lat": 64.2559,
+    "lng": -21.1295
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3017
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Kerid",
+    "lat": 64.0411,
+    "lng": -20.885
+   },
+   {
+    "name": "Blue Lagoon",
+    "lat": 63.8804,
+    "lng": -22.4495
+   }
+  ]
+ },
+ {
+  "url": "https://nicetravel.is/iceland-tours/snaefellsnes-day-trip/",
+  "short": "Snæfellsnes National Park Small Group Day Tour",
+  "name": "Snaefellsnes National Park | Small Group Day Tour",
+  "name_zh": "",
+  "price_isk": 18900,
+  "hours": 11,
+  "rating": 0.0,
+  "region": "Snæfellsnes",
+  "waypoints": [
+   {
+    "name": "Ytri-Tunga",
+    "lat": 64.8021,
+    "lng": -23.0855
+   },
+   {
+    "name": "Budir",
+    "lat": 64.8215,
+    "lng": -23.3856
+   },
+   {
+    "name": "Arnarstapi",
+    "lat": 64.7692,
+    "lng": -23.625
+   },
+   {
+    "name": "Londrangar",
+    "lat": 64.7365,
+    "lng": -23.7878
+   },
+   {
+    "name": "Djupalonssandur",
+    "lat": 64.753,
+    "lng": -23.905
+   },
+   {
+    "name": "Ingjaldsholl",
+    "lat": 64.9127,
+    "lng": -23.8064
+   },
+   {
+    "name": "Kirkjufell",
+    "lat": 64.9271,
+    "lng": -23.3103
+   },
+   {
+    "name": "Grundarfjordur",
+    "lat": 64.9226,
+    "lng": -23.2536
+   },
+   {
+    "name": "Berserkjahraun",
+    "lat": 64.95,
+    "lng": -23.0333
+   }
+  ]
+ },
+ {
+  "url": "https://nicetravel.is/iceland-tours/silver-circle-west-iceland-small-group-day-tour/",
+  "short": "Silver Circle West Iceland Small Group Tour",
+  "name": "Silver Circle | West Iceland Small Group Day Tour to the Lava Cave",
+  "name_zh": "",
+  "price_isk": 27900,
+  "hours": 10,
+  "rating": 0.0,
+  "region": "West Iceland",
+  "waypoints": [
+   {
+    "name": "Glanni Waterfall",
+    "lat": 64.7683,
+    "lng": -21.5417
+   },
+   {
+    "name": "Deildartunguhver",
+    "lat": 64.6636,
+    "lng": -21.4111
+   },
+   {
+    "name": "Sturlureykir Horse Farm",
+    "lat": 64.682,
+    "lng": -21.324
+   },
+   {
+    "name": "Reykholt",
+    "lat": 64.6647,
+    "lng": -21.2906
+   },
+   {
+    "name": "Hraunfossar",
+    "lat": 64.7028,
+    "lng": -20.9786
+   },
+   {
+    "name": "Barnafoss",
+    "lat": 64.7036,
+    "lng": -20.9736
+   },
+   {
+    "name": "Vidgelmir",
+    "lat": 64.7414,
+    "lng": -20.8047
+   }
+  ]
+ },
+ {
+  "url": "https://nicetravel.is/iceland-tours/husafell-canyon-baths-hraunfossar-icelandic-horses-silver-circle/",
+  "short": "Silver Circle Day Tour: Canyon Baths & Hraunfossar",
+  "name": "Silver Circle | Day Tour to West Iceland with Canyon Ride & Secluded Thermal Baths",
+  "name_zh": "",
+  "price_isk": 29900,
+  "hours": 10,
+  "rating": 0.0,
+  "region": "West Iceland",
+  "waypoints": [
+   {
+    "name": "Glanni Falls",
+    "lat": 64.7686,
+    "lng": -21.5487
+   },
+   {
+    "name": "Deildartunguhver",
+    "lat": 64.6633,
+    "lng": -21.4083
+   },
+   {
+    "name": "Sturlureykir Horse Farm",
+    "lat": 64.665,
+    "lng": -21.29
+   },
+   {
+    "name": "Reykholt",
+    "lat": 64.665,
+    "lng": -21.29
+   },
+   {
+    "name": "Hraunfossar",
+    "lat": 64.702,
+    "lng": -20.978
+   },
+   {
+    "name": "Barnafoss",
+    "lat": 64.704,
+    "lng": -20.972
+   },
+   {
+    "name": "Husafell",
+    "lat": 64.702,
+    "lng": -20.872
+   },
+   {
+    "name": "Husafell Canyon Baths",
+    "lat": 64.696,
+    "lng": -20.84
+   }
+  ]
+ },
+ {
+  "url": "https://nicetravel.is/iceland-tours/south-coast-adventure-small-group-day-tour/",
+  "short": "South Coast Adventure Small Group Day Tour",
+  "name": "South Coast Adventure | Waterfalls, Glacier & Black Beach",
+  "name_zh": "",
+  "price_isk": 17900,
+  "hours": 11,
+  "rating": 0.0,
+  "region": "South Coast",
+  "waypoints": [
+   {
+    "name": "Seljalandsfoss",
+    "lat": 63.6156,
+    "lng": -19.9886
+   },
+   {
+    "name": "Gljufrabui",
+    "lat": 63.6215,
+    "lng": -19.9885
+   },
+   {
+    "name": "Skogafoss",
+    "lat": 63.5321,
+    "lng": -19.5114
+   },
+   {
+    "name": "Solheimajokull",
+    "lat": 63.5306,
+    "lng": -19.3689
+   },
+   {
+    "name": "Dyrholaey",
+    "lat": 63.4025,
+    "lng": -19.1279
+   },
+   {
+    "name": "Reynisfjara",
+    "lat": 63.4034,
+    "lng": -19.0448
+   },
+   {
+    "name": "Vik",
+    "lat": 63.4186,
+    "lng": -19.006
+   }
+  ]
+ },
+ {
+  "url": "https://nicetravel.is/iceland-tours/sky-lagoon-iceland-golden-circle/",
+  "short": "Golden Circle, Sky Lagoon & Kerid Crater",
+  "name": "Golden Circle, Sky Lagoon & Kerid Volcanic Crater | Small Group Day Tour",
+  "name_zh": "",
+  "price_isk": 29900,
+  "hours": 10,
+  "rating": 0.0,
+  "region": "Golden Circle",
+  "waypoints": [
+   {
+    "name": "Thingvellir",
+    "lat": 64.2559,
+    "lng": -21.1295
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Kerid",
+    "lat": 64.0411,
+    "lng": -20.8853
+   },
+   {
+    "name": "Sky Lagoon",
+    "lat": 64.1148,
+    "lng": -21.9285
+   }
+  ]
+ },
+ {
+  "url": "https://nicetravel.is/iceland-tours/golden-circle-river-rafting/",
+  "short": "Golden Circle & River Rafting",
+  "name": "The Golden Circle & River Rafting Expedition | Small Group Day Tour",
+  "name_zh": "",
+  "price_isk": 39900,
+  "hours": 12,
+  "rating": 0.0,
+  "region": "Golden Circle",
+  "waypoints": [
+   {
+    "name": "Thingvellir",
+    "lat": 64.2559,
+    "lng": -21.1295
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Hvita",
+    "lat": 64.1833,
+    "lng": -20.2833
+   },
+   {
+    "name": "Bruarhlodur",
+    "lat": 64.2072,
+    "lng": -20.155
+   }
+  ]
+ },
+ {
+  "url": "https://nicetravel.is/iceland-tours/golden-circle-kerid-volcanic-crater/",
+  "short": "Golden Circle & Kerid Crater",
+  "name": "Golden Circle & Kerid Volcanic Crater | Small Group Day Tour",
+  "name_zh": "",
+  "price_isk": 14900,
+  "hours": 8,
+  "rating": 0.0,
+  "region": "Golden Circle",
+  "waypoints": [
+   {
+    "name": "Thingvellir",
+    "lat": 64.2559,
+    "lng": -21.1295
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Kerid",
+    "lat": 64.0411,
+    "lng": -20.8856
+   }
+  ]
+ }
+]

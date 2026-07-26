@@ -107,8 +107,8 @@
    },
    {
     "name": "Ingjaldshóll Church",
-    "lat": 64.1476,
-    "lng": -21.9853
+    "lat": 64.9078867,
+    "lng": -23.8550507
    },
    {
     "name": "Kirkjufell",
@@ -231,8 +231,8 @@
    },
    {
     "name": "Ingjaldshóll Church",
-    "lat": 64.1476,
-    "lng": -21.9853
+    "lat": 64.9078867,
+    "lng": -23.8550507
    },
    {
     "name": "Kirkjufell",
@@ -676,8 +676,8 @@
    },
    {
     "name": "Whale Watching in Faxaflói bay",
-    "lat": 64.926,
-    "lng": -23.2568
+    "lat": 64.1975,
+    "lng": -22.3463
    }
   ],
   "src": {
@@ -1943,8 +1943,8 @@
    },
    {
     "name": "Whale Watching from Akureyri",
-    "lat": 64.926,
-    "lng": -23.2568
+    "lat": 66.0685,
+    "lng": -18.4164
    }
   ],
   "src": {
@@ -1980,8 +1980,8 @@
    },
    {
     "name": "Classic Whale Watching",
-    "lat": 64.926,
-    "lng": -23.2568
+    "lat": 64.1959,
+    "lng": -22.1409
    }
   ],
   "src": {
@@ -4771,8 +4771,8 @@
    },
    {
     "name": "Whale Watching",
-    "lat": 64.926,
-    "lng": -23.2568
+    "lat": 64.1511,
+    "lng": -21.9454
    }
   ],
   "src": {
@@ -6166,5 +6166,530 @@
    "pid": 5992
   },
   "id": "magicicelandtravel_walk-with-a-viking-reykjavik-walking-tour-small-group"
+ },
+ {
+  "operator": "nicetravel",
+  "short": "Golden Circle Geothermal Wonderland Tour",
+  "name": "Golden Circle Geothermal Wonderland Day Tour | Two Geysers & Geothermal Bakery",
+  "name_zh": "",
+  "price": 16900,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 8.5,
+  "rating": 0.0,
+  "region": "Golden Circle",
+  "vip": false,
+  "url": "https://nicetravel.is/iceland-tours/geothermal-wonderland-small-group-tour-golden-circle-two-geysers-geothermal-bakery/",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Hveragerdi",
+    "lat": 64.0,
+    "lng": -21.19
+   },
+   {
+    "name": "Kerid",
+    "lat": 64.0411,
+    "lng": -20.8856
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Thingvellir",
+    "lat": 64.2559,
+    "lng": -21.1295
+   }
+  ],
+  "id": "nicetravel_geothermal-wonderland-small-group-tour-golden-circle-two-gey"
+ },
+ {
+  "operator": "nicetravel",
+  "short": "Golden Circle & Hvammsvik Hot Spring Spa",
+  "name": "Golden Circle Geothermal Wonderland & Hvammsvík Spa in Hvalfjörður Fjord",
+  "name_zh": "",
+  "price": 28900,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 11,
+  "rating": 0.0,
+  "region": "Golden Circle",
+  "vip": false,
+  "url": "https://nicetravel.is/iceland-tours/golden-circle-hvamssvik-hot-spring-whale-fjord/",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Hveragerdi",
+    "lat": 64.0,
+    "lng": -21.19
+   },
+   {
+    "name": "Kerid",
+    "lat": 64.0411,
+    "lng": -20.8856
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Thingvellir",
+    "lat": 64.2559,
+    "lng": -21.1295
+   },
+   {
+    "name": "Hvammsvik",
+    "lat": 64.35,
+    "lng": -21.35
+   }
+  ],
+  "id": "nicetravel_golden-circle-hvamssvik-hot-spring-whale-fjord"
+ },
+ {
+  "operator": "nicetravel",
+  "short": "Golden Circle, Blue Lagoon & Kerid Crater",
+  "name": "Golden Circle, Blue Lagoon & Kerid Volcano | With all admissions included",
+  "name_zh": "",
+  "price": 31900,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 11,
+  "rating": 0.0,
+  "region": "Golden Circle",
+  "vip": false,
+  "url": "https://nicetravel.is/iceland-tours/golden-circle-blue-lagoon-and-kerid-crater/",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Thingvellir",
+    "lat": 64.2559,
+    "lng": -21.1295
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Kerid",
+    "lat": 64.0411,
+    "lng": -20.8856
+   },
+   {
+    "name": "Blue Lagoon",
+    "lat": 63.8804,
+    "lng": -22.4495
+   }
+  ],
+  "id": "nicetravel_golden-circle-blue-lagoon-and-kerid-crater"
+ },
+ {
+  "operator": "nicetravel",
+  "short": "Snæfellsnes National Park Small Group Day Tour",
+  "name": "Snaefellsnes National Park | Small Group Day Tour",
+  "name_zh": "",
+  "price": 18900,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 11,
+  "rating": 0.0,
+  "region": "Snæfellsnes",
+  "vip": false,
+  "url": "https://nicetravel.is/iceland-tours/snaefellsnes-day-trip/",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Ytri-Tunga",
+    "lat": 64.8021,
+    "lng": -23.0855
+   },
+   {
+    "name": "Budir",
+    "lat": 64.8213,
+    "lng": -23.3855
+   },
+   {
+    "name": "Arnarstapi",
+    "lat": 64.7699,
+    "lng": -23.6236
+   },
+   {
+    "name": "Londrangar",
+    "lat": 64.736,
+    "lng": -23.789
+   },
+   {
+    "name": "Djupalonssandur",
+    "lat": 64.7538,
+    "lng": -23.9007
+   },
+   {
+    "name": "Ingjaldsholl",
+    "lat": 64.9127,
+    "lng": -23.8064
+   },
+   {
+    "name": "Kirkjufell",
+    "lat": 64.9271,
+    "lng": -23.306
+   },
+   {
+    "name": "Grundarfjordur",
+    "lat": 64.9223,
+    "lng": -23.2544
+   },
+   {
+    "name": "Berserkjahraun",
+    "lat": 64.9783,
+    "lng": -22.9073
+   }
+  ],
+  "id": "nicetravel_snaefellsnes-day-trip"
+ },
+ {
+  "operator": "nicetravel",
+  "short": "Silver Circle West Iceland Small Group Tour",
+  "name": "Silver Circle | West Iceland Small Group Day Tour to the Lava Cave",
+  "name_zh": "",
+  "price": 27900,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 10,
+  "rating": 0.0,
+  "region": "West Iceland",
+  "vip": false,
+  "url": "https://nicetravel.is/iceland-tours/silver-circle-west-iceland-small-group-day-tour/",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Glanni Waterfall",
+    "lat": 64.7683,
+    "lng": -21.5417
+   },
+   {
+    "name": "Deildartunguhver",
+    "lat": 64.663,
+    "lng": -21.41
+   },
+   {
+    "name": "Sturlureykir Horse Farm",
+    "lat": 64.682,
+    "lng": -21.324
+   },
+   {
+    "name": "Reykholt",
+    "lat": 64.6647,
+    "lng": -21.2906
+   },
+   {
+    "name": "Hraunfossar",
+    "lat": 64.702,
+    "lng": -20.978
+   },
+   {
+    "name": "Barnafoss",
+    "lat": 64.703,
+    "lng": -20.972
+   },
+   {
+    "name": "Vidgelmir",
+    "lat": 64.7386,
+    "lng": -20.7847
+   }
+  ],
+  "id": "nicetravel_silver-circle-west-iceland-small-group-day-tour"
+ },
+ {
+  "operator": "nicetravel",
+  "short": "Silver Circle Day Tour: Canyon Baths & Hraunfossar",
+  "name": "Silver Circle | Day Tour to West Iceland with Canyon Ride & Secluded Thermal Baths",
+  "name_zh": "",
+  "price": 29900,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 10,
+  "rating": 0.0,
+  "region": "West Iceland",
+  "vip": false,
+  "url": "https://nicetravel.is/iceland-tours/husafell-canyon-baths-hraunfossar-icelandic-horses-silver-circle/",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Glanni Falls",
+    "lat": 64.7686,
+    "lng": -21.5487
+   },
+   {
+    "name": "Deildartunguhver",
+    "lat": 64.663,
+    "lng": -21.41
+   },
+   {
+    "name": "Sturlureykir Horse Farm",
+    "lat": 64.665,
+    "lng": -21.29
+   },
+   {
+    "name": "Reykholt",
+    "lat": 64.665,
+    "lng": -21.29
+   },
+   {
+    "name": "Hraunfossar",
+    "lat": 64.702,
+    "lng": -20.978
+   },
+   {
+    "name": "Barnafoss",
+    "lat": 64.703,
+    "lng": -20.972
+   },
+   {
+    "name": "Husafell",
+    "lat": 64.7,
+    "lng": -20.87
+   },
+   {
+    "name": "Husafell Canyon Baths",
+    "lat": 64.7,
+    "lng": -20.87
+   }
+  ],
+  "id": "nicetravel_husafell-canyon-baths-hraunfossar-icelandic-horses-silver-ci"
+ },
+ {
+  "operator": "nicetravel",
+  "short": "South Coast Adventure Small Group Day Tour",
+  "name": "South Coast Adventure | Waterfalls, Glacier & Black Beach",
+  "name_zh": "",
+  "price": 17900,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 11,
+  "rating": 0.0,
+  "region": "South Coast",
+  "vip": false,
+  "url": "https://nicetravel.is/iceland-tours/south-coast-adventure-small-group-day-tour/",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Seljalandsfoss",
+    "lat": 63.6156,
+    "lng": -19.9886
+   },
+   {
+    "name": "Gljufrabui",
+    "lat": 63.622,
+    "lng": -19.989
+   },
+   {
+    "name": "Skogafoss",
+    "lat": 63.532,
+    "lng": -19.511
+   },
+   {
+    "name": "Solheimajokull",
+    "lat": 63.53,
+    "lng": -19.37
+   },
+   {
+    "name": "Dyrholaey",
+    "lat": 63.401,
+    "lng": -19.126
+   },
+   {
+    "name": "Reynisfjara",
+    "lat": 63.404,
+    "lng": -19.044
+   },
+   {
+    "name": "Vik",
+    "lat": 63.418,
+    "lng": -19.006
+   }
+  ],
+  "id": "nicetravel_south-coast-adventure-small-group-day-tour"
+ },
+ {
+  "operator": "nicetravel",
+  "short": "Golden Circle, Sky Lagoon & Kerid Crater",
+  "name": "Golden Circle, Sky Lagoon & Kerid Volcanic Crater | Small Group Day Tour",
+  "name_zh": "",
+  "price": 29900,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 10,
+  "rating": 0.0,
+  "region": "Golden Circle",
+  "vip": false,
+  "url": "https://nicetravel.is/iceland-tours/sky-lagoon-iceland-golden-circle/",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Thingvellir",
+    "lat": 64.2559,
+    "lng": -21.1295
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Kerid",
+    "lat": 64.0411,
+    "lng": -20.8856
+   },
+   {
+    "name": "Sky Lagoon",
+    "lat": 64.1145,
+    "lng": -21.9407
+   }
+  ],
+  "id": "nicetravel_sky-lagoon-iceland-golden-circle"
+ },
+ {
+  "operator": "nicetravel",
+  "short": "Golden Circle & River Rafting",
+  "name": "The Golden Circle & River Rafting Expedition | Small Group Day Tour",
+  "name_zh": "",
+  "price": 39900,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 12,
+  "rating": 0.0,
+  "region": "Golden Circle",
+  "vip": false,
+  "url": "https://nicetravel.is/iceland-tours/golden-circle-river-rafting/",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Thingvellir",
+    "lat": 64.2559,
+    "lng": -21.1295
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Hvita",
+    "lat": 64.2161,
+    "lng": -20.2851
+   },
+   {
+    "name": "Bruarhlodur",
+    "lat": 64.2072,
+    "lng": -20.155
+   }
+  ],
+  "id": "nicetravel_golden-circle-river-rafting"
+ },
+ {
+  "operator": "nicetravel",
+  "short": "Golden Circle & Kerid Crater",
+  "name": "Golden Circle & Kerid Volcanic Crater | Small Group Day Tour",
+  "name_zh": "",
+  "price": 14900,
+  "currency": "ISK",
+  "unit": "每人",
+  "hours": 8,
+  "rating": 0.0,
+  "region": "Golden Circle",
+  "vip": false,
+  "url": "https://nicetravel.is/iceland-tours/golden-circle-kerid-volcanic-crater/",
+  "waypoints": [
+   {
+    "name": "Pickup in Reykjavik",
+    "lat": 64.142029,
+    "lng": -21.926494
+   },
+   {
+    "name": "Thingvellir",
+    "lat": 64.2559,
+    "lng": -21.1295
+   },
+   {
+    "name": "Geysir",
+    "lat": 64.3104,
+    "lng": -20.3024
+   },
+   {
+    "name": "Gullfoss",
+    "lat": 64.3271,
+    "lng": -20.1199
+   },
+   {
+    "name": "Kerid",
+    "lat": 64.0411,
+    "lng": -20.8856
+   }
+  ],
+  "id": "nicetravel_golden-circle-kerid-volcanic-crater"
  }
 ]
