@@ -99,6 +99,28 @@
   .bdiff .fld{font-weight:700;color:var(--ink2)} .bdiff s{color:var(--danger);opacity:.8} .bdiff b{color:var(--ok)}
   .bdiff .sep{color:var(--muted);margin:0 8px}
   .burl{grid-column:1 / -1;font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  /* source config editor */
+  .srccfg{margin-top:12px;border-top:1px dashed var(--line);padding-top:12px}
+  .srccfg-hd{font-size:12px;color:var(--muted);margin-bottom:8px} .srccfg-hd code{background:var(--chip);padding:1px 5px;border-radius:5px}
+  .srccfg-ta{width:100%;min-height:200px;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
+    border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg);color:var(--ink);resize:vertical}
+  .srccfg-actions{display:flex;align-items:center;gap:10px;margin-top:8px}
+  .srccfg-msg{font-size:12.5px;color:var(--muted)}
+  /* progress modal */
+  .modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+    background:rgba(8,14,18,.55);backdrop-filter:blur(3px);padding:20px}
+  .modal-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
+    width:100%;max-width:520px;padding:18px 20px}
+  .modal-hd{display:flex;align-items:center;justify-content:space-between;font-weight:800;font-size:15px;margin-bottom:12px}
+  .modal-x{border:0;background:transparent;color:var(--muted);font-size:16px;line-height:1;padding:4px}
+  .pstage{font-size:13.5px;color:var(--ink);margin-bottom:8px;font-weight:600}
+  .pbar{height:10px;border-radius:999px;background:var(--chip);overflow:hidden}
+  .pfill{height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .25s ease}
+  .pcount{font-size:12.5px;color:var(--muted);margin:7px 0}
+  .plog{max-height:190px;overflow:auto;font:11.5px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;
+    background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;color:var(--ink2)}
+  .plog .ok{color:var(--ok)} .plog .warn{color:var(--danger)} .plog .dim{color:var(--muted)}
+  .modal-ft{display:flex;justify-content:flex-end;margin-top:12px}
   .emap{height:300px;border-radius:12px;overflow:hidden;margin-bottom:14px;border:1px solid var(--line)}
   .emap .maplibregl-ctrl-attrib{font-size:9px}
   .wpmk{width:23px;height:23px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:800;
@@ -154,14 +176,18 @@
     <!-- batch import + compare console -->
     <div class="rates" id="batchCard">
       <div class="h">
-        <b>批量导入 · 列表页对比操作台</b>
+        <b>全量抓取 · 五网站对比操作台</b>
         <span class="upd" id="batchMsg"></span>
         <span class="toolrow">
-          <input id="batchListing" class="binput" placeholder="粘贴运营商「列表页」网址(如 …/iceland-day-tours/)…">
-          <select id="batchOp" class="bsel" title="归属运营商"></select>
-          <button class="btn sm" id="batchScanBtn" title="需先部署 Cloud Function(Blaze 计划)">🔎 发现并抓取</button>
+          <button class="btn sm" id="batchAllBtn" title="按源配置全量抓取全部运营商并与数据库对比">🚀 全量拉取(5 家网站)</button>
+          <button class="btn ghost sm" id="srcCfgBtn">⚙️ 源配置</button>
           <button class="btn ghost sm hidden" id="batchApplyBtn">✅ 应用选中</button>
         </span>
+      </div>
+      <div id="srcCfgPanel" class="srccfg hidden">
+        <div class="srccfg-hd">源配置 · 存于 Firestore <code>config/sources</code>(有默认值,一般不用改)。<code>listing</code>=用列表页发现新路线;<code>urls</code>=显式网址(JS 渲染站)。</div>
+        <textarea id="srcCfgText" class="srccfg-ta" spellcheck="false"></textarea>
+        <div class="srccfg-actions"><button class="btn sm" id="srcCfgSave">💾 保存配置</button><button class="btn ghost sm" id="srcCfgReload">↺ 重新载入</button><span class="srccfg-msg" id="srcCfgMsg"></span></div>
       </div>
       <div id="batchResult" class="batchresult"></div>
     </div>
@@ -183,10 +209,22 @@
 
 <div class="toast" id="toast"></div>
 
+<!-- progress modal -->
+<div class="modal hidden" id="pModal">
+  <div class="modal-card">
+    <div class="modal-hd"><span id="pTitle">正在全量抓取五个网站…</span><button class="modal-x" id="pClose" title="关闭">✕</button></div>
+    <div class="pstage" id="pStage">准备中…</div>
+    <div class="pbar"><div class="pfill" id="pFill"></div></div>
+    <div class="pcount" id="pCount"></div>
+    <div class="plog" id="pLog"></div>
+    <div class="modal-ft"><button class="btn ghost sm" id="pCancel">取消</button></div>
+  </div>
+</div>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import { getFirestore, collection, getDocs, doc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import { getFirestore, collection, getDocs, doc, getDoc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-functions.js";
 
 const cfg = {
@@ -278,8 +316,31 @@ $("refreshPricesBtn").addEventListener("click", async () => {
 });
 
 // ---------- batch import + compare console ----------
-$("batchOp").innerHTML = `<option value="">自动(按域名)</option>` +
-  Object.keys(OPS).map(k=>`<option value="${k}">${OPS[k].zh}</option>`).join("");
+// ---- source registry (Firestore config/sources): listing=用列表页发现新路线, urls=显式网址(JS 渲染站) ----
+const DEFAULT_SOURCES = { operators: {
+  trollis:{zh:"Troll.is",color:"#2a78d6",order:0,enabled:true,listing:"",urls:[]},
+  magicicelandtravel:{zh:"Magic Iceland",color:"#eb6834",order:1,enabled:true,listing:"",urls:[]},
+  bustravel:{zh:"BusTravel",color:"#1baf7a",order:2,enabled:true,listing:"https://bustravel.is/iceland-tours/",urls:[]},
+  adventures:{zh:"Arctic Adventures",color:"#6a4bd6",order:3,enabled:true,listing:"https://cn.adventures.is/iceland/day-tours/",urls:[]},
+  nicetravel:{zh:"Nice Travel",color:"#c84f96",order:4,enabled:true,listing:"https://nicetravel.is/iceland-day-tours-from-reykjavik/",urls:[]},
+}};
+let SOURCES=null;
+async function loadSources(){
+  if(SOURCES) return SOURCES;
+  try{ const s=await getDoc(doc(db,"config","sources")); SOURCES = (s.exists()&&s.data().operators)? s.data() : DEFAULT_SOURCES; }
+  catch(e){ SOURCES = DEFAULT_SOURCES; }
+  return SOURCES;
+}
+// ---- progress modal ----
+const pModal=$("pModal"); let pCancelled=false;
+function pOpen(t){ pCancelled=false; $("pTitle").textContent=t||"正在全量抓取…"; $("pStage").textContent="准备中…"; $("pFill").style.width="0%"; $("pCount").textContent=""; $("pLog").innerHTML=""; pModal.classList.remove("hidden"); }
+function pDone(){ pModal.classList.add("hidden"); }
+function pStageEl(t){ $("pStage").textContent=t; }
+function pProg(d,t){ $("pFill").style.width=(t?Math.round(d/t*100):0)+"%"; $("pCount").textContent=t?`${d} / ${t} 条`:""; }
+function pLog(msg,cls){ const e=document.createElement("div"); if(cls)e.className=cls; e.textContent=msg; const L=$("pLog"); L.appendChild(e); L.scrollTop=L.scrollHeight; }
+$("pCancel").addEventListener("click",()=>{ pCancelled=true; pStageEl("正在取消…(等待进行中的请求结束)"); });
+$("pClose").addEventListener("click",()=>{ pCancelled=true; pDone(); });
+
 const REYK_WP = {name:"Pickup in Reykjavik", lat:64.142029, lng:-21.926494};
 const slugId = u => u.replace(/\/+$/,"").split("/").pop().toLowerCase().replace(/[^a-z0-9\-]/g,"").slice(0,60);
 const inIceland = w => w && isFinite(+w.lat) && isFinite(+w.lng) && +w.lat>=63 && +w.lat<=67.5 && +w.lng>=-25 && +w.lng<=-12;
@@ -301,49 +362,77 @@ const CMP = ["price","short","name","name_zh","hours","rating","region"];
 const CMPZH = {price:"价格",short:"短名",name:"名称",name_zh:"中文名",hours:"时长",rating:"评分",region:"区域"};
 let BATCH=[];
 
-$("batchScanBtn").addEventListener("click", async ()=>{
-  const listing=$("batchListing").value.trim();
-  if(!listing){ toast("请粘贴列表页网址"); return; }
-  const b=$("batchScanBtn"); b.disabled=true; b.textContent="发现中…";
+// ---- one button: pull every source, compare against the live DB ----
+$("batchAllBtn").addEventListener("click", async ()=>{
+  const b=$("batchAllBtn"); b.disabled=true;
   $("batchResult").innerHTML=""; $("batchApplyBtn").classList.add("hidden"); BATCH=[];
+  pOpen("正在全量抓取五个网站…");
   try{
-    const disc = (await httpsCallable(functions,"discoverListing")({listing})).data;
-    if(!disc.count){ $("batchMsg").textContent="未发现详情页(检查网址是否为列表页)"; b.disabled=false; b.textContent="🔎 发现并抓取"; return; }
-    const op = $("batchOp").value || disc.operator || "misc";
-    $("batchMsg").textContent = `发现 ${disc.count} 条详情页,并行抓取中…`;
-    let done=0;
-    const raw = await pool(disc.urls, 6, async (u)=>{
-      const d = (await httpsCallable(functions,"aiImport")({url:u})).data;
-      b.textContent = `抓取 ${++done}/${disc.count}…`;
-      return d;
-    });
-    let rates=null;
-    try{ const rs=await getDocs(collection(db,"config")); const rd=rs.docs.find(d=>d.id==="rates"); rates=rd?rd.data().rates:null; }catch(e){}
-    BATCH = raw.map((r,i)=>{
-      const url=disc.urls[i];
-      if(!r || r.__err) return { url, status:"error", err:(r&&r.__err)||"抓取失败" };
-      const canon=(r.url||url).replace(/\/+$/,"")+"/";
-      const wps=(r.waypoints||[]).filter(inIceland).map(w=>({name:String(w.name),lat:+w.lat,lng:+w.lng}));
-      const rec={ id:`${op}_${slugId(canon)}`, operator:op,
-        short:(r.short||r.name||"").slice(0,52), name:r.name||"", name_zh:r.name_zh||"",
-        price:toISK(r.price,r.currency,rates), currency:"ISK", unit:"每人",
-        hours:(r.hours==null?null:+r.hours), rating:+(r.rating||0)||0, region:r.region||"Activity",
-        vip:false, url:canon, waypoints:[REYK_WP, ...wps] };
-      const ex = TOURS.find(t=>t._id===rec.id);
-      let status="new", changed=[];
-      if(ex){
-        changed = CMP.filter(f=> String(ex[f]??"") !== String(rec[f]??""));
-        if((ex.waypoints||[]).length !== rec.waypoints.length) changed.push("waypoints");
-        status = changed.length ? "changed" : "same";
+    pStageEl("读取源配置…");
+    const src = await loadSources();
+    const ops = Object.entries(src.operators||{}).filter(([k,o])=>o&&o.enabled!==false).sort((a,b)=>(a[1].order||0)-(b[1].order||0));
+    // 1) collect the URL list per operator (listing discovery ∪ explicit urls)
+    const jobs=[]; const seen=new Set();
+    for(const [key,o] of ops){
+      if(pCancelled) break;
+      let urls = Array.isArray(o.urls)? o.urls.slice() : [];
+      if(o.listing){
+        pStageEl(`发现列表页:${o.zh||key}`);
+        try{ const d=(await httpsCallable(functions,"discoverListing")({listing:o.listing})).data; urls=urls.concat(d.urls||[]); pLog(`✓ ${o.zh||key}:列表页发现 ${d.count} 条`,"ok"); }
+        catch(e){ pLog(`⚠ ${o.zh||key}:列表页发现失败(${e.code||e.message||e}),改用已存网址`,"warn"); }
       }
-      return { url:canon, status, changed, existing:ex||null, record:rec };
+      let n=0;
+      for(let u of urls){ u=(u||"").trim(); if(!/^https?:\/\//.test(u)) continue; u=u.replace(/\/+$/,"")+"/"; const dk=key+"|"+u; if(seen.has(dk)) continue; seen.add(dk); jobs.push({url:u,op:key}); n++; }
+      pLog(`· ${o.zh||key}:待抓取 ${n} 条`,"dim");
+    }
+    if(!jobs.length){ pStageEl("没有可抓取的网址(检查源配置)"); b.disabled=false; return; }
+    let rates=null; try{ const rs=await getDocs(collection(db,"config")); const rd=rs.docs.find(d=>d.id==="rates"); rates=rd?rd.data().rates:null; }catch(e){}
+    // 2) fan out extraction across every detail page (each aiImport = one short function call)
+    pStageEl(`并行抓取详情页(${jobs.length} 条)…`); pProg(0,jobs.length);
+    let done=0;
+    const raw = await pool(jobs, 6, async (job)=>{
+      if(pCancelled) return {__cancel:true};
+      let r; try{ r=(await httpsCallable(functions,"aiImport")({url:job.url})).data; }catch(e){ r={__err:(e&&(e.code||e.message))||"抓取失败"}; }
+      done++; pProg(done,jobs.length);
+      const okr = r && !r.__err && !r.__cancel;
+      pLog((okr?"✓ ":"⚠ ")+`[${src.operators[job.op]?.zh||job.op}] ${decodeURIComponent(job.url.split("/").filter(Boolean).pop()||job.url)}`, okr?"ok":"warn");
+      return r;
+    });
+    if(pCancelled){ pStageEl("已取消"); b.disabled=false; return; }
+    // 3) build records + diff against the live DB
+    pStageEl("与数据库对比…");
+    BATCH = raw.map((r,i)=>{
+      const job=jobs[i], op=job.op;
+      if(!r || r.__err || r.__cancel) return { url:job.url, op, status:"error", err:(r&&r.__err)||"抓取失败" };
+      const canon=(r.url||job.url).replace(/\/+$/,"")+"/";
+      const wps=(r.waypoints||[]).filter(inIceland).map(w=>({name:String(w.name),lat:+w.lat,lng:+w.lng}));
+      const rec={ id:`${op}_${slugId(canon)}`, operator:op, short:(r.short||r.name||"").slice(0,52), name:r.name||"", name_zh:r.name_zh||"",
+        price:toISK(r.price,r.currency,rates), currency:"ISK", unit:"每人", hours:(r.hours==null?null:+r.hours), rating:+(r.rating||0)||0,
+        region:r.region||"Activity", vip:false, url:canon, waypoints:[REYK_WP, ...wps] };
+      const ex=TOURS.find(t=>t._id===rec.id);
+      let status="new", changed=[];
+      if(ex){ changed=CMP.filter(f=>String(ex[f]??"")!==String(rec[f]??"")); if((ex.waypoints||[]).length!==rec.waypoints.length) changed.push("waypoints"); status=changed.length?"changed":"same"; }
+      return { url:canon, op, status, changed, existing:ex||null, record:rec };
     });
     renderBatch();
-  }catch(e){
-    $("batchMsg").textContent="";
-    toast((e.code==="functions/not-found"||/not-found|internal/.test(e.code||""))?"需先部署 Cloud Function(discoverListing)":("失败:"+(e.code||e.message)));
-  }
-  b.disabled=false; b.textContent="🔎 发现并抓取";
+    pStageEl("完成 ✓  在下方勾选要应用的改动,点「应用选中」"); pProg(jobs.length,jobs.length);
+    setTimeout(pDone, 1100);
+  }catch(e){ pStageEl("失败:"+(e.code||e.message||e)); pLog(String(e.message||e),"warn"); }
+  b.disabled=false;
+});
+
+// ---- source config editor (config/sources) ----
+$("srcCfgBtn").addEventListener("click", async ()=>{
+  const p=$("srcCfgPanel");
+  if(!p.classList.contains("hidden")){ p.classList.add("hidden"); return; }
+  p.classList.remove("hidden");
+  const s=await loadSources(); $("srcCfgText").value=JSON.stringify(s,null,1); $("srcCfgMsg").textContent="";
+});
+$("srcCfgReload").addEventListener("click", async ()=>{ SOURCES=null; const s=await loadSources(); $("srcCfgText").value=JSON.stringify(s,null,1); $("srcCfgMsg").textContent="已重新载入"; });
+$("srcCfgSave").addEventListener("click", async ()=>{
+  let obj; try{ obj=JSON.parse($("srcCfgText").value); }catch(e){ $("srcCfgMsg").textContent="JSON 格式错误:"+e.message; return; }
+  try{ await setDoc(doc(db,"config","sources"), obj); SOURCES=obj; $("srcCfgMsg").textContent="已保存 ✓"; }
+  catch(e){ $("srcCfgMsg").textContent="保存失败:"+(e.code||e.message); }
 });
 
 function diffHtml(r){
