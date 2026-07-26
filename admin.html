@@ -89,6 +89,7 @@
     border:1px solid var(--line);border-left-width:4px;border-radius:10px;padding:8px 11px;background:var(--panel)}
   .brow.new{border-left-color:var(--ok)} .brow.changed{border-left-color:var(--warn)}
   .brow.same{border-left-color:var(--line);opacity:.72} .brow.error{border-left-color:var(--danger)}
+  .brow.thin{border-left-color:var(--muted);opacity:.9} .brow.thin .bstat{color:var(--muted)}
   .brow input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent)}
   .bstat{font-size:12px;font-weight:800;white-space:nowrap}
   .brow.new .bstat{color:var(--ok)} .brow.changed .bstat{color:var(--warn)}
@@ -443,24 +444,30 @@ function diffHtml(r){
   });
   return parts.join('<span class="sep">·</span>');
 }
+// a real map "route" needs >=2 real stops (excl. the Reykjavik pickup); fewer = 单点/门票/租车/抓取不全
+function isThin(r){ return r.status!=="error" && r.record && (r.record.waypoints.length-1) < 2; }
+function bucketOf(r){ return r.status==="error" ? "error" : (isThin(r) ? "thin" : r.status); }
 function renderBatch(){
   const g=$("batchResult");
-  const order={new:0,changed:1,error:2,same:3};
-  const rows=[...BATCH].sort((a,b)=>order[a.status]-order[b.status]);
-  const badge={new:"🆕 新增",changed:"✏️ 已变更",same:"✓ 未变",error:"⚠️ 失败"};
-  const cnt=s=>BATCH.filter(r=>r.status===s).length;
+  const order={new:0,changed:1,thin:2,error:3,same:4};
+  const rows=[...BATCH].map(r=>({r,bucket:bucketOf(r)})).sort((a,b)=>order[a.bucket]-order[b.bucket]);
+  const badge={new:"🆕 新增",changed:"✏️ 已变更",same:"✓ 未变"};
+  const GH={new:"🆕 新增(数据库没有)",changed:"✏️ 已存在但内容变了",
+    thin:"⚪ 单点 / 无途径点(默认不勾;门票 / 租车 / 单点活动,或途径点没抓全)",
+    error:"⚠️ 抓取失败",same:"✓ 已存在且未变"};
+  const cnt={}; rows.forEach(({bucket})=>cnt[bucket]=(cnt[bucket]||0)+1);
   let html="", lastG=null;
-  const GH={new:"🆕 新增(数据库没有)",changed:"✏️ 已存在但内容变了",error:"⚠️ 抓取失败",same:"✓ 已存在且未变"};
-  for(const r of rows){
-    if(r.status!==lastG){ html+=`<div class="bgrouphd">${GH[r.status]}</div>`; lastG=r.status; }
+  for(const {r,bucket} of rows){
+    if(bucket!==lastG){ html+=`<div class="bgrouphd">${GH[bucket]}</div>`; lastG=bucket; }
     const i=BATCH.indexOf(r);
-    if(r.status==="error"){ html+=`<div class="brow error"><span></span><span class="bstat">⚠️</span><span class="bname">${r.url}</span><span class="bmeta">${r.err}</span></div>`; continue; }
+    if(bucket==="error"){ html+=`<div class="brow error"><span></span><span class="bstat">⚠️</span><span class="bname">${r.url}</span><span class="bmeta">${r.err}</span></div>`; continue; }
     const rec=r.record;
-    const checked=(r.status==="new"||r.status==="changed")?"checked":"";
-    const disabled=(r.status==="same")?"disabled":"";
-    html+=`<label class="brow ${r.status}">
+    const cls = bucket==="thin" ? "thin" : r.status;
+    const checked=(bucket==="new"||bucket==="changed")?"checked":"";
+    const disabled=(bucket==="same")?"disabled":"";
+    html+=`<label class="brow ${cls}">
       <input type="checkbox" data-i="${i}" ${checked} ${disabled}>
-      <span class="bstat">${badge[r.status]}</span>
+      <span class="bstat">${bucket==="thin"?"⚪ 单点":badge[r.status]}</span>
       <span class="bname">${rec.short||rec.name||rec.id}</span>
       <span class="bmeta">${OPS[rec.operator]?.zh||rec.operator} · ${rec.region} · ${rec.price==null?"未标价":rec.price+" ISK"} · ${Math.max(rec.waypoints.length-1,0)}站${rec.hours?` · ${rec.hours}h`:""}</span>
       ${r.status==="changed"?`<span class="bdiff">${diffHtml(r)}</span>`:""}
@@ -468,9 +475,9 @@ function renderBatch(){
     </label>`;
   }
   g.innerHTML=html;
-  const n=cnt("new")+cnt("changed");
+  const n=(cnt.new||0)+(cnt.changed||0);
   const ab=$("batchApplyBtn"); ab.classList.toggle("hidden", BATCH.length===0); ab.textContent=`✅ 应用选中(${n})`;
-  $("batchMsg").textContent=`共 ${BATCH.length}:🆕${cnt("new")} 新增 · ✏️${cnt("changed")} 变更 · ✓${cnt("same")} 未变 · ⚠️${cnt("error")} 失败`;
+  $("batchMsg").textContent=`共 ${BATCH.length}:🆕${cnt.new||0} 新增 · ✏️${cnt.changed||0} 变更 · ⚪${cnt.thin||0} 单点 · ✓${cnt.same||0} 未变 · ⚠️${cnt.error||0} 失败`;
 }
 
 $("batchApplyBtn").addEventListener("click", async ()=>{
