@@ -143,7 +143,12 @@
   .spchip .n{opacity:.7;font-weight:800;margin-left:4px}
 
   .list-head{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
-    font-weight:800;margin:12px 16px 4px;position:sticky;top:0;background:var(--panel);padding-top:4px;z-index:1}
+    font-weight:800;margin:12px 16px 4px;position:sticky;top:0;background:var(--panel);padding-top:4px;z-index:1;
+    display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .clearall{flex:none;cursor:pointer;border:1px solid var(--accent);border-radius:8px;padding:4px 10px;
+    font-weight:700;font-size:11px;text-transform:none;letter-spacing:0;
+    background:color-mix(in srgb,var(--accent) 10%,var(--panel));color:var(--accent-ink)}
+  .clearall:hover{background:var(--accent);color:#fff}
   .list{padding:0 8px 8px}
   .tour{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;border:0;background:none;color:var(--ink);
     padding:11px 9px;border-radius:13px;cursor:pointer;transition:background .12s;min-height:52px}
@@ -320,7 +325,7 @@
           <div class="picker-head">途径点筛选 <span class="muted">· 可多选,与地图圆点同步</span></div>
           <div class="picker-body" id="stopPicker"></div>
         </div>
-        <div class="list-head" id="listTitle">全部 44 条线路</div>
+        <div class="list-head"><span id="listTitle">全部 44 条线路</span><button class="clearall hidden" id="clearAll">清除全部筛选 ✕</button></div>
         <div class="list" id="list"></div>
         <div class="foot" id="foot"></div>
       </div>
@@ -613,6 +618,7 @@ function renderList(visibleNos){
   $("headNum").textContent=visibleNos.length;
   $("headSub").textContent = filtered ? "匹配当前筛选 · 共 "+TOURS.length+" 条" : "5 家运营商 · 点线路或圆点筛选";
   $("listTitle").textContent = filtered ? `匹配 ${visibleNos.length} 条` : `全部 ${TOURS.length} 条线路`;
+  const cab=$("clearAll"); if(cab) cab.classList.toggle("hidden", !filtered);
   listEl.innerHTML="";
   [...TOURS].sort((a,b)=>(OPORD[a.operator]-OPORD[b.operator])||((a.price==null)-(b.price==null))||((a.price||0)-(b.price||0))).forEach(t=>{
     if(!vis.has(t.no)) return;
@@ -640,6 +646,16 @@ function renderList(visibleNos){
 $("opBar").addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(!b)return; operator=b.dataset.op; document.querySelectorAll("#opBar .chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false")); applyFilter(); });
 $("regionBar").addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(!b)return; region=b.dataset.region; document.querySelectorAll("#regionBar .chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false")); applyFilter(); });
 $("vipChk").addEventListener("change",e=>{ showVip=e.target.checked; applyFilter(); });
+// one-click: reset every filter (region / operator / VIP / waypoint) and clear any focused route
+function clearAllFilters(){
+  region="All"; operator="All"; showVip=true; stopMode="and"; stopFilters.length=0;
+  pinnedNo=null; hoverNo=null;
+  document.querySelectorAll("#regionBar .chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.region==="All"?"true":"false"));
+  document.querySelectorAll("#opBar .chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.op==="All"?"true":"false"));
+  const v=$("vipChk"); if(v) v.checked=true;
+  popup.remove(); updatePinCue(); applyFilter();
+}
+$("clearAll").addEventListener("click",clearAllFilters);
 document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ pinnedNo=null; hoverNo=null; updateRoutePaint(); updatePinCue(); popup.remove(); if(stopFilters.length)clearStops(); } });
 $("fitBtn").addEventListener("click",()=>{ pinnedNo=null; hoverNo=null; updateRoutePaint(); updatePinCue(); popup.remove(); fitAll(); });
 
