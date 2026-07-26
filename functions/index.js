@@ -169,3 +169,33 @@ exports.discoverListing = onCall(
     return { listing, origin: base.origin, operator, count: urls.length, urls };
   }
 );
+
+// ---------- discover via sitemap.xml (works even for JS-rendered listings like troll.is/magic) ----------
+// Follows a sitemap or sitemap-index, collecting <loc> page URLs that match `pattern` (a regex).
+exports.discoverSitemap = onCall(
+  { region: REGION, timeoutSeconds: 120, memory: "512MiB" },
+  async (req) => {
+    requireAdmin(req);
+    const sm = ((req.data && req.data.sitemap) || "").trim();
+    const patSrc = (req.data && req.data.pattern) || "";
+    if (!/^https?:\/\/\S+$/.test(sm)) throw new HttpsError("invalid-argument", "provide a sitemap url");
+    let re = null;
+    if (patSrc) { try { re = new RegExp(patSrc, "i"); } catch (e) { throw new HttpsError("invalid-argument", "bad pattern regex"); } }
+    const seen = new Set(), out = new Set();
+    async function crawl(url, depth) {
+      if (depth > 2 || seen.has(url) || out.size > 800) return;
+      seen.add(url);
+      let xml = "";
+      try { xml = await (await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } })).text(); } catch (e) { return; }
+      const locs = [...xml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/gi)].map((m) => m[1].replace(/&amp;/g, "&"));
+      const subs = locs.filter((u) => /\.xml(\.gz)?(\?|$)/i.test(u));
+      for (const p of locs) {
+        if (/\.xml(\.gz)?(\?|$)/i.test(p)) continue;               // it's a sub-sitemap, not a page
+        if (!re || re.test(p)) out.add(p.replace(/\/+$/, "") + "/");
+      }
+      for (const s of subs.slice(0, 25)) { if (out.size > 800) break; await crawl(s, depth + 1); }
+    }
+    await crawl(sm, 0);
+    return { sitemap: sm, count: out.size, urls: [...out].slice(0, 400) };
+  }
+);

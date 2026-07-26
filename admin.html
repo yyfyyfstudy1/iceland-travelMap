@@ -182,6 +182,8 @@
         <span class="toolrow">
           <button class="btn sm" id="batchAllBtn" title="按源配置全量抓取全部运营商并与数据库对比">🚀 全量拉取(5 家网站)</button>
           <button class="btn ghost sm" id="srcCfgBtn">⚙️ 源配置</button>
+          <button class="btn ghost sm hidden" id="batchSelAll">☑ 全选</button>
+          <button class="btn ghost sm hidden" id="batchSelNone">☐ 取消全选</button>
           <button class="btn ghost sm hidden" id="batchApplyBtn">✅ 应用选中</button>
         </span>
       </div>
@@ -319,11 +321,11 @@ $("refreshPricesBtn").addEventListener("click", async () => {
 // ---------- batch import + compare console ----------
 // ---- source registry (Firestore config/sources): listing=用列表页发现新路线, urls=显式网址(JS 渲染站) ----
 const DEFAULT_SOURCES = { operators: {
-  trollis:{zh:"Troll.is",color:"#2a78d6",order:0,enabled:true,listing:"",urls:[]},
-  magicicelandtravel:{zh:"Magic Iceland",color:"#eb6834",order:1,enabled:true,listing:"",urls:[]},
-  bustravel:{zh:"BusTravel",color:"#1baf7a",order:2,enabled:true,listing:"https://bustravel.is/iceland-tours/",urls:[]},
-  adventures:{zh:"Arctic Adventures",color:"#6a4bd6",order:3,enabled:true,listing:"https://cn.adventures.is/iceland/day-tours/",urls:[]},
-  nicetravel:{zh:"Nice Travel",color:"#c84f96",order:4,enabled:true,listing:"https://nicetravel.is/iceland-day-tours-from-reykjavik/",urls:[]},
+  trollis:{zh:"Troll.is",color:"#2a78d6",order:0,enabled:true,listing:"",sitemap:"https://troll.is/sitemap-0.xml",pattern:"/day-tour/[a-z0-9-]+/?$",urls:[]},
+  magicicelandtravel:{zh:"Magic Iceland",color:"#eb6834",order:1,enabled:true,listing:"",sitemap:"https://www.magicicelandtravel.com/sitemap.xml",pattern:"magicicelandtravel\\.com/tour/[a-z0-9-]+/?$",urls:[]},
+  bustravel:{zh:"BusTravel",color:"#1baf7a",order:2,enabled:true,listing:"https://bustravel.is/iceland-tours/",sitemap:"",pattern:"",urls:[]},
+  adventures:{zh:"Arctic Adventures",color:"#6a4bd6",order:3,enabled:true,listing:"",sitemap:"https://cn.adventures.is/page-sitemap.xml",pattern:"/iceland/day-tours/[a-z0-9-]+/[a-z0-9-]+/?$",urls:[]},
+  nicetravel:{zh:"Nice Travel",color:"#c84f96",order:4,enabled:true,listing:"https://nicetravel.is/iceland-day-tours-from-reykjavik/",sitemap:"",pattern:"",urls:[]},
 }};
 let SOURCES=null;
 async function loadSources(){
@@ -380,7 +382,12 @@ $("batchAllBtn").addEventListener("click", async ()=>{
       if(o.listing){
         pStageEl(`发现列表页:${o.zh||key}`);
         try{ const d=(await httpsCallable(functions,"discoverListing")({listing:o.listing})).data; urls=urls.concat(d.urls||[]); pLog(`✓ ${o.zh||key}:列表页发现 ${d.count} 条`,"ok"); }
-        catch(e){ pLog(`⚠ ${o.zh||key}:列表页发现失败(${e.code||e.message||e}),改用已存网址`,"warn"); }
+        catch(e){ pLog(`⚠ ${o.zh||key}:列表页发现失败(${e.code||e.message||e})`,"warn"); }
+      }
+      if(o.sitemap){
+        pStageEl(`读取 sitemap:${o.zh||key}`);
+        try{ const d=(await httpsCallable(functions,"discoverSitemap")({sitemap:o.sitemap,pattern:o.pattern||""})).data; urls=urls.concat(d.urls||[]); pLog(`✓ ${o.zh||key}:sitemap 收录 ${d.count} 条`,"ok"); }
+        catch(e){ pLog(`⚠ ${o.zh||key}:sitemap 失败(${e.code||e.message||e})`,"warn"); }
       }
       let n=0;
       for(let u of urls){ u=(u||"").trim(); if(!/^https?:\/\//.test(u)) continue; u=u.replace(/\/+$/,"")+"/"; const dk=key+"|"+u; if(seen.has(dk)) continue; seen.add(dk); jobs.push({url:u,op:key}); n++; }
@@ -477,8 +484,16 @@ function renderBatch(){
   g.innerHTML=html;
   const n=(cnt.new||0)+(cnt.changed||0);
   const ab=$("batchApplyBtn"); ab.classList.toggle("hidden", BATCH.length===0); ab.textContent=`✅ 应用选中(${n})`;
+  ["batchSelAll","batchSelNone"].forEach(id=>$(id).classList.toggle("hidden", BATCH.length===0));
   $("batchMsg").textContent=`共 ${BATCH.length}:🆕${cnt.new||0} 新增 · ✏️${cnt.changed||0} 变更 · ⚪${cnt.thin||0} 单点 · ✓${cnt.same||0} 未变 · ⚠️${cnt.error||0} 失败`;
 }
+function updateApplyCount(){
+  const n=$("batchResult").querySelectorAll('input[type=checkbox]:checked:not(:disabled)').length;
+  $("batchApplyBtn").textContent=`✅ 应用选中(${n})`;
+}
+$("batchResult").addEventListener("change", updateApplyCount);
+$("batchSelAll").addEventListener("click", ()=>{ $("batchResult").querySelectorAll('input[type=checkbox]:not(:disabled)').forEach(c=>c.checked=true); updateApplyCount(); });
+$("batchSelNone").addEventListener("click", ()=>{ $("batchResult").querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false); updateApplyCount(); });
 
 $("batchApplyBtn").addEventListener("click", async ()=>{
   const boxes=[...$("batchResult").querySelectorAll('input[type=checkbox]:checked:not(:disabled)')];
@@ -488,7 +503,7 @@ $("batchApplyBtn").addEventListener("click", async ()=>{
     for(const box of boxes){ const r=BATCH[+box.dataset.i]; if(!r||!r.record) continue; await setDoc(doc(db,"tours",r.record.id), r.record); b.textContent=`写入 ${++ok}/${total}…`; }
     toast(`已写入 ${ok} 条 ✓`);
     await loadAll();
-    $("batchResult").innerHTML=""; $("batchApplyBtn").classList.add("hidden"); BATCH=[]; $("batchMsg").textContent=`已应用 ${ok} 条,可重新发现比对`;
+    $("batchResult").innerHTML=""; ["batchApplyBtn","batchSelAll","batchSelNone"].forEach(id=>$(id).classList.add("hidden")); BATCH=[]; $("batchMsg").textContent=`已应用 ${ok} 条,可重新发现比对`;
   }catch(e){ toast("写入失败:"+(e.code||e.message)); }
   b.disabled=false; b.textContent="✅ 应用选中";
 });
