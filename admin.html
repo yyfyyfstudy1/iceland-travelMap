@@ -80,6 +80,25 @@
   .aiimport{display:flex;gap:8px;margin-bottom:12px}
   .aiimport input{flex:1;min-width:0;padding:9px 11px;border:1px solid var(--accent);border-radius:10px;background:var(--bg);color:var(--ink);font-size:13px}
   .aiimport .btn{white-space:nowrap}
+  /* batch compare console */
+  .binput{flex:1;min-width:220px;padding:8px 11px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink)}
+  .bsel{padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink)}
+  .batchresult{margin-top:12px;display:flex;flex-direction:column;gap:6px}
+  .bgrouphd{font-size:12px;font-weight:800;color:var(--muted);margin:8px 2px 2px;text-transform:uppercase;letter-spacing:.04em}
+  .brow{display:grid;grid-template-columns:auto auto 1fr;gap:6px 10px;align-items:center;
+    border:1px solid var(--line);border-left-width:4px;border-radius:10px;padding:8px 11px;background:var(--panel)}
+  .brow.new{border-left-color:var(--ok)} .brow.changed{border-left-color:var(--warn)}
+  .brow.same{border-left-color:var(--line);opacity:.72} .brow.error{border-left-color:var(--danger)}
+  .brow input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent)}
+  .bstat{font-size:12px;font-weight:800;white-space:nowrap}
+  .brow.new .bstat{color:var(--ok)} .brow.changed .bstat{color:var(--warn)}
+  .brow.same .bstat{color:var(--muted)} .brow.error .bstat{color:var(--danger)}
+  .bname{font-weight:700;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bmeta{grid-column:3;font-size:12px;color:var(--muted)}
+  .bdiff{grid-column:1 / -1;font-size:12.5px;background:var(--chip);border-radius:8px;padding:6px 9px;line-height:1.7}
+  .bdiff .fld{font-weight:700;color:var(--ink2)} .bdiff s{color:var(--danger);opacity:.8} .bdiff b{color:var(--ok)}
+  .bdiff .sep{color:var(--muted);margin:0 8px}
+  .burl{grid-column:1 / -1;font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .emap{height:300px;border-radius:12px;overflow:hidden;margin-bottom:14px;border:1px solid var(--line)}
   .emap .maplibregl-ctrl-attrib{font-size:9px}
   .wpmk{width:23px;height:23px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:800;
@@ -130,6 +149,21 @@
         </span>
       </div>
       <div class="grid" id="ratesGrid"></div>
+    </div>
+
+    <!-- batch import + compare console -->
+    <div class="rates" id="batchCard">
+      <div class="h">
+        <b>批量导入 · 列表页对比操作台</b>
+        <span class="upd" id="batchMsg"></span>
+        <span class="toolrow">
+          <input id="batchListing" class="binput" placeholder="粘贴运营商「列表页」网址(如 …/iceland-day-tours/)…">
+          <select id="batchOp" class="bsel" title="归属运营商"></select>
+          <button class="btn sm" id="batchScanBtn" title="需先部署 Cloud Function(Blaze 计划)">🔎 发现并抓取</button>
+          <button class="btn ghost sm hidden" id="batchApplyBtn">✅ 应用选中</button>
+        </span>
+      </div>
+      <div id="batchResult" class="batchresult"></div>
     </div>
 
     <div class="grid2">
@@ -241,6 +275,126 @@ $("refreshPricesBtn").addEventListener("click", async () => {
     toast("需先部署 Cloud Function(Blaze):"+(e.code||e.message));
   }
   b.disabled=false; b.textContent="💰 刷新所有价格";
+});
+
+// ---------- batch import + compare console ----------
+$("batchOp").innerHTML = `<option value="">自动(按域名)</option>` +
+  Object.keys(OPS).map(k=>`<option value="${k}">${OPS[k].zh}</option>`).join("");
+const REYK_WP = {name:"Pickup in Reykjavik", lat:64.142029, lng:-21.926494};
+const slugId = u => u.replace(/\/+$/,"").split("/").pop().toLowerCase().replace(/[^a-z0-9\-]/g,"").slice(0,60);
+const inIceland = w => w && isFinite(+w.lat) && isFinite(+w.lng) && +w.lat>=63 && +w.lat<=67.5 && +w.lng>=-25 && +w.lng<=-12;
+function toISK(price, cur, rates){
+  if(price==null || !isFinite(+price)) return null;
+  if(!cur || cur==="ISK") return Math.round(+price);
+  const r = rates && rates[cur];                 // rates are ISK->cur; invert to get ISK
+  return r ? Math.round(+price / r) : Math.round(+price);
+}
+// concurrency-limited parallel map (fans out the per-page function calls)
+async function pool(items, n, fn){
+  const out=new Array(items.length); let i=0;
+  await Promise.all(Array.from({length:Math.min(n,items.length||1)}, async ()=>{
+    while(i<items.length){ const k=i++; try{ out[k]=await fn(items[k],k); }catch(e){ out[k]={__err:(e&&(e.code||e.message))||"抓取失败"}; } }
+  }));
+  return out;
+}
+const CMP = ["price","short","name","name_zh","hours","rating","region"];
+const CMPZH = {price:"价格",short:"短名",name:"名称",name_zh:"中文名",hours:"时长",rating:"评分",region:"区域"};
+let BATCH=[];
+
+$("batchScanBtn").addEventListener("click", async ()=>{
+  const listing=$("batchListing").value.trim();
+  if(!listing){ toast("请粘贴列表页网址"); return; }
+  const b=$("batchScanBtn"); b.disabled=true; b.textContent="发现中…";
+  $("batchResult").innerHTML=""; $("batchApplyBtn").classList.add("hidden"); BATCH=[];
+  try{
+    const disc = (await httpsCallable(functions,"discoverListing")({listing})).data;
+    if(!disc.count){ $("batchMsg").textContent="未发现详情页(检查网址是否为列表页)"; b.disabled=false; b.textContent="🔎 发现并抓取"; return; }
+    const op = $("batchOp").value || disc.operator || "misc";
+    $("batchMsg").textContent = `发现 ${disc.count} 条详情页,并行抓取中…`;
+    let done=0;
+    const raw = await pool(disc.urls, 6, async (u)=>{
+      const d = (await httpsCallable(functions,"aiImport")({url:u})).data;
+      b.textContent = `抓取 ${++done}/${disc.count}…`;
+      return d;
+    });
+    let rates=null;
+    try{ const rs=await getDocs(collection(db,"config")); const rd=rs.docs.find(d=>d.id==="rates"); rates=rd?rd.data().rates:null; }catch(e){}
+    BATCH = raw.map((r,i)=>{
+      const url=disc.urls[i];
+      if(!r || r.__err) return { url, status:"error", err:(r&&r.__err)||"抓取失败" };
+      const canon=(r.url||url).replace(/\/+$/,"")+"/";
+      const wps=(r.waypoints||[]).filter(inIceland).map(w=>({name:String(w.name),lat:+w.lat,lng:+w.lng}));
+      const rec={ id:`${op}_${slugId(canon)}`, operator:op,
+        short:(r.short||r.name||"").slice(0,52), name:r.name||"", name_zh:r.name_zh||"",
+        price:toISK(r.price,r.currency,rates), currency:"ISK", unit:"每人",
+        hours:(r.hours==null?null:+r.hours), rating:+(r.rating||0)||0, region:r.region||"Activity",
+        vip:false, url:canon, waypoints:[REYK_WP, ...wps] };
+      const ex = TOURS.find(t=>t._id===rec.id);
+      let status="new", changed=[];
+      if(ex){
+        changed = CMP.filter(f=> String(ex[f]??"") !== String(rec[f]??""));
+        if((ex.waypoints||[]).length !== rec.waypoints.length) changed.push("waypoints");
+        status = changed.length ? "changed" : "same";
+      }
+      return { url:canon, status, changed, existing:ex||null, record:rec };
+    });
+    renderBatch();
+  }catch(e){
+    $("batchMsg").textContent="";
+    toast((e.code==="functions/not-found"||/not-found|internal/.test(e.code||""))?"需先部署 Cloud Function(discoverListing)":("失败:"+(e.code||e.message)));
+  }
+  b.disabled=false; b.textContent="🔎 发现并抓取";
+});
+
+function diffHtml(r){
+  const ex=r.existing, rec=r.record;
+  const parts = r.changed.map(f=>{
+    if(f==="waypoints") return `<span class="fld">途径点</span> <s>${(ex.waypoints||[]).length}站</s> → <b>${rec.waypoints.length}站</b>`;
+    return `<span class="fld">${CMPZH[f]||f}</span> <s>${ex[f]??"—"}</s> → <b>${rec[f]??"—"}</b>`;
+  });
+  return parts.join('<span class="sep">·</span>');
+}
+function renderBatch(){
+  const g=$("batchResult");
+  const order={new:0,changed:1,error:2,same:3};
+  const rows=[...BATCH].sort((a,b)=>order[a.status]-order[b.status]);
+  const badge={new:"🆕 新增",changed:"✏️ 已变更",same:"✓ 未变",error:"⚠️ 失败"};
+  const cnt=s=>BATCH.filter(r=>r.status===s).length;
+  let html="", lastG=null;
+  const GH={new:"🆕 新增(数据库没有)",changed:"✏️ 已存在但内容变了",error:"⚠️ 抓取失败",same:"✓ 已存在且未变"};
+  for(const r of rows){
+    if(r.status!==lastG){ html+=`<div class="bgrouphd">${GH[r.status]}</div>`; lastG=r.status; }
+    const i=BATCH.indexOf(r);
+    if(r.status==="error"){ html+=`<div class="brow error"><span></span><span class="bstat">⚠️</span><span class="bname">${r.url}</span><span class="bmeta">${r.err}</span></div>`; continue; }
+    const rec=r.record;
+    const checked=(r.status==="new"||r.status==="changed")?"checked":"";
+    const disabled=(r.status==="same")?"disabled":"";
+    html+=`<label class="brow ${r.status}">
+      <input type="checkbox" data-i="${i}" ${checked} ${disabled}>
+      <span class="bstat">${badge[r.status]}</span>
+      <span class="bname">${rec.short||rec.name||rec.id}</span>
+      <span class="bmeta">${OPS[rec.operator]?.zh||rec.operator} · ${rec.region} · ${rec.price==null?"未标价":rec.price+" ISK"} · ${Math.max(rec.waypoints.length-1,0)}站${rec.hours?` · ${rec.hours}h`:""}</span>
+      ${r.status==="changed"?`<span class="bdiff">${diffHtml(r)}</span>`:""}
+      <span class="burl">${r.url}</span>
+    </label>`;
+  }
+  g.innerHTML=html;
+  const n=cnt("new")+cnt("changed");
+  const ab=$("batchApplyBtn"); ab.classList.toggle("hidden", BATCH.length===0); ab.textContent=`✅ 应用选中(${n})`;
+  $("batchMsg").textContent=`共 ${BATCH.length}:🆕${cnt("new")} 新增 · ✏️${cnt("changed")} 变更 · ✓${cnt("same")} 未变 · ⚠️${cnt("error")} 失败`;
+}
+
+$("batchApplyBtn").addEventListener("click", async ()=>{
+  const boxes=[...$("batchResult").querySelectorAll('input[type=checkbox]:checked:not(:disabled)')];
+  if(!boxes.length){ toast("没有勾选任何项"); return; }
+  const b=$("batchApplyBtn"); b.disabled=true; const total=boxes.length; let ok=0;
+  try{
+    for(const box of boxes){ const r=BATCH[+box.dataset.i]; if(!r||!r.record) continue; await setDoc(doc(db,"tours",r.record.id), r.record); b.textContent=`写入 ${++ok}/${total}…`; }
+    toast(`已写入 ${ok} 条 ✓`);
+    await loadAll();
+    $("batchResult").innerHTML=""; $("batchApplyBtn").classList.add("hidden"); BATCH=[]; $("batchMsg").textContent=`已应用 ${ok} 条,可重新发现比对`;
+  }catch(e){ toast("写入失败:"+(e.code||e.message)); }
+  b.disabled=false; b.textContent="✅ 应用选中";
 });
 
 // ---------- list ----------
